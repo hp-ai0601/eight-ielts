@@ -6,6 +6,7 @@ import { LEXICON } from "@/lib/lexicon";
 import { saveZangDiary, saveZangDraft, type State } from "@/lib/store";
 import { checkText, type Check } from "@/lib/zang/check";
 import ChamCau from "./ChamCau";
+import WordPic from "@/components/WordPic";
 
 export default function NhatKy({ s, onDone }: { s: State; onDone: (next: State) => void }) {
   const n = dayNum();
@@ -48,8 +49,11 @@ export default function NhatKy({ s, onDone }: { s: State; onDone: (next: State) 
     <div>
       <p className="text-sm text-mute">{hint}</p>
       <ul className="mt-4 space-y-1 text-sm">
-        <li>
-          Từ hôm nay nếu nhớ: <span className="text-lime">{word.word}</span> ({word.vi})
+        <li className="flex items-center gap-3">
+          <WordPic word={word.word} vi={word.vi} pos={word.pos} size="thumb" />
+          <span>
+            Từ hôm nay nếu nhớ: <span className="text-lime">{word.word}</span> ({word.vi})
+          </span>
         </li>
         <li>
           Thì hôm nay: <span className="text-lime">{beat.tense}</span>

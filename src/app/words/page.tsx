@@ -7,6 +7,7 @@ import SrsDeck from "@/components/SrsDeck";
 import { speak } from "@/lib/speech";
 import { LEX_COUNT, LEX_TOPICS, lexByTopic, lexSearch } from "@/lib/lexicon";
 import { POS_VI } from "@/lib/pos";
+import WordPic from "@/components/WordPic";
 
 export default function WordsPage() {
   const { s, commit, ready } = useEight();
@@ -59,7 +60,8 @@ export default function WordsPage() {
       <ul className="mt-3 divide-y divide-line">
         {items.map((c) => (
           <li key={`${c.topic}-${c.word}`} className="flex items-start justify-between gap-3 py-3">
-            <div>
+            <WordPic word={c.word} vi={c.vi} pos={c.pos} size="thumb" className="shrink-0" />
+            <div className="min-w-0 flex-1">
               <p>
                 <span className="font-medium">{c.word}</span>{" "}
                 <span className="text-sm text-mute">{c.ipa}</span>

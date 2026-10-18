@@ -4,6 +4,7 @@ import { useState } from "react";
 import { speak } from "@/lib/speech";
 import type { Grade } from "@/lib/srs";
 import { due, gradeCard, type State } from "@/lib/store";
+import WordPic from "@/components/WordPic";
 
 export default function SrsDeck({
   state,
@@ -55,7 +56,8 @@ export default function SrsDeck({
       <p className="text-xs text-mute">
         Thẻ {i + 1}/{queue.length}
       </p>
-      <p className="mt-8 font-serif text-4xl">{card.front}</p>
+      <WordPic word={card.front} size="md" className="mt-6" />
+      <p className="mt-4 font-serif text-4xl">{card.front}</p>
       <button className="mt-3 text-sm text-lime" onClick={() => speak(card.front)}>
         Nghe
       </button>

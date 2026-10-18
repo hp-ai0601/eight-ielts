@@ -8,6 +8,7 @@ import { POS_VI, posHint, type Pos } from "@/lib/pos";
 import { checkText, type Check } from "@/lib/zang/check";
 import ChamCau from "./ChamCau";
 import ChinhTa from "./ChinhTa";
+import WordPic from "@/components/WordPic";
 
 const PER_LOT = 8;
 
@@ -121,7 +122,8 @@ export default function TuCau({ s, onDone }: { s: State; onDone: (next: State) =
                   setMark(null);
                 }}
               >
-                <p className={`font-serif text-xl ${seen[w.word] ? "" : "select-none blur-[6px]"}`}>{w.word}</p>
+                <WordPic word={w.word} vi={w.vi} pos={w.pos} size="sm" />
+                <p className={`mt-2 font-serif text-xl ${seen[w.word] ? "" : "select-none blur-[6px]"}`}>{w.word}</p>
                 <p className={`mt-1 text-sm text-mute ${seen[w.word] ? "" : "select-none blur-[6px]"}`}>{w.ipa}</p>
                 <p className="mt-1 text-sm">
                   <span className="text-lime">{POS_VI[w.pos]}</span> · {w.vi}
@@ -257,7 +259,8 @@ function Half({ word, ipa, vi, pos, hide }: { word: string; ipa: string; vi: str
   const label = POS_VI[pos];
   return (
     <div>
-      <p className={`font-serif text-2xl ${hide ? "select-none blur-[6px]" : ""}`}>{word}</p>
+      <WordPic word={word} vi={vi} pos={pos} size="sm" />
+      <p className={`mt-2 font-serif text-2xl ${hide ? "select-none blur-[6px]" : ""}`}>{word}</p>
       <p className={`mt-1 text-sm text-mute ${hide ? "select-none blur-[6px]" : ""}`}>{ipa}</p>
       <p className="mt-1 text-sm">
         <span className="text-lime">{label}</span> · {vi}
@@ -270,7 +273,8 @@ function WordFocus({ word, frame }: { word: ClassWord; frame: string }) {
   const pos: Pos = word.pos;
   return (
     <div className="mt-6">
-      <p className="text-sm text-mute">{posHint(pos)}</p>
+      <WordPic word={word.word} vi={word.vi} pos={word.pos} size="md" />
+      <p className="mt-3 text-sm text-mute">{posHint(pos)}</p>
       <p className="mt-2 text-sm text-mute">
         Khung: <span className="text-text">{frame}</span>
       </p>

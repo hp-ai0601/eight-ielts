@@ -8,6 +8,7 @@ import WriteBox from "./WriteBox";
 import PlayBar from "./PlayBar";
 import { speak } from "@/lib/speech";
 import { POS_VI, guessPos } from "@/lib/pos";
+import WordPic from "./WordPic";
 
 export default function TestView({
   test,
@@ -36,7 +37,8 @@ export default function TestView({
           <ul className="mt-6 divide-y divide-line">
             {test.vocab.map((v) => (
               <li key={v.word} className="flex items-start justify-between gap-4 py-3">
-                <div>
+                <WordPic word={v.word} vi={v.vi} pos={v.pos} size="thumb" className="shrink-0" />
+                <div className="min-w-0 flex-1">
                   <p className="font-medium">
                     {v.word} <span className="font-normal text-mute">{v.ipa}</span>
                     {" · "}
