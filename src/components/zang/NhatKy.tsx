@@ -4,6 +4,8 @@ import { useState } from "react";
 import { DIARY_HINTS, STORIES, dayNum, pick } from "@/lib/zang/content";
 import { LEXICON } from "@/lib/lexicon";
 import { saveZangDiary, type State } from "@/lib/store";
+import { checkText, type Check } from "@/lib/zang/check";
+import ChamCau from "./ChamCau";
 
 export default function NhatKy({ s, onDone }: { s: State; onDone: (next: State) => void }) {
   const n = dayNum();
@@ -13,6 +15,7 @@ export default function NhatKy({ s, onDone }: { s: State; onDone: (next: State) 
   const existing = s.zang.diaries.find((d) => d.day === new Date().toISOString().slice(0, 10));
   const [text, setText] = useState(existing?.text ?? "");
   const [ok, setOk] = useState("");
+  const [mark, setMark] = useState<Check | null>(null);
   const words = text.trim() ? text.trim().split(/\s+/).length : 0;
 
   function save() {
@@ -20,8 +23,10 @@ export default function NhatKy({ s, onDone }: { s: State; onDone: (next: State) 
       setOk("Viết khoảng 20 từ trở lên — như nhật ký, không cần luận.");
       return;
     }
+    const c = checkText(text.trim(), word ? [word.word] : []);
+    setMark(c);
     onDone(saveZangDiary(s, text.trim()));
-    setOk("Đã cất nhật ký hôm nay.");
+    setOk(c.score >= 8 ? "Đã cất nhật ký. Ngữ pháp sạch." : "Đã cất. Đọc chỗ chấm rồi sửa lại.");
   }
 
   return (
@@ -39,9 +44,10 @@ export default function NhatKy({ s, onDone }: { s: State; onDone: (next: State) 
       <textarea className="field mt-4 min-h-48" value={text} onChange={(e) => setText(e.target.value)} placeholder="Dear diary — hôm nay..." />
       <p className="mt-2 text-xs text-mute">{words} từ</p>
       <button className="btn-lime mt-4" onClick={save}>
-        Cất nhật ký
+        Chấm + cất nhật ký
       </button>
       {ok && <p className="mt-3 text-sm text-lime">{ok}</p>}
+      {mark && <ChamCau check={mark} />}
     </div>
   );
 }

@@ -4,12 +4,15 @@ import { useState } from "react";
 import { STORIES, dayNum, pick } from "@/lib/zang/content";
 import { saveZangMimic, type State } from "@/lib/store";
 import PlayBar from "@/components/PlayBar";
+import { checkText, type Check } from "@/lib/zang/check";
+import ChamCau from "./ChamCau";
 
 export default function CumTruyen({ s, onDone }: { s: State; onDone: (next: State) => void }) {
   const beat = pick(STORIES, dayNum());
   const [showEn, setShowEn] = useState(false);
   const [mimic, setMimic] = useState("");
   const [ok, setOk] = useState("");
+  const [mark, setMark] = useState<Check | null>(null);
 
   function save() {
     const t = mimic.trim();
@@ -17,8 +20,10 @@ export default function CumTruyen({ s, onDone }: { s: State; onDone: (next: Stat
       setOk("Viết một câu tiếng Anh đủ dài, cùng cấu trúc.");
       return;
     }
+    const c = checkText(t);
+    setMark(c);
     onDone(saveZangMimic(s, beat.id, t));
-    setOk("Đã cất câu theo cấu trúc.");
+    setOk(c.score >= 8 ? "Đã cất. Ngữ pháp sạch." : "Đã cất. Đọc chỗ chấm, viết lại cho đúng khuôn.");
   }
 
   return (
@@ -53,9 +58,10 @@ export default function CumTruyen({ s, onDone }: { s: State; onDone: (next: Stat
       <p className="mt-6 text-sm">Em viết thêm 1 câu cùng cấu trúc (chuyện lớp / Hân Hân / Khoa cũng được).</p>
       <textarea className="field mt-3 min-h-28" value={mimic} onChange={(e) => setMimic(e.target.value)} />
       <button className="btn-lime mt-4" onClick={save}>
-        Cất câu
+        Chấm + cất
       </button>
       {ok && <p className="mt-3 text-sm text-lime">{ok}</p>}
+      {mark && <ChamCau check={mark} />}
       <PlayBar minutes={8} audio={showEn ? beat.en : undefined} rate={0.88} />
     </div>
   );

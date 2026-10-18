@@ -68,6 +68,17 @@ export interface ZangSentence {
   word: string;
   mode: "class" | "antonym";
   text: string;
+  score?: number;
+  rewrite?: string;
+  spelling?: string[];
+  grammar?: string[];
+}
+
+export interface ZangSpell {
+  at: number;
+  target: string;
+  wrote: string;
+  ok: boolean;
 }
 
 export interface ZangMimic {
@@ -88,6 +99,7 @@ export interface ZangState {
   listenDone: string[];
   diaries: ZangDiary[];
   steps: Record<string, number[]>;
+  spells: ZangSpell[];
 }
 
 export interface State {
@@ -101,7 +113,7 @@ export interface State {
 }
 
 function emptyZang(): ZangState {
-  return { sentences: [], mimics: [], listenDone: [], diaries: [], steps: {} };
+  return { sentences: [], mimics: [], listenDone: [], diaries: [], steps: {}, spells: [] };
 }
 
 function today() {
@@ -137,7 +149,7 @@ function migrate(s: State): State {
     attempts: s.attempts ?? [],
     homework: s.homework ?? [],
     testsDone: s.testsDone ?? [],
-    zang: s.zang ?? emptyZang(),
+    zang: { ...emptyZang(), ...(s.zang ?? {}), spells: s.zang?.spells ?? [] },
     profile: {
       ...s.profile,
       userId: s.profile.userId || u?.id,
@@ -369,6 +381,10 @@ export function saveZangSentence(s: State, row: Omit<ZangSentence, "at">): State
     { ...s, zang: { ...s.zang, sentences: [{ ...row, at: Date.now() }, ...s.zang.sentences].slice(0, 200) } },
     1,
   );
+}
+
+export function saveZangSpell(s: State, row: Omit<ZangSpell, "at">): State {
+  return { ...s, zang: { ...s.zang, spells: [{ ...row, at: Date.now() }, ...s.zang.spells].slice(0, 200) } };
 }
 
 export function saveZangMimic(s: State, storyId: string, text: string): State {

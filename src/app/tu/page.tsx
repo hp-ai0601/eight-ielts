@@ -12,7 +12,7 @@ export default function TuPage() {
       <p className="text-xs uppercase tracking-wider text-lime">Bước 1 / 4</p>
       <h1 className="mt-2 font-serif text-4xl">Từ → câu</h1>
       <p className="mt-3 text-mute">
-        Mỗi ngày vài từ, mỗi từ IPA + loại từ. Bỏ vào câu lớp («lớp tôi có 5 người»), hoặc cặp trái nghĩa thành câu đối lập.
+        Nghe–viết chính tả, rồi bỏ từ vào câu lớp. Cất câu là bị chấm ngữ pháp + chính tả. Cặp trái nghĩa: viết câu đối lập.
       </p>
       <div className="mt-8">
         <TuCau s={s} onDone={commit} />
