@@ -81,6 +81,16 @@ export interface ZangSpell {
   ok: boolean;
 }
 
+export interface ZangDraft {
+  at: number;
+  kind: "sentence" | "mimic" | "diary" | "spell";
+  word?: string;
+  text: string;
+  score: number;
+  spelling: string[];
+  grammar: string[];
+}
+
 export interface ZangMimic {
   at: number;
   storyId: string;
@@ -100,6 +110,8 @@ export interface ZangState {
   diaries: ZangDiary[];
   steps: Record<string, number[]>;
   spells: ZangSpell[];
+  drafts: ZangDraft[];
+  lots: Record<string, number>;
 }
 
 export interface State {
@@ -113,7 +125,7 @@ export interface State {
 }
 
 function emptyZang(): ZangState {
-  return { sentences: [], mimics: [], listenDone: [], diaries: [], steps: {}, spells: [] };
+  return { sentences: [], mimics: [], listenDone: [], diaries: [], steps: {}, spells: [], drafts: [], lots: {} };
 }
 
 function today() {
@@ -149,7 +161,13 @@ function migrate(s: State): State {
     attempts: s.attempts ?? [],
     homework: s.homework ?? [],
     testsDone: s.testsDone ?? [],
-    zang: { ...emptyZang(), ...(s.zang ?? {}), spells: s.zang?.spells ?? [] },
+    zang: {
+      ...emptyZang(),
+      ...(s.zang ?? {}),
+      spells: s.zang?.spells ?? [],
+      drafts: s.zang?.drafts ?? [],
+      lots: s.zang?.lots ?? {},
+    },
     profile: {
       ...s.profile,
       userId: s.profile.userId || u?.id,
@@ -194,6 +212,9 @@ export function load(): State {
 
 export function save(s: State) {
   localStorage.setItem(KEY(), JSON.stringify(s));
+  if (sessionId() === "zang") {
+    void import("./report").then((m) => m.writeInbox(s)).catch(() => undefined);
+  }
   window.dispatchEvent(new Event("eight"));
   void fetch("/api/progress", {
     method: "POST",
@@ -385,6 +406,19 @@ export function saveZangSentence(s: State, row: Omit<ZangSentence, "at">): State
 
 export function saveZangSpell(s: State, row: Omit<ZangSpell, "at">): State {
   return { ...s, zang: { ...s.zang, spells: [{ ...row, at: Date.now() }, ...s.zang.spells].slice(0, 200) } };
+}
+
+export function saveZangDraft(s: State, row: Omit<ZangDraft, "at">): State {
+  return { ...s, zang: { ...s.zang, drafts: [{ ...row, at: Date.now() }, ...s.zang.drafts].slice(0, 120) } };
+}
+
+export function zangLot(s: State) {
+  return s.zang.lots?.[today()] ?? 0;
+}
+
+export function bumpZangLot(s: State): State {
+  const d = today();
+  return { ...s, zang: { ...s.zang, lots: { ...s.zang.lots, [d]: (s.zang.lots?.[d] ?? 0) + 1 } } };
 }
 
 export function saveZangMimic(s: State, storyId: string, text: string): State {

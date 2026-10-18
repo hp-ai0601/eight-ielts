@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useEight } from "@/lib/useEight";
 import Onboarding from "@/components/Onboarding";
 import { zangToday } from "@/lib/store";
+import GuiThay from "@/components/zang/GuiThay";
 
 const STEPS = [
   { n: 1, href: "/tu", title: "Từ → câu", why: "Một từ, bỏ vào câu lớp. Hoặc hai từ trái nghĩa, viết câu đối lập." },
@@ -53,6 +54,7 @@ export default function Today() {
         </Link>{" "}
         — khi em muốn, không phải hôm nay.
       </p>
+      {s.profile.userId === "zang" && <GuiThay s={s} />}
     </div>
   );
 }

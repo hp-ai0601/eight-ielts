@@ -12,7 +12,7 @@ export default function TuPage() {
       <p className="text-xs uppercase tracking-wider text-lime">Bước 1 / 4</p>
       <h1 className="mt-2 font-serif text-4xl">Từ → câu</h1>
       <p className="mt-3 text-mute">
-        Nghe–viết chính tả, rồi bỏ từ vào câu lớp. Cất câu là bị chấm ngữ pháp + chính tả. Cặp trái nghĩa: viết câu đối lập.
+        Nghe–viết chính tả: sai thì chữ đỏ, viết đến khi đúng. Rồi bỏ từ vào câu lớp. Câu sai thì/ngữ pháp chưa được cất. Cặp trái nghĩa: viết câu đối lập. Lô 8 từ đổi lúc 0h, hoặc bấm lô tiếp.
       </p>
       <div className="mt-8">
         <TuCau s={s} onDone={commit} />

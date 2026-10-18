@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { speak } from "@/lib/speech";
-import { checkDictation } from "@/lib/zang/check";
+import { checkDictation, letterMarks } from "@/lib/zang/check";
 
 export default function ChinhTa({
   target,
@@ -15,63 +15,110 @@ export default function ChinhTa({
 }) {
   const [wrote, setWrote] = useState("");
   const [copies, setCopies] = useState(["", "", ""]);
-  const [done, setDone] = useState<boolean | null>(null);
+  const [tries, setTries] = useState(0);
+  const [flash, setFlash] = useState(false);
+  const [needCopy, setNeedCopy] = useState(false);
+  const [done, setDone] = useState(false);
 
-  function mark() {
-    const ok = checkDictation(wrote, target);
-    setDone(ok);
-    onResult?.(ok, wrote.trim());
+  const okNow = checkDictation(wrote, target);
+  const marks = letterMarks(wrote, target);
+  const copied = copies.every((x) => checkDictation(x, target));
+  const locked = done && (!needCopy || copied);
+
+  function pass(value: string) {
+    setDone(true);
+    onResult?.(true, value.trim());
   }
 
-  const copied = copies.every((x) => checkDictation(x, target));
+  function onType(v: string) {
+    setWrote(v);
+    if (checkDictation(v, target)) {
+      if (needCopy && !copied) return;
+      pass(v);
+    } else if (done) {
+      setDone(false);
+    }
+  }
+
+  function mark() {
+    if (checkDictation(wrote, target)) {
+      pass(wrote);
+      return;
+    }
+    const n = tries + 1;
+    setTries(n);
+    onResult?.(false, wrote.trim());
+    if (n >= 3 && !flash) {
+      setFlash(true);
+      setNeedCopy(true);
+      window.setTimeout(() => setFlash(false), 5000);
+    }
+  }
 
   return (
     <div className="panel mt-5 p-4">
       <p className="text-xs uppercase tracking-wider text-lime">Chính tả</p>
-      <p className="mt-2 text-sm text-mute">Nghe, đừng nhìn từ. Viết lại. Sai thì chép 3 lần.</p>
+      <p className="mt-2 text-sm text-mute">Nghe, gõ. Chữ sai đỏ. Đúng hết mới thôi — không bỏ qua.</p>
       <div className="mt-3 flex flex-wrap gap-2">
-        <button className="btn-ghost" onClick={() => speak(target, 0.85)}>
+        <button type="button" className="btn-ghost" onClick={() => speak(target, 0.85)}>
           Nghe từ
         </button>
-        <button className="btn-ghost" onClick={() => speak(target, 0.65)}>
+        <button type="button" className="btn-ghost" onClick={() => speak(target, 0.65)}>
           Chậm
         </button>
       </div>
       <input
-        className="field mt-3"
+        className={`field mt-3 ${wrote && !okNow ? "border-bad" : okNow ? "border-lime" : ""}`}
         value={wrote}
-        onChange={(e) => {
-          setWrote(e.target.value);
-          setDone(null);
-        }}
+        onChange={(e) => onType(e.target.value)}
         placeholder="Gõ những gì em nghe"
         autoCapitalize="none"
         autoCorrect="off"
         spellCheck={false}
+        disabled={locked}
       />
-      <button className="btn-lime mt-3" disabled={!wrote.trim()} onClick={mark}>
-        Kiểm tra chính tả
-      </button>
-      {done === true && <p className="mt-3 text-sm text-lime">Đúng. {ipa ? ipa : ""}</p>}
-      {done === false && (
+      {wrote.length > 0 && (
+        <p className="mt-2 font-serif text-2xl tracking-wide">
+          {marks.map((m, i) => (
+            <span key={i} className={m.ok ? "text-lime" : "text-bad"}>
+              {m.ch === " " ? "\u00a0" : m.ch}
+            </span>
+          ))}
+        </p>
+      )}
+      {flash && (
+        <p className="mt-3 font-serif text-2xl text-lime">
+          {target} <span className="text-sm text-mute">{ipa}</span>
+        </p>
+      )}
+      {!locked && (
+        <button type="button" className="btn-lime mt-3" disabled={!wrote.trim()} onClick={mark}>
+          Kiểm tra
+        </button>
+      )}
+      {okNow && (!needCopy || copied) && <p className="mt-3 text-sm text-lime">Đúng. {ipa ?? ""}</p>}
+      {tries > 0 && !okNow && (
+        <p className="mt-3 text-sm text-bad">Sai. Chữ đỏ — viết lại đến khi xanh. {tries >= 3 ? "Từ hiện 5 giây rồi tắt." : `Lần ${tries}/3.`}</p>
+      )}
+      {needCopy && !copied && (
         <div className="mt-3">
-          <p className="text-sm text-bad">
-            Sai. Đúng là <span className="text-lime">{target}</span> {ipa}
-          </p>
-          <p className="mt-2 text-xs text-mute">Chép đúng 3 lần:</p>
+          <p className="text-xs text-mute">Đã hiện từ. Chép đúng 3 lần rồi gõ lại từ trí nhớ.</p>
           {copies.map((c, i) => (
             <input
               key={i}
-              className="field mt-2"
+              className={`field mt-2 ${c && !checkDictation(c, target) ? "border-bad" : c && checkDictation(c, target) ? "border-lime" : ""}`}
               value={c}
-              onChange={(e) => setCopies(copies.map((x, j) => (j === i ? e.target.value : x)))}
+              onChange={(e) => {
+                const next = copies.map((x, j) => (j === i ? e.target.value : x));
+                setCopies(next);
+                if (next.every((x) => checkDictation(x, target)) && checkDictation(wrote, target)) pass(wrote);
+              }}
               placeholder={`Lần ${i + 1}`}
               autoCapitalize="none"
               autoCorrect="off"
               spellCheck={false}
             />
           ))}
-          {copied && <p className="mt-2 text-sm text-lime">Đã chép 3 lần. Nghe lại lần nữa cho chắc.</p>}
         </div>
       )}
     </div>
