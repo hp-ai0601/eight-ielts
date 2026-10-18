@@ -18,7 +18,7 @@ export default function LoginPage() {
       return;
     }
     setSession(u.id);
-    router.push(u.role === "teacher" ? "/teacher" : "/");
+    router.replace(u.role === "teacher" ? "/teacher" : "/");
   }
 
   return (
