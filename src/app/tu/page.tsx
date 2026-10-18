@@ -12,7 +12,7 @@ export default function TuPage() {
       <p className="text-xs uppercase tracking-wider text-lime">Bước 1 / 4</p>
       <h1 className="mt-2 font-serif text-4xl">Từ → câu</h1>
       <p className="mt-3 text-mute">
-        Từ hiện rõ: ảnh, chữ, IPA, nghĩa. Câu ví dụ có dịch + ngữ pháp. Chính tả vẫn luyện bên dưới. Câu của em còn đỏ thì chưa cất. Đợt 8 từ đổi lúc 0h, hoặc bấm Đổi 8 từ khác.
+        Bấm Nghe trên thẻ — khỏi kéo xuống. Chọn từ thì ví dụ, chính tả và viết câu bung ngay tại thẻ đó.
       </p>
       <div className="mt-8">
         <TuCau s={s} onDone={commit} />
