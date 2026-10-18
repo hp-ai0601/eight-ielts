@@ -13,6 +13,8 @@ const NAV = [
   { href: "/tests", label: "Đề" },
   { href: "/homework", label: "BTVN" },
   { href: "/words", label: "Từ" },
+  { href: "/grammar", label: "Ngữ pháp" },
+  { href: "/method", label: "Cách làm" },
   { href: "/listen", label: "Nghe" },
   { href: "/read", label: "Đọc" },
   { href: "/speak", label: "Nói" },

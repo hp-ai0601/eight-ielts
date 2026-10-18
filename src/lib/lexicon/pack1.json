@@ -1,0 +1,6309 @@
+[
+  {
+    "word": "commute",
+    "ipa": "/kəˈmjuːt/",
+    "vi": "đi làm hàng ngày",
+    "example": "Many office staff commute by train during peak hours.",
+    "topic": "daily"
+  },
+  {
+    "word": "errand",
+    "ipa": "/ˈerənd/",
+    "vi": "việc vặt",
+    "example": "She ran a quick errand before the bank closed today.",
+    "topic": "daily"
+  },
+  {
+    "word": "chore",
+    "ipa": "/tʃɔː(r)/",
+    "vi": "việc nhà",
+    "example": "Splitting household chores fairly reduces daily stress at home.",
+    "topic": "daily"
+  },
+  {
+    "word": "nap",
+    "ipa": "/næp/",
+    "vi": "ngủ trưa",
+    "example": "A twenty-minute nap restored his focus for the afternoon.",
+    "topic": "daily"
+  },
+  {
+    "word": "snooze",
+    "ipa": "/snuːz/",
+    "vi": "bấm báo lại",
+    "example": "He hit snooze twice and nearly missed his morning lecture.",
+    "topic": "daily"
+  },
+  {
+    "word": "tidy up",
+    "ipa": "/ˈtaɪdi ʌp/",
+    "vi": "dọn dẹp",
+    "example": "Please tidy up the kitchen after you finish cooking dinner.",
+    "topic": "daily"
+  },
+  {
+    "word": "declutter",
+    "ipa": "/diːˈklʌtə(r)/",
+    "vi": "dọn bớt đồ",
+    "example": "Decluttering the hallway made the flat feel more spacious.",
+    "topic": "daily"
+  },
+  {
+    "word": "household",
+    "ipa": "/ˈhaʊshəʊld/",
+    "vi": "hộ gia đình",
+    "example": "Average household spending on utilities rose sharply last winter.",
+    "topic": "daily"
+  },
+  {
+    "word": "neighbour",
+    "ipa": "/ˈneɪbə(r)/",
+    "vi": "hàng xóm",
+    "example": "Our neighbour offered to collect parcels while we travelled abroad.",
+    "topic": "daily"
+  },
+  {
+    "word": "doorstep",
+    "ipa": "/ˈdɔːstep/",
+    "vi": "bậc cửa",
+    "example": "Fresh bread was left on the doorstep before sunrise today.",
+    "topic": "daily"
+  },
+  {
+    "word": "pavement",
+    "ipa": "/ˈpeɪvmənt/",
+    "vi": "vỉa hè",
+    "example": "Icy pavement forced commuters to walk more cautiously yesterday.",
+    "topic": "daily"
+  },
+  {
+    "word": "laundry",
+    "ipa": "/ˈlɔːndri/",
+    "vi": "giặt ủi",
+    "example": "The laundry piled up because the machine broke midweek.",
+    "topic": "daily"
+  },
+  {
+    "word": "alarm clock",
+    "ipa": "/əˈlɑːm klɒk/",
+    "vi": "đồng hồ báo thức",
+    "example": "Her alarm clock failed during the power cut last night.",
+    "topic": "daily"
+  },
+  {
+    "word": "schedule",
+    "ipa": "/ˈʃedjuːl/",
+    "vi": "lịch trình",
+    "example": "A tight schedule left little room for spontaneous coffee breaks.",
+    "topic": "daily"
+  },
+  {
+    "word": "appointment",
+    "ipa": "/əˈpɔɪntmənt/",
+    "vi": "cuộc hẹn",
+    "example": "I rescheduled the dental appointment to avoid clashing meetings.",
+    "topic": "daily"
+  },
+  {
+    "word": "reminder",
+    "ipa": "/rɪˈmaɪndə(r)/",
+    "vi": "lời nhắc",
+    "example": "Set a reminder so you do not forget the visa renewal date.",
+    "topic": "daily"
+  },
+  {
+    "word": "bulletin",
+    "ipa": "/ˈbʊlətɪn/",
+    "vi": "bản tin",
+    "example": "The housing bulletin listed repairs planned for our block.",
+    "topic": "daily"
+  },
+  {
+    "word": "noticeboard",
+    "ipa": "/ˈnəʊtɪsbɔːd/",
+    "vi": "bảng thông báo",
+    "example": "Volunteer shifts were posted on the community noticeboard yesterday.",
+    "topic": "daily"
+  },
+  {
+    "word": "weekday",
+    "ipa": "/ˈwiːkdeɪ/",
+    "vi": "ngày trong tuần",
+    "example": "Weekday traffic slows every journey across the river bridge.",
+    "topic": "daily"
+  },
+  {
+    "word": "downtime",
+    "ipa": "/ˈdaʊntaɪm/",
+    "vi": "giờ nghỉ",
+    "example": "Protect downtime so burnout does not undermine long-term productivity.",
+    "topic": "daily"
+  },
+  {
+    "word": "self-care",
+    "ipa": "/self keə(r)/",
+    "vi": "chăm sóc bản thân",
+    "example": "Regular self-care helps people manage stress during busy seasons.",
+    "topic": "daily"
+  },
+  {
+    "word": "convenience",
+    "ipa": "/kənˈviːniəns/",
+    "vi": "tiện lợi",
+    "example": "Online banking adds convenience but reduces face-to-face advice.",
+    "topic": "daily"
+  },
+  {
+    "word": "appliance",
+    "ipa": "/əˈplaɪəns/",
+    "vi": "thiết bị gia dụng",
+    "example": "Energy-efficient appliances cut electricity bills over several years.",
+    "topic": "daily"
+  },
+  {
+    "word": "utility bill",
+    "ipa": "/juːˈtɪləti bɪl/",
+    "vi": "hóa đơn điện nước",
+    "example": "Utility bills spiked after the cold snap in January.",
+    "topic": "daily"
+  },
+  {
+    "word": "recycling",
+    "ipa": "/ˌriːˈsaɪklɪŋ/",
+    "vi": "tái chế",
+    "example": "Clear labels on bins improved recycling rates in our street.",
+    "topic": "daily"
+  },
+  {
+    "word": "municipal",
+    "ipa": "/mjuːˈnɪsɪpl/",
+    "vi": "thuộc thành phố",
+    "example": "Municipal workers repaired streetlights along the main avenue.",
+    "topic": "daily"
+  },
+  {
+    "word": "suburban",
+    "ipa": "/səˈbɜːbən/",
+    "vi": "ngoại ô",
+    "example": "Suburban life suits families who prefer quieter neighbourhoods.",
+    "topic": "daily"
+  },
+  {
+    "word": "batch cooking",
+    "ipa": "/bætʃ ˈkʊkɪŋ/",
+    "vi": "nấu một lần nhiều bữa",
+    "example": "Batch cooking on Sundays saves time on hectic weekdays.",
+    "topic": "daily"
+  },
+  {
+    "word": "meal prep",
+    "ipa": "/miːl prep/",
+    "vi": "chuẩn bị bữa ăn",
+    "example": "Meal prep containers keep lunches fresh throughout the working week.",
+    "topic": "daily"
+  },
+  {
+    "word": "to-do list",
+    "ipa": "/tuː duː lɪst/",
+    "vi": "danh sách việc",
+    "example": "A realistic to-do list prevents unfinished tasks from piling up.",
+    "topic": "daily"
+  },
+  {
+    "word": "multitask",
+    "ipa": "/ˌmʌltiˈtɑːsk/",
+    "vi": "làm nhiều việc",
+    "example": "Multitasking often lowers quality when deadlines are tight.",
+    "topic": "daily"
+  },
+  {
+    "word": "wind down",
+    "ipa": "/waɪnd daʊn/",
+    "vi": "thư giãn",
+    "example": "Reading fiction helps me wind down before bedtime.",
+    "topic": "daily"
+  },
+  {
+    "word": "catch up",
+    "ipa": "/kætʃ ʌp/",
+    "vi": "bắt kịp",
+    "example": "We met for coffee to catch up after months apart.",
+    "topic": "daily"
+  },
+  {
+    "word": "drop off",
+    "ipa": "/drɒp ɒf/",
+    "vi": "đưa đến",
+    "example": "Could you drop off the package at the post office today?",
+    "topic": "daily"
+  },
+  {
+    "word": "pick up",
+    "ipa": "/pɪk ʌp/",
+    "vi": "đón / lấy",
+    "example": "I will pick up groceries on my way home from work.",
+    "topic": "daily"
+  },
+  {
+    "word": "run out of",
+    "ipa": "/rʌn aʊt ɒv/",
+    "vi": "hết",
+    "example": "We ran out of milk before breakfast on Monday morning.",
+    "topic": "daily"
+  },
+  {
+    "word": "set aside",
+    "ipa": "/set əˈsaɪd/",
+    "vi": "dành ra",
+    "example": "Set aside an hour weekly to review finances and subscriptions.",
+    "topic": "daily"
+  },
+  {
+    "word": "sibling",
+    "ipa": "/ˈsɪblɪŋ/",
+    "vi": "anh chị em",
+    "example": "Sibling rivalry eased once they shared chores more fairly.",
+    "topic": "family"
+  },
+  {
+    "word": "stepparent",
+    "ipa": "/ˈsteppeərənt/",
+    "vi": "cha/mẹ kế",
+    "example": "A supportive stepparent can stabilise life after divorce.",
+    "topic": "family"
+  },
+  {
+    "word": "in-law",
+    "ipa": "/ˈɪn lɔː/",
+    "vi": "thông gia",
+    "example": "Holiday visits with in-laws require tact and clear boundaries.",
+    "topic": "family"
+  },
+  {
+    "word": "lineage",
+    "ipa": "/ˈlɪniɪdʒ/",
+    "vi": "dòng dõi",
+    "example": "Family lineage was traced through handwritten parish records.",
+    "topic": "family"
+  },
+  {
+    "word": "kinship",
+    "ipa": "/ˈkɪnʃɪp/",
+    "vi": "quan hệ họ hàng",
+    "example": "Kinship ties remain strong despite members living abroad.",
+    "topic": "family"
+  },
+  {
+    "word": "household income",
+    "ipa": "/ˈhaʊshəʊld ˈɪnkʌm/",
+    "vi": "thu nhập hộ",
+    "example": "Household income stagnated while childcare costs kept rising.",
+    "topic": "family"
+  },
+  {
+    "word": "dependant",
+    "ipa": "/dɪˈpendənt/",
+    "vi": "người phụ thuộc",
+    "example": "Tax relief applies when you support a legal dependant.",
+    "topic": "family"
+  },
+  {
+    "word": "guardian",
+    "ipa": "/ˈɡɑːdiən/",
+    "vi": "người giám hộ",
+    "example": "The court appointed a guardian for the orphaned teenager.",
+    "topic": "family"
+  },
+  {
+    "word": "upbringing",
+    "ipa": "/ˈʌpbrɪŋɪŋ/",
+    "vi": "sự nuôi dưỡng",
+    "example": "Her rural upbringing emphasised honesty, thrift, and community service throughout adolescence.",
+    "topic": "family"
+  },
+  {
+    "word": "nurture",
+    "ipa": "/ˈnɜːtʃə(r)/",
+    "vi": "nuôi dưỡng",
+    "example": "Parents nurture curiosity by reading aloud each evening.",
+    "topic": "family"
+  },
+  {
+    "word": "bonding",
+    "ipa": "/ˈbɒndɪŋ/",
+    "vi": "gắn kết",
+    "example": "Early parent-child bonding affects emotional security throughout childhood and adolescence.",
+    "topic": "family"
+  },
+  {
+    "word": "estranged",
+    "ipa": "/ɪˈstreɪndʒd/",
+    "vi": "xa cách",
+    "example": "He felt estranged from relatives after moving overseas permanently.",
+    "topic": "family"
+  },
+  {
+    "word": "reconcile",
+    "ipa": "/ˈrekənsaɪl/",
+    "vi": "hòa giải",
+    "example": "They reconciled after a frank conversation about past misunderstandings.",
+    "topic": "family"
+  },
+  {
+    "word": "inherit",
+    "ipa": "/ɪnˈherɪt/",
+    "vi": "thừa kế",
+    "example": "She inherited a cottage that required costly structural repairs.",
+    "topic": "family"
+  },
+  {
+    "word": "heir",
+    "ipa": "/eə(r)/",
+    "vi": "người thừa kế",
+    "example": "The sole heir disputed the will in probate court.",
+    "topic": "family"
+  },
+  {
+    "word": "ancestry",
+    "ipa": "/ˈænsestri/",
+    "vi": "tổ tiên",
+    "example": "DNA tests revealed ancestry links across three continents.",
+    "topic": "family"
+  },
+  {
+    "word": "reunion",
+    "ipa": "/riːˈjuːniən/",
+    "vi": "đoàn tụ",
+    "example": "The family reunion reunited cousins who had never met before.",
+    "topic": "family"
+  },
+  {
+    "word": "cohabit",
+    "ipa": "/kəʊˈhæbɪt/",
+    "vi": "sống chung",
+    "example": "More couples cohabit before marriage than a decade ago.",
+    "topic": "family"
+  },
+  {
+    "word": "single-parent",
+    "ipa": "/ˌsɪŋɡl ˈpeərənt/",
+    "vi": "cha/mẹ đơn thân",
+    "example": "Single-parent households often juggle work and school runs.",
+    "topic": "family"
+  },
+  {
+    "word": "blended family",
+    "ipa": "/ˈblendɪd ˈfæməli/",
+    "vi": "gia đình tái hợp",
+    "example": "Blended families need patience while roles become clearer.",
+    "topic": "family"
+  },
+  {
+    "word": "foster",
+    "ipa": "/ˈfɒstə(r)/",
+    "vi": "nuôi dưỡng tạm",
+    "example": "They chose to foster teenagers with complex emotional needs.",
+    "topic": "family"
+  },
+  {
+    "word": "adopt",
+    "ipa": "/əˈdɒpt/",
+    "vi": "nhận nuôi",
+    "example": "The couple adopted siblings to keep the children together.",
+    "topic": "family"
+  },
+  {
+    "word": "maternity leave",
+    "ipa": "/məˈtɜːnəti liːv/",
+    "vi": "nghỉ thai sản",
+    "example": "Maternity leave policies vary widely between private employers.",
+    "topic": "family"
+  },
+  {
+    "word": "paternity leave",
+    "ipa": "/pəˈtɜːnəti liːv/",
+    "vi": "nghỉ khi vợ sinh",
+    "example": "Shared paternity leave encourages more equal parenting duties.",
+    "topic": "family"
+  },
+  {
+    "word": "elderly care",
+    "ipa": "/ˈeldəli keə(r)/",
+    "vi": "chăm người già",
+    "example": "Elderly care costs strain budgets when families lack support.",
+    "topic": "family"
+  },
+  {
+    "word": "caregiver",
+    "ipa": "/ˈkeəɡɪvə(r)/",
+    "vi": "người chăm sóc",
+    "example": "The primary caregiver balanced night shifts with daytime duties.",
+    "topic": "family"
+  },
+  {
+    "word": "extended family",
+    "ipa": "/ɪkˈstendɪd ˈfæməli/",
+    "vi": "họ hàng",
+    "example": "Extended family members helped with childcare during exams.",
+    "topic": "family"
+  },
+  {
+    "word": "nuclear family",
+    "ipa": "/ˈnjuːkliə ˈfæməli/",
+    "vi": "gia đình nhỏ",
+    "example": "The nuclear family model no longer fits every household.",
+    "topic": "family"
+  },
+  {
+    "word": "domestic dispute",
+    "ipa": "/dəˈmestɪk dɪˈspjuːt/",
+    "vi": "cãi vã trong nhà",
+    "example": "Police responded to a domestic dispute reported by neighbours.",
+    "topic": "family"
+  },
+  {
+    "word": "custody",
+    "ipa": "/ˈkʌstədi/",
+    "vi": "quyền nuôi con",
+    "example": "Shared custody arrangements reduced conflict after the parents separated last year.",
+    "topic": "family"
+  },
+  {
+    "word": "alimony",
+    "ipa": "/ˈælɪməni/",
+    "vi": "tiền cấp dưỡng",
+    "example": "Alimony payments were adjusted following a job loss.",
+    "topic": "family"
+  },
+  {
+    "word": "family tree",
+    "ipa": "/ˈfæməli triː/",
+    "vi": "phả hệ",
+    "example": "She mapped the family tree using letters from the attic.",
+    "topic": "family"
+  },
+  {
+    "word": "bring up",
+    "ipa": "/brɪŋ ʌp/",
+    "vi": "nuôi dạy",
+    "example": "They brought up their children to value education highly.",
+    "topic": "family"
+  },
+  {
+    "word": "grow apart",
+    "ipa": "/ɡrəʊ əˈpɑːt/",
+    "vi": "xa cách dần",
+    "example": "Old friends sometimes grow apart when careers diverge sharply.",
+    "topic": "family"
+  },
+  {
+    "word": "look after",
+    "ipa": "/lʊk ˈɑːftə(r)/",
+    "vi": "trông nom",
+    "example": "Grandparents look after toddlers while parents work full-time.",
+    "topic": "family"
+  },
+  {
+    "word": "pass down",
+    "ipa": "/pɑːs daʊn/",
+    "vi": "truyền lại",
+    "example": "Recipes were passed down through generations in that village.",
+    "topic": "family"
+  },
+  {
+    "word": "complexion",
+    "ipa": "/kəmˈplekʃn/",
+    "vi": "nước da",
+    "example": "Her clear complexion reflects consistent sleep and hydration habits.",
+    "topic": "appear"
+  },
+  {
+    "word": "stature",
+    "ipa": "/ˈstætʃə(r)/",
+    "vi": "vóc dáng",
+    "example": "His tall stature helped him reach items on high shelves easily.",
+    "topic": "appear"
+  },
+  {
+    "word": "posture",
+    "ipa": "/ˈpɒstʃə(r)/",
+    "vi": "tư thế",
+    "example": "Poor posture at desks often causes neck pain among office workers.",
+    "topic": "appear"
+  },
+  {
+    "word": "gait",
+    "ipa": "/ɡeɪt/",
+    "vi": "dáng đi",
+    "example": "A confident gait made the speaker appear calm on stage.",
+    "topic": "appear"
+  },
+  {
+    "word": "freckle",
+    "ipa": "/ˈfrekl/",
+    "vi": "tàn nhang",
+    "example": "Freckles darken slightly after long exposure to summer sunlight.",
+    "topic": "appear"
+  },
+  {
+    "word": "blemish",
+    "ipa": "/ˈblemɪʃ/",
+    "vi": "vết khuyết",
+    "example": "Make-up can conceal minor blemishes during formal photographs.",
+    "topic": "appear"
+  },
+  {
+    "word": "wrinkle",
+    "ipa": "/ˈrɪŋkl/",
+    "vi": "nếp nhăn",
+    "example": "Fine wrinkles appeared around her eyes after years outdoors.",
+    "topic": "appear"
+  },
+  {
+    "word": "stubble",
+    "ipa": "/ˈstʌbl/",
+    "vi": "râu ngắn",
+    "example": "He shaved hurriedly, leaving stubble along his jawline.",
+    "topic": "appear"
+  },
+  {
+    "word": "fringe",
+    "ipa": "/frɪndʒ/",
+    "vi": "mái tóc",
+    "example": "She trimmed her fringe before the graduation ceremony yesterday.",
+    "topic": "appear"
+  },
+  {
+    "word": "ponytail",
+    "ipa": "/ˈpəʊniteɪl/",
+    "vi": "đuôi ngựa",
+    "example": "A neat ponytail kept hair away during the tennis match.",
+    "topic": "appear"
+  },
+  {
+    "word": "petite",
+    "ipa": "/pəˈtiːt/",
+    "vi": "nhỏ nhắn",
+    "example": "Petite frames may struggle to find well-fitted formal jackets.",
+    "topic": "appear"
+  },
+  {
+    "word": "slender",
+    "ipa": "/ˈslendə(r)/",
+    "vi": "mảnh mai",
+    "example": "The dancer maintained a slender build through disciplined training.",
+    "topic": "appear"
+  },
+  {
+    "word": "stocky",
+    "ipa": "/ˈstɒki/",
+    "vi": "lùn cục",
+    "example": "His stocky build suited rugby better than long-distance running.",
+    "topic": "appear"
+  },
+  {
+    "word": "striking",
+    "ipa": "/ˈstraɪkɪŋ/",
+    "vi": "ấn tượng",
+    "example": "Her striking features drew attention in the portrait exhibition.",
+    "topic": "appear"
+  },
+  {
+    "word": "understated",
+    "ipa": "/ˌʌndəˈsteɪtɪd/",
+    "vi": "giản dị",
+    "example": "He prefers understated colours rather than flashy patterns daily.",
+    "topic": "appear"
+  },
+  {
+    "word": "groomed",
+    "ipa": "/ɡruːmd/",
+    "vi": "chỉnh tề",
+    "example": "Well-groomed candidates often make stronger first impressions during formal panel interviews.",
+    "topic": "appear"
+  },
+  {
+    "word": "dishevelled",
+    "ipa": "/dɪˈʃevld/",
+    "vi": "luộm thuộm",
+    "example": "Dishevelled hair suggested he had rushed straight from lectures.",
+    "topic": "appear"
+  },
+  {
+    "word": "sunburned",
+    "ipa": "/ˈsʌnbɜːnd/",
+    "vi": "cháy nắng",
+    "example": "Sunburned shoulders ached after a day on the beach.",
+    "topic": "appear"
+  },
+  {
+    "word": "angular",
+    "ipa": "/ˈæŋɡjələ(r)/",
+    "vi": "sắc cạnh",
+    "example": "Angular cheekbones gave his face a sharp photographic profile.",
+    "topic": "appear"
+  },
+  {
+    "word": "dimple",
+    "ipa": "/ˈdɪmpl/",
+    "vi": "lúm đồng tiền",
+    "example": "A subtle dimple appeared whenever she laughed politely.",
+    "topic": "appear"
+  },
+  {
+    "word": "piercing",
+    "ipa": "/ˈpɪəsɪŋ/",
+    "vi": "xỏ khuyên",
+    "example": "Workplace rules banned visible facial piercings during client meetings.",
+    "topic": "appear"
+  },
+  {
+    "word": "spectacles",
+    "ipa": "/ˈspektəklz/",
+    "vi": "kính gọng",
+    "example": "Lightweight spectacles reduced strain during long reading sessions.",
+    "topic": "appear"
+  },
+  {
+    "word": "attire",
+    "ipa": "/əˈtaɪə(r)/",
+    "vi": "trang phục",
+    "example": "Formal attire is required for embassy visa interviews.",
+    "topic": "appear"
+  },
+  {
+    "word": "outfit",
+    "ipa": "/ˈaʊtfɪt/",
+    "vi": "bộ đồ",
+    "example": "She chose a muted outfit for the conservative panel interview.",
+    "topic": "appear"
+  },
+  {
+    "word": "accessorise",
+    "ipa": "/əkˈsesəraɪz/",
+    "vi": "phụ kiện hóa",
+    "example": "He accessorised sparingly to keep the look professional.",
+    "topic": "appear"
+  },
+  {
+    "word": "tailor",
+    "ipa": "/ˈteɪlə(r)/",
+    "vi": "may đo",
+    "example": "A tailor adjusted the sleeves so the blazer fit properly.",
+    "topic": "appear"
+  },
+  {
+    "word": "complexion care",
+    "ipa": "/kəmˈplekʃn keə(r)/",
+    "vi": "chăm da mặt",
+    "example": "Complexion care routines vary with climate and skin sensitivity.",
+    "topic": "appear"
+  },
+  {
+    "word": "dress up",
+    "ipa": "/dres ʌp/",
+    "vi": "ăn diện",
+    "example": "Guests dressed up for the charity gala at the hotel.",
+    "topic": "appear"
+  },
+  {
+    "word": "smarten up",
+    "ipa": "/ˈsmɑːtn ʌp/",
+    "vi": "chỉnh trang",
+    "example": "Smarten up before the video call with overseas investors.",
+    "topic": "appear"
+  },
+  {
+    "word": "stand out",
+    "ipa": "/stænd aʊt/",
+    "vi": "nổi bật",
+    "example": "Bright scarves stand out against grey winter coats downtown.",
+    "topic": "appear"
+  },
+  {
+    "word": "blend in",
+    "ipa": "/blend ɪn/",
+    "vi": "hòa nhập",
+    "example": "Some travellers prefer to blend in rather than attract stares.",
+    "topic": "appear"
+  },
+  {
+    "word": "show off",
+    "ipa": "/ʃəʊ ɒf/",
+    "vi": "khoe",
+    "example": "He bought new trainers but denied trying to show off.",
+    "topic": "appear"
+  },
+  {
+    "word": "try on",
+    "ipa": "/traɪ ɒn/",
+    "vi": "thử đồ",
+    "example": "Please try on the coat before we alter the hemline.",
+    "topic": "appear"
+  },
+  {
+    "word": "take after",
+    "ipa": "/teɪk ˈɑːftə(r)/",
+    "vi": "giống ai",
+    "example": "She takes after her aunt in both voice and mannerisms.",
+    "topic": "appear"
+  },
+  {
+    "word": "grow out",
+    "ipa": "/ɡrəʊ aʊt/",
+    "vi": "để dài ra",
+    "example": "He decided to grow out his hair during the sabbatical year.",
+    "topic": "appear"
+  },
+  {
+    "word": "touch up",
+    "ipa": "/tʌtʃ ʌp/",
+    "vi": "chỉnh nhẹ",
+    "example": "She touched up lipstick before entering the conference hall.",
+    "topic": "appear"
+  },
+  {
+    "word": "conscientious",
+    "ipa": "/ˌkɒnʃiˈenʃəs/",
+    "vi": "tận tâm",
+    "example": "Conscientious students submit drafts well before official deadlines.",
+    "topic": "person"
+  },
+  {
+    "word": "assertive",
+    "ipa": "/əˈsɜːtɪv/",
+    "vi": "quả quyết",
+    "example": "Assertive communication prevents misunderstandings during group projects with tight deadlines.",
+    "topic": "person"
+  },
+  {
+    "word": "reserved",
+    "ipa": "/rɪˈzɜːvd/",
+    "vi": "kín đáo",
+    "example": "Reserved colleagues may still offer insightful comments when invited.",
+    "topic": "person"
+  },
+  {
+    "word": "gregarious",
+    "ipa": "/ɡrɪˈɡeəriəs/",
+    "vi": "hoạt bát",
+    "example": "Gregarious hosts made newcomers feel welcome at orientation.",
+    "topic": "person"
+  },
+  {
+    "word": "empathetic",
+    "ipa": "/ˌempəˈθetɪk/",
+    "vi": "đồng cảm",
+    "example": "Empathetic listeners help friends process stressful news calmly.",
+    "topic": "person"
+  },
+  {
+    "word": "stubborn",
+    "ipa": "/ˈstʌbən/",
+    "vi": "cố chấp",
+    "example": "Stubborn refusal to compromise stalled negotiations for weeks.",
+    "topic": "person"
+  },
+  {
+    "word": "impulsive",
+    "ipa": "/ɪmˈpʌlsɪv/",
+    "vi": "bốc đồng",
+    "example": "Impulsive purchases often regret buyers when bills arrive.",
+    "topic": "person"
+  },
+  {
+    "word": "methodical",
+    "ipa": "/məˈθɒdɪkl/",
+    "vi": "cẩn thận",
+    "example": "Methodical planners track risks before launching new initiatives.",
+    "topic": "person"
+  },
+  {
+    "word": "charismatic",
+    "ipa": "/ˌkærɪzˈmætɪk/",
+    "vi": "quyến rũ",
+    "example": "Charismatic leaders inspire teams even during uncertain restructuring.",
+    "topic": "person"
+  },
+  {
+    "word": "gullible",
+    "ipa": "/ˈɡʌləbl/",
+    "vi": "cả tin",
+    "example": "Gullible readers may share hoaxes without verifying sources online.",
+    "topic": "person"
+  },
+  {
+    "word": "sceptical",
+    "ipa": "/ˈskeptɪkl/",
+    "vi": "hoài nghi",
+    "example": "Sceptical voters demanded evidence before supporting the proposal.",
+    "topic": "person"
+  },
+  {
+    "word": "perfectionist",
+    "ipa": "/ˌpɜːfekʃənɪst/",
+    "vi": "cầu toàn",
+    "example": "Perfectionists revise essays repeatedly until every phrase feels precise.",
+    "topic": "person"
+  },
+  {
+    "word": "easy-going",
+    "ipa": "/ˌiːzi ˈɡəʊɪŋ/",
+    "vi": "dễ tính",
+    "example": "Easy-going roommates tolerate minor differences in cleaning habits.",
+    "topic": "person"
+  },
+  {
+    "word": "hot-headed",
+    "ipa": "/hɒt ˈhedɪd/",
+    "vi": "nóng nảy",
+    "example": "Hot-headed reactions worsened debates on social media threads.",
+    "topic": "person"
+  },
+  {
+    "word": "level-headed",
+    "ipa": "/ˈlevl hedɪd/",
+    "vi": "điềm tĩnh",
+    "example": "Level-headed managers de-escalate conflicts during peak season when tempers flare easily.",
+    "topic": "person"
+  },
+  {
+    "word": "trustworthy",
+    "ipa": "/ˈtrʌstwɜːði/",
+    "vi": "đáng tin",
+    "example": "Trustworthy partners honour agreements without constant supervision from senior management.",
+    "topic": "person"
+  },
+  {
+    "word": "two-faced",
+    "ipa": "/tuː feɪst/",
+    "vi": "hai mặt",
+    "example": "Colleagues labelled him two-faced after contradictory private messages.",
+    "topic": "person"
+  },
+  {
+    "word": "open-minded",
+    "ipa": "/ˌəʊpən ˈmaɪndɪd/",
+    "vi": "cởi mở",
+    "example": "Open-minded jurors weigh testimony before forming final judgments.",
+    "topic": "person"
+  },
+  {
+    "word": "narrow-minded",
+    "ipa": "/ˌnærəʊ ˈmaɪndɪd/",
+    "vi": "hẹp hòi",
+    "example": "Narrow-minded policies exclude talented migrants with unconventional paths.",
+    "topic": "person"
+  },
+  {
+    "word": "resilient",
+    "ipa": "/rɪˈzɪliənt/",
+    "vi": "kiên cường",
+    "example": "Resilient athletes recover quickly after disappointing tournament results.",
+    "topic": "person"
+  },
+  {
+    "word": "insecure",
+    "ipa": "/ˌɪnsɪˈkjʊə(r)/",
+    "vi": "thiếu tự tin",
+    "example": "Insecure speakers benefit from rehearsal and constructive feedback.",
+    "topic": "person"
+  },
+  {
+    "word": "self-disciplined",
+    "ipa": "/self ˈdɪsəplɪnd/",
+    "vi": "tự giác",
+    "example": "Self-disciplined learners maintain study schedules without parental reminders.",
+    "topic": "person"
+  },
+  {
+    "word": "compassionate",
+    "ipa": "/kəmˈpæʃənət/",
+    "vi": "nhân hậu",
+    "example": "Compassionate nurses explain procedures patiently to anxious patients.",
+    "topic": "person"
+  },
+  {
+    "word": "manipulative",
+    "ipa": "/məˈnɪpjələtɪv/",
+    "vi": "thao túng",
+    "example": "Manipulative tactics erode trust within volunteer organisations quickly.",
+    "topic": "person"
+  },
+  {
+    "word": "straightforward",
+    "ipa": "/ˌstreɪtˈfɔːwəd/",
+    "vi": "thẳng thắn",
+    "example": "Straightforward feedback helps interns improve faster than vague praise.",
+    "topic": "person"
+  },
+  {
+    "word": "temperament",
+    "ipa": "/ˈtemprəmənt/",
+    "vi": "tính khí",
+    "example": "Calm temperament reduces friction during long collaborative assignments.",
+    "topic": "person"
+  },
+  {
+    "word": "disposition",
+    "ipa": "/ˌdɪspəˈzɪʃn/",
+    "vi": "thiên hướng",
+    "example": "Her cheerful disposition lifted morale during difficult restructuring.",
+    "topic": "person"
+  },
+  {
+    "word": "integrity",
+    "ipa": "/ɪnˈteɡrəti/",
+    "vi": "chính trực",
+    "example": "Leaders with integrity admit errors instead of blaming subordinates.",
+    "topic": "person"
+  },
+  {
+    "word": "warm up to",
+    "ipa": "/wɔːm ʌp tuː/",
+    "vi": "dần quen",
+    "example": "It took weeks before the team warmed up to the manager.",
+    "topic": "person"
+  },
+  {
+    "word": "look up to",
+    "ipa": "/lʊk ʌp tuː/",
+    "vi": "ngưỡng mộ",
+    "example": "Many pupils look up to teachers who champion fairness.",
+    "topic": "person"
+  },
+  {
+    "word": "look down on",
+    "ipa": "/lʊk daʊn ɒn/",
+    "vi": "coi thường",
+    "example": "Snobbish clubs look down on applicants without elite schooling.",
+    "topic": "person"
+  },
+  {
+    "word": "open up",
+    "ipa": "/ˈəʊpən ʌp/",
+    "vi": "tâm sự",
+    "example": "Counselling sessions helped him open up about chronic anxiety.",
+    "topic": "person"
+  },
+  {
+    "word": "bottle up",
+    "ipa": "/ˈbɒtl ʌp/",
+    "vi": "nén trong lòng",
+    "example": "Bottling up anger often damages relationships over time.",
+    "topic": "person"
+  },
+  {
+    "word": "come across as",
+    "ipa": "/kʌm əˈkrɒs æz/",
+    "vi": "tạo ấn tượng",
+    "example": "She comes across as confident despite minimal public speaking experience.",
+    "topic": "person"
+  },
+  {
+    "word": "live up to",
+    "ipa": "/lɪv ʌp tuː/",
+    "vi": "xứng đáng",
+    "example": "He struggled to live up to his family's academic expectations.",
+    "topic": "person"
+  },
+  {
+    "word": "put up with",
+    "ipa": "/pʊt ʌp wɪð/",
+    "vi": "chịu đựng",
+    "example": "Few tenants put up with recurring maintenance delays indefinitely.",
+    "topic": "person"
+  },
+  {
+    "word": "elated",
+    "ipa": "/ɪˈleɪtɪd/",
+    "vi": "phấn khích",
+    "example": "She felt elated after receiving the scholarship confirmation email.",
+    "topic": "feel"
+  },
+  {
+    "word": "devastated",
+    "ipa": "/ˈdevəsteɪtɪd/",
+    "vi": "sụp đổ",
+    "example": "He was devastated when the long-planned trip was cancelled.",
+    "topic": "feel"
+  },
+  {
+    "word": "anxious",
+    "ipa": "/ˈæŋkʃəs/",
+    "vi": "lo lắng",
+    "example": "Anxious candidates often forget details during panel interviews.",
+    "topic": "feel"
+  },
+  {
+    "word": "content",
+    "ipa": "/kənˈtent/",
+    "vi": "mãn nguyện",
+    "example": "They felt content living modestly near the coastal trail.",
+    "topic": "feel"
+  },
+  {
+    "word": "frustrated",
+    "ipa": "/frʌˈstreɪtɪd/",
+    "vi": "bực bội",
+    "example": "Frustrated commuters vented online after repeated train cancellations.",
+    "topic": "feel"
+  },
+  {
+    "word": "relieved",
+    "ipa": "/rɪˈliːvd/",
+    "vi": "nhẹ nhõm",
+    "example": "Parents felt relieved when children returned safely from camp.",
+    "topic": "feel"
+  },
+  {
+    "word": "nostalgic",
+    "ipa": "/nɒˈstældʒɪk/",
+    "vi": "hoài niệm",
+    "example": "Nostalgic songs reminded graduates of their first dormitory days.",
+    "topic": "feel"
+  },
+  {
+    "word": "overwhelmed",
+    "ipa": "/ˌəʊvəˈwelmd/",
+    "vi": "quá tải",
+    "example": "New managers feel overwhelmed until delegation routines become habitual.",
+    "topic": "feel"
+  },
+  {
+    "word": "embarrassed",
+    "ipa": "/ɪmˈbærəst/",
+    "vi": "xấu hổ",
+    "example": "He felt embarrassed after mispronouncing the guest's name publicly.",
+    "topic": "feel"
+  },
+  {
+    "word": "grateful",
+    "ipa": "/ˈɡreɪtfl/",
+    "vi": "biết ơn",
+    "example": "Grateful patients donated funds toward upgraded clinic equipment.",
+    "topic": "feel"
+  },
+  {
+    "word": "resentful",
+    "ipa": "/rɪˈzentfl/",
+    "vi": "bực tức",
+    "example": "Resentful staff quit when promotions seemed consistently unfair.",
+    "topic": "feel"
+  },
+  {
+    "word": "hopeful",
+    "ipa": "/ˈhəʊpfl/",
+    "vi": "hy vọng",
+    "example": "Hopeful applicants refreshed job portals hourly during recruitment season.",
+    "topic": "feel"
+  },
+  {
+    "word": "despondent",
+    "ipa": "/dɪˈspɒndənt/",
+    "vi": "chán nản",
+    "example": "Despondent farmers faced crop losses after unexpected hailstorms.",
+    "topic": "feel"
+  },
+  {
+    "word": "irritated",
+    "ipa": "/ˈɪrɪteɪtɪd/",
+    "vi": "khó chịu",
+    "example": "Irritated neighbours complained about loud music after midnight.",
+    "topic": "feel"
+  },
+  {
+    "word": "thrilled",
+    "ipa": "/θrɪld/",
+    "vi": "rất vui",
+    "example": "Fans were thrilled when the band announced a surprise encore.",
+    "topic": "feel"
+  },
+  {
+    "word": "melancholy",
+    "ipa": "/ˈmelənkəli/",
+    "vi": "u sầu",
+    "example": "Melancholy autumn weather matched the novel's reflective tone.",
+    "topic": "feel"
+  },
+  {
+    "word": "apprehensive",
+    "ipa": "/ˌæprɪˈhensɪv/",
+    "vi": "e ngại",
+    "example": "Apprehensive travellers checked visa rules twice before departure.",
+    "topic": "feel"
+  },
+  {
+    "word": "jubilant",
+    "ipa": "/ˈdʒuːbɪlənt/",
+    "vi": "hân hoan",
+    "example": "Jubilant supporters flooded the streets after the final whistle.",
+    "topic": "feel"
+  },
+  {
+    "word": "sheer dread",
+    "ipa": "/ʃɪə dred/",
+    "vi": "nỗi sợ lớn",
+    "example": "Sheer dread kept him awake before the courtroom appearance.",
+    "topic": "feel"
+  },
+  {
+    "word": "guilt",
+    "ipa": "/ɡɪlt/",
+    "vi": "cảm giác tội lỗi",
+    "example": "Persistent guilt followed the harsh comment made in anger.",
+    "topic": "feel"
+  },
+  {
+    "word": "remorse",
+    "ipa": "/rɪˈmɔːs/",
+    "vi": "hối hận",
+    "example": "Public remorse did little to restore trust after the scandal.",
+    "topic": "feel"
+  },
+  {
+    "word": "euphoria",
+    "ipa": "/juːˈfɔːriə/",
+    "vi": "sung sướng tột độ",
+    "example": "Temporary euphoria faded once exam results were published online.",
+    "topic": "feel"
+  },
+  {
+    "word": "boredom",
+    "ipa": "/ˈbɔːdəm/",
+    "vi": "nhàm chán",
+    "example": "Chronic boredom at work pushes talent toward rival employers.",
+    "topic": "feel"
+  },
+  {
+    "word": "longing",
+    "ipa": "/ˈlɒŋɪŋ/",
+    "vi": "khao khát",
+    "example": "Longing for home intensified during the first winter abroad.",
+    "topic": "feel"
+  },
+  {
+    "word": "dread",
+    "ipa": "/dred/",
+    "vi": "sợ hãi",
+    "example": "Many students dread oral exams despite thorough preparation.",
+    "topic": "feel"
+  },
+  {
+    "word": "serenity",
+    "ipa": "/səˈrenəti/",
+    "vi": "thanh thản",
+    "example": "Morning meditation brought a rare sense of serenity.",
+    "topic": "feel"
+  },
+  {
+    "word": "mood swing",
+    "ipa": "/muːd swɪŋ/",
+    "vi": "thay đổi tâm trạng",
+    "example": "Hormonal changes can trigger mood swings during adolescence.",
+    "topic": "feel"
+  },
+  {
+    "word": "cheer up",
+    "ipa": "/tʃɪə(r) ʌp/",
+    "vi": "vui lên",
+    "example": "Friends tried to cheer him up after the rejection letter.",
+    "topic": "feel"
+  },
+  {
+    "word": "calm down",
+    "ipa": "/kɑːm daʊn/",
+    "vi": "bình tĩnh",
+    "example": "Take deep breaths and calm down before replying angrily.",
+    "topic": "feel"
+  },
+  {
+    "word": "freak out",
+    "ipa": "/friːk aʊt/",
+    "vi": "hoảng loạn",
+    "example": "She freaked out when the laptop crashed before submission.",
+    "topic": "feel"
+  },
+  {
+    "word": "let off steam",
+    "ipa": "/let ɒf stiːm/",
+    "vi": "xả stress",
+    "example": "Jogging helps employees let off steam after tense meetings.",
+    "topic": "feel"
+  },
+  {
+    "word": "bottle out",
+    "ipa": "/ˈbɒtl aʊt/",
+    "vi": "rút lui vì sợ",
+    "example": "He bottled out of the speech at the last minute.",
+    "topic": "feel"
+  },
+  {
+    "word": "perk up",
+    "ipa": "/pɜːk ʌp/",
+    "vi": "hớn hở",
+    "example": "Coffee perked her up during the sluggish afternoon seminar.",
+    "topic": "feel"
+  },
+  {
+    "word": "stress out",
+    "ipa": "/stres aʊt/",
+    "vi": "căng thẳng",
+    "example": "Deadline piles stress out teams lacking clear priorities.",
+    "topic": "feel"
+  },
+  {
+    "word": "miss out",
+    "ipa": "/mɪs aʊt/",
+    "vi": "bỏ lỡ",
+    "example": "Do not miss out on registration slots for language classes.",
+    "topic": "feel"
+  },
+  {
+    "word": "break down",
+    "ipa": "/breɪk daʊn/",
+    "vi": "gục ngã",
+    "example": "She broke down after months of unpaid overtime.",
+    "topic": "feel"
+  },
+  {
+    "word": "mortgage",
+    "ipa": "/ˈmɔːɡɪdʒ/",
+    "vi": "thế chấp nhà",
+    "example": "Rising mortgage rates discouraged first-time buyers this year.",
+    "topic": "house"
+  },
+  {
+    "word": "landlord",
+    "ipa": "/ˈlændlɔːd/",
+    "vi": "chủ nhà cho thuê",
+    "example": "The landlord repaired the boiler within forty-eight hours.",
+    "topic": "house"
+  },
+  {
+    "word": "tenant",
+    "ipa": "/ˈtenənt/",
+    "vi": "người thuê",
+    "example": "Tenants requested clearer rules about subletting furnished rooms.",
+    "topic": "house"
+  },
+  {
+    "word": "lease",
+    "ipa": "/liːs/",
+    "vi": "hợp đồng thuê",
+    "example": "The lease prohibits drilling holes in external brick walls.",
+    "topic": "house"
+  },
+  {
+    "word": "deposit",
+    "ipa": "/dɪˈpɒzɪt/",
+    "vi": "tiền cọc",
+    "example": "Landlords must return deposits unless damage exceeds fair wear.",
+    "topic": "house"
+  },
+  {
+    "word": "insulation",
+    "ipa": "/ˌɪnsjuˈleɪʃn/",
+    "vi": "cách nhiệt",
+    "example": "Loft insulation reduced heating bills during the cold winter.",
+    "topic": "house"
+  },
+  {
+    "word": "damp",
+    "ipa": "/dæmp/",
+    "vi": "ẩm mốc",
+    "example": "Damp patches appeared where gutters leaked above the bedroom.",
+    "topic": "house"
+  },
+  {
+    "word": "renovate",
+    "ipa": "/ˈrenəveɪt/",
+    "vi": "cải tạo",
+    "example": "They renovated the kitchen while staying with relatives temporarily.",
+    "topic": "house"
+  },
+  {
+    "word": "extension",
+    "ipa": "/ɪkˈstenʃn/",
+    "vi": "phần mở rộng",
+    "example": "A rear extension added daylight to the narrow dining area.",
+    "topic": "house"
+  },
+  {
+    "word": "attic",
+    "ipa": "/ˈætɪk/",
+    "vi": "gác mái",
+    "example": "Boxes of photos filled the attic after the house move.",
+    "topic": "house"
+  },
+  {
+    "word": "cellar",
+    "ipa": "/ˈselə(r)/",
+    "vi": "hầm",
+    "example": "Wine bottles rested in the cool cellar beneath the stairs.",
+    "topic": "house"
+  },
+  {
+    "word": "pantry",
+    "ipa": "/ˈpæntri/",
+    "vi": "kho thực phẩm",
+    "example": "The pantry stores spices away from direct sunlight.",
+    "topic": "house"
+  },
+  {
+    "word": "furnish",
+    "ipa": "/ˈfɜːnɪʃ/",
+    "vi": "trang bị nội thất",
+    "example": "Students furnish flats cheaply using second-hand marketplace listings.",
+    "topic": "house"
+  },
+  {
+    "word": "upholstery",
+    "ipa": "/ʌpˈhəʊlstəri/",
+    "vi": "bọc ghế",
+    "example": "Worn upholstery was replaced before listing the property online.",
+    "topic": "house"
+  },
+  {
+    "word": "fixture",
+    "ipa": "/ˈfɪkstʃə(r)/",
+    "vi": "thiết bị cố định",
+    "example": "Light fixtures must meet safety standards before rental approval.",
+    "topic": "house"
+  },
+  {
+    "word": "plumbing",
+    "ipa": "/ˈplʌmɪŋ/",
+    "vi": "ống nước",
+    "example": "Faulty plumbing caused ceiling stains in the flat below.",
+    "topic": "house"
+  },
+  {
+    "word": "wiring",
+    "ipa": "/ˈwaɪərɪŋ/",
+    "vi": "dây điện",
+    "example": "Old wiring was upgraded during the major refurbishment project.",
+    "topic": "house"
+  },
+  {
+    "word": "doorbell",
+    "ipa": "/ˈdɔːbel/",
+    "vi": "chuông cửa",
+    "example": "A broken doorbell meant deliveries were often missed.",
+    "topic": "house"
+  },
+  {
+    "word": "doorway",
+    "ipa": "/ˈdɔːweɪ/",
+    "vi": "khung cửa",
+    "example": "Drafts entered through the poorly sealed front doorway.",
+    "topic": "house"
+  },
+  {
+    "word": "skylight",
+    "ipa": "/ˈskaɪlaɪt/",
+    "vi": "cửa sổ trần",
+    "example": "A skylight brightened the hallway without extra electricity.",
+    "topic": "house"
+  },
+  {
+    "word": "balcony",
+    "ipa": "/ˈbælkəni/",
+    "vi": "ban công",
+    "example": "Herbal plants thrive on the sunny south-facing balcony.",
+    "topic": "house"
+  },
+  {
+    "word": "driveway",
+    "ipa": "/ˈdraɪveɪ/",
+    "vi": "lối xe",
+    "example": "The driveway flooded whenever storm drains blocked nearby.",
+    "topic": "house"
+  },
+  {
+    "word": "fence",
+    "ipa": "/fens/",
+    "vi": "hàng rào",
+    "example": "Neighbours shared costs to repair the boundary fence.",
+    "topic": "house"
+  },
+  {
+    "word": "mow",
+    "ipa": "/məʊ/",
+    "vi": "cắt cỏ",
+    "example": "He mows the lawn every fortnight during spring growth.",
+    "topic": "house"
+  },
+  {
+    "word": "hoover",
+    "ipa": "/ˈhuːvə(r)/",
+    "vi": "hút bụi",
+    "example": "She hoovered carpets before the property inspection visit.",
+    "topic": "house"
+  },
+  {
+    "word": "scrub",
+    "ipa": "/skrʌb/",
+    "vi": "chà sạch",
+    "example": "Volunteers scrubbed tiles to remove years of grime.",
+    "topic": "house"
+  },
+  {
+    "word": "move in",
+    "ipa": "/muːv ɪn/",
+    "vi": "dọn vào",
+    "example": "We move in once the solicitor confirms completion funds.",
+    "topic": "house"
+  },
+  {
+    "word": "move out",
+    "ipa": "/muːv aʊt/",
+    "vi": "dọn ra",
+    "example": "Tenants must move out before noon on the final day.",
+    "topic": "house"
+  },
+  {
+    "word": "settle in",
+    "ipa": "/ˈsetl ɪn/",
+    "vi": "ổn định",
+    "example": "It took weeks to settle in after the international relocation.",
+    "topic": "house"
+  },
+  {
+    "word": "do up",
+    "ipa": "/duː ʌp/",
+    "vi": "sửa sang",
+    "example": "They did up the cottage using reclaimed timber beams.",
+    "topic": "house"
+  },
+  {
+    "word": "plug in",
+    "ipa": "/plʌɡ ɪn/",
+    "vi": "cắm điện",
+    "example": "Plug in the heater only after reading the safety leaflet.",
+    "topic": "house"
+  },
+  {
+    "word": "turn down",
+    "ipa": "/tɜːn daʊn/",
+    "vi": "vặn nhỏ",
+    "example": "Turn down radiators in empty rooms to save energy.",
+    "topic": "house"
+  },
+  {
+    "word": "lock up",
+    "ipa": "/lɒk ʌp/",
+    "vi": "khóa cửa",
+    "example": "Remember to lock up before leaving for the airport.",
+    "topic": "house"
+  },
+  {
+    "word": "spruce up",
+    "ipa": "/spruːs ʌp/",
+    "vi": "làm đẹp",
+    "example": "Landlords spruce up flats between tenancies to attract applicants.",
+    "topic": "house"
+  },
+  {
+    "word": "wear and tear",
+    "ipa": "/weə(r) ænd teə(r)/",
+    "vi": "hao mòn thường",
+    "example": "Fair wear and tear should not be deducted from deposits.",
+    "topic": "house"
+  },
+  {
+    "word": "open-plan",
+    "ipa": "/ˌəʊpən ˈplæn/",
+    "vi": "mở",
+    "example": "Open-plan layouts suit families who cook while supervising homework.",
+    "topic": "house"
+  },
+  {
+    "word": "cuisine",
+    "ipa": "/kwɪˈziːn/",
+    "vi": "ẩm thực",
+    "example": "Regional cuisine reflects local climate and historical trade routes.",
+    "topic": "food"
+  },
+  {
+    "word": "artisan",
+    "ipa": "/ˌɑːtɪˈzæn/",
+    "vi": "thủ công",
+    "example": "Artisan bread sells quickly at the Saturday farmers market.",
+    "topic": "food"
+  },
+  {
+    "word": "organic",
+    "ipa": "/ɔːˈɡænɪk/",
+    "vi": "hữu cơ",
+    "example": "Organic produce costs more yet appeals to health-conscious shoppers.",
+    "topic": "food"
+  },
+  {
+    "word": "preservative",
+    "ipa": "/prɪˈzɜːvətɪv/",
+    "vi": "chất bảo quản",
+    "example": "Labels list preservatives that extend shelf life in supermarkets.",
+    "topic": "food"
+  },
+  {
+    "word": "additive",
+    "ipa": "/ˈædətɪv/",
+    "vi": "phụ gia",
+    "example": "Some additives improve texture but worry cautious parents.",
+    "topic": "food"
+  },
+  {
+    "word": "allergen",
+    "ipa": "/ˈælədʒən/",
+    "vi": "chất gây dị ứng",
+    "example": "Menus must highlight allergens for diners with severe reactions.",
+    "topic": "food"
+  },
+  {
+    "word": "gluten",
+    "ipa": "/ˈɡluːtn/",
+    "vi": "gluten",
+    "example": "Gluten-free options expanded as diagnoses became more common.",
+    "topic": "food"
+  },
+  {
+    "word": "lactose",
+    "ipa": "/ˈlæktəʊs/",
+    "vi": "lactose",
+    "example": "Lactose intolerance prompts many consumers to choose plant milks.",
+    "topic": "food"
+  },
+  {
+    "word": "savoury",
+    "ipa": "/ˈseɪvəri/",
+    "vi": "mặn",
+    "example": "Savoury pastries sold out before the lunchtime office rush.",
+    "topic": "food"
+  },
+  {
+    "word": "bland",
+    "ipa": "/blænd/",
+    "vi": "nhạt",
+    "example": "Hospital meals seemed bland until chefs adjusted seasoning gradually.",
+    "topic": "food"
+  },
+  {
+    "word": "ripe",
+    "ipa": "/raɪp/",
+    "vi": "chín",
+    "example": "Wait until mangoes feel ripe before slicing them for dessert.",
+    "topic": "food"
+  },
+  {
+    "word": "stale",
+    "ipa": "/steɪl/",
+    "vi": "cũ/ố",
+    "example": "Stale bread becomes croutons instead of being thrown away.",
+    "topic": "food"
+  },
+  {
+    "word": "leftovers",
+    "ipa": "/ˈleftəʊvəz/",
+    "vi": "đồ thừa",
+    "example": "Leftovers were refrigerated within two hours of cooking.",
+    "topic": "food"
+  },
+  {
+    "word": "portion",
+    "ipa": "/ˈpɔːʃn/",
+    "vi": "khẩu phần",
+    "example": "Smaller portions reduce waste at campus dining halls.",
+    "topic": "food"
+  },
+  {
+    "word": "calorie",
+    "ipa": "/ˈkæləri/",
+    "vi": "calo",
+    "example": "Calorie counts on menus influence choices among dieting customers.",
+    "topic": "food"
+  },
+  {
+    "word": "nutrient",
+    "ipa": "/ˈnjuːtriənt/",
+    "vi": "dưỡng chất",
+    "example": "Nutrient labels help parents compare breakfast cereals critically.",
+    "topic": "food"
+  },
+  {
+    "word": "fibre",
+    "ipa": "/ˈfaɪbə(r)/",
+    "vi": "chất xơ",
+    "example": "Whole grains provide fibre that supports digestive health.",
+    "topic": "food"
+  },
+  {
+    "word": "protein",
+    "ipa": "/ˈprəʊtiːn/",
+    "vi": "protein",
+    "example": "Plant protein sources diversify diets beyond traditional meat dishes.",
+    "topic": "food"
+  },
+  {
+    "word": "dairy",
+    "ipa": "/ˈdeəri/",
+    "vi": "sữa",
+    "example": "Dairy prices fluctuate with feed costs and seasonal demand.",
+    "topic": "food"
+  },
+  {
+    "word": "seafood",
+    "ipa": "/ˈsiːfuːd/",
+    "vi": "hải sản",
+    "example": "Sustainable seafood certifications guide choices in upscale restaurants.",
+    "topic": "food"
+  },
+  {
+    "word": "street food",
+    "ipa": "/striːt fuːd/",
+    "vi": "ăn đường phố",
+    "example": "Street food vendors attract tourists seeking authentic local flavours.",
+    "topic": "food"
+  },
+  {
+    "word": "takeaway",
+    "ipa": "/ˈteɪkəweɪ/",
+    "vi": "mua mang về",
+    "example": "Takeaway containers piled up during lockdown evenings at home.",
+    "topic": "food"
+  },
+  {
+    "word": "dine in",
+    "ipa": "/daɪn ɪn/",
+    "vi": "ăn tại chỗ",
+    "example": "Restaurants encourage diners to dine in on quieter weekdays.",
+    "topic": "food"
+  },
+  {
+    "word": "fasting",
+    "ipa": "/ˈfɑːstɪŋ/",
+    "vi": "nhịn ăn",
+    "example": "Intermittent fasting trends spread through social media influencers.",
+    "topic": "food"
+  },
+  {
+    "word": "indulge",
+    "ipa": "/ɪnˈdʌldʒ/",
+    "vi": "thưởng thức",
+    "example": "Guests indulged in dessert despite earlier promises to abstain.",
+    "topic": "food"
+  },
+  {
+    "word": "crave",
+    "ipa": "/kreɪv/",
+    "vi": "thèm",
+    "example": "Stress makes many people crave sugary snacks late at night.",
+    "topic": "food"
+  },
+  {
+    "word": "digest",
+    "ipa": "/daɪˈdʒest/",
+    "vi": "tiêu hóa",
+    "example": "Heavy meals are harder to digest before intense exercise.",
+    "topic": "food"
+  },
+  {
+    "word": "snack on",
+    "ipa": "/snæk ɒn/",
+    "vi": "ăn vặt",
+    "example": "Students snack on nuts instead of crisps during revision.",
+    "topic": "food"
+  },
+  {
+    "word": "wolf down",
+    "ipa": "/wʊlf daʊn/",
+    "vi": "nuốt vội",
+    "example": "He wolfed down lunch because the next lecture started early.",
+    "topic": "food"
+  },
+  {
+    "word": "pig out",
+    "ipa": "/pɪɡ aʊt/",
+    "vi": "ăn no nê",
+    "example": "They pigged out at the buffet after completing final exams.",
+    "topic": "food"
+  },
+  {
+    "word": "cut back on",
+    "ipa": "/kʌt bæk ɒn/",
+    "vi": "cắt giảm",
+    "example": "Doctors advised him to cut back on processed meats.",
+    "topic": "food"
+  },
+  {
+    "word": "stock up on",
+    "ipa": "/stɒk ʌp ɒn/",
+    "vi": "tích trữ",
+    "example": "Families stock up on rice before monsoon transport disruptions.",
+    "topic": "food"
+  },
+  {
+    "word": "perishable",
+    "ipa": "/ˈperɪʃəbl/",
+    "vi": "dễ hỏng",
+    "example": "Perishable goods require chilled lorries during long cross-border hauls.",
+    "topic": "food"
+  },
+  {
+    "word": "pick at",
+    "ipa": "/pɪk æt/",
+    "vi": "gắp nhẹ",
+    "example": "Nervous diners pick at salads while waiting for interviews.",
+    "topic": "food"
+  },
+  {
+    "word": "heat up",
+    "ipa": "/hiːt ʌp/",
+    "vi": "hâm nóng",
+    "example": "Heat up soup slowly to preserve flavour and texture.",
+    "topic": "food"
+  },
+  {
+    "word": "go off",
+    "ipa": "/ɡəʊ ɒf/",
+    "vi": "hỏng/thiu",
+    "example": "Milk goes off faster when the fridge door stays open.",
+    "topic": "food"
+  },
+  {
+    "word": "simmer",
+    "ipa": "/ˈsɪmə(r)/",
+    "vi": "đun nhỏ lửa",
+    "example": "Simmer the sauce gently until flavours meld together properly.",
+    "topic": "cook"
+  },
+  {
+    "word": "sauté",
+    "ipa": "/ˈsəʊteɪ/",
+    "vi": "xào nhanh",
+    "example": "Sauté onions until translucent before adding crushed garlic cloves.",
+    "topic": "cook"
+  },
+  {
+    "word": "whisk",
+    "ipa": "/wɪsk/",
+    "vi": "đánh trứng",
+    "example": "Whisk eggs vigorously to incorporate air into the batter.",
+    "topic": "cook"
+  },
+  {
+    "word": "knead",
+    "ipa": "/niːd/",
+    "vi": "nhào bột",
+    "example": "Knead dough for ten minutes to develop elastic gluten strands.",
+    "topic": "cook"
+  },
+  {
+    "word": "marinate",
+    "ipa": "/ˈmærɪneɪt/",
+    "vi": "ướp",
+    "example": "Marinate tofu overnight so spices penetrate each cube evenly.",
+    "topic": "cook"
+  },
+  {
+    "word": "season",
+    "ipa": "/ˈsiːzn/",
+    "vi": "nêm gia vị",
+    "example": "Season stew gradually rather than dumping salt at once.",
+    "topic": "cook"
+  },
+  {
+    "word": "garnish",
+    "ipa": "/ˈɡɑːnɪʃ/",
+    "vi": "trang trí món",
+    "example": "Garnish soup with herbs to add colour and aroma.",
+    "topic": "cook"
+  },
+  {
+    "word": "dice",
+    "ipa": "/daɪs/",
+    "vi": "cắt hạt lựu",
+    "example": "Dice vegetables uniformly so they cook at the same rate.",
+    "topic": "cook"
+  },
+  {
+    "word": "grate",
+    "ipa": "/ɡreɪt/",
+    "vi": "bào",
+    "example": "Grate cheese finely so it melts smoothly into the sauce.",
+    "topic": "cook"
+  },
+  {
+    "word": "blanch",
+    "ipa": "/blɑːntʃ/",
+    "vi": "chần sơ",
+    "example": "Blanch green beans briefly to preserve crisp texture and colour.",
+    "topic": "cook"
+  },
+  {
+    "word": "roast",
+    "ipa": "/rəʊst/",
+    "vi": "quay/nướng",
+    "example": "Roast root vegetables until caramelised edges deepen the flavour.",
+    "topic": "cook"
+  },
+  {
+    "word": "steam",
+    "ipa": "/stiːm/",
+    "vi": "hấp",
+    "example": "Steam fish to keep flesh moist without adding extra oil.",
+    "topic": "cook"
+  },
+  {
+    "word": "broil",
+    "ipa": "/brɔɪl/",
+    "vi": "nướng cận",
+    "example": "Broil peppers until skins char, then peel them carefully.",
+    "topic": "cook"
+  },
+  {
+    "word": "poach",
+    "ipa": "/pəʊtʃ/",
+    "vi": "luộc nhẹ",
+    "example": "Poach pears in spiced syrup for an elegant dessert.",
+    "topic": "cook"
+  },
+  {
+    "word": "caramelise",
+    "ipa": "/ˈkærəməlaɪz/",
+    "vi": "thắng đường",
+    "example": "Onions caramelise slowly when cooked over low consistent heat.",
+    "topic": "cook"
+  },
+  {
+    "word": "char",
+    "ipa": "/tʃɑː(r)/",
+    "vi": "cháy xém",
+    "example": "Do not char garlic or it turns bitter in the pan.",
+    "topic": "cook"
+  },
+  {
+    "word": "zest",
+    "ipa": "/zest/",
+    "vi": "vỏ thơm",
+    "example": "Add lemon zest sparingly to brighten creamy pasta sauces.",
+    "topic": "cook"
+  },
+  {
+    "word": "fillet",
+    "ipa": "/ˈfɪlɪt/",
+    "vi": "phi-lê",
+    "example": "Fillet the fish carefully to avoid wasting edible flesh.",
+    "topic": "cook"
+  },
+  {
+    "word": "pit",
+    "ipa": "/pɪt/",
+    "vi": "bỏ hạt",
+    "example": "Pit olives before blending them into tapenade spread.",
+    "topic": "cook"
+  },
+  {
+    "word": "strain",
+    "ipa": "/streɪn/",
+    "vi": "lọc",
+    "example": "Strain broth to remove sediment before serving clear soup.",
+    "topic": "cook"
+  },
+  {
+    "word": "reduce",
+    "ipa": "/rɪˈdjuːs/",
+    "vi": "cô đặc",
+    "example": "Reduce wine sauce until it coats the back of spoon.",
+    "topic": "cook"
+  },
+  {
+    "word": "preheat",
+    "ipa": "/ˌpriːˈhiːt/",
+    "vi": "làm nóng trước",
+    "example": "Preheat the oven fully so pastries rise evenly.",
+    "topic": "cook"
+  },
+  {
+    "word": "leftover dough",
+    "ipa": "/ˈleftəʊvə dəʊ/",
+    "vi": "bột thừa",
+    "example": "Leftover dough freezes well for quick weekday flatbreads.",
+    "topic": "cook"
+  },
+  {
+    "word": "utensil",
+    "ipa": "/juːˈtensl/",
+    "vi": "dụng cụ",
+    "example": "Non-stick utensils protect coated pans from scratches during cooking.",
+    "topic": "cook"
+  },
+  {
+    "word": "colander",
+    "ipa": "/ˈkɒləndə(r)/",
+    "vi": "rổ đục",
+    "example": "Drain pasta in a colander, reserving some starchy water.",
+    "topic": "cook"
+  },
+  {
+    "word": "ladle",
+    "ipa": "/ˈleɪdl/",
+    "vi": "vá múc",
+    "example": "Ladle soup into bowls away from the steam rising.",
+    "topic": "cook"
+  },
+  {
+    "word": "spatula",
+    "ipa": "/ˈspætʃələ/",
+    "vi": "xẻng lật",
+    "example": "Use a spatula to flip pancakes without tearing them.",
+    "topic": "cook"
+  },
+  {
+    "word": "chop up",
+    "ipa": "/tʃɒp ʌp/",
+    "vi": "chặt nhỏ",
+    "example": "Chop up herbs just before serving to retain volatile oils.",
+    "topic": "cook"
+  },
+  {
+    "word": "boil over",
+    "ipa": "/bɔɪl ˈəʊvə(r)/",
+    "vi": "trào ra",
+    "example": "Milk can boil over quickly if the heat stays high.",
+    "topic": "cook"
+  },
+  {
+    "word": "fry up",
+    "ipa": "/fraɪ ʌp/",
+    "vi": "chiên nhanh",
+    "example": "He fried up mushrooms for breakfast on the camping stove.",
+    "topic": "cook"
+  },
+  {
+    "word": "bake off",
+    "ipa": "/beɪk ɒf/",
+    "vi": "nướng xong",
+    "example": "Batch bake off rolls early before the shop opens.",
+    "topic": "cook"
+  },
+  {
+    "word": "thaw out",
+    "ipa": "/θɔː aʊt/",
+    "vi": "rã đông",
+    "example": "Thaw out frozen peas in the fridge overnight safely.",
+    "topic": "cook"
+  },
+  {
+    "word": "mix in",
+    "ipa": "/mɪks ɪn/",
+    "vi": "trộn vào",
+    "example": "Mix in flour gradually to avoid lumpy pancake batter.",
+    "topic": "cook"
+  },
+  {
+    "word": "stir in",
+    "ipa": "/stɜː(r) ɪn/",
+    "vi": "khuấy vào",
+    "example": "Stir in cream after removing the pan from heat.",
+    "topic": "cook"
+  },
+  {
+    "word": "scale up",
+    "ipa": "/skeɪl ʌp/",
+    "vi": "nấu số lượng lớn",
+    "example": "Chefs scale up recipes carefully when catering large weddings.",
+    "topic": "cook"
+  },
+  {
+    "word": "food poisoning",
+    "ipa": "/fuːd ˈpɔɪznɪŋ/",
+    "vi": "ngộ độc thực phẩm",
+    "example": "Food poisoning outbreaks trace back to improper cold storage.",
+    "topic": "cook"
+  },
+  {
+    "word": "receipt",
+    "ipa": "/rɪˈsiːt/",
+    "vi": "hóa đơn",
+    "example": "Keep receipts until warranties expire on expensive electronics.",
+    "topic": "shop"
+  },
+  {
+    "word": "refund",
+    "ipa": "/ˈriːfʌnd/",
+    "vi": "hoàn tiền",
+    "example": "The store issued a refund after the jacket zipper failed.",
+    "topic": "shop"
+  },
+  {
+    "word": "exchange",
+    "ipa": "/ɪksˈtʃeɪndʒ/",
+    "vi": "đổi hàng",
+    "example": "Customers may exchange faulty goods within thirty statutory days.",
+    "topic": "shop"
+  },
+  {
+    "word": "bargain",
+    "ipa": "/ˈbɑːɡən/",
+    "vi": "món hời",
+    "example": "She found a bargain coat during the end-of-season sale.",
+    "topic": "shop"
+  },
+  {
+    "word": "markup",
+    "ipa": "/ˈmɑːkʌp/",
+    "vi": "tăng giá bán",
+    "example": "High markup on accessories funds discounts on main devices.",
+    "topic": "shop"
+  },
+  {
+    "word": "clearance",
+    "ipa": "/ˈklɪərəns/",
+    "vi": "thanh lý",
+    "example": "Clearance racks attract students seeking affordable formal wear.",
+    "topic": "shop"
+  },
+  {
+    "word": "boutique",
+    "ipa": "/buːˈtiːk/",
+    "vi": "cửa hàng nhỏ",
+    "example": "The boutique stocks independent designers rather than mass brands.",
+    "topic": "shop"
+  },
+  {
+    "word": "supermarket aisle",
+    "ipa": "/ˈsuːpəmɑːkɪt aɪl/",
+    "vi": "lối siêu thị",
+    "example": "Promotional displays block supermarket aisles during holiday weekends.",
+    "topic": "shop"
+  },
+  {
+    "word": "checkout",
+    "ipa": "/ˈtʃekaʊt/",
+    "vi": "quầy thanh toán",
+    "example": "Self-checkout queues grew when staffed tills closed early.",
+    "topic": "shop"
+  },
+  {
+    "word": "barcode",
+    "ipa": "/ˈbɑːkəʊd/",
+    "vi": "mã vạch",
+    "example": "Scan the barcode to compare prices across competing retailers.",
+    "topic": "shop"
+  },
+  {
+    "word": "loyalty card",
+    "ipa": "/ˈlɔɪəlti kɑːd/",
+    "vi": "thẻ tích điểm",
+    "example": "Loyalty cards track purchases to offer targeted discount vouchers.",
+    "topic": "shop"
+  },
+  {
+    "word": "voucher",
+    "ipa": "/ˈvaʊtʃə(r)/",
+    "vi": "phiếu giảm giá",
+    "example": "Online vouchers expired before shoppers finished holiday baskets.",
+    "topic": "shop"
+  },
+  {
+    "word": "haggle",
+    "ipa": "/ˈhæɡl/",
+    "vi": "mặc cả",
+    "example": "Tourists rarely haggle in fixed-price department stores abroad.",
+    "topic": "shop"
+  },
+  {
+    "word": "window shopping",
+    "ipa": "/ˈwɪndəʊ ʃɒpɪŋ/",
+    "vi": "ngắm đồ",
+    "example": "Window shopping fills evenings without straining student budgets.",
+    "topic": "shop"
+  },
+  {
+    "word": "impulse buy",
+    "ipa": "/ˈɪmpʌls baɪ/",
+    "vi": "mua bốc đồng",
+    "example": "Impulse buys near tills increase average basket value significantly.",
+    "topic": "shop"
+  },
+  {
+    "word": "sold out",
+    "ipa": "/səʊld aʊt/",
+    "vi": "bán hết",
+    "example": "Concert merchandise sold out within minutes of doors opening.",
+    "topic": "shop"
+  },
+  {
+    "word": "in stock",
+    "ipa": "/ɪn stɒk/",
+    "vi": "còn hàng",
+    "example": "Call ahead to confirm the laptop model remains in stock.",
+    "topic": "shop"
+  },
+  {
+    "word": "out of stock",
+    "ipa": "/aʊt ɒv stɒk/",
+    "vi": "hết hàng",
+    "example": "Popular trainers went out of stock during the online launch.",
+    "topic": "shop"
+  },
+  {
+    "word": "try-on room",
+    "ipa": "/traɪ ɒn ruːm/",
+    "vi": "phòng thử",
+    "example": "Lighting in try-on rooms influences how colours appear.",
+    "topic": "shop"
+  },
+  {
+    "word": "fitting",
+    "ipa": "/ˈfɪtɪŋ/",
+    "vi": "thử vừa",
+    "example": "Schedule a fitting before tailoring the suit for graduation.",
+    "topic": "shop"
+  },
+  {
+    "word": "counterfeit",
+    "ipa": "/ˈkaʊntəfɪt/",
+    "vi": "hàng giả",
+    "example": "Counterfeit goods undermine trust in popular marketplace platforms.",
+    "topic": "shop"
+  },
+  {
+    "word": "authentic",
+    "ipa": "/ɔːˈθentɪk/",
+    "vi": "chính hãng",
+    "example": "Authentic handbags include serial codes verified by manufacturers.",
+    "topic": "shop"
+  },
+  {
+    "word": "consumer rights",
+    "ipa": "/kənˈsjuːmə raɪts/",
+    "vi": "quyền người tiêu dùng",
+    "example": "Consumer rights protect buyers when products fail unexpectedly early.",
+    "topic": "shop"
+  },
+  {
+    "word": "warranty",
+    "ipa": "/ˈwɒrənti/",
+    "vi": "bảo hành",
+    "example": "Extended warranty plans rarely cover accidental screen damage.",
+    "topic": "shop"
+  },
+  {
+    "word": "instalment",
+    "ipa": "/ɪnˈstɔːlmənt/",
+    "vi": "trả góp",
+    "example": "Instalment plans spread costs but add interest over months.",
+    "topic": "shop"
+  },
+  {
+    "word": "browse",
+    "ipa": "/braʊz/",
+    "vi": "xem lướt",
+    "example": "Shoppers browse reviews before committing to major appliance purchases.",
+    "topic": "shop"
+  },
+  {
+    "word": "splurge",
+    "ipa": "/splɜːdʒ/",
+    "vi": "chi mạnh",
+    "example": "She splurged on headphones after receiving a bonus payment.",
+    "topic": "shop"
+  },
+  {
+    "word": "snap up",
+    "ipa": "/snæp ʌp/",
+    "vi": "mua vội",
+    "example": "Collectors snap up limited editions within hours of release.",
+    "topic": "shop"
+  },
+  {
+    "word": "shop around",
+    "ipa": "/ʃɒp əˈraʊnd/",
+    "vi": "so sánh giá",
+    "example": "Shop around for insurance rather than renewing automatically each year.",
+    "topic": "shop"
+  },
+  {
+    "word": "pick out",
+    "ipa": "/pɪk aʊt/",
+    "vi": "chọn ra",
+    "example": "Help me pick out a gift suitable for elderly neighbours.",
+    "topic": "shop"
+  },
+  {
+    "word": "ring up",
+    "ipa": "/rɪŋ ʌp/",
+    "vi": "tính tiền",
+    "example": "The cashier rang up items twice due to scanner glitches.",
+    "topic": "shop"
+  },
+  {
+    "word": "cash back",
+    "ipa": "/kæʃ bæk/",
+    "vi": "hoàn tiền mặt",
+    "example": "Debit cards offer cash back at participating grocery tills.",
+    "topic": "shop"
+  },
+  {
+    "word": "price tag",
+    "ipa": "/praɪs tæɡ/",
+    "vi": "nhãn giá",
+    "example": "Missing price tags frustrate customers during busy sales.",
+    "topic": "shop"
+  },
+  {
+    "word": "bulk buy",
+    "ipa": "/bʌlk baɪ/",
+    "vi": "mua số lượng",
+    "example": "Bulk buying reduces unit costs for community pantry volunteers.",
+    "topic": "shop"
+  },
+  {
+    "word": "delivery slot",
+    "ipa": "/dɪˈlɪvəri slɒt/",
+    "vi": "khung giao hàng",
+    "example": "Book a delivery slot early before holiday weekend demand spikes.",
+    "topic": "shop"
+  },
+  {
+    "word": "click and collect",
+    "ipa": "/klɪk ænd kəˈlekt/",
+    "vi": "đặt online lấy tại cửa hàng",
+    "example": "Click and collect saves shipping fees for heavy household goods.",
+    "topic": "shop"
+  },
+  {
+    "word": "garment",
+    "ipa": "/ˈɡɑːmənt/",
+    "vi": "trang phục",
+    "example": "Each garment was inspected for loose threads before packaging.",
+    "topic": "cloth"
+  },
+  {
+    "word": "fabric",
+    "ipa": "/ˈfæbrɪk/",
+    "vi": "vải",
+    "example": "Breathable fabric suits humid climates better than polyester blends.",
+    "topic": "cloth"
+  },
+  {
+    "word": "linen",
+    "ipa": "/ˈlɪnɪn/",
+    "vi": "vải lanh",
+    "example": "Linen wrinkles easily yet remains popular for summer tailoring.",
+    "topic": "cloth"
+  },
+  {
+    "word": "denim",
+    "ipa": "/ˈdenɪm/",
+    "vi": "vải jean",
+    "example": "Denim production consumes significant water unless mills adopt recycling.",
+    "topic": "cloth"
+  },
+  {
+    "word": "hem",
+    "ipa": "/hem/",
+    "vi": "đường viền",
+    "example": "She shortened the hem so the dress skimmed her ankles.",
+    "topic": "cloth"
+  },
+  {
+    "word": "seam",
+    "ipa": "/siːm/",
+    "vi": "đường may",
+    "example": "Reinforced seams prevent splitting during strenuous outdoor activities.",
+    "topic": "cloth"
+  },
+  {
+    "word": "zipper",
+    "ipa": "/ˈzɪpə(r)/",
+    "vi": "khóa kéo",
+    "example": "A stuck zipper delayed her departure for the interview.",
+    "topic": "cloth"
+  },
+  {
+    "word": "buttonhole",
+    "ipa": "/ˈbʌtnhəʊl/",
+    "vi": "lỗ khuy",
+    "example": "Tailors hand-stitch buttonholes on bespoke jackets for durability.",
+    "topic": "cloth"
+  },
+  {
+    "word": "cuff",
+    "ipa": "/kʌf/",
+    "vi": "cổ tay áo",
+    "example": "Adjustable cuffs let wearers roll sleeves during warm afternoons.",
+    "topic": "cloth"
+  },
+  {
+    "word": "collar",
+    "ipa": "/ˈkɒlə(r)/",
+    "vi": "cổ áo",
+    "example": "A stiff collar framed his face in the passport photograph.",
+    "topic": "cloth"
+  },
+  {
+    "word": "lapel",
+    "ipa": "/ləˈpel/",
+    "vi": "ve áo",
+    "example": "Pinning badges to lapels violates some formal dress codes.",
+    "topic": "cloth"
+  },
+  {
+    "word": "wardrobe",
+    "ipa": "/ˈwɔːdrəʊb/",
+    "vi": "tủ quần áo",
+    "example": "Capsule wardrobes reduce decision fatigue on busy weekday mornings.",
+    "topic": "cloth"
+  },
+  {
+    "word": "laundry tag",
+    "ipa": "/ˈlɔːndri tæɡ/",
+    "vi": "nhãn giặt",
+    "example": "Check laundry tags before washing delicate silk blouses.",
+    "topic": "cloth"
+  },
+  {
+    "word": "dry-clean",
+    "ipa": "/draɪ kliːn/",
+    "vi": "giặt khô",
+    "example": "Suits require dry-cleaning rather than home washing machines.",
+    "topic": "cloth"
+  },
+  {
+    "word": "iron out",
+    "ipa": "/ˈaɪən aʊt/",
+    "vi": "ủi phẳng",
+    "example": "Iron out creases before photographing items for resale listings.",
+    "topic": "cloth"
+  },
+  {
+    "word": "hand-me-down",
+    "ipa": "/hænd miː daʊn/",
+    "vi": "đồ truyền",
+    "example": "Hand-me-down coats kept siblings warm throughout icy winters.",
+    "topic": "cloth"
+  },
+  {
+    "word": "high-heel",
+    "ipa": "/haɪ hiːl/",
+    "vi": "cao gót",
+    "example": "High heels strain ankles when worn on cobbled historic streets.",
+    "topic": "cloth"
+  },
+  {
+    "word": "trainers",
+    "ipa": "/ˈtreɪnəz/",
+    "vi": "giày thể thao",
+    "example": "Comfortable trainers matter when sightseeing involves long urban walks.",
+    "topic": "cloth"
+  },
+  {
+    "word": "waterproof",
+    "ipa": "/ˈwɔːtəpruːf/",
+    "vi": "chống nước",
+    "example": "Waterproof jackets become essential during unpredictable mountain treks.",
+    "topic": "cloth"
+  },
+  {
+    "word": "breathable",
+    "ipa": "/ˈbriːðəbl/",
+    "vi": "thoáng khí",
+    "example": "Breathable mesh panels keep runners cooler during midday heat.",
+    "topic": "cloth"
+  },
+  {
+    "word": "baggy",
+    "ipa": "/ˈbæɡi/",
+    "vi": "rộng thùng thình",
+    "example": "Baggy trousers returned to fashion runways after years of slim fits.",
+    "topic": "cloth"
+  },
+  {
+    "word": "tailored",
+    "ipa": "/ˈteɪləd/",
+    "vi": "may đo",
+    "example": "Tailored blazers project professionalism at client-facing meetings in conservative industries.",
+    "topic": "cloth"
+  },
+  {
+    "word": "layer up",
+    "ipa": "/ˈleɪə(r) ʌp/",
+    "vi": "mặc nhiều lớp",
+    "example": "Layer up before dawn hikes when temperatures drop sharply.",
+    "topic": "cloth"
+  },
+  {
+    "word": "dress down",
+    "ipa": "/dres daʊn/",
+    "vi": "ăn mặc giản dị",
+    "example": "Fridays allow staff to dress down without appearing careless.",
+    "topic": "cloth"
+  },
+  {
+    "word": "mix and match",
+    "ipa": "/mɪks ænd mætʃ/",
+    "vi": "phối đồ",
+    "example": "Neutral basics mix and match across seasons with minimal spending.",
+    "topic": "cloth"
+  },
+  {
+    "word": "colour-fast",
+    "ipa": "/ˈkʌlə fɑːst/",
+    "vi": "không phai màu",
+    "example": "Colour-fast dyes stop red shirts bleeding onto pale laundry loads.",
+    "topic": "cloth"
+  },
+  {
+    "word": "take in",
+    "ipa": "/teɪk ɪn/",
+    "vi": "bó sườn",
+    "example": "The tailor took in the waist for a sharper silhouette.",
+    "topic": "cloth"
+  },
+  {
+    "word": "let out",
+    "ipa": "/let aʊt/",
+    "vi": "nới rộng",
+    "example": "Trousers were let out after noticeable weight gain last winter.",
+    "topic": "cloth"
+  },
+  {
+    "word": "wear in",
+    "ipa": "/weə(r) ɪn/",
+    "vi": "làm mềm giày",
+    "example": "New leather shoes require days to wear in comfortably.",
+    "topic": "cloth"
+  },
+  {
+    "word": "throw on",
+    "ipa": "/θrəʊ ɒn/",
+    "vi": "mặc vội",
+    "example": "She threw on a scarf before rushing to catch the tram.",
+    "topic": "cloth"
+  },
+  {
+    "word": "strip off",
+    "ipa": "/strɪp ɒf/",
+    "vi": "cởi bỏ",
+    "example": "Athletes strip off wet kits immediately to avoid chilling.",
+    "topic": "cloth"
+  },
+  {
+    "word": "sustainable fashion",
+    "ipa": "/səˈsteɪnəbl ˈfæʃn/",
+    "vi": "thời trang bền vững",
+    "example": "Sustainable fashion brands trace cotton sources to reduce exploitation.",
+    "topic": "cloth"
+  },
+  {
+    "word": "fast fashion",
+    "ipa": "/fɑːst ˈfæʃn/",
+    "vi": "thời trang nhanh",
+    "example": "Fast fashion cycles encourage disposal rather than repair.",
+    "topic": "cloth"
+  },
+  {
+    "word": "second-hand",
+    "ipa": "/ˌsekənd ˈhænd/",
+    "vi": "đồ cũ",
+    "example": "Second-hand markets extend garment life while cutting textile waste.",
+    "topic": "cloth"
+  },
+  {
+    "word": "knitwear",
+    "ipa": "/ˈnɪtweə(r)/",
+    "vi": "đồ len",
+    "example": "Quality knitwear pills less when washed inside protective bags.",
+    "topic": "cloth"
+  },
+  {
+    "word": "sunhat",
+    "ipa": "/ˈsʌnhæt/",
+    "vi": "mũ chống nắng",
+    "example": "Wide sunhats shield children during all-day beach excursions.",
+    "topic": "cloth"
+  },
+  {
+    "word": "mobility",
+    "ipa": "/məʊˈbɪləti/",
+    "vi": "vận động",
+    "example": "Daily stretching preserves mobility for seniors living independently at home.",
+    "topic": "body"
+  },
+  {
+    "word": "stamina",
+    "ipa": "/ˈstæmɪnə/",
+    "vi": "sức bền",
+    "example": "Regular jogging builds stamina needed for lengthy sightseeing tours.",
+    "topic": "body"
+  },
+  {
+    "word": "hydration",
+    "ipa": "/haɪˈdreɪʃn/",
+    "vi": "nước trong cơ thể",
+    "example": "Proper hydration prevents headaches during hot festival afternoons.",
+    "topic": "body"
+  },
+  {
+    "word": "pulse",
+    "ipa": "/pʌls/",
+    "vi": "mạch",
+    "example": "Nurses checked his pulse after the mild fainting episode.",
+    "topic": "body"
+  },
+  {
+    "word": "cholesterol",
+    "ipa": "/kəˈlestərɒl/",
+    "vi": "cholesterol",
+    "example": "Diet changes lowered cholesterol without immediate medication adjustments.",
+    "topic": "body"
+  },
+  {
+    "word": "immune system",
+    "ipa": "/ɪˈmjuːn ˈsɪstəm/",
+    "vi": "miễn dịch",
+    "example": "Sleep deprivation weakens the immune system during exam seasons.",
+    "topic": "body"
+  },
+  {
+    "word": "sprain",
+    "ipa": "/spreɪn/",
+    "vi": "bong gân",
+    "example": "An ankle sprain forced her to skip the charity run.",
+    "topic": "body"
+  },
+  {
+    "word": "fracture",
+    "ipa": "/ˈfræktʃə(r)/",
+    "vi": "gãy xương",
+    "example": "The X-ray confirmed a hairline fracture in his wrist.",
+    "topic": "body"
+  },
+  {
+    "word": "bruise",
+    "ipa": "/bruːz/",
+    "vi": "vết bầm",
+    "example": "Dark bruises faded slowly after the cycling collision.",
+    "topic": "body"
+  },
+  {
+    "word": "sunscreen",
+    "ipa": "/ˈsʌnskriːn/",
+    "vi": "kem chống nắng",
+    "example": "Apply sunscreen generously before alpine hikes at high altitude.",
+    "topic": "body"
+  },
+  {
+    "word": "inoculation",
+    "ipa": "/ɪˌnɒkjuˈleɪʃn/",
+    "vi": "tiêm chủng",
+    "example": "Travel clinics provide inoculations required for certain tropical regions.",
+    "topic": "body"
+  },
+  {
+    "word": "check-up",
+    "ipa": "/ˈtʃek ʌp/",
+    "vi": "khám định kỳ",
+    "example": "Annual check-ups detect issues before symptoms become severe.",
+    "topic": "body"
+  },
+  {
+    "word": "prescription",
+    "ipa": "/prɪˈskrɪpʃn/",
+    "vi": "đơn thuốc",
+    "example": "Pharmacists verify prescriptions before dispensing controlled pain relief.",
+    "topic": "body"
+  },
+  {
+    "word": "dosage",
+    "ipa": "/ˈdəʊsɪdʒ/",
+    "vi": "liều lượng",
+    "example": "Incorrect dosage caused dizziness until doctors adjusted treatment.",
+    "topic": "body"
+  },
+  {
+    "word": "side effect",
+    "ipa": "/saɪd ɪˈfekt/",
+    "vi": "tác dụng phụ",
+    "example": "Mild side effects disappeared after the first treatment week.",
+    "topic": "body"
+  },
+  {
+    "word": "rehabilitation",
+    "ipa": "/ˌriːəˌbɪlɪˈteɪʃn/",
+    "vi": "phục hồi",
+    "example": "Knee rehabilitation progressed slowly yet restored full walking range.",
+    "topic": "body"
+  },
+  {
+    "word": "physiotherapy",
+    "ipa": "/ˌfɪziəˈθerəpi/",
+    "vi": "vật lý trị liệu",
+    "example": "Physiotherapy sessions reduced stiffness after the shoulder surgery.",
+    "topic": "body"
+  },
+  {
+    "word": "yoga mat",
+    "ipa": "/ˈjəʊɡə mæt/",
+    "vi": "thảm yoga",
+    "example": "A grippy yoga mat prevents slipping during balance poses.",
+    "topic": "body"
+  },
+  {
+    "word": "heart rate",
+    "ipa": "/hɑːt reɪt/",
+    "vi": "nhịp tim",
+    "example": "Wearable trackers monitor heart rate during interval training.",
+    "topic": "body"
+  },
+  {
+    "word": "blood pressure",
+    "ipa": "/blʌd ˈpreʃə(r)/",
+    "vi": "huyết áp",
+    "example": "Stress can elevate blood pressure temporarily during public speaking.",
+    "topic": "body"
+  },
+  {
+    "word": "allergy",
+    "ipa": "/ˈælədʒi/",
+    "vi": "dị ứng",
+    "example": "Pollen allergy symptoms worsen when windows stay open overnight.",
+    "topic": "body"
+  },
+  {
+    "word": "asthma",
+    "ipa": "/ˈæsmə/",
+    "vi": "hen suyễn",
+    "example": "Asthma inhalers should remain accessible during smoky urban days.",
+    "topic": "body"
+  },
+  {
+    "word": "chronic",
+    "ipa": "/ˈkrɒnɪk/",
+    "vi": "mãn tính",
+    "example": "Chronic pain management combines medication with gentle daily movement.",
+    "topic": "body"
+  },
+  {
+    "word": "acute",
+    "ipa": "/əˈkjuːt/",
+    "vi": "cấp tính",
+    "example": "Acute infections require rest rather than strenuous gym sessions.",
+    "topic": "body"
+  },
+  {
+    "word": "work out",
+    "ipa": "/wɜːk aʊt/",
+    "vi": "tập thể dục",
+    "example": "They work out together before breakfast three times weekly.",
+    "topic": "body"
+  },
+  {
+    "word": "warm up",
+    "ipa": "/wɔːm ʌp/",
+    "vi": "khởi động",
+    "example": "Warm up muscles to reduce injury risk before sprinting.",
+    "topic": "body"
+  },
+  {
+    "word": "cool down",
+    "ipa": "/kuːl daʊn/",
+    "vi": "giãn cơ",
+    "example": "Cool down with stretches after long distance running sessions.",
+    "topic": "body"
+  },
+  {
+    "word": "pull a muscle",
+    "ipa": "/pʊl ə ˈmʌsl/",
+    "vi": "căn cơ",
+    "example": "He pulled a muscle lifting boxes without bending knees properly.",
+    "topic": "body"
+  },
+  {
+    "word": "throw up",
+    "ipa": "/θrəʊ ʌp/",
+    "vi": "nôn",
+    "example": "Spicy street food made tourists throw up during the heatwave.",
+    "topic": "body"
+  },
+  {
+    "word": "pass out",
+    "ipa": "/pɑːs aʊt/",
+    "vi": "ngất",
+    "example": "She nearly passed out from dehydration at the marathon finish.",
+    "topic": "body"
+  },
+  {
+    "word": "come down with",
+    "ipa": "/kʌm daʊn wɪð/",
+    "vi": "mắc bệnh",
+    "example": "Half the dorm came down with flu during finals week.",
+    "topic": "body"
+  },
+  {
+    "word": "fight off",
+    "ipa": "/faɪt ɒf/",
+    "vi": "đẩy lùi bệnh",
+    "example": "Vitamin C alone cannot fight off infections without adequate sleep.",
+    "topic": "body"
+  },
+  {
+    "word": "bulk up",
+    "ipa": "/bʌlk ʌp/",
+    "vi": "tăng cơ",
+    "example": "Athletes bulk up during off-season under supervised nutrition plans.",
+    "topic": "body"
+  },
+  {
+    "word": "slim down",
+    "ipa": "/slɪm daʊn/",
+    "vi": "giảm cân",
+    "example": "She slimmed down gradually through portion control and walking.",
+    "topic": "body"
+  },
+  {
+    "word": "stay in shape",
+    "ipa": "/steɪ ɪn ʃeɪp/",
+    "vi": "giữ dáng",
+    "example": "Commuting by bike helps him stay in shape without gym fees.",
+    "topic": "body"
+  },
+  {
+    "word": "bed rest",
+    "ipa": "/bed rest/",
+    "vi": "nghỉ trên giường",
+    "example": "Doctors ordered bed rest until the fever subsided completely.",
+    "topic": "body"
+  },
+  {
+    "word": "tournament",
+    "ipa": "/ˈtʊənəmənt/",
+    "vi": "giải đấu",
+    "example": "The tournament drew international scouts seeking emerging athletic talent.",
+    "topic": "sport"
+  },
+  {
+    "word": "qualifier",
+    "ipa": "/ˈkwɒlɪfaɪə(r)/",
+    "vi": "vòng loại",
+    "example": "Our team reached the qualifier after a tense penalty shootout.",
+    "topic": "sport"
+  },
+  {
+    "word": "referee",
+    "ipa": "/ˌrefəˈriː/",
+    "vi": "trọng tài",
+    "example": "The referee paused play when lightning threatened the open stadium.",
+    "topic": "sport"
+  },
+  {
+    "word": "umpire",
+    "ipa": "/ˈʌmpaɪə(r)/",
+    "vi": "trọng tài (một số môn)",
+    "example": "The umpire overturned the decision after reviewing slow-motion footage.",
+    "topic": "sport"
+  },
+  {
+    "word": "spectator",
+    "ipa": "/spekˈteɪtə(r)/",
+    "vi": "khán giả",
+    "example": "Spectators sheltered under ponchos during the delayed tennis final.",
+    "topic": "sport"
+  },
+  {
+    "word": "underdog",
+    "ipa": "/ˈʌndədɒɡ/",
+    "vi": "kẻ yếu",
+    "example": "The underdog club shocked analysts by winning the national cup.",
+    "topic": "sport"
+  },
+  {
+    "word": "stadium",
+    "ipa": "/ˈsteɪdiəm/",
+    "vi": "sân vận động",
+    "example": "The stadium upgrade included safer seating and improved accessibility ramps.",
+    "topic": "sport"
+  },
+  {
+    "word": "artificial turf",
+    "ipa": "/ˌɑːtɪˈfɪʃl tɜːf/",
+    "vi": "cỏ nhân tạo",
+    "example": "Artificial turf reduces maintenance yet heats up under midday sun.",
+    "topic": "sport"
+  },
+  {
+    "word": "doping",
+    "ipa": "/ˈdəʊpɪŋ/",
+    "vi": "doping",
+    "example": "Doping scandals stripped medals from several high-profile sprinters.",
+    "topic": "sport"
+  },
+  {
+    "word": "injury time",
+    "ipa": "/ˈɪndʒəri taɪm/",
+    "vi": "bù giờ",
+    "example": "Injury time allowed the hosts to equalise dramatically.",
+    "topic": "sport"
+  },
+  {
+    "word": "personal best",
+    "ipa": "/ˈpɜːsənl best/",
+    "vi": "kỷ lục cá nhân",
+    "example": "She set a personal best despite gusty crosswinds on track.",
+    "topic": "sport"
+  },
+  {
+    "word": "warm-up lap",
+    "ipa": "/wɔːm ʌp læp/",
+    "vi": "vòng khởi động",
+    "example": "Runners completed a warm-up lap before the official starter pistol.",
+    "topic": "sport"
+  },
+  {
+    "word": "substitute",
+    "ipa": "/ˈsʌbstɪtjuːt/",
+    "vi": "cầu thủ dự bị",
+    "example": "The substitute striker scored minutes after entering the pitch.",
+    "topic": "sport"
+  },
+  {
+    "word": "captain",
+    "ipa": "/ˈkæptɪn/",
+    "vi": "đội trưởng",
+    "example": "The captain motivated teammates during the exhausting extra-time period.",
+    "topic": "sport"
+  },
+  {
+    "word": "coach",
+    "ipa": "/kəʊtʃ/",
+    "vi": "huấn luyện viên",
+    "example": "The coach adjusted tactics after studying rivals' defensive patterns.",
+    "topic": "sport"
+  },
+  {
+    "word": "marathon",
+    "ipa": "/ˈmærəθən/",
+    "vi": "marathon",
+    "example": "Marathon training demands gradual mileage increases to avoid overuse injuries.",
+    "topic": "sport"
+  },
+  {
+    "word": "triathlon",
+    "ipa": "/traɪˈæθlən/",
+    "vi": "ba môn phối hợp",
+    "example": "Triathlon competitors transition quickly between swim, bike, and run.",
+    "topic": "sport"
+  },
+  {
+    "word": "gymnasium",
+    "ipa": "/dʒɪmˈneɪziəm/",
+    "vi": "phòng gym",
+    "example": "School gymnasiums host community classes after evening hours.",
+    "topic": "sport"
+  },
+  {
+    "word": "aerobic",
+    "ipa": "/eəˈrəʊbɪk/",
+    "vi": "hiếu khí",
+    "example": "Aerobic exercise strengthens cardiovascular health over consistent months.",
+    "topic": "sport"
+  },
+  {
+    "word": "anaerobic",
+    "ipa": "/ˌænəˈrəʊbɪk/",
+    "vi": "khiếu khí",
+    "example": "Sprint intervals provide anaerobic bursts that improve explosive power.",
+    "topic": "sport"
+  },
+  {
+    "word": "stretching",
+    "ipa": "/ˈstretʃɪŋ/",
+    "vi": "giãn cơ",
+    "example": "Stretching routines prevent stiffness after intense resistance training.",
+    "topic": "sport"
+  },
+  {
+    "word": "scoreboard",
+    "ipa": "/ˈskɔːbɔːd/",
+    "vi": "bảng điểm",
+    "example": "The scoreboard malfunctioned, delaying announcement of final results.",
+    "topic": "sport"
+  },
+  {
+    "word": "kick off",
+    "ipa": "/kɪk ɒf/",
+    "vi": "bắt đầu trận",
+    "example": "Festivities kick off hours before the derby match begins.",
+    "topic": "sport"
+  },
+  {
+    "word": "work on",
+    "ipa": "/wɜːk ɒn/",
+    "vi": "luyện tập",
+    "example": "She works on serve accuracy with a private tennis instructor.",
+    "topic": "sport"
+  },
+  {
+    "word": "pull ahead",
+    "ipa": "/pʊl əˈhed/",
+    "vi": "vượt lên",
+    "example": "The cyclist pulled ahead on the downhill segment near town.",
+    "topic": "sport"
+  },
+  {
+    "word": "lose ground",
+    "ipa": "/luːz ɡraʊnd/",
+    "vi": "tụt hậu",
+    "example": "Injuries caused the squad to lose ground in the league standings.",
+    "topic": "sport"
+  },
+  {
+    "word": "bow out",
+    "ipa": "/baʊ aʊt/",
+    "vi": "rút lui",
+    "example": "The champion bowed out citing recurring shoulder inflammation.",
+    "topic": "sport"
+  },
+  {
+    "word": "train hard",
+    "ipa": "/treɪn hɑːd/",
+    "vi": "tập nặng",
+    "example": "Athletes train hard yet schedule rest days to prevent burnout.",
+    "topic": "sport"
+  },
+  {
+    "word": "team spirit",
+    "ipa": "/tiːm spɪrɪt/",
+    "vi": "tin thần đồng đội",
+    "example": "Strong team spirit helped newcomers integrate during preseason camps.",
+    "topic": "sport"
+  },
+  {
+    "word": "fair play",
+    "ipa": "/feə(r) pleɪ/",
+    "vi": "tin thần fair-play",
+    "example": "Fair play awards recognise honesty when referees miss incidents.",
+    "topic": "sport"
+  },
+  {
+    "word": "home advantage",
+    "ipa": "/həʊm ədˈvɑːntɪdʒ/",
+    "vi": "lợi thế sân nhà",
+    "example": "Home advantage grows when vocal crowds unsettle visiting players.",
+    "topic": "sport"
+  },
+  {
+    "word": "offside",
+    "ipa": "/ˌɒfˈsaɪd/",
+    "vi": "việt vị",
+    "example": "The striker's goal was disallowed for a marginal offside call.",
+    "topic": "sport"
+  },
+  {
+    "word": "penalty shootout",
+    "ipa": "/ˈpenlti ʃuːtaʊt/",
+    "vi": "loạt penalty",
+    "example": "Nerves decide many penalty shootouts in knockout tournaments.",
+    "topic": "sport"
+  },
+  {
+    "word": "sportsmanship",
+    "ipa": "/ˈspɔːtsmənʃɪp/",
+    "vi": "tinh thần thể thao",
+    "example": "Sportsmanship includes congratulating opponents after bitter defeats on the pitch.",
+    "topic": "sport"
+  },
+  {
+    "word": "recreational",
+    "ipa": "/ˌrekriˈeɪʃənl/",
+    "vi": "giải trí",
+    "example": "Recreational leagues prioritise enjoyment over elite competitive pressure.",
+    "topic": "sport"
+  },
+  {
+    "word": "semi-professional",
+    "ipa": "/ˌsemi prəˈfeʃənl/",
+    "vi": "bán chuyên",
+    "example": "Semi-professional clubs balance day jobs with evening training schedules.",
+    "topic": "sport"
+  },
+  {
+    "word": "pastime",
+    "ipa": "/ˈpɑːstaɪm/",
+    "vi": "giải trí",
+    "example": "Reading remains a calming pastime after demanding workdays.",
+    "topic": "hobby"
+  },
+  {
+    "word": "knitting",
+    "ipa": "/ˈnɪtɪŋ/",
+    "vi": "đan len",
+    "example": "Knitting circles meet weekly to share patterns and charity donations.",
+    "topic": "hobby"
+  },
+  {
+    "word": "pottery",
+    "ipa": "/ˈpɒtəri/",
+    "vi": "gốm",
+    "example": "Pottery classes teach patience as clay collapses without steady pressure.",
+    "topic": "hobby"
+  },
+  {
+    "word": "calligraphy",
+    "ipa": "/kəˈlɪɡrəfi/",
+    "vi": "thư pháp",
+    "example": "Calligraphy workshops attract students seeking mindful creative outlets.",
+    "topic": "hobby"
+  },
+  {
+    "word": "birdwatching",
+    "ipa": "/ˈbɜːdwɒtʃɪŋ/",
+    "vi": "ngắm chim",
+    "example": "Birdwatching tourism supports conservation funding in wetland reserves near coasts.",
+    "topic": "hobby"
+  },
+  {
+    "word": "gardening",
+    "ipa": "/ˈɡɑːdnɪŋ/",
+    "vi": "làm vườn",
+    "example": "Urban gardening transforms balconies into productive herb plots.",
+    "topic": "hobby"
+  },
+  {
+    "word": "photography",
+    "ipa": "/fəˈtɒɡrəfi/",
+    "vi": "nhiếp ảnh",
+    "example": "Photography clubs critique composition during monthly gallery visits.",
+    "topic": "hobby"
+  },
+  {
+    "word": "woodworking",
+    "ipa": "/ˈwʊdwɜːkɪŋ/",
+    "vi": "mộc",
+    "example": "Woodworking hobbies produce gifts while teaching precise measurement skills.",
+    "topic": "hobby"
+  },
+  {
+    "word": "chess club",
+    "ipa": "/tʃes klʌb/",
+    "vi": "câu lạc bộ cờ",
+    "example": "Chess club members analyse openings using online database tools.",
+    "topic": "hobby"
+  },
+  {
+    "word": "board game",
+    "ipa": "/bɔːd ɡeɪm/",
+    "vi": "cờ bàn",
+    "example": "Board game nights strengthen friendships without screens or subscriptions.",
+    "topic": "hobby"
+  },
+  {
+    "word": "collectible",
+    "ipa": "/kəˈlektəbl/",
+    "vi": "đồ sưu tầm",
+    "example": "Rare collectibles fetch high prices at specialised auction houses.",
+    "topic": "hobby"
+  },
+  {
+    "word": "stamp collecting",
+    "ipa": "/stæmp kəˈlektɪŋ/",
+    "vi": "sưu tập tem",
+    "example": "Stamp collecting introduces learners to geography and historical events.",
+    "topic": "hobby"
+  },
+  {
+    "word": "amateur",
+    "ipa": "/ˈæmətə(r)/",
+    "vi": "nghiệp dư",
+    "example": "Amateur astronomers share telescope time during community star parties.",
+    "topic": "hobby"
+  },
+  {
+    "word": "craft fair",
+    "ipa": "/krɑːft feə(r)/",
+    "vi": "hội chợ thủ công",
+    "example": "Craft fairs showcase local makers selling handmade jewellery and textiles.",
+    "topic": "hobby"
+  },
+  {
+    "word": "volunteering",
+    "ipa": "/ˌvɒlənˈtɪərɪŋ/",
+    "vi": "tình nguyện",
+    "example": "Volunteering at libraries combines service with love of books.",
+    "topic": "hobby"
+  },
+  {
+    "word": "journaling",
+    "ipa": "/ˈdʒɜːnəlɪŋ/",
+    "vi": "viết nhật ký",
+    "example": "Journaling clarifies goals when major career decisions loom ahead.",
+    "topic": "hobby"
+  },
+  {
+    "word": "sketching",
+    "ipa": "/ˈsketʃɪŋ/",
+    "vi": "phác họa",
+    "example": "Sketching urban scenes improves observation during travel abroad.",
+    "topic": "hobby"
+  },
+  {
+    "word": "hiking trail",
+    "ipa": "/ˈhaɪkɪŋ treɪl/",
+    "vi": "đường mòn",
+    "example": "Marked hiking trails protect fragile habitats from wandering foot traffic.",
+    "topic": "hobby"
+  },
+  {
+    "word": "camping gear",
+    "ipa": "/ˈkæmpɪŋ ɡɪə(r)/",
+    "vi": "đồ cắm trại",
+    "example": "Lightweight camping gear reduces strain on multi-day backpacking routes.",
+    "topic": "hobby"
+  },
+  {
+    "word": "model building",
+    "ipa": "/ˈmɒdl ˈbɪldɪŋ/",
+    "vi": "lắp mô hình",
+    "example": "Model building develops fine motor skills among retired engineers.",
+    "topic": "hobby"
+  },
+  {
+    "word": "language exchange",
+    "ipa": "/ˈlæŋɡwɪdʒ ɪksˈtʃeɪndʒ/",
+    "vi": "trao đổi ngôn ngữ",
+    "example": "Language exchange partners meet weekly to practise conversational fluency.",
+    "topic": "hobby"
+  },
+  {
+    "word": "podcast",
+    "ipa": "/ˈpɒdkɑːst/",
+    "vi": "podcast",
+    "example": "History podcasts turn commutes into informal learning sessions.",
+    "topic": "hobby"
+  },
+  {
+    "word": "take up",
+    "ipa": "/teɪk ʌp/",
+    "vi": "bắt đầu (sở thích)",
+    "example": "She took up rowing after moving near the riverside club.",
+    "topic": "hobby"
+  },
+  {
+    "word": "give up",
+    "ipa": "/ɡɪv ʌp/",
+    "vi": "bỏ (sở thích)",
+    "example": "He gave up gaming to focus on piano examination preparation.",
+    "topic": "hobby"
+  },
+  {
+    "word": "brush up",
+    "ipa": "/brʌʃ ʌp/",
+    "vi": "ôn lại kỹ năng",
+    "example": "Brush up painting techniques before entering the local exhibition.",
+    "topic": "hobby"
+  },
+  {
+    "word": "sign up for",
+    "ipa": "/saɪn ʌp fɔː(r)/",
+    "vi": "đăng ký",
+    "example": "Sign up for pottery workshops early because classes fill quickly.",
+    "topic": "hobby"
+  },
+  {
+    "word": "join in",
+    "ipa": "/dʒɔɪn ɪn/",
+    "vi": "tham gia",
+    "example": "Shy members eventually join in after friendly introductions.",
+    "topic": "hobby"
+  },
+  {
+    "word": "mess around with",
+    "ipa": "/mes əˈraʊnd wɪð/",
+    "vi": "nghịch với",
+    "example": "Teens mess around with video editing apps during holidays.",
+    "topic": "hobby"
+  },
+  {
+    "word": "tinker with",
+    "ipa": "/ˈtɪŋkə(r) wɪð/",
+    "vi": "mày mò sửa",
+    "example": "He tinkers with vintage radios rescued from flea markets.",
+    "topic": "hobby"
+  },
+  {
+    "word": "while away",
+    "ipa": "/waɪl əˈweɪ/",
+    "vi": "giết thời gian",
+    "example": "They whiled away rainy afternoons playing cards by the fire.",
+    "topic": "hobby"
+  },
+  {
+    "word": "unwind",
+    "ipa": "/ˌʌnˈwaɪnd/",
+    "vi": "thư giãn",
+    "example": "Cooking helps her unwind after intense weeks at the hospital.",
+    "topic": "hobby"
+  },
+  {
+    "word": "leisure pursuit",
+    "ipa": "/ˈleʒə pəˈsjuːt/",
+    "vi": "sở thích giải trí",
+    "example": "Leisure pursuits should recharge energy rather than create obligations.",
+    "topic": "hobby"
+  },
+  {
+    "word": "creative outlet",
+    "ipa": "/kriˈeɪtɪv ˈaʊtlet/",
+    "vi": "kênh sáng tạo",
+    "example": "Dance provides a creative outlet beyond structured office routines.",
+    "topic": "hobby"
+  },
+  {
+    "word": "DIY project",
+    "ipa": "/ˌdiː aɪ ˈwaɪ ˈprɒdʒekt/",
+    "vi": "tự làm",
+    "example": "DIY projects teach practical skills while saving renovation costs.",
+    "topic": "hobby"
+  },
+  {
+    "word": "book club",
+    "ipa": "/bʊk klʌb/",
+    "vi": "câu lạc bộ sách",
+    "example": "Book club debates often spill into lively café conversations afterward.",
+    "topic": "hobby"
+  },
+  {
+    "word": "community choir",
+    "ipa": "/kəˈmjuːnəti ˈkwaɪə(r)/",
+    "vi": "hợp xướng cộng đồng",
+    "example": "Community choir rehearsals welcome singers without formal audition requirements.",
+    "topic": "hobby"
+  },
+  {
+    "word": "itinerary",
+    "ipa": "/aɪˈtɪnərəri/",
+    "vi": "lịch trình",
+    "example": "Our itinerary includes two nights in Lisbon before flying north.",
+    "topic": "travel"
+  },
+  {
+    "word": "layover",
+    "ipa": "/ˈleɪəʊvə(r)/",
+    "vi": "quá cảnh",
+    "example": "A six-hour layover gave us time to explore the airport city.",
+    "topic": "travel"
+  },
+  {
+    "word": "boarding pass",
+    "ipa": "/ˈbɔːdɪŋ pɑːs/",
+    "vi": "thẻ lên máy bay",
+    "example": "Mobile boarding passes speed up security during peak holiday mornings.",
+    "topic": "travel"
+  },
+  {
+    "word": "customs",
+    "ipa": "/ˈkʌstəmz/",
+    "vi": "hải quan",
+    "example": "Customs officers inspected luggage after the agricultural sniffer dog alerted.",
+    "topic": "travel"
+  },
+  {
+    "word": "immigration",
+    "ipa": "/ˌɪmɪˈɡreɪʃn/",
+    "vi": "nhập cư",
+    "example": "Immigration queues lengthened when several biometric gates malfunctioned temporarily.",
+    "topic": "travel"
+  },
+  {
+    "word": "visa waiver",
+    "ipa": "/ˈviːzə ˈweɪvə(r)/",
+    "vi": "miễn visa",
+    "example": "Visa waiver programmes boost short-stay tourism between partner countries.",
+    "topic": "travel"
+  },
+  {
+    "word": "backpacker",
+    "ipa": "/ˈbækpækə(r)/",
+    "vi": "du lịch bụi",
+    "example": "Backpackers share hostel tips on forums dedicated to budget routes.",
+    "topic": "travel"
+  },
+  {
+    "word": "souvenir",
+    "ipa": "/ˌsuːvəˈnɪə(r)/",
+    "vi": "quà lưu niệm",
+    "example": "Souvenir stalls cluster near monuments despite local regulation attempts.",
+    "topic": "travel"
+  },
+  {
+    "word": "landmark",
+    "ipa": "/ˈlændmɑːk/",
+    "vi": "địa danh",
+    "example": "The landmark tower reopened after years of structural reinforcement work.",
+    "topic": "travel"
+  },
+  {
+    "word": "guided tour",
+    "ipa": "/ˈɡaɪdɪd tʊə(r)/",
+    "vi": "tour có hướng dẫn",
+    "example": "Guided tours explain murals that casual visitors might overlook entirely.",
+    "topic": "travel"
+  },
+  {
+    "word": "off-season",
+    "ipa": "/ɒf ˈsiːzn/",
+    "vi": "mùa thấp điểm",
+    "example": "Off-season travel offers cheaper rooms yet unpredictable weather patterns.",
+    "topic": "travel"
+  },
+  {
+    "word": "peak season",
+    "ipa": "/piːk ˈsiːzn/",
+    "vi": "mùa cao điểm",
+    "example": "Peak season crowds strain public transport serving coastal resort towns.",
+    "topic": "travel"
+  },
+  {
+    "word": "travel insurance",
+    "ipa": "/ˈtrævl ɪnˈʃʊərəns/",
+    "vi": "bảo hiểm du lịch",
+    "example": "Travel insurance covered cancelled flights after the volcanic ash alert.",
+    "topic": "travel"
+  },
+  {
+    "word": "jet lag",
+    "ipa": "/ˈdʒet læɡ/",
+    "vi": "lệch giờ",
+    "example": "Jet lag faded after we slept locally on the first arrival evening.",
+    "topic": "travel"
+  },
+  {
+    "word": "roaming",
+    "ipa": "/ˈrəʊmɪŋ/",
+    "vi": "chuyển vùng",
+    "example": "Disable roaming to avoid surprise bills when crossing nearby borders casually.",
+    "topic": "travel"
+  },
+  {
+    "word": "hostel",
+    "ipa": "/ˈhɒstl/",
+    "vi": "nhà nghỉ bình dân",
+    "example": "The hostel organised walking tours led by multilingual volunteer guides.",
+    "topic": "travel"
+  },
+  {
+    "word": "excursion",
+    "ipa": "/ɪkˈskɜːʃn/",
+    "vi": "chuyến tham quan",
+    "example": "The excursion visited vineyards inaccessible by regular public bus routes.",
+    "topic": "travel"
+  },
+  {
+    "word": "trek",
+    "ipa": "/trek/",
+    "vi": "đi bộ đường dài",
+    "example": "We trekked through misty valleys guided by experienced mountain porters.",
+    "topic": "travel"
+  },
+  {
+    "word": "sightseeing",
+    "ipa": "/ˈsaɪtsiːɪŋ/",
+    "vi": "tham quan",
+    "example": "Sightseeing buses reduce walking yet miss quiet alleys worth exploring.",
+    "topic": "travel"
+  },
+  {
+    "word": "see off",
+    "ipa": "/siː ɒf/",
+    "vi": "tiễn",
+    "example": "Friends gathered to see us off at the station platform.",
+    "topic": "travel"
+  },
+  {
+    "word": "set off",
+    "ipa": "/set ɒf/",
+    "vi": "khởi hành",
+    "example": "We set off at dawn to avoid midday heat on the trail.",
+    "topic": "travel"
+  },
+  {
+    "word": "stop over",
+    "ipa": "/stɒp ˈəʊvə(r)/",
+    "vi": "dừng chân",
+    "example": "They stopped over in Dubai en route to Nairobi for meetings.",
+    "topic": "travel"
+  },
+  {
+    "word": "get away",
+    "ipa": "/ɡet əˈweɪ/",
+    "vi": "đi nghỉ",
+    "example": "We needed to get away after months of uninterrupted overtime shifts.",
+    "topic": "travel"
+  },
+  {
+    "word": "book up",
+    "ipa": "/bʊk ʌp/",
+    "vi": "kín chỗ",
+    "example": "Hotels book up months ahead during the international film festival.",
+    "topic": "travel"
+  },
+  {
+    "word": "travel light",
+    "ipa": "/ˈtrævl laɪt/",
+    "vi": "mang ít hành lý",
+    "example": "Travel light with carry-on only to skip lengthy baggage reclaim queues.",
+    "topic": "travel"
+  },
+  {
+    "word": "overbook",
+    "ipa": "/ˌəʊvəˈbʊk/",
+    "vi": "bán quá chỗ",
+    "example": "Airlines compensate passengers when overbooked flights require voluntary rebooking.",
+    "topic": "travel"
+  },
+  {
+    "word": "red-eye flight",
+    "ipa": "/ˈred aɪ flaɪt/",
+    "vi": "chuyến bay đêm",
+    "example": "Red-eye flights save holiday days yet disrupt sleep schedules badly.",
+    "topic": "travel"
+  },
+  {
+    "word": "border crossing",
+    "ipa": "/ˈbɔːdə ˈkrɒsɪŋ/",
+    "vi": "qua biên giới",
+    "example": "Border crossing delays eased after new electronic pre-clearance lanes opened.",
+    "topic": "travel"
+  },
+  {
+    "word": "travel advisory",
+    "ipa": "/ˈtrævl ədˈvaɪzəri/",
+    "vi": "cảnh báo du lịch",
+    "example": "Governments issued travel advisories following protests near the capital.",
+    "topic": "travel"
+  },
+  {
+    "word": "eco-tourism",
+    "ipa": "/ˈiːkəʊ ˈtʊərɪzəm/",
+    "vi": "du lịch sinh thái",
+    "example": "Eco-tourism projects fund ranger patrols protecting endangered nesting beaches.",
+    "topic": "travel"
+  },
+  {
+    "word": "overtourism",
+    "ipa": "/ˈəʊvətʊərɪzəm/",
+    "vi": "du lịch quá tải",
+    "example": "Overtourism prompts caps on daily visitors entering fragile historic centres.",
+    "topic": "travel"
+  },
+  {
+    "word": "consulate",
+    "ipa": "/ˈkɒnsjələt/",
+    "vi": "lãnh sự quán",
+    "example": "The consulate reissued passports after theft at the crowded market.",
+    "topic": "travel"
+  },
+  {
+    "word": "duty-free",
+    "ipa": "/ˌdjuːti ˈfriː/",
+    "vi": "miễn thuế",
+    "example": "Duty-free prices vary, so compare before buying luxury goods onboard.",
+    "topic": "travel"
+  },
+  {
+    "word": "travelogue",
+    "ipa": "/ˈtrævəlɒɡ/",
+    "vi": "nhật ký du lịch",
+    "example": "Her travelogue blended history with practical tips for solo hikers.",
+    "topic": "travel"
+  },
+  {
+    "word": "visa extension",
+    "ipa": "/ˈviːzə ɪkˈstenʃn/",
+    "vi": "gia hạn visa",
+    "example": "She applied for a visa extension after her research required additional fieldwork.",
+    "topic": "travel"
+  },
+  {
+    "word": "luggage carousel",
+    "ipa": "/ˈlʌɡɪdʒ ˌkærəˈsel/",
+    "vi": "băng chuyền hành lý",
+    "example": "Passengers crowded the luggage carousel after the delayed international arrival.",
+    "topic": "travel"
+  },
+  {
+    "word": "forecast",
+    "ipa": "/ˈfɔːkɑːst/",
+    "vi": "dự báo",
+    "example": "The forecast predicted hail, so organisers moved the picnic indoors.",
+    "topic": "weather"
+  },
+  {
+    "word": "drizzle",
+    "ipa": "/ˈdrɪzl/",
+    "vi": "mưa phùn",
+    "example": "Light drizzle persisted throughout the marathon without stopping runners.",
+    "topic": "weather"
+  },
+  {
+    "word": "downpour",
+    "ipa": "/ˈdaʊnpɔː(r)/",
+    "vi": "mưa xối xả",
+    "example": "A sudden downpour flooded underpasses during the evening commute.",
+    "topic": "weather"
+  },
+  {
+    "word": "hailstone",
+    "ipa": "/ˈheɪlstəʊn/",
+    "vi": "mưa đá",
+    "example": "Hailstones dented car roofs across the northern suburbs overnight.",
+    "topic": "weather"
+  },
+  {
+    "word": "sleet",
+    "ipa": "/sliːt/",
+    "vi": "mưa tuyết",
+    "example": "Sleet made pavements slippery for pedestrians without proper footwear.",
+    "topic": "weather"
+  },
+  {
+    "word": "blizzard",
+    "ipa": "/ˈblɪzəd/",
+    "vi": "bão tuyết",
+    "example": "The blizzard stranded motorists on motorways until ploughs arrived.",
+    "topic": "weather"
+  },
+  {
+    "word": "heatwave",
+    "ipa": "/ˈhiːtweɪv/",
+    "vi": "nắng nóng kéo dài",
+    "example": "The heatwave strained hospitals treating dehydration among elderly residents.",
+    "topic": "weather"
+  },
+  {
+    "word": "drought",
+    "ipa": "/draʊt/",
+    "vi": "hạn hán",
+    "example": "Prolonged drought reduced reservoir levels before the irrigation season.",
+    "topic": "weather"
+  },
+  {
+    "word": "humidity",
+    "ipa": "/hjuːˈmɪdəti/",
+    "vi": "độ ẩm",
+    "example": "High humidity made afternoon jogs feel far more exhausting.",
+    "topic": "weather"
+  },
+  {
+    "word": "breeze",
+    "ipa": "/briːz/",
+    "vi": "gió nhẹ",
+    "example": "A cool breeze relieved spectators packed into the open stadium.",
+    "topic": "weather"
+  },
+  {
+    "word": "gust",
+    "ipa": "/ɡʌst/",
+    "vi": "gió giật",
+    "example": "Gusts toppled market umbrellas along the exposed waterfront promenade.",
+    "topic": "weather"
+  },
+  {
+    "word": "overcast",
+    "ipa": "/ˌəʊvəˈkɑːst/",
+    "vi": "u ám",
+    "example": "Overcast skies muted photographs taken during the graduation ceremony.",
+    "topic": "weather"
+  },
+  {
+    "word": "sunshine",
+    "ipa": "/ˈsʌnʃaɪn/",
+    "vi": "nắng",
+    "example": "Sunshine returned just as the outdoor wedding ceremony began.",
+    "topic": "weather"
+  },
+  {
+    "word": "frost",
+    "ipa": "/frɒst/",
+    "vi": "sương giá",
+    "example": "Frost damaged tender plants left unprotected in community garden beds.",
+    "topic": "weather"
+  },
+  {
+    "word": "thunder",
+    "ipa": "/ˈθʌndə(r)/",
+    "vi": "sấm",
+    "example": "Thunder echoed across valleys minutes before lightning struck the ridge.",
+    "topic": "weather"
+  },
+  {
+    "word": "lightning",
+    "ipa": "/ˈlaɪtnɪŋ/",
+    "vi": "sét",
+    "example": "Lightning forced airport ground crews to suspend refuelling operations temporarily.",
+    "topic": "weather"
+  },
+  {
+    "word": "rainbow",
+    "ipa": "/ˈreɪnbəʊ/",
+    "vi": "cầu vồng",
+    "example": "A vivid rainbow appeared after the storm cleared above the harbour.",
+    "topic": "weather"
+  },
+  {
+    "word": "climate zone",
+    "ipa": "/ˈklaɪmət zəʊn/",
+    "vi": "vùng khí hậu",
+    "example": "Each climate zone supports crops requiring distinct rainfall patterns.",
+    "topic": "weather"
+  },
+  {
+    "word": "barometer",
+    "ipa": "/bəˈrɒmɪtə(r)/",
+    "vi": "khí áp kế",
+    "example": "Falling barometer readings hinted at worsening conditions offshore.",
+    "topic": "weather"
+  },
+  {
+    "word": "meteorologist",
+    "ipa": "/ˌmiːtiəˈrɒlədʒɪst/",
+    "vi": "nhà khí tượng",
+    "example": "Meteorologists warned farmers about overnight frost using mobile alerts.",
+    "topic": "weather"
+  },
+  {
+    "word": "floodplain",
+    "ipa": "/ˈflʌdpleɪn/",
+    "vi": "vùng trũng lũ",
+    "example": "Houses built on floodplains face rising insurance premiums annually.",
+    "topic": "weather"
+  },
+  {
+    "word": "clear up",
+    "ipa": "/klɪə(r) ʌp/",
+    "vi": "tan mây",
+    "example": "Skies cleared up just before the fireworks display started.",
+    "topic": "weather"
+  },
+  {
+    "word": "cloud over",
+    "ipa": "/klaʊd ˈəʊvə(r)/",
+    "vi": "trời u ám",
+    "example": "It clouded over rapidly, forcing athletes to wear waterproof jackets.",
+    "topic": "weather"
+  },
+  {
+    "word": "brighten up",
+    "ipa": "/ˈbraɪtn ʌp/",
+    "vi": "sáng ra",
+    "example": "Weather brightened up after lunch, saving the garden party.",
+    "topic": "weather"
+  },
+  {
+    "word": "die down",
+    "ipa": "/daɪ daʊn/",
+    "vi": "dịu bớt",
+    "example": "Winds died down enough for firefighters to contain the moorland blaze.",
+    "topic": "weather"
+  },
+  {
+    "word": "intensify",
+    "ipa": "/ɪnˈtensɪfaɪ/",
+    "vi": "mạnh thêm",
+    "example": "Winds intensified overnight, postponing ferry departures until morning.",
+    "topic": "weather"
+  },
+  {
+    "word": "chill",
+    "ipa": "/tʃɪl/",
+    "vi": "lạnh buốt",
+    "example": "An autumn chill prompted cafés to serve spiced drinks earlier.",
+    "topic": "weather"
+  },
+  {
+    "word": "muggy",
+    "ipa": "/ˈmʌɡi/",
+    "vi": "oi bức",
+    "example": "Muggy evenings discourage jogging unless routes follow shaded rivers.",
+    "topic": "weather"
+  },
+  {
+    "word": "arid",
+    "ipa": "/ˈærɪd/",
+    "vi": "khô cằn",
+    "example": "Arid regions rely on aquifers that recharge slowly each decade.",
+    "topic": "weather"
+  },
+  {
+    "word": "temperate",
+    "ipa": "/ˈtempərət/",
+    "vi": "ôn đới",
+    "example": "Temperate forests display spectacular colour changes during autumn months.",
+    "topic": "weather"
+  },
+  {
+    "word": "seasonal",
+    "ipa": "/ˈsiːzənl/",
+    "vi": "theo mùa",
+    "example": "Seasonal workers harvest fruit when ripeness peaks within narrow windows.",
+    "topic": "weather"
+  },
+  {
+    "word": "unseasonably",
+    "ipa": "/ʌnˈsiːznəbli/",
+    "vi": "trái mùa",
+    "example": "Unseasonably warm winters confuse plants into blossoming too early.",
+    "topic": "weather"
+  },
+  {
+    "word": "weather-beaten",
+    "ipa": "/ˈweðə biːtn/",
+    "vi": "phai bạt vì thời tiết",
+    "example": "Weather-beaten fences were replaced before the coastal storm season.",
+    "topic": "weather"
+  },
+  {
+    "word": "precipitation",
+    "ipa": "/prɪˌsɪpɪˈteɪʃn/",
+    "vi": "lượng mưa",
+    "example": "Annual precipitation declined, worrying farmers dependent on rain-fed fields.",
+    "topic": "weather"
+  },
+  {
+    "word": "whiteout",
+    "ipa": "/ˈwaɪtaʊt/",
+    "vi": "bão tuyết kín trời",
+    "example": "Whiteout conditions halted ski patrols until visibility improved slightly.",
+    "topic": "weather"
+  },
+  {
+    "word": "uv index",
+    "ipa": "/ˌjuː ˈviː ˈɪndeks/",
+    "vi": "chỉ số UV",
+    "example": "A high UV index prompted schools to reschedule outdoor sports.",
+    "topic": "weather"
+  },
+  {
+    "word": "deadline",
+    "ipa": "/ˈdedlaɪn/",
+    "vi": "hạn chót",
+    "example": "Missing the deadline disqualifies applications regardless of strong qualifications.",
+    "topic": "time"
+  },
+  {
+    "word": "punctual",
+    "ipa": "/ˈpʌŋktʃuəl/",
+    "vi": "đúng giờ",
+    "example": "Punctual arrivals respect colleagues waiting to begin hybrid meetings.",
+    "topic": "time"
+  },
+  {
+    "word": "overdue",
+    "ipa": "/ˌəʊvəˈdjuː/",
+    "vi": "quá hạn",
+    "example": "Overdue library books incur fines that fund community reading programmes.",
+    "topic": "time"
+  },
+  {
+    "word": "fortnight",
+    "ipa": "/ˈfɔːtnaɪt/",
+    "vi": "hai tuần",
+    "example": "Visas may take a fortnight, so apply before booking non-refundable flights.",
+    "topic": "time"
+  },
+  {
+    "word": "decade",
+    "ipa": "/ˈdekeɪd/",
+    "vi": "thập kỷ",
+    "example": "Digital payments expanded dramatically over the last decade globally.",
+    "topic": "time"
+  },
+  {
+    "word": "century",
+    "ipa": "/ˈsentʃəri/",
+    "vi": "thế kỷ",
+    "example": "Architecture from the last century shapes identity in many European cities.",
+    "topic": "time"
+  },
+  {
+    "word": "millennium",
+    "ipa": "/mɪˈleniəm/",
+    "vi": "thiên niên kỷ",
+    "example": "Millennium celebrations funded public art installations still visited today.",
+    "topic": "time"
+  },
+  {
+    "word": "instantaneous",
+    "ipa": "/ˌɪnstənˈteɪniəs/",
+    "vi": "tức thì",
+    "example": "Instantaneous messaging blurs boundaries between work hours and rest.",
+    "topic": "time"
+  },
+  {
+    "word": "simultaneous",
+    "ipa": "/ˌsɪmlˈteɪniəs/",
+    "vi": "đồng thời",
+    "example": "Simultaneous translations enabled delegates to follow debates in native languages.",
+    "topic": "time"
+  },
+  {
+    "word": "prolonged",
+    "ipa": "/prəˈlɒŋd/",
+    "vi": "kéo dài",
+    "example": "Prolonged negotiations delayed infrastructure projects already facing cost overruns.",
+    "topic": "time"
+  },
+  {
+    "word": "fleeting",
+    "ipa": "/ˈfliːtɪŋ/",
+    "vi": "thoáng qua",
+    "example": "Fleeting trends on social media rarely sustain consumer interest months later.",
+    "topic": "time"
+  },
+  {
+    "word": "time zone",
+    "ipa": "/taɪm zəʊn/",
+    "vi": "múi giờ",
+    "example": "Coordinating time zones complicates weekly calls between distributed engineering teams.",
+    "topic": "time"
+  },
+  {
+    "word": "daylight saving",
+    "ipa": "/ˈdeɪlaɪt ˈseɪvɪŋ/",
+    "vi": "giờ mùa hè",
+    "example": "Daylight saving shifts disrupt sleep patterns for sensitive commuters briefly.",
+    "topic": "time"
+  },
+  {
+    "word": "chronological",
+    "ipa": "/ˌkrɒnəˈlɒdʒɪkl/",
+    "vi": "theo thời gian",
+    "example": "Present evidence in chronological order so jurors follow the narrative.",
+    "topic": "time"
+  },
+  {
+    "word": "interval",
+    "ipa": "/ˈɪntəvl/",
+    "vi": "khoảng cách",
+    "example": "Short intervals between study blocks improve retention more than cramming.",
+    "topic": "time"
+  },
+  {
+    "word": "duration",
+    "ipa": "/djʊˈreɪʃn/",
+    "vi": "khoảng thời gian",
+    "example": "Course duration extends when placements require additional supervised hours.",
+    "topic": "time"
+  },
+  {
+    "word": "postpone",
+    "ipa": "/pəˈspəʊn/",
+    "vi": "hoãn",
+    "example": "Organisers postponed the parade due to gale-force winds forecast overnight.",
+    "topic": "time"
+  },
+  {
+    "word": "bring forward",
+    "ipa": "/brɪŋ ˈfɔːwəd/",
+    "vi": "đẩy sớm",
+    "example": "Committee meetings were brought forward to resolve funding before recess.",
+    "topic": "time"
+  },
+  {
+    "word": "elapsed",
+    "ipa": "/ɪˈlæpst/",
+    "vi": "đã trôi qua",
+    "example": "Elapsed time appears onscreen during timed examination sections.",
+    "topic": "time"
+  },
+  {
+    "word": "time-consuming",
+    "ipa": "/taɪm kənˈsjuːmɪŋ/",
+    "vi": "tốn thời gian",
+    "example": "Manual data entry remains time-consuming despite partial automation tools.",
+    "topic": "time"
+  },
+  {
+    "word": "timeframe",
+    "ipa": "/ˈtaɪmfreɪm/",
+    "vi": "khung thời gian",
+    "example": "The renovation timeframe assumes suppliers deliver materials without delay.",
+    "topic": "time"
+  },
+  {
+    "word": "turn back",
+    "ipa": "/tɜːn bæk/",
+    "vi": "lùi giờ",
+    "example": "Clocks turn back in autumn, granting an extra hour of sleep.",
+    "topic": "time"
+  },
+  {
+    "word": "run late",
+    "ipa": "/rʌn leɪt/",
+    "vi": "trễ",
+    "example": "Trains run late when signalling faults cascade across interconnected networks.",
+    "topic": "time"
+  },
+  {
+    "word": "kill time",
+    "ipa": "/kɪl taɪm/",
+    "vi": "giết thời gian",
+    "example": "Travellers kill time reading while awaiting delayed departure gates.",
+    "topic": "time"
+  },
+  {
+    "word": "race against time",
+    "ipa": "/reɪs əˈɡenst taɪm/",
+    "vi": "chạy đua thời gian",
+    "example": "Rescuers raced against time before tide submerged the stranded vehicle.",
+    "topic": "time"
+  },
+  {
+    "word": "in the nick of time",
+    "ipa": "/ɪn ðə nɪk ɒv taɪm/",
+    "vi": "vừa kịp",
+    "example": "Funds arrived in the nick of time to prevent payroll failures.",
+    "topic": "time"
+  },
+  {
+    "word": "around the clock",
+    "ipa": "/əˈraʊnd ðə klɒk/",
+    "vi": "suốt ngày đêm",
+    "example": "Nurses worked around the clock during the influenza surge last winter.",
+    "topic": "time"
+  },
+  {
+    "word": "from time to time",
+    "ipa": "/frɒm taɪm tuː taɪm/",
+    "vi": "thỉnh thoảng",
+    "example": "From time to time, auditors review expenses for unusual patterns.",
+    "topic": "time"
+  },
+  {
+    "word": "ahead of time",
+    "ipa": "/əˈhed ɒv taɪm/",
+    "vi": "sớm hơn dự kiến",
+    "example": "She finished ahead of time and reviewed answers before submitting.",
+    "topic": "time"
+  },
+  {
+    "word": "behind schedule",
+    "ipa": "/bɪˈhaɪnd ˈʃedjuːl/",
+    "vi": "chậm tiến độ",
+    "example": "Construction fell behind schedule after unexpected archaeological discoveries onsite.",
+    "topic": "time"
+  },
+  {
+    "word": "on schedule",
+    "ipa": "/ɒn ˈʃedjuːl/",
+    "vi": "đúng tiến độ",
+    "example": "The rollout stayed on schedule thanks to coordinated testing across regions.",
+    "topic": "time"
+  },
+  {
+    "word": "time slot",
+    "ipa": "/taɪm slɒt/",
+    "vi": "khung giờ",
+    "example": "Choose a time slot that avoids clashes with laboratory sessions.",
+    "topic": "time"
+  },
+  {
+    "word": "stopwatch",
+    "ipa": "/ˈstɒpwɒtʃ/",
+    "vi": "đồng hồ bấm giờ",
+    "example": "Coaches used stopwatches to measure sprint intervals during training.",
+    "topic": "time"
+  },
+  {
+    "word": "hourglass",
+    "ipa": "/ˈaʊəɡlɑːs/",
+    "vi": "đồng hồ cát",
+    "example": "An hourglass motif reminded delegates that negotiation time was finite.",
+    "topic": "time"
+  },
+  {
+    "word": "temporal",
+    "ipa": "/ˈtempərəl/",
+    "vi": "thuộc thời gian",
+    "example": "Temporal patterns in crime data guide where patrols deploy nightly.",
+    "topic": "time"
+  },
+  {
+    "word": "timeless",
+    "ipa": "/ˈtaɪmləs/",
+    "vi": "vượt thời gian",
+    "example": "Timeless design keeps public squares attractive across changing fashion cycles.",
+    "topic": "time"
+  },
+  {
+    "word": "commuter",
+    "ipa": "/kəˈmjuːtə(r)/",
+    "vi": "người đi làm",
+    "example": "Commuters packed carriages despite flexible work policies at firms.",
+    "topic": "trans"
+  },
+  {
+    "word": "congestion",
+    "ipa": "/kənˈdʒestʃən/",
+    "vi": "tắc đường",
+    "example": "Road congestion worsens when schools reopen after holiday breaks.",
+    "topic": "trans"
+  },
+  {
+    "word": "bypass",
+    "ipa": "/ˈbaɪpɑːs/",
+    "vi": "đường vòng",
+    "example": "The new bypass diverted lorries away from the medieval town centre.",
+    "topic": "trans"
+  },
+  {
+    "word": "roundabout",
+    "ipa": "/ˈraʊndəbaʊt/",
+    "vi": "bùng binh",
+    "example": "Confused drivers circled the roundabout twice before finding exits.",
+    "topic": "trans"
+  },
+  {
+    "word": "parking meter",
+    "ipa": "/ˈpɑːkɪŋ ˈmiːtə(r)/",
+    "vi": "đồng hồ đỗ xe",
+    "example": "Parking meters now accept contactless cards instead of coins only.",
+    "topic": "trans"
+  },
+  {
+    "word": "fare",
+    "ipa": "/feə(r)/",
+    "vi": "giá vé",
+    "example": "Bus fares rose after fuel subsidies ended last fiscal quarter.",
+    "topic": "trans"
+  },
+  {
+    "word": "single ticket",
+    "ipa": "/ˈsɪŋɡl ˈtɪkɪt/",
+    "vi": "vé một chiều",
+    "example": "A single ticket costs less than ride-hailing for short hops.",
+    "topic": "trans"
+  },
+  {
+    "word": "return ticket",
+    "ipa": "/rɪˈtɜːn ˈtɪkɪt/",
+    "vi": "vé khứ hồi",
+    "example": "Return tickets expire if the outbound journey is not validated.",
+    "topic": "trans"
+  },
+  {
+    "word": "platform",
+    "ipa": "/ˈplætfɔːm/",
+    "vi": "sân ga",
+    "example": "Announcements echoed across the platform when express services arrived.",
+    "topic": "trans"
+  },
+  {
+    "word": "timetable",
+    "ipa": "/ˈtaɪmteɪbl/",
+    "vi": "lịch tàu/xe",
+    "example": "Revised timetables reflect staffing shortages on rural branch lines.",
+    "topic": "trans"
+  },
+  {
+    "word": "express service",
+    "ipa": "/ɪkˈspres ˈsɜːvɪs/",
+    "vi": "tuyến tốc hành",
+    "example": "Express services skip smaller stations during morning peak periods.",
+    "topic": "trans"
+  },
+  {
+    "word": "interchange",
+    "ipa": "/ˈɪntətʃeɪndʒ/",
+    "vi": "ga trung chuyển",
+    "example": "The interchange links metro lines with suburban tram networks efficiently.",
+    "topic": "trans"
+  },
+  {
+    "word": "pedestrian",
+    "ipa": "/pəˈdestriən/",
+    "vi": "người đi bộ",
+    "example": "Pedestrian crossings were repainted after complaints about faded visibility.",
+    "topic": "trans"
+  },
+  {
+    "word": "cycle lane",
+    "ipa": "/ˈsaɪkl leɪn/",
+    "vi": "làn xe đạp",
+    "example": "Protected cycle lanes encourage commuting without car dependency.",
+    "topic": "trans"
+  },
+  {
+    "word": "e-scooter",
+    "ipa": "/ˈiː ˌskuːtə(r)/",
+    "vi": "xe điện gấp",
+    "example": "E-scooters clutter pavements unless cities enforce designated parking bays.",
+    "topic": "trans"
+  },
+  {
+    "word": "carpool",
+    "ipa": "/ˈkɑːpuːl/",
+    "vi": "đi chung xe",
+    "example": "Carpool schemes reduce emissions along congested commuter corridors daily.",
+    "topic": "trans"
+  },
+  {
+    "word": "rush hour",
+    "ipa": "/rʌʃ aʊə(r)/",
+    "vi": "giờ cao điểm",
+    "example": "Rush hour delays ripple when signalling fails on mainline tracks.",
+    "topic": "trans"
+  },
+  {
+    "word": "roadworks",
+    "ipa": "/ˈrəʊdwɜːks/",
+    "vi": "sửa đường",
+    "example": "Roadworks narrowed lanes, adding twenty minutes to every bus journey.",
+    "topic": "trans"
+  },
+  {
+    "word": "breakdown",
+    "ipa": "/ˈbreɪkdaʊn/",
+    "vi": "hỏng xe",
+    "example": "A breakdown blocked the tunnel until recovery trucks cleared the lane.",
+    "topic": "trans"
+  },
+  {
+    "word": "overtake",
+    "ipa": "/ˌəʊvəˈteɪk/",
+    "vi": "vượt",
+    "example": "Drivers overtook illegally on blind curves despite visible warning signs.",
+    "topic": "trans"
+  },
+  {
+    "word": "pull over",
+    "ipa": "/pʊl ˈəʊvə(r)/",
+    "vi": "tấp vào lề",
+    "example": "Police asked the motorist to pull over for expired registration plates.",
+    "topic": "trans"
+  },
+  {
+    "word": "disembark",
+    "ipa": "/ˌdɪsɪmˈbɑːk/",
+    "vi": "xuống phương tiện",
+    "example": "Passengers disembark quickly when conductors announce the final stop.",
+    "topic": "trans"
+  },
+  {
+    "word": "hop on",
+    "ipa": "/hɒp ɒn/",
+    "vi": "nhảy lên xe",
+    "example": "Tourists hop on trams using contactless cards validated at yellow readers.",
+    "topic": "trans"
+  },
+  {
+    "word": "get on",
+    "ipa": "/ɡet ɒn/",
+    "vi": "lên xe",
+    "example": "Wait for passengers to get off before you get on the bus.",
+    "topic": "trans"
+  },
+  {
+    "word": "get off",
+    "ipa": "/ɡet ɒf/",
+    "vi": "xuống xe",
+    "example": "We got off one stop early to avoid construction noise near home.",
+    "topic": "trans"
+  },
+  {
+    "word": "change trains",
+    "ipa": "/tʃeɪndʒ treɪnz/",
+    "vi": "đổi tàu",
+    "example": "Allow ten minutes to change trains at the central hub station.",
+    "topic": "trans"
+  },
+  {
+    "word": "miss the bus",
+    "ipa": "/mɪs ðə bʌs/",
+    "vi": "lỡ xe",
+    "example": "Missing the bus meant walking twenty minutes in sudden rainfall.",
+    "topic": "trans"
+  },
+  {
+    "word": "traffic jam",
+    "ipa": "/ˈtræfɪk dʒæm/",
+    "vi": "kẹt xe",
+    "example": "A traffic jam trapped lorries carrying perishable produce for hours.",
+    "topic": "trans"
+  },
+  {
+    "word": "speed limit",
+    "ipa": "/spiːd ˈlɪmɪt/",
+    "vi": "giới hạn tốc độ",
+    "example": "Lower speed limits near schools protect children during dismissal times.",
+    "topic": "trans"
+  },
+  {
+    "word": "toll road",
+    "ipa": "/təʊl rəʊd/",
+    "vi": "đường thu phí",
+    "example": "Toll roads fund maintenance yet exclude low-income commuters unfairly.",
+    "topic": "trans"
+  },
+  {
+    "word": "electric vehicle",
+    "ipa": "/ɪˈlektrɪk ˈviːəkl/",
+    "vi": "xe điện",
+    "example": "Electric vehicle chargers multiplied along motorways serving holiday routes.",
+    "topic": "trans"
+  },
+  {
+    "word": "autonomous",
+    "ipa": "/ɔːˈtɒnəməs/",
+    "vi": "tự lái",
+    "example": "Autonomous shuttles pilot limited routes within closed campus environments.",
+    "topic": "trans"
+  },
+  {
+    "word": "punctuality",
+    "ipa": "/ˌpʌŋktʃuˈæləti/",
+    "vi": "đúng giờ",
+    "example": "Punctuality statistics improved after managers published monthly performance tables.",
+    "topic": "trans"
+  },
+  {
+    "word": "accessibility ramp",
+    "ipa": "/əkˌsesəˈbɪləti ræmp/",
+    "vi": "ram dành cho xe lăn",
+    "example": "Accessibility ramps remain steep at stations awaiting refurbishment budgets.",
+    "topic": "trans"
+  },
+  {
+    "word": "last train",
+    "ipa": "/lɑːst treɪn/",
+    "vi": "chuyến cuối",
+    "example": "The last train leaves at midnight, so plan returns accordingly.",
+    "topic": "trans"
+  },
+  {
+    "word": "transport hub",
+    "ipa": "/ˈtrænspɔːt hʌb/",
+    "vi": "trung tâm giao thông",
+    "example": "The transport hub integrates coaches, trains, and metro under one roof.",
+    "topic": "trans"
+  },
+  {
+    "word": "smartphone",
+    "ipa": "/ˈsmɑːtfəʊn/",
+    "vi": "điện thoại thông minh",
+    "example": "Smartphone batteries degrade faster when exposed to extreme heat daily.",
+    "topic": "phone"
+  },
+  {
+    "word": "cellular",
+    "ipa": "/ˈseljələ(r)/",
+    "vi": "di động",
+    "example": "Cellular coverage gaps persist in remote valleys despite new masts.",
+    "topic": "phone"
+  },
+  {
+    "word": "data plan",
+    "ipa": "/ˈdeɪtə plæn/",
+    "vi": "gói dữ liệu",
+    "example": "Students compare data plans before signing lengthy handset contracts.",
+    "topic": "phone"
+  },
+  {
+    "word": "top-up",
+    "ipa": "/tɒp ʌp/",
+    "vi": "nạp tiền",
+    "example": "Top-up vouchers remain popular where mobile banking adoption stays limited.",
+    "topic": "phone"
+  },
+  {
+    "word": "voicemail",
+    "ipa": "/ˈvɔɪsmeɪl/",
+    "vi": "thư thoại",
+    "example": "Voicemail messages were transcribed automatically for users with hearing impairments.",
+    "topic": "phone"
+  },
+  {
+    "word": "caller ID",
+    "ipa": "/ˈkɔːlə aɪ diː/",
+    "vi": "hiển thị số",
+    "example": "Caller ID helps residents ignore persistent scam calls each evening.",
+    "topic": "phone"
+  },
+  {
+    "word": "robo-call",
+    "ipa": "/ˈrəʊbəʊ kɔːl/",
+    "vi": "cuộc gọi tự động",
+    "example": "Robo-calls promoting fake warranties annoy households nationwide weekly.",
+    "topic": "phone"
+  },
+  {
+    "word": "two-factor",
+    "ipa": "/tuː ˈfæktə(r)/",
+    "vi": "xác thực hai lớp",
+    "example": "Two-factor authentication blocked unauthorised access to banking applications.",
+    "topic": "phone"
+  },
+  {
+    "word": "biometric unlock",
+    "ipa": "/ˌbaɪəʊˈmetrɪk ʌnˈlɒk/",
+    "vi": "mở khóa sinh trắc",
+    "example": "Biometric unlock fails when fingers are wet or heavily scarred.",
+    "topic": "phone"
+  },
+  {
+    "word": "screenshot",
+    "ipa": "/ˈskriːnʃɒt/",
+    "vi": "chụp màn hình",
+    "example": "Screenshots preserved evidence before moderators deleted abusive posts.",
+    "topic": "phone"
+  },
+  {
+    "word": "airplane mode",
+    "ipa": "/ˈeəpleɪn məʊd/",
+    "vi": "chế độ máy bay",
+    "example": "Enable airplane mode during flights unless crew authorise connectivity.",
+    "topic": "phone"
+  },
+  {
+    "word": "hotspot",
+    "ipa": "/ˈhɒtspɒt/",
+    "vi": "phát wifi",
+    "example": "Sharing a hotspot drains battery when multiple laptops stream video.",
+    "topic": "phone"
+  },
+  {
+    "word": "bluetooth",
+    "ipa": "/ˈbluːtuːθ/",
+    "vi": "bluetooth",
+    "example": "Bluetooth earbuds disconnect intermittently near crowded microwave ovens.",
+    "topic": "phone"
+  },
+  {
+    "word": "notification",
+    "ipa": "/ˌnəʊtɪfɪˈkeɪʃn/",
+    "vi": "thông báo",
+    "example": "Disable notifications at night to protect sleep from marketing pings.",
+    "topic": "phone"
+  },
+  {
+    "word": "app update",
+    "ipa": "/æp ˈʌpdeɪt/",
+    "vi": "cập nhật app",
+    "example": "App updates patch security flaws discovered by independent researchers.",
+    "topic": "phone"
+  },
+  {
+    "word": "cloud backup",
+    "ipa": "/klaʊd ˈbækʌp/",
+    "vi": "sao lưu đám mây",
+    "example": "Cloud backup saved photos after the handset fell into canal water.",
+    "topic": "phone"
+  },
+  {
+    "word": "screen time",
+    "ipa": "/skriːn taɪm/",
+    "vi": "thời gian màn hình",
+    "example": "Parents negotiated screen time limits during exam preparation months.",
+    "topic": "phone"
+  },
+  {
+    "word": "spam filter",
+    "ipa": "/spæm ˈfɪltə(r)/",
+    "vi": "lọc spam",
+    "example": "Spam filters misclassified urgent invoices sent from new suppliers.",
+    "topic": "phone"
+  },
+  {
+    "word": "video call",
+    "ipa": "/ˈvɪdiəʊ kɔːl/",
+    "vi": "gọi video",
+    "example": "Video calls replaced in-person meetings for distributed research teams.",
+    "topic": "phone"
+  },
+  {
+    "word": "mute",
+    "ipa": "/mjuːt/",
+    "vi": "tắt tiếng",
+    "example": "Please mute microphones when colleagues present detailed financial slides.",
+    "topic": "phone"
+  },
+  {
+    "word": "hang up",
+    "ipa": "/hæŋ ʌp/",
+    "vi": "cúp máy",
+    "example": "She hung up politely after realising the call was a phishing attempt.",
+    "topic": "phone"
+  },
+  {
+    "word": "answer the call",
+    "ipa": "/ˈɑːnsə ðə kɔːl/",
+    "vi": "nhấc máy",
+    "example": "He answered the call immediately when the hospital rang about results.",
+    "topic": "phone"
+  },
+  {
+    "word": "call back",
+    "ipa": "/kɔːl bæk/",
+    "vi": "gọi lại",
+    "example": "Leave a message and engineers will call back within business hours.",
+    "topic": "phone"
+  },
+  {
+    "word": "put through",
+    "ipa": "/pʊt θruː/",
+    "vi": "chuyển máy",
+    "example": "Reception put through the journalist before the press conference began.",
+    "topic": "phone"
+  },
+  {
+    "word": "cut off",
+    "ipa": "/kʌt ɒf/",
+    "vi": "mất sóng",
+    "example": "We were cut off mid-sentence when the train entered the tunnel.",
+    "topic": "phone"
+  },
+  {
+    "word": "run out of data",
+    "ipa": "/rʌn aʊt ɒv ˈdeɪtə/",
+    "vi": "hết dữ liệu",
+    "example": "Commuters ran out of data streaming podcasts during lengthy delays.",
+    "topic": "phone"
+  },
+  {
+    "word": "face recognition",
+    "ipa": "/feɪs ˌrekəɡˈnɪʃn/",
+    "vi": "nhận diện khuôn mặt",
+    "example": "Face recognition unlock raises privacy concerns among civil liberties groups.",
+    "topic": "phone"
+  },
+  {
+    "word": "mobile wallet",
+    "ipa": "/ˈməʊbaɪl ˈwɒlɪt/",
+    "vi": "ví điện tử",
+    "example": "Mobile wallets speed checkout yet exclude users without compatible devices.",
+    "topic": "phone"
+  },
+  {
+    "word": "SIM card",
+    "ipa": "/sɪm kɑːd/",
+    "vi": "thẻ SIM",
+    "example": "Swap the SIM card when travelling to avoid excessive roaming charges.",
+    "topic": "phone"
+  },
+  {
+    "word": "handset",
+    "ipa": "/ˈhændset/",
+    "vi": "máy cầm tay",
+    "example": "Refurbished handsets offer savings while reducing electronic waste volumes.",
+    "topic": "phone"
+  },
+  {
+    "word": "touchscreen",
+    "ipa": "/ˈtʌtʃskriːn/",
+    "vi": "màn cảm ứng",
+    "example": "Cracked touchscreens still respond near edges until replacement arrives.",
+    "topic": "phone"
+  },
+  {
+    "word": "wireless charging",
+    "ipa": "/ˈwaɪələs ˈtʃɑːdʒɪŋ/",
+    "vi": "sạc không dây",
+    "example": "Wireless charging pads heat devices if cases are unusually thick.",
+    "topic": "phone"
+  },
+  {
+    "word": "signal booster",
+    "ipa": "/ˈsɪɡnəl ˈbuːstə(r)/",
+    "vi": "khuếch đại sóng",
+    "example": "Signal boosters help rural clinics transmit records during telehealth sessions.",
+    "topic": "phone"
+  },
+  {
+    "word": "phishing text",
+    "ipa": "/ˈfɪʃɪŋ tekst/",
+    "vi": "tin nhắn lừa đảo",
+    "example": "Phishing texts mimic delivery firms to steal login credentials quickly.",
+    "topic": "phone"
+  },
+  {
+    "word": "digital detox",
+    "ipa": "/ˈdɪdʒɪtl ˈdiːtɒks/",
+    "vi": "cai nghiện số",
+    "example": "Weekend digital detox retreats attract professionals facing chronic burnout.",
+    "topic": "phone"
+  },
+  {
+    "word": "low battery",
+    "ipa": "/ləʊ ˈbætəri/",
+    "vi": "pin yếu",
+    "example": "Low battery warnings appeared before the navigation app finished downloading maps.",
+    "topic": "phone"
+  },
+  {
+    "word": "acquaintance",
+    "ipa": "/əˈkweɪntəns/",
+    "vi": "người quen",
+    "example": "Casual acquaintances became close friends after volunteering together weekly.",
+    "topic": "friend"
+  },
+  {
+    "word": "confidant",
+    "ipa": "/ˈkɒnfɪdænt/",
+    "vi": "bạn tâm giao",
+    "example": "She trusted one confidant with secrets she withheld from colleagues.",
+    "topic": "friend"
+  },
+  {
+    "word": "companionship",
+    "ipa": "/kəmˈpæniənʃɪp/",
+    "vi": "bầu bạn",
+    "example": "Companionship protects elderly residents from isolation during harsh winters.",
+    "topic": "friend"
+  },
+  {
+    "word": "loyalty",
+    "ipa": "/ˈlɔɪəlti/",
+    "vi": "trung thành",
+    "example": "Loyalty matters when friends face public criticism or career setbacks.",
+    "topic": "friend"
+  },
+  {
+    "word": "betrayal",
+    "ipa": "/bɪˈtreɪəl/",
+    "vi": "phản bội",
+    "example": "Betrayal of trust ended a friendship cultivated since primary school.",
+    "topic": "friend"
+  },
+  {
+    "word": "make amends",
+    "ipa": "/meɪk əˈmendz/",
+    "vi": "chuộc lỗi",
+    "example": "They made amends after acknowledging harsh words spoken during stress.",
+    "topic": "friend"
+  },
+  {
+    "word": "fallout",
+    "ipa": "/ˈfɔːlaʊt/",
+    "vi": "mâu thuẫn",
+    "example": "Political fallout strained friendships between activists on opposing sides.",
+    "topic": "friend"
+  },
+  {
+    "word": "peer group",
+    "ipa": "/pɪə ɡruːp/",
+    "vi": "nhóm bạn đồng trang",
+    "example": "Peer groups influence habits ranging from study routines to spending.",
+    "topic": "friend"
+  },
+  {
+    "word": "banter",
+    "ipa": "/ˈbæntə(r)/",
+    "vi": "trêu đùa",
+    "example": "Good-natured banter strengthened bonds during exhausting revision periods.",
+    "topic": "friend"
+  },
+  {
+    "word": "gossip",
+    "ipa": "/ˈɡɒsɪp/",
+    "vi": "tin đồn",
+    "example": "Office gossip spread faster than management could issue clarifications.",
+    "topic": "friend"
+  },
+  {
+    "word": "support network",
+    "ipa": "/səˈpɔːt ˈnetwɜːk/",
+    "vi": "mạng hỗ trợ",
+    "example": "A support network helps graduates navigate first months away from home.",
+    "topic": "friend"
+  },
+  {
+    "word": "housewarming",
+    "ipa": "/ˈhaʊswɔːmɪŋ/",
+    "vi": "tân gia",
+    "example": "Housewarming gifts included plants suited to low-light apartment balconies.",
+    "topic": "friend"
+  },
+  {
+    "word": "get-together",
+    "ipa": "/ɡet təˈɡeðə(r)/",
+    "vi": "tụ họp",
+    "example": "Monthly get-togethers rotated hosts to share cooking responsibilities fairly.",
+    "topic": "friend"
+  },
+  {
+    "word": "catch-up",
+    "ipa": "/kætʃ ʌp/",
+    "vi": "hội họp bạn",
+    "example": "A quick catch-up over tea prevented misunderstandings from festering silently.",
+    "topic": "friend"
+  },
+  {
+    "word": "drift apart",
+    "ipa": "/drɪft əˈpɑːt/",
+    "vi": "xa cách",
+    "example": "University paths caused childhood friends to drift apart gradually.",
+    "topic": "friend"
+  },
+  {
+    "word": "hit it off",
+    "ipa": "/hɪt ɪt ɒf/",
+    "vi": "hợp nhau",
+    "example": "Erasmus students hit it off during orientation despite language barriers.",
+    "topic": "friend"
+  },
+  {
+    "word": "fall out",
+    "ipa": "/fɔːl aʊt/",
+    "vi": "cãi nhau",
+    "example": "They fell out over money lent without written repayment agreements.",
+    "topic": "friend"
+  },
+  {
+    "word": "make up",
+    "ipa": "/meɪk ʌp/",
+    "vi": "làm lành",
+    "example": "Sincere apologies helped them make up after the heated argument.",
+    "topic": "friend"
+  },
+  {
+    "word": "look out for",
+    "ipa": "/lʊk aʊt fɔː(r)/",
+    "vi": "trông chừng",
+    "example": "Flatmates look out for one another during late shifts downtown.",
+    "topic": "friend"
+  },
+  {
+    "word": "stand by",
+    "ipa": "/stænd baɪ/",
+    "vi": "ủng hộ",
+    "example": "True friends stand by you when reputations face unfair online attacks.",
+    "topic": "friend"
+  },
+  {
+    "word": "let down",
+    "ipa": "/let daʊn/",
+    "vi": "làm thất vọng",
+    "example": "Canceling plans repeatedly will let down friends who rearranged schedules.",
+    "topic": "friend"
+  },
+  {
+    "word": "reach out",
+    "ipa": "/riːtʃ aʊt/",
+    "vi": "liên hệ",
+    "example": "Reach out if isolation begins affecting mood or academic performance.",
+    "topic": "friend"
+  },
+  {
+    "word": "keep in touch",
+    "ipa": "/kiːp ɪn tʌtʃ/",
+    "vi": "giữ liên lạc",
+    "example": "Alumni groups help graduates keep in touch across continents cheaply.",
+    "topic": "friend"
+  },
+  {
+    "word": "lose touch",
+    "ipa": "/luːz tʌtʃ/",
+    "vi": "mất liên lạc",
+    "example": "Demanding careers cause people to lose touch despite good intentions.",
+    "topic": "friend"
+  },
+  {
+    "word": "mutual friend",
+    "ipa": "/ˈmjuːtʃuəl frend/",
+    "vi": "bạn chung",
+    "example": "A mutual friend introduced them at the photography exhibition opening.",
+    "topic": "friend"
+  },
+  {
+    "word": "childhood friend",
+    "ipa": "/ˈtʃaɪldhʊd frend/",
+    "vi": "bạn thuở nhỏ",
+    "example": "Childhood friends shared memories unavailable to newer university circles.",
+    "topic": "friend"
+  },
+  {
+    "word": "pen pal",
+    "ipa": "/pen pæl/",
+    "vi": "bạn qua thư",
+    "example": "Pen pal programmes linked pupils across borders before video calls existed.",
+    "topic": "friend"
+  },
+  {
+    "word": "clique",
+    "ipa": "/kliːk/",
+    "vi": "bè phái",
+    "example": "Exclusive cliques discourage newcomers from joining cafeteria tables at lunch.",
+    "topic": "friend"
+  },
+  {
+    "word": "inclusive circle",
+    "ipa": "/ɪnˈkluːsɪv ˈsɜːkl/",
+    "vi": "nhóm hòa nhập",
+    "example": "Inclusive circles welcome exchange students during intimidating first weeks.",
+    "topic": "friend"
+  },
+  {
+    "word": "empathy",
+    "ipa": "/ˈempəθi/",
+    "vi": "thấu cảm",
+    "example": "Empathy helps friends respond thoughtfully rather than offering quick fixes.",
+    "topic": "friend"
+  },
+  {
+    "word": "confide in",
+    "ipa": "/kənˈfaɪd ɪn/",
+    "vi": "tâm sự",
+    "example": "She confided in a roommate about anxiety before final examinations.",
+    "topic": "friend"
+  },
+  {
+    "word": "spill the beans",
+    "ipa": "/spɪl ðə biːnz/",
+    "vi": "tiết lộ bí mật",
+    "example": "Someone spilled the beans about the surprise party plans accidentally.",
+    "topic": "friend"
+  },
+  {
+    "word": "have someone's back",
+    "ipa": "/hæv ˈsʌmwʌnz bæk/",
+    "vi": "che chở",
+    "example": "Teammates had her back when critics questioned her leadership style.",
+    "topic": "friend"
+  },
+  {
+    "word": "socialise",
+    "ipa": "/ˈsəʊʃəlaɪz/",
+    "vi": "giao lưu",
+    "example": "Introverts socialise selectively yet maintain deep long-term friendships.",
+    "topic": "friend"
+  },
+  {
+    "word": "bond over",
+    "ipa": "/bɒnd ˈəʊvə(r)/",
+    "vi": "gắn kết qua",
+    "example": "Volunteers bonded over shared frustration with slow bureaucratic processes.",
+    "topic": "friend"
+  },
+  {
+    "word": "friendship bracelet",
+    "ipa": "/ˈfrendʃɪp ˈbreɪslət/",
+    "vi": "vòng bạn",
+    "example": "Friendship bracelets symbolised promises to stay honest during adolescence.",
+    "topic": "friend"
+  },
+  {
+    "word": "homework",
+    "ipa": "/ˈhəʊmwɜːk/",
+    "vi": "bài tập về nhà",
+    "example": "Homework loads should balance practice with adequate sleep for teenagers.",
+    "topic": "school"
+  },
+  {
+    "word": "coursework",
+    "ipa": "/ˈkɔːswɜːk/",
+    "vi": "bài thực hành",
+    "example": "Coursework deadlines clustered in May, causing stress among sixth-formers.",
+    "topic": "school"
+  },
+  {
+    "word": "exam board",
+    "ipa": "/ɪɡˈzæm bɔːd/",
+    "vi": "hội đồng thi",
+    "example": "Exam boards publish grade boundaries after scripts are fully marked.",
+    "topic": "school"
+  },
+  {
+    "word": "revision",
+    "ipa": "/rɪˈvɪʒn/",
+    "vi": "ôn thi",
+    "example": "Structured revision timetables reduce panic in the weeks before finals.",
+    "topic": "school"
+  },
+  {
+    "word": "cram",
+    "ipa": "/kræm/",
+    "vi": "nhồi nhét",
+    "example": "Students cram less effectively when sleep is sacrificed nightly.",
+    "topic": "school"
+  },
+  {
+    "word": "detention",
+    "ipa": "/dɪˈtenʃn/",
+    "vi": "giữ lại",
+    "example": "Detention sessions follow repeated lateness to morning registration periods.",
+    "topic": "school"
+  },
+  {
+    "word": "assembly",
+    "ipa": "/əˈsembli/",
+    "vi": "chào cờ/họp trường",
+    "example": "Assembly announcements explained new policies on mobile phone usage.",
+    "topic": "school"
+  },
+  {
+    "word": "prefect",
+    "ipa": "/ˈpriːfekt/",
+    "vi": "cán sự",
+    "example": "Prefects monitor corridors and guide younger pupils during transitions.",
+    "topic": "school"
+  },
+  {
+    "word": "headteacher",
+    "ipa": "/hedˈtiːtʃə(r)/",
+    "vi": "hiệu trưởng",
+    "example": "The headteacher addressed bullying after anonymous surveys revealed concerns.",
+    "topic": "school"
+  },
+  {
+    "word": "supply teacher",
+    "ipa": "/səˈplaɪ ˈtiːtʃə(r)/",
+    "vi": "giáo viên thay",
+    "example": "Supply teachers adapt quickly when lesson plans arrive incomplete.",
+    "topic": "school"
+  },
+  {
+    "word": "laboratory",
+    "ipa": "/ləˈbɒrətri/",
+    "vi": "phòng thí nghiệm",
+    "example": "Laboratory coats must be worn during chemistry practical sessions.",
+    "topic": "school"
+  },
+  {
+    "word": "locker",
+    "ipa": "/ˈlɒkə(r)/",
+    "vi": "tủ đồ",
+    "example": "Lockers reduce backpack weight but keys are frequently misplaced.",
+    "topic": "school"
+  },
+  {
+    "word": "canteen",
+    "ipa": "/kænˈtiːn/",
+    "vi": "căng tin",
+    "example": "Canteen menus now label allergens clearly for pupils with restrictions.",
+    "topic": "school"
+  },
+  {
+    "word": "school trip",
+    "ipa": "/skuːl trɪp/",
+    "vi": "đi tham quan",
+    "example": "School trips require consent forms detailing insurance and emergency contacts.",
+    "topic": "school"
+  },
+  {
+    "word": "bullying",
+    "ipa": "/ˈbʊliɪŋ/",
+    "vi": "bắt nạt",
+    "example": "Anti-bullying campaigns train bystanders to report incidents safely.",
+    "topic": "school"
+  },
+  {
+    "word": "peer pressure",
+    "ipa": "/pɪə ˈpreʃə(r)/",
+    "vi": "áp lực bạn bè",
+    "example": "Peer pressure can push pupils toward risky behaviour at parties.",
+    "topic": "school"
+  },
+  {
+    "word": "grade",
+    "ipa": "/ɡreɪd/",
+    "vi": "điểm",
+    "example": "Final grades combine coursework marks with externally assessed examinations.",
+    "topic": "school"
+  },
+  {
+    "word": "report card",
+    "ipa": "/rɪˈpɔːt kɑːd/",
+    "vi": "học bạ",
+    "example": "Report cards highlight effort as well as academic achievement levels.",
+    "topic": "school"
+  },
+  {
+    "word": "parent evening",
+    "ipa": "/ˈpeərənt ˈiːvnɪŋ/",
+    "vi": "họp phụ huynh",
+    "example": "Parent evenings reveal progress beyond numbers on printed summaries.",
+    "topic": "school"
+  },
+  {
+    "word": "uniform policy",
+    "ipa": "/ˈjuːnɪfɔːm ˈpɒləsi/",
+    "vi": "quy định đồng phục",
+    "example": "Uniform policies aim to reduce visible inequality among pupils.",
+    "topic": "school"
+  },
+  {
+    "word": "school gate",
+    "ipa": "/skuːl ɡeɪt/",
+    "vi": "cổng trường",
+    "example": "Volunteers patrol the school gate during busy morning drop-offs.",
+    "topic": "school"
+  },
+  {
+    "word": "playground",
+    "ipa": "/ˈpleɪɡraʊnd/",
+    "vi": "sân chơi",
+    "example": "Playground upgrades included shaded seating for supervisors watching children.",
+    "topic": "school"
+  },
+  {
+    "word": "school bus",
+    "ipa": "/skuːl bʌs/",
+    "vi": "xe đưa đón",
+    "example": "School bus routes were rerouted after housing estates expanded rapidly.",
+    "topic": "school"
+  },
+  {
+    "word": "submit coursework",
+    "ipa": "/səbˈmɪt ˈkɔːswɜːk/",
+    "vi": "nộp bài thực hành",
+    "example": "Coursework must be submitted before the portal locks at midnight.",
+    "topic": "school"
+  },
+  {
+    "word": "hand out",
+    "ipa": "/hænd aʊt/",
+    "vi": "phát tài liệu",
+    "example": "Teachers hand out worksheets after explaining learning objectives clearly.",
+    "topic": "school"
+  },
+  {
+    "word": "muck in",
+    "ipa": "/mʌk ɪn/",
+    "vi": "hỗ trợ chung",
+    "example": "Pupils mucked in decorating halls before the winter concert.",
+    "topic": "school"
+  },
+  {
+    "word": "drop out",
+    "ipa": "/drɒp aʊt/",
+    "vi": "bỏ học",
+    "example": "Support services intervene when pupils risk dropping out early.",
+    "topic": "school"
+  },
+  {
+    "word": "bridge learning gaps",
+    "ipa": "/brɪdʒ ˈlɜːnɪŋ ɡæps/",
+    "vi": "lấp lỗ hổng kiến thức",
+    "example": "Tutoring helps pupils bridge learning gaps after prolonged illness absences.",
+    "topic": "school"
+  },
+  {
+    "word": "skive off",
+    "ipa": "/skaɪv ɒf/",
+    "vi": "trốn học",
+    "example": "Few students skive off once attendance links to examination entry.",
+    "topic": "school"
+  },
+  {
+    "word": "swot up",
+    "ipa": "/swɒt ʌp/",
+    "vi": "cày sách",
+    "example": "She swotted up on formulas the night before the physics test.",
+    "topic": "school"
+  },
+  {
+    "word": "school spirit",
+    "ipa": "/skuːl spɪrɪt/",
+    "vi": "tin thần trường",
+    "example": "School spirit surged during inter-house competitions on sports day.",
+    "topic": "school"
+  },
+  {
+    "word": "extracurricular fair",
+    "ipa": "/ˌekstrəkəˈrɪkjələ feə(r)/",
+    "vi": "hội chợ CLB",
+    "example": "Clubs recruited members during the extracurricular fair in September.",
+    "topic": "school"
+  },
+  {
+    "word": "study hall",
+    "ipa": "/ˈstʌdi hɔːl/",
+    "vi": "phòng tự học",
+    "example": "Study hall supervisors ensure quiet conditions during free periods.",
+    "topic": "school"
+  },
+  {
+    "word": "school governor",
+    "ipa": "/skuːl ˈɡʌvənə(r)/",
+    "vi": "hội đồng trường",
+    "example": "School governors scrutinise budgets and safeguarding policies each term.",
+    "topic": "school"
+  },
+  {
+    "word": "national curriculum",
+    "ipa": "/ˈnæʃnəl kəˈrɪkjələm/",
+    "vi": "chương trình quốc gia",
+    "example": "National curriculum reforms emphasise computational thinking from primary level.",
+    "topic": "school"
+  },
+  {
+    "word": "form tutor",
+    "ipa": "/fɔːm ˈtjuːtə(r)/",
+    "vi": "gvcn",
+    "example": "Form tutors track wellbeing as well as academic progress weekly.",
+    "topic": "school"
+  },
+  {
+    "word": "shift",
+    "ipa": "/ʃɪft/",
+    "vi": "ca làm",
+    "example": "Night shifts disrupt circadian rhythms despite higher hourly wage rates.",
+    "topic": "jobday"
+  },
+  {
+    "word": "overtime",
+    "ipa": "/ˈəʊvətaɪm/",
+    "vi": "tăng ca",
+    "example": "Overtime caps protect workers from exhaustion during peak retail seasons.",
+    "topic": "jobday"
+  },
+  {
+    "word": "payroll",
+    "ipa": "/ˈpeɪrəʊl/",
+    "vi": "bảng lương",
+    "example": "Payroll errors delayed salaries until finance corrected tax codes.",
+    "topic": "jobday"
+  },
+  {
+    "word": "timesheet",
+    "ipa": "/ˈtaɪmʃiːt/",
+    "vi": "bảng chấm công",
+    "example": "Digital timesheets reduce disputes about hours worked remotely.",
+    "topic": "jobday"
+  },
+  {
+    "word": "slog",
+    "ipa": "/slɒɡ/",
+    "vi": "vất vả đi làm",
+    "example": "Many slog through traffic twice daily despite flexible hybrid policies.",
+    "topic": "jobday"
+  },
+  {
+    "word": "briefing",
+    "ipa": "/ˈbriːfɪŋ/",
+    "vi": "họp ngắn",
+    "example": "Morning briefings align teams before customer service lines open.",
+    "topic": "jobday"
+  },
+  {
+    "word": "handover",
+    "ipa": "/ˈhændəʊvə(r)/",
+    "vi": "bàn giao ca",
+    "example": "Clear handover notes prevent duplicated work between rotating shifts.",
+    "topic": "jobday"
+  },
+  {
+    "word": "inbox",
+    "ipa": "/ˈɪnbɒks/",
+    "vi": "hộp thư đến",
+    "example": "An overflowing inbox signals need for prioritisation frameworks.",
+    "topic": "jobday"
+  },
+  {
+    "word": "meeting agenda",
+    "ipa": "/ˈmiːtɪŋ əˈdʒendə/",
+    "vi": "chương trình họp",
+    "example": "Circulate the meeting agenda twenty-four hours before discussions begin.",
+    "topic": "jobday"
+  },
+  {
+    "word": "deadline-driven",
+    "ipa": "/ˈdedlaɪn drɪvn/",
+    "vi": "theo hạn chót",
+    "example": "Deadline-driven cultures reward speed but risk burnout among staff.",
+    "topic": "jobday"
+  },
+  {
+    "word": "toil",
+    "ipa": "/tɔɪl/",
+    "vi": "lao động vất vả",
+    "example": "Physical toil in warehouses demands ergonomic training and regular breaks.",
+    "topic": "jobday"
+  },
+  {
+    "word": "desk job",
+    "ipa": "/desk dʒɒb/",
+    "vi": "việc văn phòng",
+    "example": "Desk jobs contribute to sedentary lifestyles unless movement breaks scheduled.",
+    "topic": "jobday"
+  },
+  {
+    "word": "remote work",
+    "ipa": "/rɪˈməʊt wɜːk/",
+    "vi": "làm từ xa",
+    "example": "Remote work policies reshaped hiring pools beyond commuting distance.",
+    "topic": "jobday"
+  },
+  {
+    "word": "hybrid schedule",
+    "ipa": "/ˈhaɪbrɪd ˈʃedjuːl/",
+    "vi": "lịch kết hợp",
+    "example": "Hybrid schedules require desks booked through internal reservation systems.",
+    "topic": "jobday"
+  },
+  {
+    "word": "stand-up meeting",
+    "ipa": "/stænd ʌp ˈmiːtɪŋ/",
+    "vi": "họp đứng",
+    "example": "Stand-up meetings stay focused when updates remain under two minutes.",
+    "topic": "jobday"
+  },
+  {
+    "word": "coffee break",
+    "ipa": "/ˈkɒfi breɪk/",
+    "vi": "giờ giải lao",
+    "example": "Coffee breaks foster informal mentoring among junior analysts.",
+    "topic": "jobday"
+  },
+  {
+    "word": "lunch break",
+    "ipa": "/lʌntʃ breɪk/",
+    "vi": "nghỉ trưa",
+    "example": "Lunch breaks shrink when managers schedule back-to-back client calls.",
+    "topic": "jobday"
+  },
+  {
+    "word": "clock in",
+    "ipa": "/klɒk ɪn/",
+    "vi": "chấm công vào",
+    "example": "Employees clock in using badges scanned at secure entrance gates.",
+    "topic": "jobday"
+  },
+  {
+    "word": "clock out",
+    "ipa": "/klɒk aʊt/",
+    "vi": "chấm công ra",
+    "example": "Remember to clock out before leaving site after evening shifts.",
+    "topic": "jobday"
+  },
+  {
+    "word": "call in sick",
+    "ipa": "/kɔːl ɪn sɪk/",
+    "vi": "xin nghỉ ốm",
+    "example": "She called in sick after fever spiked overnight before presentation.",
+    "topic": "jobday"
+  },
+  {
+    "word": "work from home",
+    "ipa": "/wɜːk frɒm həʊm/",
+    "vi": "làm ở nhà",
+    "example": "Teams work from home Tuesdays to reduce office overcrowding.",
+    "topic": "jobday"
+  },
+  {
+    "word": "burnout",
+    "ipa": "/ˈbɜːnaʊt/",
+    "vi": "kiệt sức",
+    "example": "Burnout rises when rest days are routinely interrupted by emails.",
+    "topic": "jobday"
+  },
+  {
+    "word": "workload",
+    "ipa": "/ˈwɜːkləʊd/",
+    "vi": "khối lượng việc",
+    "example": "Uneven workload distribution sparked grievances within the department.",
+    "topic": "jobday"
+  },
+  {
+    "word": "delegation",
+    "ipa": "/ˌdelɪˈɡeɪʃn/",
+    "vi": "ủy quyền",
+    "example": "Effective delegation frees managers to focus on strategic planning.",
+    "topic": "jobday"
+  },
+  {
+    "word": "punch in",
+    "ipa": "/pʌntʃ ɪn/",
+    "vi": "bấm giờ",
+    "example": "Warehouse staff punch in at kiosks near locker rooms daily.",
+    "topic": "jobday"
+  },
+  {
+    "word": "knock off",
+    "ipa": "/nɒk ɒf/",
+    "vi": "tan ca",
+    "example": "We knock off early on Fridays during summer flextime schemes.",
+    "topic": "jobday"
+  },
+  {
+    "word": "stay late",
+    "ipa": "/steɪ leɪt/",
+    "vi": "ở muộn",
+    "example": "Analysts stay late during month-end reporting cycles without extra pay.",
+    "topic": "jobday"
+  },
+  {
+    "word": "wrap up",
+    "ipa": "/ræp ʌp/",
+    "vi": "kết thúc",
+    "example": "Let's wrap up the call before the next client joins online.",
+    "topic": "jobday"
+  },
+  {
+    "word": "touch base",
+    "ipa": "/tʌtʃ beɪs/",
+    "vi": "hỏi thăm công việc",
+    "example": "Managers touch base weekly to remove blockers affecting deliverables.",
+    "topic": "jobday"
+  },
+  {
+    "word": "follow up",
+    "ipa": "/ˈfɒləʊ ʌp/",
+    "vi": "theo dõi",
+    "example": "Follow up emails summarise action points after lengthy negotiations.",
+    "topic": "jobday"
+  },
+  {
+    "word": "sign off",
+    "ipa": "/saɪn ɒf/",
+    "vi": "phê duyệt",
+    "example": "Directors sign off budgets only after variance explanations are submitted.",
+    "topic": "jobday"
+  },
+  {
+    "word": "daily grind",
+    "ipa": "/ˈdeɪli ɡraɪnd/",
+    "vi": "công việc lặp lại",
+    "example": "The daily grind eases when tasks rotate among team members.",
+    "topic": "jobday"
+  },
+  {
+    "word": "nine-to-five",
+    "ipa": "/ˌnaɪn tə ˈfaɪv/",
+    "vi": "giờ hành chính",
+    "example": "Nine-to-five routines feel rigid to creatives preferring flexible hours.",
+    "topic": "jobday"
+  },
+  {
+    "word": "work-life balance",
+    "ipa": "/wɜːk laɪf ˈbæləns/",
+    "vi": "cân bằng cuộc sống",
+    "example": "Work-life balance policies include limits on after-hours messaging.",
+    "topic": "jobday"
+  },
+  {
+    "word": "staff canteen",
+    "ipa": "/stɑːf kænˈtiːn/",
+    "vi": "căng tin nhân viên",
+    "example": "The staff canteen subsidises meals to encourage onsite lunch breaks.",
+    "topic": "jobday"
+  },
+  {
+    "word": "ID badge",
+    "ipa": "/ˌaɪ ˈdiː bædʒ/",
+    "vi": "thẻ nhân viên",
+    "example": "ID badges must be visible whenever entering restricted laboratory zones.",
+    "topic": "jobday"
+  },
+  {
+    "word": "savings",
+    "ipa": "/ˈseɪvɪŋz/",
+    "vi": "tiết kiệm",
+    "example": "Emergency savings prevent debt when unexpected medical bills arrive suddenly.",
+    "topic": "money"
+  },
+  {
+    "word": "overdraft",
+    "ipa": "/ˈəʊvədrɑːft/",
+    "vi": "thấu chi",
+    "example": "Overdraft fees accumulate if accounts remain negative beyond grace periods.",
+    "topic": "money"
+  },
+  {
+    "word": "interest rate",
+    "ipa": "/ˈɪntrəst reɪt/",
+    "vi": "lãi suất",
+    "example": "Interest rates influence mortgage affordability for first-time buyers nationwide.",
+    "topic": "money"
+  },
+  {
+    "word": "inflation",
+    "ipa": "/ɪnˈfleɪʃn/",
+    "vi": "lạm phát",
+    "example": "Inflation erodes purchasing power unless wages adjust proportionally each year.",
+    "topic": "money"
+  },
+  {
+    "word": "budget",
+    "ipa": "/ˈbʌdʒɪt/",
+    "vi": "ngân sách",
+    "example": "Monthly budgets track discretionary spending against fixed housing costs.",
+    "topic": "money"
+  },
+  {
+    "word": "expense",
+    "ipa": "/ɪkˈspens/",
+    "vi": "chi phí",
+    "example": "Travel expenses must be itemised before finance approves reimbursement claims.",
+    "topic": "money"
+  },
+  {
+    "word": "proof of purchase",
+    "ipa": "/pruːf ɒv ˈpɜːtʃəs/",
+    "vi": "chứng từ mua hàng",
+    "example": "Keep proof of purchase until tax authorities finish auditing prior fiscal years.",
+    "topic": "money"
+  },
+  {
+    "word": "direct debit",
+    "ipa": "/dəˈrekt ˈdebɪt/",
+    "vi": "trích nợ tự động",
+    "example": "Direct debits pay utilities automatically, reducing missed payment penalties.",
+    "topic": "money"
+  },
+  {
+    "word": "standing order",
+    "ipa": "/ˈstændɪŋ ˈɔːdə(r)/",
+    "vi": "lệnh chuyển cố định",
+    "example": "Standing orders transfer rent on fixed dates regardless of bank holidays.",
+    "topic": "money"
+  },
+  {
+    "word": "contactless",
+    "ipa": "/ˈkɒntæktləs/",
+    "vi": "chạm thanh toán",
+    "example": "Contactless limits increased, encouraging tap payments for small purchases.",
+    "topic": "money"
+  },
+  {
+    "word": "chip and PIN",
+    "ipa": "/tʃɪp ænd pɪn/",
+    "vi": "chip và mã PIN",
+    "example": "Chip and PIN cards reduced counterfeit fraud at point-of-sale terminals.",
+    "topic": "money"
+  },
+  {
+    "word": "counterfeit note",
+    "ipa": "/ˈkaʊntəfɪt nəʊt/",
+    "vi": "tiền giả",
+    "example": "Retailers train staff to detect counterfeit notes using ultraviolet pens.",
+    "topic": "money"
+  },
+  {
+    "word": "currency exchange",
+    "ipa": "/ˈkʌrənsi ɪksˈtʃeɪndʒ/",
+    "vi": "đổi tiền",
+    "example": "Airport currency exchange rates are often worse than downtown bureaux.",
+    "topic": "money"
+  },
+  {
+    "word": "pocket money",
+    "ipa": "/ˈpɒkɪt ˈmʌni/",
+    "vi": "tiền tiêu vặt",
+    "example": "Pocket money teaches budgeting when parents discuss needs versus wants.",
+    "topic": "money"
+  },
+  {
+    "word": "scholarship fund",
+    "ipa": "/ˈskɒləʃɪp fʌnd/",
+    "vi": "quỹ học bổng",
+    "example": "Scholarship funds support students whose families lack savings for tuition.",
+    "topic": "money"
+  },
+  {
+    "word": "loan repayment",
+    "ipa": "/ləʊn rɪˈpeɪmənt/",
+    "vi": "trả nợ",
+    "example": "Loan repayment holidays ended, resuming deductions from graduate salaries.",
+    "topic": "money"
+  },
+  {
+    "word": "credit score",
+    "ipa": "/ˈkredɪt skɔː(r)/",
+    "vi": "điểm tín dụng",
+    "example": "Credit scores improve when bills are paid consistently before due dates.",
+    "topic": "money"
+  },
+  {
+    "word": "bank statement",
+    "ipa": "/bæŋk ˈsteɪtmənt/",
+    "vi": "sao kê",
+    "example": "Bank statements reveal subscriptions users forgot to cancel months ago.",
+    "topic": "money"
+  },
+  {
+    "word": "ATM fee",
+    "ipa": "/ˌeɪ tiː ˈem fiː/",
+    "vi": "phí rút tiền",
+    "example": "ATM fees abroad stack up unless accounts offer fee-free withdrawals.",
+    "topic": "money"
+  },
+  {
+    "word": "tighten one's belt",
+    "ipa": "/ˈtaɪtn wʌnz belt/",
+    "vi": "thắt lưng buộc bụng",
+    "example": "Households tightened belts after energy prices doubled within one winter.",
+    "topic": "money"
+  },
+  {
+    "word": "save up for",
+    "ipa": "/seɪv ʌp fɔː(r)/",
+    "vi": "tiết kiệm để",
+    "example": "She saved up for months before replacing her unreliable laptop.",
+    "topic": "money"
+  },
+  {
+    "word": "pay off",
+    "ipa": "/peɪ ɒf/",
+    "vi": "trả hết nợ",
+    "example": "They paid off credit cards before applying for a mortgage.",
+    "topic": "money"
+  },
+  {
+    "word": "run up debts",
+    "ipa": "/rʌn ʌp dets/",
+    "vi": "lãng phí thành nợ",
+    "example": "Students run up debts when living costs exceed maintenance loan amounts.",
+    "topic": "money"
+  },
+  {
+    "word": "break even",
+    "ipa": "/breɪk ˈiːvn/",
+    "vi": "hòa vốn",
+    "example": "Small cafés break even only after loyal regulars return post-renovation.",
+    "topic": "money"
+  },
+  {
+    "word": "rip off",
+    "ipa": "/rɪp ɒf/",
+    "vi": "chặt chém",
+    "example": "Tourists felt ripped off by taxi meters taking longer scenic routes.",
+    "topic": "money"
+  },
+  {
+    "word": "stingy",
+    "ipa": "/ˈstɪndʒi/",
+    "vi": "keo kiệt",
+    "example": "Being stingy with tips damages reputations among service staff networks.",
+    "topic": "money"
+  },
+  {
+    "word": "generous",
+    "ipa": "/ˈdʒenərəs/",
+    "vi": "hào phóng",
+    "example": "Generous donors matched public funding for the community library extension.",
+    "topic": "money"
+  },
+  {
+    "word": "affluent",
+    "ipa": "/ˈæfluənt/",
+    "vi": "giàu có",
+    "example": "Affluent districts show higher rates of electric vehicle ownership.",
+    "topic": "money"
+  },
+  {
+    "word": "hard-up",
+    "ipa": "/hɑːd ʌp/",
+    "vi": "túng quẫn",
+    "example": "Hard-up families prioritise heating over non-essential subscription services.",
+    "topic": "money"
+  },
+  {
+    "word": "financial literacy",
+    "ipa": "/faɪˈnænʃl ˈlɪtərəsi/",
+    "vi": "hiểu biết tài chính",
+    "example": "Financial literacy courses reduce vulnerability to predatory lending schemes.",
+    "topic": "money"
+  },
+  {
+    "word": "money laundering",
+    "ipa": "/ˈmʌni ˈlɔːndərɪŋ/",
+    "vi": "rửa tiền",
+    "example": "Banks monitor transactions to detect patterns suggesting money laundering.",
+    "topic": "money"
+  },
+  {
+    "word": "tax refund",
+    "ipa": "/tæks ˈriːfʌnd/",
+    "vi": "hoàn thuế",
+    "example": "Tax refunds arrive weeks after online self-assessment submissions are filed.",
+    "topic": "money"
+  },
+  {
+    "word": "cash flow",
+    "ipa": "/kæʃ fləʊ/",
+    "vi": "dòng tiền",
+    "example": "Seasonal businesses struggle when cash flow dips between peak months.",
+    "topic": "money"
+  },
+  {
+    "word": "price hike",
+    "ipa": "/praɪs haɪk/",
+    "vi": "tăng giá",
+    "example": "Price hikes on staples sparked protests outside parliament buildings.",
+    "topic": "money"
+  },
+  {
+    "word": "cost of living",
+    "ipa": "/kɒst ɒv ˈlɪvɪŋ/",
+    "vi": "chi phí sinh hoạt",
+    "example": "Rising cost of living pressures wages negotiations across multiple sectors.",
+    "topic": "money"
+  },
+  {
+    "word": "nest egg",
+    "ipa": "/nest eɡ/",
+    "vi": "quỹ dự phòng",
+    "example": "A modest nest egg funded relocation when employment contracts ended abruptly.",
+    "topic": "money"
+  },
+  {
+    "word": "procession",
+    "ipa": "/prəˈseʃn/",
+    "vi": "diễu hành",
+    "example": "The procession wound through streets lined with lanterns and drummers.",
+    "topic": "fest"
+  },
+  {
+    "word": "firework",
+    "ipa": "/ˈfaɪəwɜːk/",
+    "vi": "pháo hoa",
+    "example": "Firework displays were cancelled due to drought-induced fire risk warnings.",
+    "topic": "fest"
+  },
+  {
+    "word": "carnival",
+    "ipa": "/ˈkɑːnɪvl/",
+    "vi": "lễ hội carnival",
+    "example": "Carnival costumes reflect regional history and indigenous craft traditions.",
+    "topic": "fest"
+  },
+  {
+    "word": "parade",
+    "ipa": "/pəˈreɪd/",
+    "vi": "diễu binh",
+    "example": "Veterans led the parade while crowds applauded from rain-soaked pavements.",
+    "topic": "fest"
+  },
+  {
+    "word": "ritual",
+    "ipa": "/ˈrɪtʃuəl/",
+    "vi": "nghi lễ",
+    "example": "Ancient rituals persist despite modern commercialisation of harvest festivals.",
+    "topic": "fest"
+  },
+  {
+    "word": "offering",
+    "ipa": "/ˈɒfərɪŋ/",
+    "vi": "lễ vật",
+    "example": "Families placed offerings at altars before communal feasting began.",
+    "topic": "fest"
+  },
+  {
+    "word": "feast",
+    "ipa": "/fiːst/",
+    "vi": "tiệc lớn",
+    "example": "A shared feast strengthened community ties after months of isolation.",
+    "topic": "fest"
+  },
+  {
+    "word": "religious fast",
+    "ipa": "/rɪˈlɪdʒəs fɑːst/",
+    "vi": "nhịn ăn tôn giáo",
+    "example": "Religious fasts during holy months emphasise reflection over conspicuous consumption.",
+    "topic": "fest"
+  },
+  {
+    "word": "pilgrimage",
+    "ipa": "/ˈpɪlɡrɪmɪdʒ/",
+    "vi": "hành hương",
+    "example": "Pilgrimage routes generate income yet strain fragile historic infrastructure.",
+    "topic": "fest"
+  },
+  {
+    "word": "commemoration",
+    "ipa": "/kəˌmeməˈreɪʃn/",
+    "vi": "tưởng niệm",
+    "example": "Commemoration events honour victims while educating younger generations.",
+    "topic": "fest"
+  },
+  {
+    "word": "national holiday",
+    "ipa": "/ˈnæʃnəl ˈhɒlədeɪ/",
+    "vi": "ngày lễ quốc gia",
+    "example": "National holidays close banks, delaying international wire transfers briefly.",
+    "topic": "fest"
+  },
+  {
+    "word": "public holiday",
+    "ipa": "/ˈpʌblɪk ˈhɒlədeɪ/",
+    "vi": "ngày nghỉ công cộng",
+    "example": "Public holidays boost domestic tourism when weather cooperates unexpectedly.",
+    "topic": "fest"
+  },
+  {
+    "word": "lantern",
+    "ipa": "/ˈlæntən/",
+    "vi": "đèn lồng",
+    "example": "Lantern festivals illuminate rivers, drawing photographers from neighbouring cities.",
+    "topic": "fest"
+  },
+  {
+    "word": "dragon dance",
+    "ipa": "/ˈdræɡən dɑːns/",
+    "vi": "múa rồng",
+    "example": "Dragon dance troupes rehearse coordination weeks before lunar new year.",
+    "topic": "fest"
+  },
+  {
+    "word": "street fair",
+    "ipa": "/striːt feə(r)/",
+    "vi": "hội chợ đường phố",
+    "example": "Street fairs showcase artisans selling pottery, textiles, and spiced snacks.",
+    "topic": "fest"
+  },
+  {
+    "word": "folk music",
+    "ipa": "/fəʊk ˈmjuːzɪk/",
+    "vi": "nhạc dân gian",
+    "example": "Folk music stages preserve dialects threatened by homogenised pop playlists.",
+    "topic": "fest"
+  },
+  {
+    "word": "costume",
+    "ipa": "/ˈkɒstjuːm/",
+    "vi": "trang phục lễ",
+    "example": "Elaborate costumes require volunteers to repair sequins between performances.",
+    "topic": "fest"
+  },
+  {
+    "word": "masquerade",
+    "ipa": "/ˌmæskəˈreɪd/",
+    "vi": "hóa trang",
+    "example": "Masquerade balls blend charity fundraising with theatrical entertainment.",
+    "topic": "fest"
+  },
+  {
+    "word": "toast",
+    "ipa": "/təʊst/",
+    "vi": "nâng ly",
+    "example": "Guests raised a toast to peace before the midnight countdown.",
+    "topic": "fest"
+  },
+  {
+    "word": "reveller",
+    "ipa": "/ˈrevlə(r)/",
+    "vi": "người vui chơi",
+    "example": "Revellers dispersed calmly when organisers closed bars at curfew.",
+    "topic": "fest"
+  },
+  {
+    "word": "countdown",
+    "ipa": "/ˈkaʊntdaʊn/",
+    "vi": "đếm ngược",
+    "example": "The countdown echoed across squares linked by giant public screens.",
+    "topic": "fest"
+  },
+  {
+    "word": "tradition",
+    "ipa": "/trəˈdɪʃn/",
+    "vi": "truyền thống",
+    "example": "Tradition evolves when diaspora communities adapt recipes abroad.",
+    "topic": "fest"
+  },
+  {
+    "word": "heritage",
+    "ipa": "/ˈherɪtɪdʒ/",
+    "vi": "di sản",
+    "example": "UNESCO heritage status increases visitors during annual cultural festivals.",
+    "topic": "fest"
+  },
+  {
+    "word": "processional route",
+    "ipa": "/prəˈseʃənl ruːt/",
+    "vi": "lộ trình diễu hành",
+    "example": "Police closed processional routes hours before ceremonial chariots departed.",
+    "topic": "fest"
+  },
+  {
+    "word": "light up",
+    "ipa": "/laɪt ʌp/",
+    "vi": "thắp sáng",
+    "example": "Monuments light up in national colours during independence celebrations.",
+    "topic": "fest"
+  },
+  {
+    "word": "wear traditional dress",
+    "ipa": "/weə trəˈdɪʃnəl dres/",
+    "vi": "mặc trang phục truyền thống",
+    "example": "Children wear traditional dress for parades requiring weeks of parental sewing.",
+    "topic": "fest"
+  },
+  {
+    "word": "take part",
+    "ipa": "/teɪk pɑːt/",
+    "vi": "tham gia",
+    "example": "Tourists were invited to take part in dances after brief friendly tutorials.",
+    "topic": "fest"
+  },
+  {
+    "word": "mark the occasion",
+    "ipa": "/mɑːk ði əˈkeɪʒn/",
+    "vi": "kỷ niệm",
+    "example": "Communities mark the occasion with tree plantings rather than fireworks.",
+    "topic": "fest"
+  },
+  {
+    "word": "public gathering",
+    "ipa": "/ˈpʌblɪk ˈɡæðərɪŋ/",
+    "vi": "tụ họp công cộng",
+    "example": "Public gatherings require permits when attendance may exceed safety limits.",
+    "topic": "fest"
+  },
+  {
+    "word": "seasonal festival",
+    "ipa": "/ˈsiːzənl ˈfestɪvl/",
+    "vi": "lễ theo mùa",
+    "example": "Seasonal festivals align with planting cycles in agricultural regions.",
+    "topic": "fest"
+  },
+  {
+    "word": "religious festival",
+    "ipa": "/rɪˈlɪdʒəs ˈfestɪvl/",
+    "vi": "lễ tôn giáo",
+    "example": "Religious festivals encourage charity drives benefiting local shelters.",
+    "topic": "fest"
+  },
+  {
+    "word": "cultural exchange",
+    "ipa": "/ˈkʌltʃərəl ɪksˈtʃeɪndʒ/",
+    "vi": "giao lưu văn hóa",
+    "example": "Cultural exchange programmes invite performers to host reciprocal visits.",
+    "topic": "fest"
+  },
+  {
+    "word": "festival stall",
+    "ipa": "/ˈfestɪvl stɔːl/",
+    "vi": "gian hàng lễ hội",
+    "example": "Festival stalls sold handmade soaps supporting women's cooperatives.",
+    "topic": "fest"
+  },
+  {
+    "word": "festival chorus",
+    "ipa": "/ˈfestɪvl ˈkɔːrəs/",
+    "vi": "hợp xướng lễ hội",
+    "example": "Festival choruses rehearsed hymns for the cathedral anniversary service.",
+    "topic": "fest"
+  },
+  {
+    "word": "sparkler",
+    "ipa": "/ˈspɑːklə(r)/",
+    "vi": "pháo sáng",
+    "example": "Sparklers delight children yet burn hot enough to require supervision.",
+    "topic": "fest"
+  },
+  {
+    "word": "festive mood",
+    "ipa": "/ˈfestɪv muːd/",
+    "vi": "không khí lễ hội",
+    "example": "Festive mood returned cautiously after years of pandemic restrictions.",
+    "topic": "fest"
+  },
+  {
+    "word": "farmland",
+    "ipa": "/ˈfɑːmlænd/",
+    "vi": "đất nông nghiệp",
+    "example": "Farmland prices rose as investors sought alternatives to urban property.",
+    "topic": "rural"
+  },
+  {
+    "word": "pasture",
+    "ipa": "/ˈpɑːstʃə(r)/",
+    "vi": "đồng cỏ",
+    "example": "Cattle grazed on pasture restored through native seed planting schemes.",
+    "topic": "rural"
+  },
+  {
+    "word": "barn",
+    "ipa": "/bɑːn/",
+    "vi": "chuồng/kho",
+    "example": "The barn stored hay bales stacked high before winter feeding began.",
+    "topic": "rural"
+  },
+  {
+    "word": "tractor",
+    "ipa": "/ˈtræktə(r)/",
+    "vi": "máy kéo",
+    "example": "Tractors navigate muddy lanes after storms saturate unpaved farm tracks.",
+    "topic": "rural"
+  },
+  {
+    "word": "harvest",
+    "ipa": "/ˈhɑːvɪst/",
+    "vi": "mùa gặt",
+    "example": "Harvest delays threaten profits when rains arrive earlier each decade.",
+    "topic": "rural"
+  },
+  {
+    "word": "irrigation",
+    "ipa": "/ˌɪrɪˈɡeɪʃn/",
+    "vi": "tưới tiêu",
+    "example": "Irrigation canals silt up unless communities fund regular dredging work.",
+    "topic": "rural"
+  },
+  {
+    "word": "village hall",
+    "ipa": "/ˈvɪlɪdʒ hɔːl/",
+    "vi": "nhà văn hóa",
+    "example": "Village halls host polling stations during national election days.",
+    "topic": "rural"
+  },
+  {
+    "word": "country lane",
+    "ipa": "/ˈkʌntri leɪn/",
+    "vi": "đường làng",
+    "example": "Country lanes flood quickly because drainage ditches remain unmaintained.",
+    "topic": "rural"
+  },
+  {
+    "word": "hedgerow",
+    "ipa": "/ˈhedʒrəʊ/",
+    "vi": "hàng rào cây",
+    "example": "Hedgerows shelter birds threatened by intensive monoculture farming.",
+    "topic": "rural"
+  },
+  {
+    "word": "orchard",
+    "ipa": "/ˈɔːtʃəd/",
+    "vi": "vườn cây ăn quả",
+    "example": "Orchard owners diversify income through agritourism and cider tastings.",
+    "topic": "rural"
+  },
+  {
+    "word": "livestock",
+    "ipa": "/ˈlaɪvstɒk/",
+    "vi": "gia súc",
+    "example": "Livestock markets enforce biosecurity after outbreaks in neighbouring counties.",
+    "topic": "rural"
+  },
+  {
+    "word": "shepherd",
+    "ipa": "/ˈʃepəd/",
+    "vi": "người chăn cừu",
+    "example": "Shepherds use dogs trained to respond to whistle commands across hills.",
+    "topic": "rural"
+  },
+  {
+    "word": "rural broadband",
+    "ipa": "/ˈrʊərəl ˈbrɔːdbænd/",
+    "vi": "internet nông thôn",
+    "example": "Rural broadband gaps hinder remote schooling and telehealth consultations.",
+    "topic": "rural"
+  },
+  {
+    "word": "depopulation",
+    "ipa": "/diːˌpɒpjuˈleɪʃn/",
+    "vi": "giảm dân số",
+    "example": "Depopulation closes village shops when younger residents migrate cityward.",
+    "topic": "rural"
+  },
+  {
+    "word": "agritourism",
+    "ipa": "/ˈæɡrɪˌtʊərɪzəm/",
+    "vi": "du lịch nông trại",
+    "example": "Agritourism invites families to pick fruit while learning sustainable practices.",
+    "topic": "rural"
+  },
+  {
+    "word": "farm shop",
+    "ipa": "/fɑːm ʃɒp/",
+    "vi": "cửa hàng nông trại",
+    "example": "Farm shops sell produce harvested hours before market opening.",
+    "topic": "rural"
+  },
+  {
+    "word": "crop rotation",
+    "ipa": "/krɒp rəʊˈteɪʃn/",
+    "vi": "luân canh",
+    "example": "Crop rotation restores soil nutrients depleted by repeated single-crop planting.",
+    "topic": "rural"
+  },
+  {
+    "word": "organic farm",
+    "ipa": "/ɔːˈɡænɪk fɑːm/",
+    "vi": "trang trại hữu cơ",
+    "example": "Organic farms avoid synthetic pesticides yet face higher labour costs.",
+    "topic": "rural"
+  },
+  {
+    "word": "rural clinic",
+    "ipa": "/ˈrʊərəl ˈklɪnɪk/",
+    "vi": "trạm y tế",
+    "example": "Rural clinics rely on visiting specialists when full-time staff unavailable.",
+    "topic": "rural"
+  },
+  {
+    "word": "post office",
+    "ipa": "/pəʊst ˈɒfɪs/",
+    "vi": "bưu điện",
+    "example": "Village post offices double as social hubs for elderly residents.",
+    "topic": "rural"
+  },
+  {
+    "word": "thatched roof",
+    "ipa": "/θætʃt ruːf/",
+    "vi": "mái rơm",
+    "example": "Thatched roofs require skilled craftsmen increasingly scarce in modern counties.",
+    "topic": "rural"
+  },
+  {
+    "word": "countryside code",
+    "ipa": "/ˈkʌntrisaɪd kəʊd/",
+    "vi": "quy tắc nông thôn",
+    "example": "The countryside code asks walkers to close gates behind them always.",
+    "topic": "rural"
+  },
+  {
+    "word": "milestone",
+    "ipa": "/ˈmaɪlstəʊn/",
+    "vi": "cột mốc đường",
+    "example": "Ancient milestones marked distances before digital navigation became universal.",
+    "topic": "rural"
+  },
+  {
+    "word": "plough",
+    "ipa": "/plaʊ/",
+    "vi": "cày",
+    "example": "Farmers plough fields after frost breaks heavy clay soils naturally.",
+    "topic": "rural"
+  },
+  {
+    "word": "sow",
+    "ipa": "/səʊ/",
+    "vi": "gieo hạt",
+    "example": "They sow wheat early to capture spring moisture before summer heat.",
+    "topic": "rural"
+  },
+  {
+    "word": "reap",
+    "ipa": "/riːp/",
+    "vi": "gặt hái",
+    "example": "Communities reap benefits when cooperatives negotiate fair milk prices collectively.",
+    "topic": "rural"
+  },
+  {
+    "word": "milk churn",
+    "ipa": "/mɪlk tʃɜːn/",
+    "vi": "thùng sữa",
+    "example": "Old milk churns decorate cafés celebrating dairy heritage tourism routes.",
+    "topic": "rural"
+  },
+  {
+    "word": "rural poverty",
+    "ipa": "/ˈrʊərəl ˈpɒvəti/",
+    "vi": "nghèo nông thôn",
+    "example": "Rural poverty persists where public transport links remain infrequent.",
+    "topic": "rural"
+  },
+  {
+    "word": "gentrification",
+    "ipa": "/ˌdʒentrɪfɪˈkeɪʃn/",
+    "vi": "đô thị hóa vùng quê",
+    "example": "Gentrification raises rents, displacing families who worked local land generations.",
+    "topic": "rural"
+  },
+  {
+    "word": "get away from it all",
+    "ipa": "/ɡet əˈweɪ frɒm ɪt ɔːl/",
+    "vi": "trốn thành phố",
+    "example": "Weekend cottages help city dwellers get away from it all briefly.",
+    "topic": "rural"
+  },
+  {
+    "word": "till the soil",
+    "ipa": "/tɪl ðə sɔɪl/",
+    "vi": "làm đất",
+    "example": "Volunteers till the soil for community gardens supplying food banks.",
+    "topic": "rural"
+  },
+  {
+    "word": "flock",
+    "ipa": "/flɒk/",
+    "vi": "đàn (thú)",
+    "example": "A flock of sheep blocked the lane until the dog guided them.",
+    "topic": "rural"
+  },
+  {
+    "word": "rural electrification",
+    "ipa": "/ˌrʊərəl ɪˌlektrɪfɪˈkeɪʃn/",
+    "vi": "điện khí hóa nông thôn",
+    "example": "Rural electrification projects lag behind urban grid modernisation timelines.",
+    "topic": "rural"
+  },
+  {
+    "word": "village green",
+    "ipa": "/ˈvɪlɪdʒ ɡriːn/",
+    "vi": "bãi cỏ làng",
+    "example": "Village greens host cricket matches preserving leisurely summer traditions.",
+    "topic": "rural"
+  },
+  {
+    "word": "country dweller",
+    "ipa": "/ˈkʌntri dwelə(r)/",
+    "vi": "dân quê",
+    "example": "Country dwellers often commute further than urban residents expect.",
+    "topic": "rural"
+  },
+  {
+    "word": "rural postcode",
+    "ipa": "/ˈrʊərəl ˈpəʊstkəʊd/",
+    "vi": "mã bưu điện nông thôn",
+    "example": "Couriers struggle with rural postcodes lacking precise satellite navigation pins.",
+    "topic": "rural"
+  },
+  {
+    "word": "veterinary",
+    "ipa": "/ˈvetnri/",
+    "vi": "thú y",
+    "example": "Veterinary clinics triage emergencies when multiple pets arrive simultaneously.",
+    "topic": "pet"
+  },
+  {
+    "word": "vaccination",
+    "ipa": "/ˌvæksɪˈneɪʃn/",
+    "vi": "tiêm phòng",
+    "example": "Vaccination records are required before boarding kennels accept holiday stays.",
+    "topic": "pet"
+  },
+  {
+    "word": "microchip",
+    "ipa": "/ˈmaɪkrəʊtʃɪp/",
+    "vi": "chip định danh",
+    "example": "Microchips reunite lost cats with owners scanning databases nationwide.",
+    "topic": "pet"
+  },
+  {
+    "word": "neuter",
+    "ipa": "/ˈnjuːtə(r)/",
+    "vi": "triệt sản",
+    "example": "Campaigns encourage owners to neuter pets reducing stray populations humanely.",
+    "topic": "pet"
+  },
+  {
+    "word": "grooming",
+    "ipa": "/ˈɡruːmɪŋ/",
+    "vi": "chải lông",
+    "example": "Regular grooming prevents matting in long-haired breeds during humid summers.",
+    "topic": "pet"
+  },
+  {
+    "word": "kennel",
+    "ipa": "/ˈkenl/",
+    "vi": "chuồng chó",
+    "example": "Kennels disinfect runs between guests to limit contagious kennel cough spread.",
+    "topic": "pet"
+  },
+  {
+    "word": "leash",
+    "ipa": "/liːʃ/",
+    "vi": "dây dắt",
+    "example": "City bylaws require leashes near roads protecting both pets and cyclists.",
+    "topic": "pet"
+  },
+  {
+    "word": "litter box",
+    "ipa": "/ˈlɪtə bɒks/",
+    "vi": "khay cát mèo",
+    "example": "Litter boxes need frequent cleaning to prevent odours in small flats.",
+    "topic": "pet"
+  },
+  {
+    "word": "aquarium",
+    "ipa": "/əˈkweəriəm/",
+    "vi": "bể cá",
+    "example": "Aquarium filters must cycle properly before introducing sensitive tropical fish.",
+    "topic": "pet"
+  },
+  {
+    "word": "hamster wheel",
+    "ipa": "/ˈhæmstə wiːl/",
+    "vi": "bánh xe hamster",
+    "example": "Hamster wheels provide exercise when cages lack supervised roaming time.",
+    "topic": "pet"
+  },
+  {
+    "word": "rescue shelter",
+    "ipa": "/ˈreskjuː ʃeltə(r)/",
+    "vi": "trại cứu hộ",
+    "example": "Rescue shelters screen adopters to prevent impulse returns after holidays.",
+    "topic": "pet"
+  },
+  {
+    "word": "adoption fee",
+    "ipa": "/əˈdɒpʃn fiː/",
+    "vi": "phí nhận nuôi",
+    "example": "Adoption fees fund vaccinations for animals awaiting permanent homes.",
+    "topic": "pet"
+  },
+  {
+    "word": "pedigree",
+    "ipa": "/ˈpedɪɡri/",
+    "vi": "dòng thuần",
+    "example": "Pedigree certificates increase prices yet do not guarantee temperament suitability.",
+    "topic": "pet"
+  },
+  {
+    "word": "stray",
+    "ipa": "/streɪ/",
+    "vi": "lang thang",
+    "example": "Stray dogs congregate near markets until charities organise trap-neuter programmes.",
+    "topic": "pet"
+  },
+  {
+    "word": "companion animal",
+    "ipa": "/kəmˈpæniən ˈænɪml/",
+    "vi": "thú cưng đồng hành",
+    "example": "Companion animals alleviate loneliness among isolated elderly apartment residents.",
+    "topic": "pet"
+  },
+  {
+    "word": "therapy dog",
+    "ipa": "/ˈθerəpi dɒɡ/",
+    "vi": "chó trị liệu",
+    "example": "Therapy dogs visit wards where policies permit controlled animal interactions.",
+    "topic": "pet"
+  },
+  {
+    "word": "obedience training",
+    "ipa": "/əˈbiːdiəns ˈtreɪnɪŋ/",
+    "vi": "huấn luyện",
+    "example": "Obedience training reduces anxiety when dogs encounter crowded public transport.",
+    "topic": "pet"
+  },
+  {
+    "word": "pet insurance",
+    "ipa": "/pet ɪnˈʃʊərəns/",
+    "vi": "bảo hiểm thú cưng",
+    "example": "Pet insurance covers surgery costs that otherwise force heartbreaking decisions.",
+    "topic": "pet"
+  },
+  {
+    "word": "dietary requirement",
+    "ipa": "/ˈdaɪətri rɪˈkwaɪəmənt/",
+    "vi": "khẩu phần riêng",
+    "example": "Dietary requirements for rabbits include unlimited hay and fresh water.",
+    "topic": "pet"
+  },
+  {
+    "word": "flea treatment",
+    "ipa": "/fliː ˈtriːtmənt/",
+    "vi": "trị bọ chét",
+    "example": "Flea treatments protect sofas when infestations spread from visiting pets.",
+    "topic": "pet"
+  },
+  {
+    "word": "walk the dog",
+    "ipa": "/wɔːk ðə dɒɡ/",
+    "vi": "dắt chó đi",
+    "example": "Neighbours walk the dog when owners work double shifts weekly.",
+    "topic": "pet"
+  },
+  {
+    "word": "feed the cat",
+    "ipa": "/fiːd ðə kæt/",
+    "vi": "cho mèo ăn",
+    "example": "Automatic feeders help feed the cat during short business trips.",
+    "topic": "pet"
+  },
+  {
+    "word": "clean out",
+    "ipa": "/kliːn aʊt/",
+    "vi": "dọn chuồng",
+    "example": "Children clean out rabbit hutches learning responsibility through routine chores.",
+    "topic": "pet"
+  },
+  {
+    "word": "play fetch",
+    "ipa": "/pleɪ fetʃ/",
+    "vi": "ném bắt",
+    "example": "Retrievers instinctively play fetch yet still require leash training near roads.",
+    "topic": "pet"
+  },
+  {
+    "word": "pet sitter",
+    "ipa": "/pet ˈsɪtə(r)/",
+    "vi": "người trông thú",
+    "example": "Pet sitters send photo updates reassuring owners travelling overseas.",
+    "topic": "pet"
+  },
+  {
+    "word": "animal welfare",
+    "ipa": "/ˈænɪml ˈwelfeə(r)/",
+    "vi": "phúc lợi động vật",
+    "example": "Animal welfare laws ban cosmetic tail docking without veterinary justification.",
+    "topic": "pet"
+  },
+  {
+    "word": "cage-free",
+    "ipa": "/keɪdʒ friː/",
+    "vi": "không lồng",
+    "example": "Cage-free eggs cost more reflecting improved hen living conditions.",
+    "topic": "pet"
+  },
+  {
+    "word": "nocturnal",
+    "ipa": "/nɒkˈtɜːnl/",
+    "vi": "sống về đêm",
+    "example": "Nocturnal hamsters wheel loudly unless kept away from bedrooms.",
+    "topic": "pet"
+  },
+  {
+    "word": "aquatic pet",
+    "ipa": "/əˈkwætɪk pet/",
+    "vi": "thú cưng thủy sinh",
+    "example": "Aquatic pets need stable temperature controlled by reliable heater thermostats.",
+    "topic": "pet"
+  },
+  {
+    "word": "reptile",
+    "ipa": "/ˈreptaɪl/",
+    "vi": "bò sát",
+    "example": "Reptile enclosures mimic humidity levels found in native tropical habitats.",
+    "topic": "pet"
+  },
+  {
+    "word": "birdcage",
+    "ipa": "/ˈbɜːdkeɪdʒ/",
+    "vi": "lồng chim",
+    "example": "Spacious birdcages allow flight exercise preventing muscle atrophy in parrots.",
+    "topic": "pet"
+  },
+  {
+    "word": "pet-friendly",
+    "ipa": "/pet ˈfrendli/",
+    "vi": "thân thiện thú cưng",
+    "example": "Pet-friendly rentals remain scarce despite growing demand among young tenants.",
+    "topic": "pet"
+  },
+  {
+    "word": "animal shelter volunteer",
+    "ipa": "/ˈænɪml ʃeltə vɒlənˈtɪə(r)/",
+    "vi": "tình nguyện trại",
+    "example": "Animal shelter volunteers socialise shy dogs improving adoption success rates.",
+    "topic": "pet"
+  },
+  {
+    "word": "overpopulation",
+    "ipa": "/ˌəʊvəˌpɒpjuˈleɪʃn/",
+    "vi": "sinh sản quá mức",
+    "example": "Pet overpopulation stresses charities when breeding goes unregulated locally.",
+    "topic": "pet"
+  },
+  {
+    "word": "heartworm",
+    "ipa": "/ˈhɑːtwɜːm/",
+    "vi": "giun tim",
+    "example": "Heartworm prevention is cheaper than treating advanced infections in dogs.",
+    "topic": "pet"
+  },
+  {
+    "word": "purr",
+    "ipa": "/pɜː(r)/",
+    "vi": "kêu purr",
+    "example": "Cats purr when content, though sometimes also when injured or frightened.",
+    "topic": "pet"
+  }
+]

@@ -29,6 +29,17 @@ export default function ExamPage() {
           <p className="mt-4 text-xs text-mute">Band 8 Listening/Reading thường ~35–36/40. Quy đổi xấp xỉ, đề thật có thể lệch nửa band.</p>
         </div>
       </div>
+      <p className="mt-6 text-sm">
+        Cách làm từng dạng nằm ở{" "}
+        <a className="text-lime" href="/method">
+          Cách làm bài
+        </a>
+        . Ngữ pháp xương sống:{" "}
+        <a className="text-lime" href="/grammar">
+          Ngữ pháp
+        </a>
+        .
+      </p>
       <div className="panel mt-6 p-5 text-sm leading-7 text-mute">
         <p className="text-text">Khi nào mock full</p>
         Chỉ khi xong tầng Trôi. Một đề Cambridge = 2h45 + chấm writing. Review lỗi lâu hơn lúc làm bài. Đừng nhồi đề khi grammar còn vỡ.

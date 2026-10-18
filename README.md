@@ -2,7 +2,7 @@
 
 Gia sư IELTS Academic 8.0. Next.js 15.
 
-40 chủ đề thi thật (theo IDP/IELTS.org: education, environment, technology, health, work, cities, media, crime, globalisation…) · **408 đề** (10 dạng × 40 chủ đề + 2 mock Academic đủ Listening 40 / Reading 40 / Writing / Speaking) · bài tập về nhà · SRS · lộ trình 0 → 8.0.
+**100 chủ đề** · **~3500 từ** (đời sống kiểu Hack Não + Academic Word List + ngôn ngữ Task 1/2) · **ngân hàng đề** (10 dạng × mỗi chủ đề + 2 mock Academic đủ 4 kỹ năng) · **ngữ pháp** và **cách làm từng dạng** · bài tập về nhà · SRS · lộ trình 0 → 8.0.
 
 ## Link học (Zang Bếu)
 
@@ -10,7 +10,7 @@ Gia sư IELTS Academic 8.0. Next.js 15.
 
 1. Chọn **Zang Bếu**
 2. PIN: `8800`
-3. Học **Hôm nay** (lộ trình) + **Đề** (ngân hàng 408 bài) + **BTVN**
+3. **Từ** (3500+) · **Ngữ pháp** · **Cách làm** · **Đề** · **BTVN** · **Lộ trình**
 
 Thầy Hiệp: PIN `0008` → trang theo dõi Zang.
 

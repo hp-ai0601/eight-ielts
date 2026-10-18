@@ -6,6 +6,7 @@ import { clampBand, overall, type Skill } from "./ielts";
 import { TESTS, homeworkTests, type BankTest } from "./bank";
 import { userById } from "./users";
 import { answersToBand } from "./ielts";
+import type { LexItem } from "./lexicon";
 
 const SESSION = "eight.session";
 
@@ -206,6 +207,17 @@ export function addCardsFromLesson(s: State, lesson: Lesson): State {
   return {
     ...s,
     cards: [...s.cards, ...extra.map((v) => makeCard(v.id, v.word, `${v.vi}  ${v.ipa}`, v.example))],
+  };
+}
+
+export function addLexItems(s: State, items: LexItem[]): State {
+  const extra = items.filter(
+    (v) => !s.cards.some((c) => c.id === `lex-${v.topic}-${v.word}` || c.front.toLowerCase() === v.word.toLowerCase()),
+  );
+  if (!extra.length) return s;
+  return {
+    ...s,
+    cards: [...s.cards, ...extra.map((v) => makeCard(`lex-${v.topic}-${v.word}`, v.word, `${v.vi}  ${v.ipa}`, v.example))],
   };
 }
 

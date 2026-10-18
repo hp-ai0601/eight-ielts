@@ -44,6 +44,17 @@ export default function Today() {
                 Bài tập về nhà: {s.homework.filter((h) => !h.done).length} bài mở
               </Link>
             )}
+            <p className="mt-6 flex flex-wrap gap-x-4 gap-y-2 text-sm">
+              <Link className="text-lime" href="/words">
+                3500+ từ · 100 chủ đề
+              </Link>
+              <Link className="text-lime" href="/grammar">
+                Ngữ pháp
+              </Link>
+              <Link className="text-lime" href="/method">
+                Cách làm từng dạng
+              </Link>
+            </p>
           </>
         )}
 

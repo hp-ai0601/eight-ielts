@@ -4,9 +4,10 @@ import TOPICS from "./topics";
 import { TOPICS2 } from "./topics2";
 import { TOPICS3 } from "./topics3";
 import { TOPICS4 } from "./topics4";
+import { extraTopicsFromLex } from "./fromLex";
 import { MOCKS } from "./mocks";
 
-export const TOPICS_ALL: Topic[] = [...TOPICS, ...TOPICS2, ...TOPICS3, ...TOPICS4];
+export const TOPICS_ALL: Topic[] = [...TOPICS, ...TOPICS2, ...TOPICS3, ...TOPICS4, ...extraTopicsFromLex()];
 
 export const TESTS: BankTest[] = [...TOPICS_ALL.flatMap(testsFromTopic), ...MOCKS];
 

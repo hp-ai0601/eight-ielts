@@ -36,10 +36,10 @@ export default function TestsPage() {
         const items = TESTS.filter((t) => t.topicId === topic.id);
         const done = items.filter((t) => s.testsDone.includes(t.id)).length;
         return (
-          <section key={topic.id} className="mt-8">
-            <p className="text-xs uppercase tracking-wider text-lime">
+          <details key={topic.id} className="mt-4">
+            <summary className="cursor-pointer text-xs uppercase tracking-wider text-lime">
               {topic.vi} · {done}/{items.length}
-            </p>
+            </summary>
             <ul className="mt-3 space-y-2">
               {items.map((t) => (
                 <li key={t.id} className="panel p-4">
@@ -52,7 +52,7 @@ export default function TestsPage() {
                 </li>
               ))}
             </ul>
-          </section>
+          </details>
         );
       })}
     </div>
