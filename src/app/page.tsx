@@ -8,8 +8,8 @@ import GuiThay from "@/components/zang/GuiThay";
 
 const STEPS = [
   { n: 1, href: "/tu", title: "Từ → câu", why: "Mỗi đợt 8 từ lớp + 3 cặp trái nghĩa. Nhét vào câu." },
-  { n: 2, href: "/cum", title: "Cụm truyện", why: "Mỗi đợt 4 đoạn. Tách thì + cấu trúc, viết thêm câu cùng khuôn." },
-  { n: 3, href: "/hai", title: "Hài & nhạc", why: "Mỗi đợt 4 mẩu hài hoặc 3 bài nhạc. Nghĩa trước, nghe không chữ, đoán, ghi âm." },
+  { n: 2, href: "/cum", title: "Cụm truyện", why: "Mỗi đợt một kịch bản 6 cảnh. Tách thì + cấu trúc, viết thêm câu cùng khuôn." },
+  { n: 3, href: "/hai", title: "Hài & nhạc", why: "Mỗi đợt một tập hài 4 mẩu hoặc tập nhạc 4 bài. Nghĩa trước, nghe, đoán, ghi âm." },
   { n: 4, href: "/nhat-ky", title: "Nhật ký", why: "Mỗi đợt 4 gợi ý + 4 từ + 4 thì. Viết journal, không phải luận." },
 ];
 

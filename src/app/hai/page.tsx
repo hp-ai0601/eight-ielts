@@ -12,8 +12,8 @@ export default function HaiPage() {
       <p className="text-xs uppercase tracking-wider text-lime">Bước 3 / 4</p>
       <h1 className="mt-2 font-serif text-4xl">Hài & nhạc</h1>
       <p className="mt-3 text-mute">
-        Mỗi đợt 4 mẩu hài hoặc 3 bài nhạc — chọn bài, không kẹt 1 bài/ngày. Nghĩa trước → nghe không chữ → đoán → nghĩa +
-        ngữ pháp → ghi âm. Đổi đợt được.
+        Mỗi đợt là một tập hài 4 mẩu hoặc một tập nhạc 4 bài — kịch bản, không phải 1 đoạn. Nghĩa trước, nghe không chữ,
+        đoán, ghi âm. Đổi tập được.
       </p>
       <div className="mt-8">
         <HaiNhac s={s} onDone={commit} />

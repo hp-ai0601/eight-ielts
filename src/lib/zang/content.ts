@@ -592,6 +592,57 @@ export const DIARY_HINTS = [
   "Nhét một thì của đợt này vào nhật ký — đừng viết luận Task 2.",
 ];
 
+export const SCRIPT_SETS = [
+  {
+    id: "k1",
+    title: "Tan học mưa",
+    blurb: "Cổng ướt, mái hiên, xe buýt, hành lang — rồi chuyện để ngày mai.",
+    scenes: ["s19", "s3", "s8", "s21", "s16", "s12"],
+  },
+  {
+    id: "k2",
+    title: "Lớp năm người",
+    blurb: "Chỗ ngồi, mượn bút, ra chơi, góc thư viện.",
+    scenes: ["s14", "s18", "s23", "s22", "s9", "s4"],
+  },
+  {
+    id: "k3",
+    title: "Cơm và bài",
+    blurb: "Quên cơm, bài chưa mở, đêm thi, món quà không vì đắt.",
+    scenes: ["s5", "s17", "s10", "s7", "s20", "s15"],
+  },
+  {
+    id: "k4",
+    title: "Giấy nhớ",
+    blurb: "Sách, mẩu giấy trong cặp, áo mượn, tin nhắn không gửi.",
+    scenes: ["s1", "s2", "s11", "s13", "s6", "s24"],
+  },
+];
+
+export const HAI_SETS = [
+  { id: "hs1", title: "Cơm hộp", blurb: "Dưa leo, tình cảm, tiny và hungry.", tracks: ["h1", "h16", "h9", "h6"] },
+  { id: "hs2", title: "Điểm danh", blurb: "Rớt bút, quên tên, báo thức, lau bảng.", tracks: ["h2", "h11", "h13", "h14"] },
+  { id: "hs3", title: "Mưa và dù", blurb: "Một dù, giày kêu, ghế kêu, ảnh nhắm mắt.", tracks: ["h3", "h10", "h15", "h7"] },
+  { id: "hs4", title: "Từ mới", blurb: "Tiny, trái nghĩa, wifi, sơ đồ chỗ.", tracks: ["h5", "h8", "h4", "h12"] },
+];
+
+export const NHAC_SETS = [
+  { id: "ns1", title: "Năm người", blurb: "Năm bàn, góc thư viện, chữ nguệch.", tracks: ["n1", "n5", "n2", "n8"] },
+  { id: "ns2", title: "Sau mưa", blurb: "Cổng ướt, cơm nguội, nhật ký bốn dòng.", tracks: ["n3", "n7", "n6", "n4"] },
+];
+
+export function pickSet<T>(arr: T[], n: number, lot: number) {
+  return arr[(n + lot) % arr.length];
+}
+
+export function beatsOf(ids: string[]) {
+  return ids.map((id) => STORIES.find((x) => x.id === id)).filter((x): x is StoryBeat => Boolean(x));
+}
+
+export function tracksOf(ids: string[]) {
+  return ids.map((id) => TRACKS.find((x) => x.id === id)).filter((x): x is Track => Boolean(x));
+}
+
 export const DIARY_PROMPTS = [
   { id: "p1", title: "Tan học", vi: "Kể đường về nhà hôm nay — mưa, nắng, đi với ai." },
   { id: "p2", title: "Cơm hộp", vi: "Hôm nay ăn gì, chia với ai, ngon hay nguội." },
