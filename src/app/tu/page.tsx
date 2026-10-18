@@ -12,7 +12,7 @@ export default function TuPage() {
       <p className="text-xs uppercase tracking-wider text-lime">Bước 1 / 4</p>
       <h1 className="mt-2 font-serif text-4xl">Từ → câu</h1>
       <p className="mt-3 text-mute">
-        Zang: một từ bỏ vào câu lớp («lớp tôi có 5 người»). Hoặc trái nghĩa thành câu đối lập («cô ấy gầy còn bạn kia béo»).
+        Mỗi ngày vài từ, mỗi từ IPA + loại từ. Bỏ vào câu lớp («lớp tôi có 5 người»), hoặc cặp trái nghĩa thành câu đối lập.
       </p>
       <div className="mt-8">
         <TuCau s={s} onDone={commit} />

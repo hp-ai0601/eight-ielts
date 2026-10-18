@@ -1,18 +1,124 @@
 /** Cách học của Zang — nội dung gốc, không lấy tiểu thuyết có bản quyền. */
 
-export type Antonym = { a: string; aVi: string; b: string; bVi: string; hint: string; sample: string };
+import type { Pos } from "@/lib/pos";
+
+export type ClassWord = { word: string; ipa: string; vi: string; pos: Pos };
+
+export const CLASS_WORDS: ClassWord[] = [
+  { word: "quiet", ipa: "/ˈkwaɪət/", vi: "trầm / yên", pos: "adj" },
+  { word: "loud", ipa: "/laʊd/", vi: "ồn", pos: "adj" },
+  { word: "tall", ipa: "/tɔːl/", vi: "cao", pos: "adj" },
+  { word: "short", ipa: "/ʃɔːt/", vi: "thấp / ngắn", pos: "adj" },
+  { word: "thin", ipa: "/θɪn/", vi: "gầy", pos: "adj" },
+  { word: "chubby", ipa: "/ˈtʃʌbi/", vi: "béo / mũm mĩm", pos: "adj" },
+  { word: "shy", ipa: "/ʃaɪ/", vi: "nhút nhát", pos: "adj" },
+  { word: "kind", ipa: "/kaɪnd/", vi: "hiền", pos: "adj" },
+  { word: "lazy", ipa: "/ˈleɪzi/", vi: "lười", pos: "adj" },
+  { word: "messy", ipa: "/ˈmesi/", vi: "bừa", pos: "adj" },
+  { word: "tidy", ipa: "/ˈtaɪdi/", vi: "gọn", pos: "adj" },
+  { word: "early", ipa: "/ˈɜːli/", vi: "sớm", pos: "adj" },
+  { word: "late", ipa: "/leɪt/", vi: "trễ", pos: "adj" },
+  { word: "funny", ipa: "/ˈfʌni/", vi: "buồn cười", pos: "adj" },
+  { word: "serious", ipa: "/ˈsɪəriəs/", vi: "nghiêm túc", pos: "adj" },
+  { word: "clever", ipa: "/ˈklevə(r)/", vi: "thông minh", pos: "adj" },
+  { word: "sleepy", ipa: "/ˈsliːpi/", vi: "buồn ngủ", pos: "adj" },
+  { word: "hungry", ipa: "/ˈhʌŋɡri/", vi: "đói", pos: "adj" },
+  { word: "tired", ipa: "/ˈtaɪəd/", vi: "mệt", pos: "adj" },
+  { word: "bored", ipa: "/bɔːd/", vi: "chán", pos: "adj" },
+  { word: "nervous", ipa: "/ˈnɜːvəs/", vi: "hồi hộp", pos: "adj" },
+  { word: "brave", ipa: "/breɪv/", vi: "can đảm", pos: "adj" },
+  { word: "friendly", ipa: "/ˈfrendli/", vi: "thân thiện", pos: "adj" },
+  { word: "polite", ipa: "/pəˈlaɪt/", vi: "lịch sự", pos: "adj" },
+  { word: "happy", ipa: "/ˈhæpi/", vi: "vui", pos: "adj" },
+  { word: "sad", ipa: "/sæd/", vi: "buồn", pos: "adj" },
+  { word: "busy", ipa: "/ˈbɪzi/", vi: "bận", pos: "adj" },
+  { word: "free", ipa: "/friː/", vi: "rảnh", pos: "adj" },
+  { word: "new", ipa: "/njuː/", vi: "mới", pos: "adj" },
+  { word: "old", ipa: "/əʊld/", vi: "cũ / già", pos: "adj" },
+  { word: "big", ipa: "/bɪɡ/", vi: "to", pos: "adj" },
+  { word: "small", ipa: "/smɔːl/", vi: "nhỏ", pos: "adj" },
+  { word: "clean", ipa: "/kliːn/", vi: "sạch", pos: "adj" },
+  { word: "dirty", ipa: "/ˈdɜːti/", vi: "bẩn", pos: "adj" },
+  { word: "strong", ipa: "/strɒŋ/", vi: "khoẻ", pos: "adj" },
+  { word: "weak", ipa: "/wiːk/", vi: "yếu", pos: "adj" },
+  { word: "fast", ipa: "/fɑːst/", vi: "nhanh", pos: "adj" },
+  { word: "slow", ipa: "/sləʊ/", vi: "chậm", pos: "adj" },
+  { word: "warm", ipa: "/wɔːm/", vi: "ấm", pos: "adj" },
+  { word: "cold", ipa: "/kəʊld/", vi: "lạnh", pos: "adj" },
+  { word: "classmate", ipa: "/ˈklɑːsmeɪt/", vi: "bạn cùng lớp", pos: "n" },
+  { word: "desk", ipa: "/desk/", vi: "bàn học", pos: "n" },
+  { word: "bag", ipa: "/bæɡ/", vi: "cặp", pos: "n" },
+  { word: "notebook", ipa: "/ˈnəʊtbʊk/", vi: "vở", pos: "n" },
+  { word: "pen", ipa: "/pen/", vi: "bút", pos: "n" },
+  { word: "teacher", ipa: "/ˈtiːtʃə(r)/", vi: "cô / thầy", pos: "n" },
+  { word: "break", ipa: "/breɪk/", vi: "giờ ra chơi", pos: "n" },
+  { word: "lunch", ipa: "/lʌntʃ/", vi: "bữa trưa", pos: "n" },
+  { word: "umbrella", ipa: "/ʌmˈbrelə/", vi: "ô", pos: "n" },
+  { word: "jacket", ipa: "/ˈdʒækɪt/", vi: "áo khoác", pos: "n" },
+  { word: "glasses", ipa: "/ˈɡlɑːsɪz/", vi: "kính", pos: "n" },
+  { word: "smile", ipa: "/smaɪl/", vi: "nụ cười", pos: "n" },
+  { word: "voice", ipa: "/vɔɪs/", vi: "giọng", pos: "n" },
+  { word: "seat", ipa: "/siːt/", vi: "chỗ ngồi", pos: "n" },
+  { word: "window", ipa: "/ˈwɪndəʊ/", vi: "cửa sổ", pos: "n" },
+  { word: "phone", ipa: "/fəʊn/", vi: "điện thoại", pos: "n" },
+  { word: "homework", ipa: "/ˈhəʊmwɜːk/", vi: "bài tập", pos: "n" },
+  { word: "library", ipa: "/ˈlaɪbrəri/", vi: "thư viện", pos: "n" },
+  { word: "gate", ipa: "/ɡeɪt/", vi: "cổng", pos: "n" },
+  { word: "rain", ipa: "/reɪn/", vi: "mưa", pos: "n" },
+  { word: "sit", ipa: "/sɪt/", vi: "ngồi", pos: "v" },
+  { word: "stand", ipa: "/stænd/", vi: "đứng", pos: "v" },
+  { word: "talk", ipa: "/tɔːk/", vi: "nói chuyện", pos: "v" },
+  { word: "listen", ipa: "/ˈlɪsn/", vi: "nghe", pos: "v" },
+  { word: "write", ipa: "/raɪt/", vi: "viết", pos: "v" },
+  { word: "read", ipa: "/riːd/", vi: "đọc", pos: "v" },
+  { word: "draw", ipa: "/drɔː/", vi: "vẽ", pos: "v" },
+  { word: "share", ipa: "/ʃeə(r)/", vi: "chia", pos: "v" },
+  { word: "wait", ipa: "/weɪt/", vi: "đợi", pos: "v" },
+  { word: "walk", ipa: "/wɔːk/", vi: "đi bộ", pos: "v" },
+  { word: "laugh", ipa: "/lɑːf/", vi: "cười", pos: "v" },
+  { word: "forget", ipa: "/fəˈɡet/", vi: "quên", pos: "v" },
+  { word: "bring", ipa: "/brɪŋ/", vi: "mang", pos: "v" },
+  { word: "wear", ipa: "/weə(r)/", vi: "mặc / đeo", pos: "v" },
+  { word: "always", ipa: "/ˈɔːlweɪz/", vi: "luôn luôn", pos: "adv" },
+  { word: "often", ipa: "/ˈɒfn/", vi: "thường", pos: "adv" },
+  { word: "never", ipa: "/ˈnevə(r)/", vi: "không bao giờ", pos: "adv" },
+  { word: "together", ipa: "/təˈɡeðə(r)/", vi: "cùng nhau", pos: "adv" },
+  { word: "quietly", ipa: "/ˈkwaɪətli/", vi: "một cách yên", pos: "adv" },
+  { word: "slowly", ipa: "/ˈsləʊli/", vi: "một cách chậm", pos: "adv" },
+];
+
+
+export type Antonym = {
+  a: string;
+  aIpa: string;
+  aVi: string;
+  b: string;
+  bIpa: string;
+  bVi: string;
+  pos: Pos;
+  hint: string;
+  sample: string;
+};
 
 export const ANTONYMS: Antonym[] = [
-  { a: "thin", aVi: "gầy", b: "chubby", bVi: "béo", hint: "cô ấy gầy còn bạn kia béo, họ vẫn là đôi bạn thân", sample: "She is thin while her friend is chubby; they are still best friends." },
-  { a: "quiet", aVi: "trầm", b: "loud", bVi: "ồn", hint: "một bạn trầm, một bạn ồn, ngồi cạnh nhau", sample: "Minh is quiet but Khoa is loud, and they sit together every day." },
-  { a: "early", aVi: "sớm", b: "late", bVi: "trễ", hint: "một đứa tới sớm, một đứa trễ", sample: "Han Han is always early, while Linh is often late." },
-  { a: "cheap", aVi: "rẻ", b: "expensive", bVi: "đắt", hint: "sách này rẻ, cuốn kia đắt", sample: "This book is cheap, but that one is expensive." },
-  { a: "short", aVi: "thấp", b: "tall", bVi: "cao", hint: "hai đứa một cao một thấp", sample: "Khoa is tall and Minh is short, so they share one umbrella easily." },
-  { a: "shy", aVi: "nhút nhát", b: "outgoing", bVi: "cởi mở", hint: "một nhút nhát một cởi mở", sample: "Linh is shy whereas Han Han is outgoing." },
-  { a: "messy", aVi: "bừa", b: "tidy", bVi: "gọn", hint: "bàn một đứa bừa, một đứa gọn", sample: "My desk is messy, but hers is tidy." },
-  { a: "hard", aVi: "khó", b: "easy", bVi: "dễ", hint: "bài này khó, bài kia dễ", sample: "This exercise is hard, yet the next one is easy." },
-  { a: "cold", aVi: "lạnh", b: "warm", bVi: "ấm", hint: "sáng lạnh, phòng lớp ấm", sample: "The street is cold, but the classroom is warm." },
-  { a: "busy", aVi: "bận", b: "free", bVi: "rảnh", hint: "hôm nay bận, Chủ nhật rảnh", sample: "I am busy on weekdays and free on Sunday." },
+  { a: "thin", aIpa: "/θɪn/", aVi: "gầy", b: "chubby", bIpa: "/ˈtʃʌbi/", bVi: "béo", pos: "adj", hint: "cô ấy gầy còn bạn kia béo, họ vẫn là đôi bạn thân", sample: "She is thin while her friend is chubby; they are still best friends." },
+  { a: "quiet", aIpa: "/ˈkwaɪət/", aVi: "trầm", b: "loud", bIpa: "/laʊd/", bVi: "ồn", pos: "adj", hint: "một bạn trầm, một bạn ồn, ngồi cạnh nhau", sample: "Minh is quiet but Khoa is loud, and they sit together every day." },
+  { a: "early", aIpa: "/ˈɜːli/", aVi: "sớm", b: "late", bIpa: "/leɪt/", bVi: "trễ", pos: "adj", hint: "một đứa tới sớm, một đứa trễ", sample: "Han Han is always early, while Linh is often late." },
+  { a: "cheap", aIpa: "/tʃiːp/", aVi: "rẻ", b: "expensive", bIpa: "/ɪkˈspensɪv/", bVi: "đắt", pos: "adj", hint: "sách này rẻ, cuốn kia đắt", sample: "This book is cheap, but that one is expensive." },
+  { a: "short", aIpa: "/ʃɔːt/", aVi: "thấp", b: "tall", bIpa: "/tɔːl/", bVi: "cao", pos: "adj", hint: "hai đứa một cao một thấp", sample: "Khoa is tall and Minh is short, so they share one umbrella easily." },
+  { a: "shy", aIpa: "/ʃaɪ/", aVi: "nhút nhát", b: "outgoing", bIpa: "/ˌaʊtˈɡəʊɪŋ/", bVi: "cởi mở", pos: "adj", hint: "một nhút nhát một cởi mở", sample: "Linh is shy whereas Han Han is outgoing." },
+  { a: "messy", aIpa: "/ˈmesi/", aVi: "bừa", b: "tidy", bIpa: "/ˈtaɪdi/", bVi: "gọn", pos: "adj", hint: "bàn một đứa bừa, một đứa gọn", sample: "My desk is messy, but hers is tidy." },
+  { a: "hard", aIpa: "/hɑːd/", aVi: "khó", b: "easy", bIpa: "/ˈiːzi/", bVi: "dễ", pos: "adj", hint: "bài này khó, bài kia dễ", sample: "This exercise is hard, yet the next one is easy." },
+  { a: "cold", aIpa: "/kəʊld/", aVi: "lạnh", b: "warm", bIpa: "/wɔːm/", bVi: "ấm", pos: "adj", hint: "sáng lạnh, phòng lớp ấm", sample: "The street is cold, but the classroom is warm." },
+  { a: "busy", aIpa: "/ˈbɪzi/", aVi: "bận", b: "free", bIpa: "/friː/", bVi: "rảnh", pos: "adj", hint: "hôm nay bận, Chủ nhật rảnh", sample: "I am busy on weekdays and free on Sunday." },
+  { a: "lazy", aIpa: "/ˈleɪzi/", aVi: "lười", b: "hard-working", bIpa: "/ˌhɑːd ˈwɜːkɪŋ/", bVi: "chăm", pos: "adj", hint: "một bạn lười, một bạn chăm", sample: "Khoa is lazy in the morning, but Minh is hard-working." },
+  { a: "kind", aIpa: "/kaɪnd/", aVi: "hiền", b: "mean", bIpa: "/miːn/", bVi: "ác", pos: "adj", hint: "cô ấy hiền còn bạn kia hơi ác, vẫn thân", sample: "Han Han is kind, while that boy is mean; they are still in one class." },
+  { a: "fast", aIpa: "/fɑːst/", aVi: "nhanh", b: "slow", bIpa: "/sləʊ/", bVi: "chậm", pos: "adj", hint: "một đứa viết nhanh, một đứa chậm", sample: "Linh is fast at writing, but Khoa is slow." },
+  { a: "happy", aIpa: "/ˈhæpi/", aVi: "vui", b: "sad", bIpa: "/sæd/", bVi: "buồn", pos: "adj", hint: "hôm nay vui, hôm qua buồn", sample: "She is happy today, but she was sad yesterday." },
+  { a: "clean", aIpa: "/kliːn/", aVi: "sạch", b: "dirty", bIpa: "/ˈdɜːti/", bVi: "bẩn", pos: "adj", hint: "bàn này sạch, bàn kia bẩn", sample: "My side of the desk is clean, and his side is dirty." },
+  { a: "strong", aIpa: "/strɒŋ/", aVi: "khoẻ", b: "weak", bIpa: "/wiːk/", bVi: "yếu", pos: "adj", hint: "một khoẻ một yếu, vẫn đá bóng chung", sample: "Minh is strong and Khoa is weak, but they play football together." },
+  { a: "big", aIpa: "/bɪɡ/", aVi: "to", b: "small", bIpa: "/smɔːl/", bVi: "nhỏ", pos: "adj", hint: "cặp to, hộp bút nhỏ", sample: "Her bag is big, but her pencil case is small." },
+  { a: "new", aIpa: "/njuː/", aVi: "mới", b: "old", bIpa: "/əʊld/", bVi: "cũ", pos: "adj", hint: "sách mới, áo cũ", sample: "This book is new, and that jacket is old." },
 ];
 
 export const CLASS_FRAMES = [
@@ -317,4 +423,19 @@ export function dayNum(d = new Date().toISOString().slice(0, 10)) {
 
 export function pick<T>(arr: T[], n: number) {
   return arr[n % arr.length];
+}
+
+export function pickMany<T>(arr: T[], n: number, count: number) {
+  const out: T[] = [];
+  const seen = new Set<number>();
+  let i = 0;
+  while (out.length < Math.min(count, arr.length) && i < arr.length * 3) {
+    const idx = (n + i * 17) % arr.length;
+    if (!seen.has(idx)) {
+      seen.add(idx);
+      out.push(arr[idx]);
+    }
+    i += 1;
+  }
+  return out;
 }
