@@ -9,6 +9,7 @@ import PlayBar from "./PlayBar";
 import { speak } from "@/lib/speech";
 import { POS_VI, guessPos } from "@/lib/pos";
 import WordPic from "./WordPic";
+import ExampleLine from "./ExampleLine";
 
 export default function TestView({
   test,
@@ -45,7 +46,7 @@ export default function TestView({
                     <span className="text-lime">{POS_VI[v.pos ?? guessPos(v.word, v.vi, v.example)]}</span>
                   </p>
                   <p className="text-sm text-mute">{v.vi}</p>
-                  <p className="mt-1 font-serif text-sm">{v.example}</p>
+                  <ExampleLine en={v.example} />
                 </div>
                 <button className="btn-ghost shrink-0" onClick={() => speak(v.word)}>
                   Nghe

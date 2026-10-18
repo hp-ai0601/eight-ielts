@@ -7,6 +7,7 @@ import { saveZangDiary, saveZangDraft, type State } from "@/lib/store";
 import { checkText, type Check } from "@/lib/zang/check";
 import ChamCau from "./ChamCau";
 import WordPic from "@/components/WordPic";
+import ExampleLine from "@/components/ExampleLine";
 
 export default function NhatKy({ s, onDone }: { s: State; onDone: (next: State) => void }) {
   const n = dayNum();
@@ -53,6 +54,7 @@ export default function NhatKy({ s, onDone }: { s: State; onDone: (next: State) 
           <WordPic word={word.word} vi={word.vi} pos={word.pos} size="thumb" />
           <span>
             Từ hôm nay nếu nhớ: <span className="text-lime">{word.word}</span> ({word.vi})
+            <ExampleLine en={word.example} />
           </span>
         </li>
         <li>

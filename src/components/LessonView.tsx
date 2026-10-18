@@ -9,6 +9,7 @@ import WriteBox from "./WriteBox";
 import Quiz from "./Quiz";
 import PlayBar from "./PlayBar";
 import WordPic from "./WordPic";
+import ExampleLine from "./ExampleLine";
 
 export default function LessonView({
   lesson,
@@ -53,7 +54,7 @@ export default function LessonView({
                     <span className="text-lime">{POS_VI[v.pos ?? guessPos(v.word, v.vi, v.example)]}</span>
                   </p>
                   <p className="text-sm text-mute">{v.vi}</p>
-                  <p className="mt-1 font-serif text-sm">{v.example}</p>
+                  <ExampleLine en={v.example} />
                   {v.trap && <p className="mt-1 text-xs text-warn">{v.trap}</p>}
                 </div>
                 <button className="btn-ghost shrink-0" onClick={() => speak(v.word)}>

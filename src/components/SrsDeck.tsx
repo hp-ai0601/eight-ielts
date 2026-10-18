@@ -5,6 +5,7 @@ import { speak } from "@/lib/speech";
 import type { Grade } from "@/lib/srs";
 import { due, gradeCard, type State } from "@/lib/store";
 import WordPic from "@/components/WordPic";
+import ExampleLine from "@/components/ExampleLine";
 
 export default function SrsDeck({
   state,
@@ -68,7 +69,7 @@ export default function SrsDeck({
       ) : (
         <>
           <p className="mt-6 text-lg">{card.back}</p>
-          {card.example && <p className="mt-2 font-serif text-mute">{card.example}</p>}
+          {card.example && <ExampleLine en={card.example} />}
           <div className="mt-8 grid grid-cols-4 gap-2">
             {(["again", "hard", "good", "easy"] as Grade[]).map((g) => (
               <button key={g} className="btn-ghost capitalize" onClick={() => mark(g)}>

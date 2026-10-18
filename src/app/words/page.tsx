@@ -8,6 +8,7 @@ import { speak } from "@/lib/speech";
 import { LEX_COUNT, LEX_TOPICS, lexByTopic, lexSearch } from "@/lib/lexicon";
 import { POS_VI } from "@/lib/pos";
 import WordPic from "@/components/WordPic";
+import ExampleLine from "@/components/ExampleLine";
 
 export default function WordsPage() {
   const { s, commit, ready } = useEight();
@@ -69,7 +70,7 @@ export default function WordsPage() {
                 <span className="text-sm text-lime">{POS_VI[c.pos]}</span>
               </p>
               <p className="text-sm">{c.vi}</p>
-              <p className="mt-1 text-sm text-mute">{c.example}</p>
+              <ExampleLine en={c.example} />
             </div>
             <button className="btn-ghost shrink-0" onClick={() => speak(c.word)}>
               Nghe

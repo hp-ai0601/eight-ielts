@@ -2,6 +2,7 @@
 
 import { useMemo, useState } from "react";
 import { ANTONYMS, CLASS_FRAMES, CLASS_WORDS, dayNum, pick, pickMany, type ClassWord } from "@/lib/zang/content";
+import { ANTONYM_EXTRA, CLASS_SAMPLES, FRAME_VI } from "@/lib/zang/samples";
 import { speak } from "@/lib/speech";
 import { bumpZangLot, saveZangDraft, saveZangSentence, saveZangSpell, zangLot, type State } from "@/lib/store";
 import { POS_VI, posHint, type Pos } from "@/lib/pos";
@@ -9,6 +10,7 @@ import { checkText, type Check } from "@/lib/zang/check";
 import ChamCau from "./ChamCau";
 import ChinhTa from "./ChinhTa";
 import WordPic from "@/components/WordPic";
+import ExampleLine from "@/components/ExampleLine";
 
 const PER_LOT = 8;
 
@@ -24,20 +26,14 @@ export default function TuCau({ s, onDone }: { s: State; onDone: (next: State) =
   const [text, setText] = useState("");
   const [ok, setOk] = useState("");
   const [mark, setMark] = useState<Check | null>(null);
-  const [seen, setSeen] = useState<Record<string, boolean>>({});
+  const [spelled, setSpelled] = useState<Record<string, boolean>>({});
 
   const word = words[wi] ?? words[0];
   const pair = pairs[pi] ?? pairs[0];
-  const lotsMax = Math.max(1, Math.ceil(CLASS_WORDS.length / PER_LOT));
-  const spelled = mode === "class" ? !!word && seen[word.word] : !!pair && seen[pair.a] && seen[pair.b];
   const extra = mode === "class" ? (word ? [word.word] : []) : pair ? [pair.a, pair.b] : [];
 
   function cham() {
     if (!word || !pair) return;
-    if (!spelled) {
-      setOk("Chính tả đúng đã, rồi mới viết câu.");
-      return;
-    }
     const t = text.trim();
     if (t.split(/\s+/).length < 5) {
       setOk("Viết đủ một câu (khoảng 5 từ trở lên).");
@@ -108,8 +104,9 @@ export default function TuCau({ s, onDone }: { s: State; onDone: (next: State) =
 
       {mode === "class" && word && (
         <div className="mt-6">
-          <p className="text-xs uppercase tracking-wider text-lime">
-            Lô {lot + 1}/{lotsMax} hôm nay · {words.length} từ · 0h mai lô mới. Xong thì bấm lô tiếp.
+          <p className="text-sm text-mute">
+            8 từ lớp. Đây là <span className="text-lime">đợt {lot + 1} hôm nay</span> — không phải bài 4 trên 10. Muốn bộ khác thì bấm
+            nút dưới, không cần đợi mai. Nửa đêm tự đổi bộ mới.
           </p>
           <div className="mt-3 grid gap-2 sm:grid-cols-2">
             {words.map((w, i) => (
@@ -123,10 +120,11 @@ export default function TuCau({ s, onDone }: { s: State; onDone: (next: State) =
                 }}
               >
                 <WordPic word={w.word} vi={w.vi} pos={w.pos} size="sm" />
-                <p className={`mt-2 font-serif text-xl ${seen[w.word] ? "" : "select-none blur-[6px]"}`}>{w.word}</p>
-                <p className={`mt-1 text-sm text-mute ${seen[w.word] ? "" : "select-none blur-[6px]"}`}>{w.ipa}</p>
+                <p className="mt-2 font-serif text-xl">{w.word}</p>
+                <p className="mt-1 text-sm text-mute">{w.ipa}</p>
                 <p className="mt-1 text-sm">
                   <span className="text-lime">{POS_VI[w.pos]}</span> · {w.vi}
+                  {spelled[w.word] ? <span className="ml-2 text-xs text-lime">chính tả ok</span> : null}
                 </p>
               </button>
             ))}
@@ -137,11 +135,11 @@ export default function TuCau({ s, onDone }: { s: State; onDone: (next: State) =
             onClick={() => {
               onDone(bumpZangLot(s));
               setWi(0);
-              setSeen({});
+              setSpelled({});
               setMark(null);
             }}
           >
-            Lô 8 từ tiếp (không đợi mai)
+            Đổi 8 từ khác
           </button>
           <WordFocus word={word} frame={frame} />
           <ChinhTa
@@ -149,7 +147,7 @@ export default function TuCau({ s, onDone }: { s: State; onDone: (next: State) =
             target={word.word}
             ipa={word.ipa}
             onResult={(okSpell, wrote) => {
-              if (okSpell) setSeen((x) => ({ ...x, [word.word]: true }));
+              if (okSpell) setSpelled((x) => ({ ...x, [word.word]: true }));
               onDone(saveZangSpell(s, { target: word.word, wrote, ok: okSpell }));
             }}
           />
@@ -158,9 +156,7 @@ export default function TuCau({ s, onDone }: { s: State; onDone: (next: State) =
 
       {mode === "antonym" && pair && (
         <div className="mt-6">
-          <p className="text-xs uppercase tracking-wider text-lime">
-            Lô {lot + 1} · {pairs.length} cặp hôm nay
-          </p>
+          <p className="text-sm text-mute">3 cặp trái nghĩa của đợt {lot + 1} hôm nay.</p>
           <div className="mt-3 grid gap-2">
             {pairs.map((p, i) => (
               <button
@@ -173,14 +169,14 @@ export default function TuCau({ s, onDone }: { s: State; onDone: (next: State) =
                 }}
               >
                 <div className="grid grid-cols-2 gap-3">
-                  <Half word={p.a} ipa={p.aIpa} vi={p.aVi} pos={p.pos} hide={!seen[p.a]} />
-                  <Half word={p.b} ipa={p.bIpa} vi={p.bVi} pos={p.pos} hide={!seen[p.b]} />
+                  <Half word={p.a} ipa={p.aIpa} vi={p.aVi} pos={p.pos} />
+                  <Half word={p.b} ipa={p.bIpa} vi={p.bVi} pos={p.pos} />
                 </div>
               </button>
             ))}
           </div>
           <p className="mt-6 text-sm">Gợi ý Zang: {pair.hint}</p>
-          <p className="mt-2 font-serif text-lg">{pair.sample}</p>
+          <ExampleLine en={pair.sample} vi={ANTONYM_EXTRA[pair.sample]?.vi} grammar={ANTONYM_EXTRA[pair.sample]?.g} />
           <div className="mt-3 flex flex-wrap gap-2">
             <button className="btn-ghost" onClick={() => speak(pair.a)}>
               Nghe {pair.a}
@@ -197,7 +193,7 @@ export default function TuCau({ s, onDone }: { s: State; onDone: (next: State) =
             target={pair.a}
             ipa={pair.aIpa}
             onResult={(okSpell, wrote) => {
-              if (okSpell) setSeen((x) => ({ ...x, [pair.a]: true }));
+              if (okSpell) setSpelled((x) => ({ ...x, [pair.a]: true }));
               onDone(saveZangSpell(s, { target: pair.a, wrote, ok: okSpell }));
             }}
           />
@@ -206,7 +202,7 @@ export default function TuCau({ s, onDone }: { s: State; onDone: (next: State) =
             target={pair.b}
             ipa={pair.bIpa}
             onResult={(okSpell, wrote) => {
-              if (okSpell) setSeen((x) => ({ ...x, [pair.b]: true }));
+              if (okSpell) setSpelled((x) => ({ ...x, [pair.b]: true }));
               onDone(saveZangSpell(s, { target: pair.b, wrote, ok: okSpell }));
             }}
           />
@@ -215,15 +211,14 @@ export default function TuCau({ s, onDone }: { s: State; onDone: (next: State) =
 
       <textarea
         className={`field mt-6 min-h-28 ${mark && !mark.clean ? "border-bad" : ""}`}
-        placeholder={spelled ? "Câu của em, tiếng Anh." : "Chính tả đúng đã — rồi mới viết câu."}
+        placeholder="Câu của em, tiếng Anh — nhét từ đang chọn vào câu."
         value={text}
-        disabled={!spelled}
         onChange={(e) => {
           setText(e.target.value);
           setMark(null);
         }}
       />
-      <button className="btn-lime mt-4" disabled={!spelled} onClick={cham}>
+      <button className="btn-lime mt-4" onClick={cham}>
         Chấm thì + ngữ pháp
       </button>
       {ok && <p className={`mt-3 text-sm ${mark && !mark.clean ? "text-bad" : "text-lime"}`}>{ok}</p>}
@@ -238,14 +233,8 @@ export default function TuCau({ s, onDone }: { s: State; onDone: (next: State) =
               .map((x) => (
                 <li key={x.at}>
                   <span className="text-bad line-through">{x.wrote}</span>
-                  {seen[x.target] ? (
-                    <>
-                      {" → "}
-                      <span className="text-lime">{x.target}</span>
-                    </>
-                  ) : (
-                    <span className="text-mute"> — viết lại đến khi đúng</span>
-                  )}
+                  {" → "}
+                  <span className="text-lime">{x.target}</span>
                 </li>
               ))}
           </ul>
@@ -255,30 +244,35 @@ export default function TuCau({ s, onDone }: { s: State; onDone: (next: State) =
   );
 }
 
-function Half({ word, ipa, vi, pos, hide }: { word: string; ipa: string; vi: string; pos: Pos; hide?: boolean }) {
-  const label = POS_VI[pos];
+function Half({ word, ipa, vi, pos }: { word: string; ipa: string; vi: string; pos: Pos }) {
   return (
     <div>
       <WordPic word={word} vi={vi} pos={pos} size="sm" />
-      <p className={`mt-2 font-serif text-2xl ${hide ? "select-none blur-[6px]" : ""}`}>{word}</p>
-      <p className={`mt-1 text-sm text-mute ${hide ? "select-none blur-[6px]" : ""}`}>{ipa}</p>
+      <p className="mt-2 font-serif text-2xl">{word}</p>
+      <p className="mt-1 text-sm text-mute">{ipa}</p>
       <p className="mt-1 text-sm">
-        <span className="text-lime">{label}</span> · {vi}
+        <span className="text-lime">{POS_VI[pos]}</span> · {vi}
       </p>
     </div>
   );
 }
 
 function WordFocus({ word, frame }: { word: ClassWord; frame: string }) {
-  const pos: Pos = word.pos;
+  const ex = CLASS_SAMPLES[word.word];
   return (
     <div className="mt-6">
       <WordPic word={word.word} vi={word.vi} pos={word.pos} size="md" />
-      <p className="mt-3 text-sm text-mute">{posHint(pos)}</p>
+      <p className="mt-3 text-sm text-mute">{posHint(word.pos)}</p>
       <p className="mt-2 text-sm text-mute">
         Khung: <span className="text-text">{frame}</span>
       </p>
-      <p className="mt-2 text-sm">Ví dụ: There are five people in my class. One of them is very quiet.</p>
+      <p className="mt-1 text-sm">{FRAME_VI[frame] ?? ""}</p>
+      {ex && (
+        <div className="mt-3">
+          <p className="text-xs uppercase tracking-wider text-lime">Câu ví dụ</p>
+          <ExampleLine en={ex.en} vi={ex.vi} grammar={ex.g} />
+        </div>
+      )}
       <button className="btn-ghost mt-3" onClick={() => speak(word.word)}>
         Nghe {word.word}
       </button>
