@@ -1,0 +1,74 @@
+import type { Topic } from "./types";
+import { ch, cl, lq, rq, topic, v } from "./make";
+
+function eight(id: string, rows: [string, string, string, string][]): Topic["vocab"] {
+  return rows.map(([w, ipa, vi, ex]) => v(w, ipa, vi, ex));
+}
+
+export const TOPICS2: Topic[] = [
+  topic({
+    id: "family", name: "Family", vi: "Gia đình", stage: "builder",
+    vocab: eight("family", [["household", "/ˈhaʊshəʊld/", "hộ", "A typical household has four people."], ["relative", "/ˈrelətɪv/", "họ hàng", "I see close relatives every Tết."], ["upbringing", "/ˈʌpbrɪŋɪŋ/", "cách nuôi dạy", "A strict upbringing is not the same as a kind one."], ["generation", "/ˌdʒenəˈreɪʃn/", "thế hệ", "Three generations share the flat."], ["childcare", "/ˈtʃaɪldkeə/", "trông trẻ", "Childcare costs as much as rent."], ["divorce", "/dɪˈvɔːs/", "ly hôn", "Divorce rates rose, then flattened."], ["nuclear family", "/ˈnjuːkliə ˈfæməli/", "gia đình hạt nhân", "The nuclear family is not the only model."], ["bond", "/bɒnd/", "gắn bó", "The bond survived the long commute."]]),
+    chunks: [ch("nuclear family", "GĐ hạt nhân", "nucleus family"), ch("extended family", "GĐ mở rộng", "expand family"), ch("childcare costs", "chi phí trông trẻ", "child care price"), ch("family gathering", "sum họp", "family meet"), ch("raise a child", "nuôi con", "rise a child"), ch("family bond", "gắn bó", "family band")],
+    script: "I'm visiting my parents on the third, not the first — they changed the family lunch. Bring fruit, not cake; my father is off sugar this month. The train at 7.20 is full; take the 7.45. If you miss it, the bus is every 25 minutes from gate B, not gate A.",
+    listenQs: [lq("fa1", "Bữa ăn gia đình ngày?", ["1", "3", "7", "25"], "3", "the third."), lq("fa2", "Mang gì?", ["Bánh", "Trái cây", "Đường", "Không"], "Trái cây", "fruit not cake."), lq("fa3", "Tàu nào?", ["7:20", "7:45", "Gate A", "25 phút"], "7:45", "7.20 full.")],
+    passage: "Childcare in the city now costs as much as a second rent. Grandparents filled the gap until they too were working. Companies that boast about family values still schedule 19:00 meetings. Policy that does not move the clock only prints posters about bonding.",
+    readQs: [rq("far1", "Trông trẻ đô thị", ["rẻ", "đắt như tiền nhà thứ hai", "miễn phí", "ông bà luôn lo"], "đắt như tiền nhà thứ hai", "second rent."), rq("far2", "Công ty nói gia đình nhưng", ["họp 19h", "tan 16h", "không họp", "trả childcare"], "họp 19h", "19:00 meetings.")],
+    claims: [cl("Ông bà luôn rảnh.", "False", "until they too were working."), cl("Chi phí trông trẻ ≈ tiền thuê thứ hai.", "True", "second rent."), cl("Tỷ lệ ly hôn năm nay được nêu.", "Not Given", "not here."), cl("Poster không thay được giờ họp.", "True", "move the clock.")],
+    write: { task: 2, min: 250, prompt: "Some people think adults should spend more time with family than at work. To what extent do you agree or disagree?" },
+    speak: { part: 1, cue: "How often do you see your family? Has that changed in five years?" },
+    homework: "Đoạn 120 từ lập trường family vs work. Nói Part 1 45 giây.",
+  }),
+  topic({
+    id: "housing", name: "Housing", vi: "Nhà ở", stage: "builder",
+    vocab: eight("housing", [["rent", "/rent/", "thuê", "Rent swallowed half the salary."], ["landlord", "/ˈlændlɔːd/", "chủ nhà", "The landlord raised the deposit."], ["mortgage", "/ˈmɔːɡɪdʒ/", "khoản vay nhà", "A mortgage now runs into retirement."], ["tenant", "/ˈtenənt/", "người thuê", "Tenants have 30 days' notice."], ["overcrowded", "/ˌəʊvəˈkraʊdɪd/", "quá chật", "The hostel is overcrowded in exam month."], ["suburb", "/ˈsʌbɜːb/", "ngoại ô", "The suburb has buses once an hour."], ["deposit", "/dɪˈpɒzɪt/", "tiền cọc", "The deposit was two months' rent."], ["utilities", "/juːˈtɪlətiz/", "điện nước", "Utilities are not included."]]),
+    chunks: [ch("pay rent", "trả tiền thuê", "pay a rent"), ch("down payment", "trả trước", "down pay"), ch("housing shortage", "thiếu nhà", "house short"), ch("residential area", "khu dân cư", "resident area"), ch("rising rents", "thuê tăng", "raise renting"), ch("affordable housing", "nhà vừa túi", "afford house")],
+    script: "The viewing is Saturday 10.30, not 11. Rent is 7.5 million, deposit two months, utilities extra. No pets. The landlord will not renew if you are late twice. Nearest metro is a 12-minute walk, not 5 — the listing was old.",
+    listenQs: [lq("ho1", "Xem nhà?", ["11:00", "10:30 T7", "12:00", "T2"], "10:30 T7", "Saturday 10.30."), lq("ho2", "Cọc?", ["1 tháng", "2 tháng", "7.5", "Không"], "2 tháng", "two months."), lq("ho3", "Metro?", ["5 phút", "12 phút bộ", "trong nhà", "không có"], "12 phút bộ", "listing was old.")],
+    passage: "Young workers are not priced out of cities by taste. They are priced out by land that was zoned for cars and by investors who do not sleep in the rooms they own. Building only luxury towers is a hobby. Building near existing buses is a policy. Caps without supply are a speech.",
+    readQs: [rq("hor1", "Nguyên nhân?", ["gu thẩm mỹ", "đất cho ôtô + nhà đầu tư không ở", "thiếu xe buýt duy nhất", "cọc 2 tháng"], "đất cho ôtô + nhà đầu tư không ở", "zoned for cars, investors."), rq("hor2", "Ceiling giá mà không tăng cung", ["đủ", "bài diễn văn", "giải pháp band 8", "xây luxury"], "bài diễn văn", "speech.")],
+    claims: [cl("Nhà đầu tư luôn ở căn họ mua.", "False", "do not sleep in the rooms."), cl("Xây sát xe buýt sẵn = policy.", "True", "near existing buses."), cl("Giá thuê trung bình được nêu.", "Not Given", "no average."), cl("Chỉ xây tháp sang là hobby.", "True", "luxury towers hobby.")],
+    write: { task: 2, min: 250, prompt: "Housing in large cities is becoming too expensive for young people. Why? What can governments do?" },
+    speak: { part: 1, cue: "Do you live in a house or a flat? What would you change about your neighbourhood?" },
+    homework: "Two-part housing 250 từ. Nói nhà 45 giây.",
+  }),
+  topic({
+    id: "food", name: "Food", vi: "Ẩm thực", stage: "foundation",
+    vocab: eight("food", [["processed", "/ˈprəʊsest/", "chế biến sẵn", "Ultra-processed food is cheap and dense."], ["organic", "/ɔːˈɡænɪk/", "hữu cơ", "Organic labels are not a health guarantee."], ["diet", "/ˈdaɪət/", "chế độ ăn", "A diet of slogans does not lower sugar."], ["ingredient", "/ɪnˈɡriːdiənt/", "nguyên liệu", "The ingredient list is longer than the recipe."], ["nutrition", "/njuˈtrɪʃn/", "dinh dưỡng", "School nutrition rules vary."], ["fast food", "/fɑːst fuːd/", "đồ ăn nhanh", "Fast food filled the gap after 21:00 buses died."], ["home-cooked", "/həʊm kʊkt/", "nấu ở nhà", "Home-cooked meals fell as commutes grew."], ["portion", "/ˈpɔːʃn/", "khẩu phần", "Portions doubled; plates followed."]]),
+    chunks: [ch("balanced diet", "ăn cân bằng", "balance food"), ch("junk food", "đồ rác", "junk meal food"), ch("food waste", "lãng phí đồ ăn", "food wasting"), ch("home-cooked meal", "cơm nhà", "house cook"), ch("food labelling", "nhãn thực phẩm", "food paper"), ch("eating habits", "thói quen ăn", "eat habit")],
+    script: "The canteen changes on Monday: vegetarian line moves to the right, next to the water. Chicken is 28,000, not 22,000 — supplier costs. The 12.30 rush is worse than 12.00; come at 11.50 if you can. Peanuts are now in the satay. If you have an allergy, take the red tray only.",
+    listenQs: [lq("fo1", "Gà giá?", ["22k", "28k", "12.30", "11.50"], "28k", "not 22,000."), lq("fo2", "Dị ứng lạc?", ["Khay đỏ", "Hàng chay trái", "12.30", "Không ăn được gì"], "Khay đỏ", "red tray only."), lq("fo3", "Tránh giờ?", ["11:50", "12:30", "Thứ 2", "Chay"], "12:30", "rush worse.")],
+    passage: "Taxing sugary drinks cuts sales. Whether it cuts obesity depends on what people buy instead: juice can be worse. Cooking classes without time in the day are theatre. Late buses and a microwave at work change more plates than a pyramid poster.",
+    readQs: [rq("for1", "Thuế nước ngọt", ["chắc giảm béo", "giảm bán; béo tùy thứ thay", "tăng béo", "cấm nấu"], "giảm bán; béo tùy thứ thay", "substitution."), rq("for2", "Poster tháp dinh dưỡng", ["mạnh hơn xe buýt đêm", "yếu hơn thời gian và lò vi sóng", "đủ", "cấm microwave"], "yếu hơn thời gian và lò vi sóng", "buses and microwave.")],
+    claims: [cl("Nước ép luôn tốt hơn nước ngọt.", "False", "juice can be worse."), cl("Thuế làm giảm bán.", "True", "cuts sales."), cl("Số calo trung bình được nêu.", "Not Given", "no calorie figure."), cl("Lớp nấu ăn không có thời gian = kịch.", "True", "theatre.")],
+    write: { task: 2, min: 250, prompt: "Some people think governments should tax unhealthy food. Others think this is unfair. Discuss both views and give your opinion." },
+    speak: { part: 1, cue: "What did you eat yesterday? Do you prefer cooking or eating out?" },
+    homework: "Discuss both tax đồ ăn. Part 1 đồ ăn 45s.",
+  }),
+  topic({
+    id: "sport", name: "Sport", vi: "Thể thao", stage: "builder",
+    vocab: eight("sport", [["fitness", "/ˈfɪtnəs/", "thể lực", "Fitness is a habit, not a membership."], ["spectator", "/spekˈteɪtə/", "khán giả", "Spectators outnumber players a thousand to one."], ["professional", "/prəˈfeʃənl/", "chuyên nghiệp", "Professional sport is entertainment with a medical bill."], ["injury", "/ˈɪndʒəri/", "chấn thương", "The injury ended the season, not the career."], ["stadium", "/ˈsteɪdiəm/", "sân vận động", "The stadium is used 18 days a year."], ["sedentary", "/ˈsedntri/", "ngồi nhiều", "A stadium does not cure a sedentary city."], ["teamwork", "/ˈtiːmwɜːk/", "làm nhóm", "Teamwork on a pitch does not automatically transfer to an office."], ["coach", "/kəʊtʃ/", "HLV", "A good coach talks less than they watch."]]),
+    chunks: [ch("keep fit", "giữ sức", "keep fitness"), ch("team sport", "môn đồng đội", "group sport"), ch("sports facilities", "cơ sở TDTT", "sport building"), ch("professional athlete", "VĐV chuyên nghiệp", "pro sport man"), ch("sports injury", "chấn thương", "sport hurt"), ch("physical activity", "vận động", "body activity")],
+    script: "The pitch is closed this week for drainage. Training moves to hall 2, 6.30 to 8.00, not 5.30. Bring indoor shoes. The match on Sunday is at the old ground, kick-off 16:15, not 15:00. Supporters take bus 12 from the station; bus 4 no longer stops.",
+    listenQs: [lq("sp1", "Tập?", ["Sân", "Hội trường 2, 6:30–8:00", "5:30", "CN 15:00"], "Hội trường 2, 6:30–8:00", "hall 2."), lq("sp2", "Trận CN sút bóng?", ["15:00", "16:15", "6:30", "12"], "16:15", "not 15:00."), lq("sp3", "Xe buýt CĐV?", ["4", "12", "2", "Không"], "12", "bus 4 no longer.")],
+    passage: "Public money for a stadium is easy to photograph. Public money for a park that is open at 6 a.m. is not. Elite sport can inspire; it does not replace a pavement you can run on. If the only exercise in a district is a ticket, the district is sedentary with better TV.",
+    readQs: [rq("spr1", "Tiền sân vận động", ["khó chụp ảnh", "dễ khoe", "rẻ hơn công viên", "mở 6h"], "dễ khoe", "easy to photograph."), rq("spr2", "Chỉ tập bằng vé xem", ["đủ", "vẫn ngồi nhiều, TV đẹp hơn", "giỏi hơn", "thay vỉa hè"], "vẫn ngồi nhiều, TV đẹp hơn", "sedentary with better TV.")],
+    claims: [cl("Thể thao đỉnh thay được vỉa hè.", "False", "does not replace a pavement."), cl("Công viên 6h sáng khó khoe hơn sân.", "True", "not easy to photograph."), cl("Số VĐV được nêu.", "Not Given", "no count."), cl("Vé xem ≠ vận động dân.", "True", "if only exercise is a ticket.")],
+    write: { task: 2, min: 250, prompt: "Some people think governments should spend money on professional sports. Others think the money should go to public facilities. Discuss both views and give your opinion." },
+    speak: { part: 1, cue: "Do you exercise? What happens to your sleep when you skip it?" },
+    homework: "Discuss both sân vs công viên. Nói thói quen tập.",
+  }),
+  topic({
+    id: "travel", name: "Travel & tourism", vi: "Du lịch", stage: "builder",
+    vocab: eight("travel", [["destination", "/ˌdestɪˈneɪʃn/", "điểm đến", "The destination was quieter in the rainy season."], ["overtourism", "/ˈəʊvəˌtʊərɪzəm/", "quá tải khách", "Overtourism closed the alley to non-residents at night."], ["itinerary", "/aɪˈtɪnərəri/", "lịch trình", "The itinerary packed four cities into five days."], ["accommodation", "/əˌkɒməˈdeɪʃn/", "chỗ ở", "Accommodation near the station costs double."], ["souvenir", "/ˌsuːvəˈnɪə/", "quà lưu niệm", "The souvenir was made 400 km away."], ["heritage site", "/ˈherɪtɪdʒ saɪt/", "di tích", "The heritage site caps daily tickets."], ["eco-tourism", "/ˈiːkəʊ ˈtʊərɪzəm/", "du lịch sinh thái", "Eco-tourism is a label until the path is repaired."], ["peak season", "/piːk ˈsiːzn/", "mùa cao điểm", "Peak season wages still do not cover the off months."]]),
+    chunks: [ch("peak season", "mùa cao điểm", "high peak"), ch("tourist destination", "điểm du lịch", "tour place"), ch("book accommodation", "đặt chỗ ở", "book a stay house"), ch("cultural heritage", "di sản", "culture site heritage"), ch("travel broadens the mind", "đi làm mở đầu", "travel big mind"), ch("mass tourism", "du lịch đại trà", "huge tourism")],
+    script: "Your ferry is 14.10 from pier 3, not pier 1. Check in 40 minutes before. The 13.20 sailing is cancelled. Luggage over 15 kilos is 70,000 extra. Stay on the left of the island if you want quiet; the east beach is the tour buses.",
+    listenQs: [lq("tr1", "Phà?", ["Pier 1 13:20", "Pier 3 14:10", "15kg", "Đông"], "Pier 3 14:10", "not pier 1."), lq("tr2", "13:20?", ["Trễ", "Hủy", "Pier 3", "Rẻ"], "Hủy", "cancelled."), lq("tr3", "Yên tĩnh?", ["Bãi đông", "Bên trái đảo", "Pier 1", "Bus"], "Bên trái đảo", "left of the island.")],
+    passage: "Tourism is a wage and a bruise. A ticket cap at a heritage site is not hostility; it is how stone survives. Homestays that send money past the village are hotels with better photos. The test is simple: after the buses leave, what is left besides plastic and a closed shop?",
+    readQs: [rq("trr1", "Giới hạn vé di tích", ["thù khách", "cách để đá còn", "giết homestay", "vô ích"], "cách để đá còn", "how stone survives."), rq("trr2", "Bài test sau khi bus đi", ["ảnh đẹp", "còn gì ngoài nhựa và cửa đóng", "tăng cap", "mở pier 1"], "còn gì ngoài nhựa và cửa đóng", "plastic and a closed shop.")],
+    claims: [cl("Cap vé = thù du khách.", "False", "not hostility."), cl("Homestay luôn giữ tiền trong làng.", "False", "may send money past."), cl("Số khách/năm được nêu.", "Not Given", "no annual figure."), cl("Du lịch vừa lương vừa vết.", "True", "wage and a bruise.")],
+    write: { task: 2, min: 250, prompt: "International tourism is a bad thing for some countries. To what extent do you agree or disagree?" },
+    speak: { part: 2, cue: "Describe a journey you take often.", bullets: ["where", "how you travel", "what you see", "whether you enjoy it"] },
+    homework: "Agree/disagree tourism. Nói một chuyến đi.",
+  }),
+];

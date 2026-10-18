@@ -1,0 +1,35 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg: #0b0c0f;
+  --panel: #12141a;
+  --line: #23262e;
+  --text: #eceae4;
+  --mute: #8b8e98;
+  --lime: #d4f562;
+  --warn: #f3b264;
+  --bad: #ef6b5e;
+}
+
+html, body { background: var(--bg); color: var(--text); }
+body { min-height: 100vh; }
+
+::selection { background: var(--lime); color: #111; }
+
+@layer components {
+  .panel { @apply rounded-2xl border border-line bg-panel; }
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-full px-4 py-2 text-sm font-medium transition;
+  }
+  .btn-lime { @apply btn bg-lime text-bg hover:brightness-95 disabled:opacity-40; }
+  .btn-ghost { @apply btn border border-line text-text hover:border-mute; }
+  .field {
+    @apply w-full rounded-xl border border-line bg-bg px-3 py-2.5 text-[15px] text-text placeholder:text-mute/70 focus:border-lime focus:outline-none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * { animation: none !important; transition: none !important; }
+}
