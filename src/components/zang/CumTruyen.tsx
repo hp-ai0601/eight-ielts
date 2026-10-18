@@ -2,8 +2,8 @@
 
 import { useState } from "react";
 import { STORIES, dayNum, pick } from "@/lib/zang/content";
-import { speak } from "@/lib/speech";
 import { saveZangMimic, type State } from "@/lib/store";
+import PlayBar from "@/components/PlayBar";
 
 export default function CumTruyen({ s, onDone }: { s: State; onDone: (next: State) => void }) {
   const beat = pick(STORIES, dayNum());
@@ -22,7 +22,7 @@ export default function CumTruyen({ s, onDone }: { s: State; onDone: (next: Stat
   }
 
   return (
-    <div>
+    <div className="pb-28">
       <p className="text-xs uppercase tracking-wider text-lime">{beat.title}</p>
       <p className="mt-3 font-serif text-2xl leading-snug">{beat.vi}</p>
       <p className="mt-4 text-sm text-mute">Dịch / đối chiếu tiếng Anh — bấm hiện, đừng nhìn trước khi tự dịch trong đầu.</p>
@@ -32,9 +32,7 @@ export default function CumTruyen({ s, onDone }: { s: State; onDone: (next: Stat
       {showEn && (
         <div className="panel mt-4 p-4">
           <p>{beat.en}</p>
-          <button className="btn-ghost mt-3" onClick={() => speak(beat.en, 0.88)}>
-            Nghe
-          </button>
+          <p className="mt-3 text-sm text-mute">Nghe / Dừng ở thanh dưới.</p>
         </div>
       )}
       <div className="mt-6 space-y-2 text-sm">
@@ -58,6 +56,7 @@ export default function CumTruyen({ s, onDone }: { s: State; onDone: (next: Stat
         Cất câu
       </button>
       {ok && <p className="mt-3 text-sm text-lime">{ok}</p>}
+      <PlayBar minutes={8} audio={showEn ? beat.en : undefined} rate={0.88} />
     </div>
   );
 }

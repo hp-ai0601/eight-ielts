@@ -14,7 +14,7 @@ export default function OneTest() {
   if (!ready || !s) return null;
   if (!test) return <p className="p-10">Không có đề này.</p>;
   return (
-    <div className="mx-auto max-w-2xl px-5 py-10 lg:px-10">
+    <div className="mx-auto max-w-2xl px-5 py-10 pb-28 lg:px-10">
       <TestView
         test={test}
         onDone={(ok, total) => {

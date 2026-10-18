@@ -25,7 +25,6 @@ export default function SpeakBox({
   const [text, setText] = useState("");
   const [score, setScore] = useState<Score | null>(null);
   const [busy, setBusy] = useState(false);
-  const [prep, setPrep] = useState(false);
 
   async function send() {
     if (!text.trim()) return;
@@ -59,18 +58,9 @@ export default function SpeakBox({
         <button className="btn-ghost" onClick={() => speak(cue)}>
           Nghe câu hỏi
         </button>
-        <button
-          className="btn-ghost"
-          onClick={() => {
-            setPrep(true);
-            setTimeout(() => setPrep(false), 60_000);
-          }}
-        >
-          {prep ? "Đang 1 phút chuẩn bị…" : "Bấm 1 phút chuẩn bị"}
-        </button>
       </div>
       <p className="mt-6 text-sm text-mute">
-        Nói thành tiếng, rồi gõ lại (hoặc dán transcript). Chấm 4 tiêu chí: Fluency, Lexical, Grammar, Pron.
+        1 phút chuẩn bị, Part 2 khoảng 2 phút nói — Dừng / Tiếp ở thanh dưới. Nói thành tiếng, rồi gõ lại. Chấm Fluency, Lexical, Grammar, Pron.
       </p>
       <textarea className="field mt-3 min-h-36" value={text} onChange={(e) => setText(e.target.value)} placeholder="I usually…" />
       <button className="btn-lime mt-4" disabled={busy || !text.trim()} onClick={send}>

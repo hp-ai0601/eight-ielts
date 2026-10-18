@@ -2,9 +2,9 @@
 
 import { useState } from "react";
 import { TRACKS, dayNum, pick } from "@/lib/zang/content";
-import { speak, stopSpeak } from "@/lib/speech";
 import { saveZangListen, type State } from "@/lib/store";
 import Recorder from "./Recorder";
+import PlayBar from "@/components/PlayBar";
 
 const STEPS = ["Nghĩa trước", "Nghe không chữ", "Đoán", "Ghép lại", "Phát âm + ghi âm"] as const;
 
@@ -16,7 +16,7 @@ export default function HaiNhac({ s, onDone }: { s: State; onDone: (next: State)
   const [guess, setGuess] = useState("");
 
   return (
-    <div>
+    <div className="pb-28">
       <div className="flex flex-wrap gap-2">
         <button className={kind === "hai" ? "btn-lime" : "btn-ghost"} onClick={() => { setKind("hai"); setStep(0); }}>
           Truyện hài
@@ -42,18 +42,7 @@ export default function HaiNhac({ s, onDone }: { s: State; onDone: (next: State)
 
       {step === 1 && (
         <div className="mt-4">
-          <p className="text-sm text-mute">Không phụ đề. Bấm nghe, đoán trong đầu.</p>
-          <div className="mt-4 flex flex-wrap gap-2">
-            <button className="btn-lime" onClick={() => speak(track.en, 0.86)}>
-              Nghe
-            </button>
-            <button className="btn-ghost" onClick={() => speak(track.en, 0.7)}>
-              Chậm
-            </button>
-            <button className="btn-ghost" onClick={stopSpeak}>
-              Dừng
-            </button>
-          </div>
+          <p className="text-sm text-mute">Không phụ đề. Phát ở thanh dưới, Dừng khi cần, đoán trong đầu.</p>
           <button className="btn-lime mt-6" onClick={() => setStep(2)}>
             Đoán nghĩa
           </button>
@@ -94,14 +83,6 @@ export default function HaiNhac({ s, onDone }: { s: State; onDone: (next: State)
         <div className="mt-4">
           <p className="text-sm text-mute">Nghe phát âm, học thuộc rồi ghi âm lại giọng em.</p>
           <p className="mt-3 text-sm">{track.en}</p>
-          <div className="mt-4 flex flex-wrap gap-2">
-            <button className="btn-ghost" onClick={() => speak(track.en, 0.8)}>
-              Nghe lại
-            </button>
-            <button className="btn-ghost" onClick={() => speak(track.en, 1)}>
-              Nhanh hơn
-            </button>
-          </div>
           <Recorder />
           <button
             className="btn-lime mt-6"
@@ -111,6 +92,7 @@ export default function HaiNhac({ s, onDone }: { s: State; onDone: (next: State)
           </button>
         </div>
       )}
+      <PlayBar key={track.id} minutes={8} audio={step >= 1 ? track.en : undefined} rate={step === 4 ? 0.8 : 0.86} />
     </div>
   );
 }

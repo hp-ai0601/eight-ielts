@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 interface Score {
   band: number;
@@ -16,7 +16,6 @@ export default function WriteBox({
   prompt,
   min,
   data,
-  minutes = 20,
   onScored,
 }: {
   prompt: string;
@@ -26,17 +25,9 @@ export default function WriteBox({
   onScored?: (band: number) => void;
 }) {
   const [text, setText] = useState("");
-  const [left, setLeft] = useState(minutes * 60);
-  const [run, setRun] = useState(false);
   const [score, setScore] = useState<Score | null>(null);
   const [busy, setBusy] = useState(false);
   const words = text.trim() ? text.trim().split(/\s+/).length : 0;
-
-  useEffect(() => {
-    if (!run) return;
-    const t = setInterval(() => setLeft((x) => (x > 0 ? x - 1 : 0)), 1000);
-    return () => clearInterval(t);
-  }, [run]);
 
   async function send() {
     setBusy(true);
@@ -54,21 +45,13 @@ export default function WriteBox({
     }
   }
 
-  const mm = String(Math.floor(left / 60)).padStart(2, "0");
-  const ss = String(left % 60).padStart(2, "0");
-
   return (
     <div>
       <p className="font-serif text-lg leading-relaxed">{prompt}</p>
       {data && <p className="mt-3 rounded-xl bg-bg p-3 font-serif text-sm text-mute">{data}</p>}
-      <div className="mt-4 flex items-center justify-between text-sm text-mute">
-        <span>
-          {words} / {min} từ
-        </span>
-        <button className="btn-ghost" onClick={() => setRun(true)}>
-          {run ? `${mm}:${ss}` : `Bấm giờ ${minutes}′`}
-        </button>
-      </div>
+      <p className="mt-4 text-sm text-mute">
+        {words} / {min} từ · giờ ở thanh Dừng phía dưới
+      </p>
       <textarea
         className="field mt-3 min-h-56 font-serif"
         value={text}

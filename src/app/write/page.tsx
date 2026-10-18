@@ -4,6 +4,7 @@ import { useMemo, useState } from "react";
 import { BAND8, EXAM } from "@/lib/ielts";
 import { WRITE } from "@/lib/content";
 import WriteBox from "@/components/WriteBox";
+import PlayBar from "@/components/PlayBar";
 import { load, recordPractice } from "@/lib/store";
 import { useEight } from "@/lib/useEight";
 
@@ -16,7 +17,7 @@ export default function WritePage() {
   if (!ready || !s || !prompt) return null;
 
   return (
-    <div className="mx-auto max-w-2xl px-5 py-10 lg:px-10">
+    <div className="mx-auto max-w-2xl px-5 py-10 pb-28 lg:px-10">
       <h1 className="font-serif text-4xl">Viết</h1>
       <p className="mt-3 text-mute">
         {EXAM.writing.minutes} phút. Task 1 ≥ {EXAM.writing.task1} từ (~20′). Task 2 ≥ {EXAM.writing.task2} từ (~40′).{" "}
@@ -54,15 +55,15 @@ export default function WritePage() {
           <li key={x}>— {x}</li>
         ))}
       </ul>
-      <div className="panel mt-8 p-6" key={prompt.id}>
+      <div className="panel mt-8 p-6 pb-28" key={prompt.id}>
         <WriteBox
           prompt={prompt.prompt}
           min={prompt.min}
           data={prompt.data}
-          minutes={task === 1 ? 20 : 40}
           onScored={(band) => commit(recordPractice(load(), task === 1 ? 20 : 40, { w: band }))}
         />
       </div>
+      <PlayBar key={`${task}-${prompt.id}`} minutes={task === 1 ? 20 : 40} />
     </div>
   );
 }
