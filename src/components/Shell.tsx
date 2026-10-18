@@ -21,8 +21,13 @@ const NAV = [
   { href: "/coach", label: "Gia sư" },
 ];
 
+function norm(p: string) {
+  if (!p) return "/";
+  return p.length > 1 ? p.replace(/\/$/, "") : p;
+}
+
 export default function Shell({ children }: { children: React.ReactNode }) {
-  const path = usePathname();
+  const path = norm(usePathname() || "/");
   const router = useRouter();
   const { s, ready } = useEight();
 

@@ -1,12 +1,10 @@
 "use client";
 
 import { useState } from "react";
-import { useRouter } from "next/navigation";
 import { USERS, checkPin } from "@/lib/users";
 import { setSession } from "@/lib/store";
 
 export default function LoginPage() {
-  const router = useRouter();
   const [id, setId] = useState("zang");
   const [pin, setPin] = useState("");
   const [err, setErr] = useState("");
@@ -18,7 +16,9 @@ export default function LoginPage() {
       return;
     }
     setSession(u.id);
-    router.replace(u.role === "teacher" ? "/teacher" : "/");
+    const dest = u.role === "teacher" ? "/teacher/" : "/";
+    const base = process.env.NEXT_PUBLIC_BASE_PATH || "";
+    window.location.assign(base + dest);
   }
 
   return (

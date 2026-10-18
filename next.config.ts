@@ -4,6 +4,9 @@ const gh = process.env.GITHUB_PAGES === "1";
 
 const nextConfig: NextConfig = {
   reactStrictMode: true,
+  env: {
+    NEXT_PUBLIC_BASE_PATH: gh ? "/eight-ielts" : "",
+  },
   ...(gh
     ? {
         output: "export" as const,
