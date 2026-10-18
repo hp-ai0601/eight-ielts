@@ -62,6 +62,33 @@ export interface Homework {
   done: boolean;
 }
 
+export interface ZangSentence {
+  at: number;
+  word: string;
+  mode: "class" | "antonym";
+  text: string;
+}
+
+export interface ZangMimic {
+  at: number;
+  storyId: string;
+  text: string;
+}
+
+export interface ZangDiary {
+  at: number;
+  day: string;
+  text: string;
+}
+
+export interface ZangState {
+  sentences: ZangSentence[];
+  mimics: ZangMimic[];
+  listenDone: string[];
+  diaries: ZangDiary[];
+  steps: Record<string, number[]>;
+}
+
 export interface State {
   profile: Profile;
   cards: Card[];
@@ -69,6 +96,11 @@ export interface State {
   attempts: Attempt[];
   homework: Homework[];
   testsDone: string[];
+  zang: ZangState;
+}
+
+function emptyZang(): ZangState {
+  return { sentences: [], mimics: [], listenDone: [], diaries: [], steps: {} };
 }
 
 function today() {
@@ -92,6 +124,7 @@ function empty(): State {
     attempts: [],
     homework: [],
     testsDone: [],
+    zang: emptyZang(),
   };
 }
 
@@ -103,6 +136,7 @@ function migrate(s: State): State {
     attempts: s.attempts ?? [],
     homework: s.homework ?? [],
     testsDone: s.testsDone ?? [],
+    zang: s.zang ?? emptyZang(),
     profile: {
       ...s.profile,
       userId: s.profile.userId || u?.id,
@@ -316,4 +350,46 @@ export function ensureHomework(s: State): State {
 
 export function testProgress(s: State) {
   return { done: s.testsDone.filter((id) => TESTS.some((t) => t.id === id)).length, total: TESTS.length };
+}
+
+export function markZangStep(s: State, step: number): State {
+  const d = today();
+  const cur = s.zang.steps[d] ?? [];
+  const steps = cur.includes(step) ? cur : [...cur, step];
+  return {
+    ...s,
+    zang: { ...s.zang, steps: { ...s.zang.steps, [d]: steps } },
+    profile: bumpStreak({ ...s.profile, minutesToday: s.profile.minutesToday + 8 }),
+  };
+}
+
+export function saveZangSentence(s: State, row: Omit<ZangSentence, "at">): State {
+  return markZangStep(
+    { ...s, zang: { ...s.zang, sentences: [{ ...row, at: Date.now() }, ...s.zang.sentences].slice(0, 200) } },
+    1,
+  );
+}
+
+export function saveZangMimic(s: State, storyId: string, text: string): State {
+  return markZangStep(
+    { ...s, zang: { ...s.zang, mimics: [{ at: Date.now(), storyId, text }, ...s.zang.mimics].slice(0, 200) } },
+    2,
+  );
+}
+
+export function saveZangListen(s: State, id: string): State {
+  const listenDone = s.zang.listenDone.includes(id) ? s.zang.listenDone : [...s.zang.listenDone, id];
+  return markZangStep({ ...s, zang: { ...s.zang, listenDone } }, 3);
+}
+
+export function saveZangDiary(s: State, text: string): State {
+  const day = today();
+  const diaries = [{ at: Date.now(), day, text }, ...s.zang.diaries.filter((x) => x.day !== day)].slice(0, 120);
+  return markZangStep({ ...s, zang: { ...s.zang, diaries } }, 4);
+}
+
+export function zangToday(s: State) {
+  const d = today();
+  const done = new Set(s.zang.steps[d] ?? []);
+  return { done, count: done.size };
 }

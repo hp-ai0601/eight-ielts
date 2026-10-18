@@ -61,7 +61,7 @@ export default function Onboarding({ onDone }: { onDone: (s: State) => void }) {
           <p className="text-sm text-lime">Eight</p>
           <h1 className="mt-3 font-serif text-4xl leading-tight">Học lại từ đầu. Đích là 8.0.</h1>
           <p className="mt-4 text-mute">
-            Không có 8 cái form AI. Mỗi ngày một phiên: ôn thẻ đến hạn, một bài học, rồi nói hoặc viết. Sửa theo tiêu chí IELTS, không theo cảm giác.
+            Bốn bước của Zang mỗi ngày: một từ thành câu, một cụm truyện, một bài hài hoặc nhạc, rồi nhật ký. Đề IELTS để ở Kho.
           </p>
           <button className="btn-lime mt-8" onClick={() => setStep(1)}>
             Bắt đầu

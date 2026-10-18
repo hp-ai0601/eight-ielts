@@ -41,6 +41,12 @@ export default function TeacherPage() {
             BTVN xong {z.homework.filter((h) => h.done).length}/{z.homework.length}
           </p>
           <p>Streak {z.profile.streak.count} ngày</p>
+          {z.zang && (
+            <p>
+              Cách Zang: {z.zang.sentences.length} câu · {z.zang.mimics.length} cụm · {z.zang.listenDone.length} bài nghe ·{" "}
+              {z.zang.diaries.length} nhật ký
+            </p>
+          )}
         </div>
       )}
     </div>

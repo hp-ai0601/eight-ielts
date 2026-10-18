@@ -10,7 +10,7 @@ Gia sư IELTS Academic 8.0. Next.js 15.
 
 1. Chọn **Zang Bếu**
 2. PIN: `8800`
-3. **Từ** (3500+) · **Ngữ pháp** · **Cách làm** · **Đề** · **BTVN** · **Lộ trình**
+3. Bốn bước **cách Zang**: Từ → câu · Cụm truyện · Hài & nhạc · Nhật ký. Đề IELTS / 3500 từ nằm ở **Kho**.
 
 Thầy Hiệp: PIN `0008` → trang theo dõi Zang.
 

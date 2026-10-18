@@ -9,18 +9,11 @@ import { testProgress } from "@/lib/store";
 
 const NAV = [
   { href: "/", label: "Hôm nay" },
-  { href: "/path", label: "Lộ trình" },
-  { href: "/tests", label: "Đề" },
-  { href: "/homework", label: "BTVN" },
-  { href: "/words", label: "Từ" },
-  { href: "/grammar", label: "Ngữ pháp" },
-  { href: "/method", label: "Cách làm" },
-  { href: "/listen", label: "Nghe" },
-  { href: "/read", label: "Đọc" },
-  { href: "/speak", label: "Nói" },
-  { href: "/write", label: "Viết" },
-  { href: "/exam", label: "Thi" },
-  { href: "/coach", label: "Gia sư" },
+  { href: "/tu", label: "1. Từ" },
+  { href: "/cum", label: "2. Cụm" },
+  { href: "/hai", label: "3. Hài" },
+  { href: "/nhat-ky", label: "4. Nhật ký" },
+  { href: "/kho", label: "Kho" },
 ];
 
 function norm(p: string) {
@@ -47,7 +40,7 @@ export default function Shell({ children }: { children: React.ReactNode }) {
           <Link href="/" className="text-lg font-semibold tracking-tight">
             Eight<span className="text-lime">.</span>
           </Link>
-          <p className="hidden text-xs text-mute lg:mt-2 lg:block">IELTS Academic 8.0</p>
+          <p className="hidden text-xs text-mute lg:mt-2 lg:block">Cách Zang · IELTS 8.0</p>
           {ready && s?.profile.userName && (
             <p className="hidden lg:mt-3 lg:block">
               <span className="text-sm">{s.profile.userName}</span>
@@ -65,7 +58,7 @@ export default function Shell({ children }: { children: React.ReactNode }) {
         {path !== "/login" && (
           <nav className="flex gap-1 overflow-x-auto px-3 pb-3 lg:block lg:space-y-0.5 lg:px-3 lg:pb-8">
             {NAV.map((n) => {
-              const on = n.href === "/" ? path === "/" : path.startsWith(n.href);
+              const on = n.href === "/" ? path === "/" : path === n.href || path.startsWith(n.href + "/");
               return (
                 <Link
                   key={n.href}
