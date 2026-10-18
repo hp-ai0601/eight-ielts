@@ -1,4 +1,5 @@
 import type { Question } from "@/lib/content/types";
+import type { Pos } from "@/lib/pos";
 
 export type TestKind =
   | "vocab"
@@ -22,6 +23,7 @@ export interface TopicVocab {
   vi: string;
   example: string;
   trap?: string;
+  pos?: Pos;
 }
 
 export interface Topic {

@@ -7,6 +7,7 @@ import { TESTS, homeworkTests, type BankTest } from "./bank";
 import { userById } from "./users";
 import { answersToBand } from "./ielts";
 import type { LexItem } from "./lexicon";
+import { posVi } from "./pos";
 
 const SESSION = "eight.session";
 
@@ -119,7 +120,7 @@ function empty(): State {
       day: today(),
       onboarding: false,
     },
-    cards: STARTER_VOCAB.map((v) => makeCard(v.id, v.word, `${v.vi}  ${v.ipa}`, v.example)),
+    cards: STARTER_VOCAB.map((v) => makeCard(v.id, v.word, `${posVi(v.word, v.vi, v.example, v.pos)} · ${v.vi}  ${v.ipa}`, v.example)),
     log: [],
     attempts: [],
     homework: [],
@@ -240,7 +241,7 @@ export function addCardsFromLesson(s: State, lesson: Lesson): State {
   if (!extra.length) return s;
   return {
     ...s,
-    cards: [...s.cards, ...extra.map((v) => makeCard(v.id, v.word, `${v.vi}  ${v.ipa}`, v.example))],
+    cards: [...s.cards, ...extra.map((v) => makeCard(v.id, v.word, `${posVi(v.word, v.vi, v.example, v.pos)} · ${v.vi}  ${v.ipa}`, v.example))],
   };
 }
 
@@ -251,7 +252,7 @@ export function addLexItems(s: State, items: LexItem[]): State {
   if (!extra.length) return s;
   return {
     ...s,
-    cards: [...s.cards, ...extra.map((v) => makeCard(`lex-${v.topic}-${v.word}`, v.word, `${v.vi}  ${v.ipa}`, v.example))],
+    cards: [...s.cards, ...extra.map((v) => makeCard(`lex-${v.topic}-${v.word}`, v.word, `${posVi(v.word, v.vi, v.example, v.pos)} · ${v.vi}  ${v.ipa}`, v.example))],
   };
 }
 
@@ -311,7 +312,7 @@ export function recordTest(s: State, test: BankTest, ok: number, total: number, 
   const testsDone = s.testsDone.includes(test.id) ? s.testsDone : [...s.testsDone, test.id];
   const extra = (test.vocab ?? []).filter((v) => !s.cards.some((c) => c.id === `${test.topicId}-${v.word}`));
   const cards = extra.length
-    ? [...s.cards, ...extra.map((v) => makeCard(`${test.topicId}-${v.word}`, v.word, `${v.vi}  ${v.ipa}`, v.example))]
+    ? [...s.cards, ...extra.map((v) => makeCard(`${test.topicId}-${v.word}`, v.word, `${posVi(v.word, v.vi, v.example, v.pos)} · ${v.vi}  ${v.ipa}`, v.example))]
     : s.cards;
   let bands = { ...s.profile.bands };
   if (total >= 8 && (test.kind === "listen" || test.kind === "mock-l")) bands.l = answersToBand(ok, total);

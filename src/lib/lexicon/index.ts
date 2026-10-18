@@ -4,6 +4,7 @@ import pack3 from "./pack3.json";
 import pack4 from "./pack4.json";
 import { LEX_TOPICS } from "./catalog";
 import type { VocabItem } from "@/lib/content/types";
+import { guessPos, POS_VI, type Pos } from "@/lib/pos";
 
 export type LexItem = {
   word: string;
@@ -11,9 +12,18 @@ export type LexItem = {
   vi: string;
   example: string;
   topic: string;
+  pos: Pos;
 };
 
-const RAW = [...pack1, ...pack2, ...pack3, ...pack4] as LexItem[];
+type RawLex = Omit<LexItem, "pos"> & { pos?: Pos };
+
+const RAW_SRC = [...pack1, ...pack2, ...pack3, ...pack4] as RawLex[];
+
+function withPos(x: RawLex): LexItem {
+  return { ...x, pos: x.pos ?? guessPos(x.word, x.vi, x.example) };
+}
+
+const RAW = RAW_SRC.map(withPos);
 
 /** Unique by word (keep first topic). 100 chủ đề, ≥3500 từ. */
 export const LEXICON: LexItem[] = (() => {
@@ -39,7 +49,8 @@ export function lexSearch(q: string) {
     (x) =>
       x.word.toLowerCase().includes(s) ||
       x.vi.toLowerCase().includes(s) ||
-      x.example.toLowerCase().includes(s),
+      x.example.toLowerCase().includes(s) ||
+      POS_VI[x.pos].includes(s),
   ).slice(0, 80);
 }
 
@@ -51,6 +62,7 @@ export function lexAsVocab(items: LexItem[]): VocabItem[] {
     vi: x.vi,
     example: x.example,
     topic: x.topic,
+    pos: x.pos,
   }));
 }
 

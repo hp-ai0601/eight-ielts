@@ -1,3 +1,5 @@
+import type { Pos } from "@/lib/pos";
+
 export type QKind = "mcq" | "tf" | "gap";
 
 export interface Question {
@@ -17,6 +19,7 @@ export interface VocabItem {
   example: string;
   trap?: string;
   topic: string;
+  pos?: Pos;
 }
 
 export interface Lesson {

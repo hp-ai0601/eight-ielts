@@ -5,6 +5,7 @@ import { ANTONYMS, CLASS_FRAMES, dayNum, pick } from "@/lib/zang/content";
 import { LEXICON } from "@/lib/lexicon";
 import { speak } from "@/lib/speech";
 import { saveZangSentence, type State } from "@/lib/store";
+import { POS_VI, guessPos, posHint } from "@/lib/pos";
 
 export default function TuCau({ s, onDone }: { s: State; onDone: (next: State) => void }) {
   const n = dayNum();
@@ -51,13 +52,13 @@ export default function TuCau({ s, onDone }: { s: State; onDone: (next: State) =
           <p className="text-xs uppercase tracking-wider text-lime">Từ hôm nay</p>
           <p className="mt-2 font-serif text-3xl">{word.word}</p>
           <p className="mt-1 text-mute">
-            {word.ipa} · {word.vi}
+            {word.ipa} · <span className="text-lime">{POS_VI[word.pos]}</span> · {word.vi}
           </p>
           <button className="btn-ghost mt-3" onClick={() => speak(word.word)}>
             Nghe từ
           </button>
           <p className="mt-6 text-sm text-mute">
-            Cách Zang: bỏ từ vào câu lớp. Gợi ý khung: <span className="text-text">{frame}</span>
+            {posHint(word.pos)} Gợi ý khung: <span className="text-text">{frame}</span>
           </p>
           <p className="mt-2 text-sm">Ví dụ: There are five people in my class. One of them is very quiet.</p>
         </div>
@@ -68,7 +69,9 @@ export default function TuCau({ s, onDone }: { s: State; onDone: (next: State) =
             {pair.a} <span className="text-mute">/</span> {pair.b}
           </p>
           <p className="mt-1 text-mute">
-            {pair.aVi} · {pair.bVi}
+            <span className="text-lime">{POS_VI[guessPos(pair.a, pair.aVi)]}</span> {pair.aVi}
+            {" · "}
+            <span className="text-lime">{POS_VI[guessPos(pair.b, pair.bVi)]}</span> {pair.bVi}
           </p>
           <p className="mt-6 text-sm">Gợi ý Zang: {pair.hint}</p>
           <p className="mt-2 text-sm text-mute">{pair.sample}</p>

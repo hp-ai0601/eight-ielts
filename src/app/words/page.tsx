@@ -6,6 +6,7 @@ import { useEight } from "@/lib/useEight";
 import SrsDeck from "@/components/SrsDeck";
 import { speak } from "@/lib/speech";
 import { LEX_COUNT, LEX_TOPICS, lexByTopic, lexSearch } from "@/lib/lexicon";
+import { POS_VI } from "@/lib/pos";
 
 export default function WordsPage() {
   const { s, commit, ready } = useEight();
@@ -60,7 +61,10 @@ export default function WordsPage() {
           <li key={`${c.topic}-${c.word}`} className="flex items-start justify-between gap-3 py-3">
             <div>
               <p>
-                <span className="font-medium">{c.word}</span> <span className="text-sm text-mute">{c.ipa}</span>
+                <span className="font-medium">{c.word}</span>{" "}
+                <span className="text-sm text-mute">{c.ipa}</span>
+                {" · "}
+                <span className="text-sm text-lime">{POS_VI[c.pos]}</span>
               </p>
               <p className="text-sm">{c.vi}</p>
               <p className="mt-1 text-sm text-mute">{c.example}</p>

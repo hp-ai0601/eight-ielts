@@ -7,6 +7,7 @@ import SpeakBox from "./SpeakBox";
 import WriteBox from "./WriteBox";
 import PlayBar from "./PlayBar";
 import { speak } from "@/lib/speech";
+import { POS_VI, guessPos } from "@/lib/pos";
 
 export default function TestView({
   test,
@@ -38,6 +39,8 @@ export default function TestView({
                 <div>
                   <p className="font-medium">
                     {v.word} <span className="font-normal text-mute">{v.ipa}</span>
+                    {" · "}
+                    <span className="text-lime">{POS_VI[v.pos ?? guessPos(v.word, v.vi, v.example)]}</span>
                   </p>
                   <p className="text-sm text-mute">{v.vi}</p>
                   <p className="mt-1 font-serif text-sm">{v.example}</p>

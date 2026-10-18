@@ -1,4 +1,5 @@
 import type { VocabItem } from "./types";
+import { guessPos } from "@/lib/pos";
 
 function v(
   id: string,
@@ -9,7 +10,7 @@ function v(
   topic: string,
   trap?: string,
 ): VocabItem {
-  return { id, word, ipa, vi, example, topic, trap };
+  return { id, word, ipa, vi, example, topic, trap, pos: guessPos(word, vi, example) };
 }
 
 export const VOCAB: VocabItem[] = [
