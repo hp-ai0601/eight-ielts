@@ -7,10 +7,10 @@ import { zangToday } from "@/lib/store";
 import GuiThay from "@/components/zang/GuiThay";
 
 const STEPS = [
-  { n: 1, href: "/tu", title: "Từ → câu", why: "Một từ, bỏ vào câu lớp. Hoặc hai từ trái nghĩa, viết câu đối lập." },
-  { n: 2, href: "/cum", title: "Cụm truyện", why: "Đọc câu chuyện, thì + cấu trúc, viết thêm một câu cùng khuôn." },
-  { n: 3, href: "/hai", title: "Hài & nhạc", why: "Xem nghĩa trước. Nghe không chữ. Đoán. Ghép lại. Ghi âm khi thuộc." },
-  { n: 4, href: "/nhat-ky", title: "Nhật ký", why: "Từ và ngữ pháp hôm nay đã chắc thì viết vài câu như journal." },
+  { n: 1, href: "/tu", title: "Từ → câu", why: "Mỗi đợt 8 từ lớp + 3 cặp trái nghĩa. Nhét vào câu." },
+  { n: 2, href: "/cum", title: "Cụm truyện", why: "Mỗi đợt 4 đoạn. Tách thì + cấu trúc, viết thêm câu cùng khuôn." },
+  { n: 3, href: "/hai", title: "Hài & nhạc", why: "Mỗi đợt 4 mẩu hài hoặc 3 bài nhạc. Nghĩa trước, nghe không chữ, đoán, ghi âm." },
+  { n: 4, href: "/nhat-ky", title: "Nhật ký", why: "Mỗi đợt 4 gợi ý + 4 từ + 4 thì. Viết journal, không phải luận." },
 ];
 
 export default function Today() {

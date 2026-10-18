@@ -412,13 +412,16 @@ export function saveZangDraft(s: State, row: Omit<ZangDraft, "at">): State {
   return { ...s, zang: { ...s.zang, drafts: [{ ...row, at: Date.now() }, ...s.zang.drafts].slice(0, 120) } };
 }
 
-export function zangLot(s: State) {
-  return s.zang.lots?.[today()] ?? 0;
+export function zangLot(s: State, skill = "tu") {
+  const d = today();
+  const k = skill === "tu" ? d : `${d}:${skill}`;
+  return s.zang.lots?.[k] ?? 0;
 }
 
-export function bumpZangLot(s: State): State {
+export function bumpZangLot(s: State, skill = "tu"): State {
   const d = today();
-  return { ...s, zang: { ...s.zang, lots: { ...s.zang.lots, [d]: (s.zang.lots?.[d] ?? 0) + 1 } } };
+  const k = skill === "tu" ? d : `${d}:${skill}`;
+  return { ...s, zang: { ...s.zang, lots: { ...s.zang.lots, [k]: (s.zang.lots?.[k] ?? 0) + 1 } } };
 }
 
 export function saveZangMimic(s: State, storyId: string, text: string): State {

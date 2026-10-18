@@ -12,8 +12,8 @@ export default function CumPage() {
       <p className="text-xs uppercase tracking-wider text-lime">Bước 2 / 4</p>
       <h1 className="mt-2 font-serif text-4xl">Cụm truyện</h1>
       <p className="mt-3 text-mute">
-        Zang dịch câu chuyện ra tiếng Việt, tách cụm: thì nào, cấu trúc nào, rồi viết thêm một câu cùng khuôn. Truyện
-        gốc trong app (Hân Hân / Khoa), không copy tiểu thuyết.
+        Mỗi đợt 4 cụm, không phải 1 câu/ngày. Tách thì + cấu trúc, viết thêm câu cùng khuôn. Câu mẫu có dịch và ngữ pháp.
+        Đổi đợt bất lúc nào. Truyện gốc (Hân Hân / Khoa), không copy tiểu thuyết.
       </p>
       <div className="mt-8">
         <CumTruyen s={s} onDone={commit} />

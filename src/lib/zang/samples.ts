@@ -160,6 +160,33 @@ export const ANTONYM_EXTRA: Record<string, { vi: string; g: string }> = {
   },
 };
 
+export const STORY_EXTRA: Record<string, { vi: string; g: string }> = {
+  s1: { vi: "Hôm qua, sau khi Minh tan học, cậu ấy đi bộ về với Khoa.", g: "Past Simple · after + S + V2, S + V2" },
+  s2: { vi: "Khi Linh mở tủ, cô ấy thấy cuốn sách Minh đã mượn.", g: "Past Simple + Past Perfect · when" },
+  s3: { vi: "Tôi đang đợi ở cổng thì xe buýt tới, nên tôi lên nhanh.", g: "Past Continuous + when + Past Simple · so" },
+  s4: { vi: "Mỗi sáng Minh đợi ở cổng, nơi xe buýt không dừng lâu.", g: "Present Simple · every + where" },
+  s5: { vi: "Vì tôi quên bút, Hân Hân cho tôi mượn bút của cô ấy.", g: "because + Past Perfect, Past Simple" },
+  s6: { vi: "Nếu tôi làm xong bài sớm, tôi sẽ gọi Khoa.", g: "First conditional · If + hiện tại, will + V" },
+  s7: { vi: "Mặc dù tiệm đông, tụi tôi tìm được sách vì Linh biết kệ.", g: "Although + Past Simple · because" },
+  s8: { vi: "Trước khi vào tiết, Hân Hân hỏi tôi đã mang phiếu bài chưa.", g: "Before + V2 · whether + Past Perfect" },
+  s9: { vi: "Minh thường vẽ ở lề vở, còn tôi chỉ nhìn.", g: "often + hiện tại · while" },
+  s10: { vi: "Tôi mang thêm đồ ăn để Khoa khỏi đói.", g: "Past Simple · so that + would" },
+  s11: { vi: "Cây bút Hân Hân cho tôi vẫn viết được.", g: "The N that + S + V2 · still" },
+  s12: { vi: "Tụi tôi đứng ở cổng, nơi đủ yên để nói chuyện.", g: "Past Simple · where + enough to V" },
+  s13: { vi: "Tôi định gọi, rồi lại đợi vì đã quá muộn.", g: "was going to · but then · because" },
+  s14: { vi: "Ai xong trước được về; Minh luôn viết chậm.", g: "whoever + hiện tại · always" },
+  s15: { vi: "Không phải vì bánh ngọt, mà vì Linh nướng.", g: "not because ... but because" },
+  s16: { vi: "Tôi chưa gói cặp thì cô vào, nên tôi phải đợi.", g: "had not V3 when + V2 · so + had to" },
+  s17: { vi: "Linh đã gói cặp rồi, nhưng Minh vẫn chưa xong.", g: "Present Perfect · already / yet" },
+  s18: { vi: "Tôi từng ăn một mình, nhưng bây giờ chia cơm với Khoa.", g: "used to · but now + hiện tại" },
+  s19: { vi: "Tôi đang đứng dưới mái vì trời đang mưa.", g: "Present Continuous · because" },
+  s20: { vi: "Lớp yên đến nỗi tụi tôi nghe được tiếng mưa.", g: "so + tính từ + that" },
+  s21: { vi: "Tôi mệt quá không đi bộ về được, nên đợi xe buýt.", g: "too + tính từ + to V · so" },
+  s22: { vi: "Hân Hân muốn Khoa đợi ở cổng.", g: "wanted + người + to V" },
+  s23: { vi: "Minh cho tôi dùng bàn, và điều đó làm lớp dễ hơn.", g: "let + người + V · make + người/cái + tính từ" },
+  s24: { vi: "Tôi thà đợi ở cổng còn hơn đi dưới mưa.", g: "would rather + V + than + V" },
+};
+
 export const FRAME_VI: Record<string, string> = {
   "There are five people in my class. ______________.": "Lớp tôi có năm người. ______________.",
   "In my class of five, ______________.": "Trong lớp năm người, ______________.",
