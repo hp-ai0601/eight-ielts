@@ -15,6 +15,14 @@ const NAV = [
   { href: "/kho", label: "Kho" },
 ];
 
+const KHO = ["/kho", "/words", "/grammar", "/method", "/tests", "/path", "/homework", "/exam", "/coach", "/lesson", "/listen", "/read", "/write", "/speak"];
+
+function navOn(href: string, path: string) {
+  if (href === "/") return path === "/";
+  if (href === "/kho") return KHO.some((p) => path === p || path.startsWith(`${p}/`));
+  return path === href || path.startsWith(`${href}/`);
+}
+
 function norm(p: string) {
   if (!p) return "/";
   return p.length > 1 ? p.replace(/\/$/, "") : p;
@@ -58,7 +66,7 @@ export default function Shell({ children }: { children: React.ReactNode }) {
         {path !== "/login" && (
           <nav className="flex gap-1 overflow-x-auto px-3 pb-2.5 lg:block lg:space-y-0.5 lg:px-3 lg:pb-8">
             {NAV.map((n) => {
-              const on = n.href === "/" ? path === "/" : path === n.href || path.startsWith(n.href + "/");
+              const on = navOn(n.href, path);
               const ok = "n" in n && n.n != null && done.has(n.n);
               return (
                 <Link

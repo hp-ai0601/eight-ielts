@@ -1,42 +1,48 @@
 "use client";
 
+import { useState } from "react";
 import Link from "next/link";
 import { useEight } from "@/lib/useEight";
+import Studio, { RailPick } from "@/components/Studio";
 
 export default function HomeworkPage() {
   const { s, ready } = useEight();
+  const [tab, setTab] = useState<"open" | "done">("open");
   if (!ready || !s) return null;
   const open = s.homework.filter((h) => !h.done);
   const done = s.homework.filter((h) => h.done);
+  const list = tab === "open" ? open : done;
+
   return (
-    <div className="mx-auto max-w-2xl px-5 py-10 lg:px-10">
-      <h1 className="font-serif text-4xl">Bài tập về nhà</h1>
-      <p className="mt-3 text-mute">
-        Mỗi chủ đề có một bài nộp. Hạn hôm nay hoặc ngày mai. Xong thì từ trong bài vào SRS.
-      </p>
-      <ul className="mt-8 space-y-3">
-        {open.map((h) => (
-          <li key={h.id} className="panel p-4">
-            <Link href={`/tests/${h.testId}`} className="block">
-              <p className="font-medium">{h.title}</p>
-              <p className="text-sm text-mute">Hạn {h.due}</p>
-            </Link>
-          </li>
-        ))}
-        {!open.length && <p className="text-mute">Không còn bài mở. Làm thêm đề trong Ngân hàng.</p>}
-      </ul>
-      {done.length > 0 && (
+    <Studio
+      title="BTVN"
+      kicker={`${open.length} đang mở`}
+      next={{ href: "/kho", label: "Kho" }}
+      rail={
         <>
-          <p className="mt-10 text-xs uppercase tracking-wider text-mute">Đã nộp</p>
-          <ul className="mt-3 space-y-2 text-sm text-mute">
-            {done.map((h) => (
-              <li key={h.id} className="line-through">
-                {h.title}
-              </li>
-            ))}
-          </ul>
+          <RailPick on={tab === "open"} onClick={() => setTab("open")}>
+            <p className="font-serif text-lg leading-tight">Đang mở</p>
+            <p className="mt-0.5 text-xs text-mute">{open.length} bài</p>
+          </RailPick>
+          <RailPick on={tab === "done"} onClick={() => setTab("done")}>
+            <p className="font-serif text-lg leading-tight">Đã nộp</p>
+            <p className="mt-0.5 text-xs text-mute">{done.length} bài</p>
+          </RailPick>
         </>
-      )}
-    </div>
+      }
+      stage={
+        <div className="mx-auto max-w-lg space-y-2">
+          {list.map((h) => (
+            <Link key={h.id} href={`/tests/${h.testId}`} className="block rounded-xl px-4 py-3 ring-1 ring-line hover:ring-lime">
+              <p className={`font-medium ${tab === "done" ? "text-mute line-through" : ""}`}>{h.title}</p>
+              {tab === "open" && <p className="mt-0.5 text-sm text-mute">Hạn {h.due}</p>}
+            </Link>
+          ))}
+          {!list.length && (
+            <p className="text-mute">{tab === "open" ? "Không còn bài mở. Làm thêm ở Ngân hàng đề." : "Chưa nộp bài nào."}</p>
+          )}
+        </div>
+      }
+    />
   );
 }

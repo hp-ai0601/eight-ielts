@@ -64,22 +64,24 @@ export default function Studio({
   rail,
   stage,
 }: {
-  step: number;
+  step?: number;
   title: string;
   kicker?: string;
   swap?: string;
   onSwap?: () => void;
   next?: { href: string; label: string };
   tabs?: ReactNode;
-  rail: ReactNode;
+  rail?: ReactNode;
   stage: ReactNode;
 }) {
+  const crumb = step ? `Bước ${step}/4` : "Kho";
   return (
     <div className="flex h-full min-h-0 flex-1 flex-col max-lg:min-h-[calc(100dvh-7.25rem)]">
       <header className="flex shrink-0 flex-wrap items-center gap-x-3 gap-y-2 border-b border-line px-4 py-3 lg:px-6">
         <div className="min-w-0 flex-1">
           <p className="text-[11px] uppercase tracking-[0.16em] text-lime">
-            Bước {step}/4{kicker ? ` · ${kicker}` : ""}
+            {crumb}
+            {kicker ? ` · ${kicker}` : ""}
           </p>
           <h1 className="mt-0.5 truncate font-serif text-2xl leading-none">{title}</h1>
         </div>
@@ -95,10 +97,12 @@ export default function Studio({
           </Link>
         )}
       </header>
-      <div className="flex min-h-0 flex-1 flex-col lg:grid lg:grid-cols-[16.5rem_1fr]">
-        <aside className="flex shrink-0 gap-2 overflow-x-auto border-b border-line px-3 py-3 lg:flex-col lg:overflow-y-auto lg:border-b-0 lg:border-r lg:px-2">
-          {rail}
-        </aside>
+      <div className={`flex min-h-0 flex-1 flex-col ${rail ? "lg:grid lg:grid-cols-[16.5rem_1fr]" : ""}`}>
+        {rail ? (
+          <aside className="flex shrink-0 gap-2 overflow-x-auto border-b border-line px-3 py-3 lg:flex-col lg:overflow-y-auto lg:border-b-0 lg:border-r lg:px-2">
+            {rail}
+          </aside>
+        ) : null}
         <section className="min-h-0 flex-1 overflow-y-auto px-4 py-4 lg:px-8 lg:py-6">{stage}</section>
       </div>
     </div>
