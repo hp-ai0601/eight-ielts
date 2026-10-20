@@ -1,5 +1,6 @@
 import { gap, mcq, tf, type Question } from "@/lib/content/types";
 import { GRAMMAR_MORE } from "./grammarMore";
+import { GRAMMAR_ADVANCED } from "./grammarAdvanced";
 
 export interface GrammarUnit {
   id: string;
@@ -172,4 +173,4 @@ const CORE: GrammarUnit[] = [
   },
 ];
 
-export const GRAMMAR: GrammarUnit[] = [...CORE, ...GRAMMAR_MORE];
+export const GRAMMAR: GrammarUnit[] = [...CORE, ...GRAMMAR_MORE, ...GRAMMAR_ADVANCED];

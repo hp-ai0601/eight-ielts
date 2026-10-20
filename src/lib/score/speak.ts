@@ -1,23 +1,35 @@
 import { checkText } from "@/lib/zang/check";
 import { clampBand } from "@/lib/ielts";
 
+/** Đánh giá nhanh speaking transcript dựa trên 4 tiêu chí IELTS: FC, LR, GRA, Pron.
+ *  Không thay thế giám khảo người. */
+
 export type SpeakMark = {
-  fc: number;
-  lr: number;
-  gra: number;
-  pron: number;
+  fc: number; // Fluency & Coherence
+  lr: number; // Lexical Resource
+  gra: number; // Grammatical Range & Accuracy
+  pron: number; // Pronunciation
   band: number;
   notes: string[];
-  heard: string;
+  seconds?: number;
+  words: number;
+  heard?: string;
 };
 
-const FILLER = /\b(um+|uh+|er+|like,|you know)\b/gi;
+const FILLER = /\b(uhm+|uh|um|erm|ah|like,|you know|so yeah|kind of|sort of|i mean|well,|basically,|actually,)\b/gi;
+const DISCOURSE = /\b(first(ly)?|second(ly)?|finally|moreover|however|on the other hand|for example|such as|because|therefore|in addition|another reason|the main reason|as a result|to sum up)\b/gi;
+const RANGE = /\b(noticeable|considerable|gradually|significantly|convenient|essential|contribute|fascinating|memorable|negotiate|preference|demanding|enthusiastic|influential|spacious|approximately|controversial|sustainable|infrastructure|demographic)\b/gi;
+const COLL = /\b(make a decision|take into account|pay attention|catch up|keep in touch|come up with|look forward to|get on with|run out of|find out|figure out|take up|give up|turn out|put up with|make up for|make sense)\b/gi;
 const TRAPS: { re: RegExp; tip: string }[] = [
   { re: /\b(tree|tank|tank you)\b/i, tip: "think / thank / three: /θ/ thổi hơi, không /t/." },
   { re: /\b(dis|dat|de )\b/i, tip: "this / that / the: /ð/, lưỡi chạm răng." },
   { re: /\b(sip|sheet)\b/i, tip: "ship / sheep, sit / seat — nguyên âm dài." },
   { re: /\b(liff|lif )\b/i, tip: "live / leave; kéo phụ âm cuối /v/." },
 ];
+const PHONETIC_TRAP = /\b(thought|though|through|throughout|schedule|receipt|island|colonel|sword|cupboard|queue|vehicle|subtle|debt|doubt|psychology|phlegm|knight|recipe|column|autumn|handkerchief)\b/gi;
+const COMMON_TRAP = /\b(bussiness|enviroment|goverment|occur|occured|successfull|beautifull|recomend|accomodation|definately|seperate|occation|pronounciation|opertunity|comming|begining|truely|untill)\b/gi;
+const VELAR_NG = /\b(singin|thinkin|runnin|workin|goin|doin|talkin|walkin|eatin|sleepin|readin|watchin)\b/gi;
+const FINAL_CONS = /\b(goin\b|comin\b|runnin\b|doin\b|seein\b|thinkin\b|eatin\b)/gi;
 
 function overlap(a: string, b: string) {
   const A = new Set(a.toLowerCase().split(/\s+/).filter((w) => w.length > 2));
@@ -26,55 +38,103 @@ function overlap(a: string, b: string) {
   return B.filter((w) => A.has(w)).length / B.length;
 }
 
-export function scoreSpeak(heard: string, cue?: string, seconds?: number): SpeakMark {
+export function scoreSpeak(heard: string, cueOrSeconds?: string | number, seconds?: number): SpeakMark {
   const t = heard.trim();
-  const words = t ? t.split(/\s+/).length : 0;
-  const check = t ? checkText(t) : { score: 0, spelling: [], grammar: [], rewrite: "", clean: false };
+  const words = t ? t.split(/\s+/).filter((w) => /[a-z]/i.test(w)).length : 0;
   const notes: string[] = [];
-  const fillers = t.match(FILLER)?.length ?? 0;
 
-  let fc = 5;
-  if (words >= 40) fc += 1;
-  else notes.push("Part 2 cần gần 2 phút, khoảng 150–180 từ nói. Giờ còn ngắn.");
-  if (fillers > 4) {
-    fc -= 0.5;
-    notes.push("Bớt um/uh — ngừng vì nghĩ ý, đừng vì tìm từ.");
+  const cue: string | undefined = typeof cueOrSeconds === "string" ? cueOrSeconds : undefined;
+  const secs: number | undefined = typeof cueOrSeconds === "number" ? cueOrSeconds : seconds;
+
+  let fc = 4;
+  if (words >= 120 && secs && secs <= 120) fc += 1.5;
+  else if (words >= 80 && secs && secs <= 120) fc += 1;
+  else if (words >= 60) fc += 0.5;
+  else if (words === 0) fc = 0;
+  else notes.push("Nói thêm để đạt Part 2 khoảng 90–120 giây.");
+
+  const fillerCount = t.match(FILLER)?.length ?? 0;
+  const fillerRatio = words ? fillerCount / words : 0;
+  if (fillerRatio < 0.04) fc += 0.5;
+  else notes.push("Giảm filler (um, like, you know) — lấy hơi trước khi trả lời.");
+  if (fillerRatio > 0.12) {
+    fc -= 1;
+    notes.push("Filler quá nhiều. Luyện dùng silence 1 giây thay vì um.");
   }
-  if (seconds && seconds >= 90) fc += 0.5;
+
+  const discourse = t.match(DISCOURSE)?.length ?? 0;
+  if (discourse >= 2) fc += 0.5;
+  else notes.push("Dùng connector rõ: first, another reason, for example, therefore.");
   fc = clampBand(fc);
 
-  let lr = 5;
+  let lr = 4;
   const uniq = new Set(t.toLowerCase().split(/\s+/).filter((w) => w.length > 4));
-  if (uniq.size > 20) lr += 0.5;
+  const ratio = words ? uniq.size / words : 0;
+  if (ratio > 0.35) lr += 0.5;
+  if ((t.match(RANGE)?.length ?? 0) >= 3) lr += 1;
+  else if ((t.match(RANGE)?.length ?? 0) >= 1) lr += 0.5;
+  if ((t.match(COLL)?.length ?? 0) >= 2) lr += 0.5;
   if (cue && overlap(t, cue) > 0.5) {
     lr -= 0.5;
     notes.push("Đừng đọc lại cue. Paraphrase.");
   }
+  if (COMMON_TRAP.test(t)) {
+    lr -= 0.5;
+    notes.push("Lưu ý spelling-driven pronunciation: environment, government, accommodation, successful.");
+  }
   lr = clampBand(lr);
 
-  let gra = clampBand(4 + check.score / 2.5);
+  let gra = 4;
+  const check = t ? checkText(t) : { score: 0, spelling: [], grammar: [], rewrite: "", clean: false };
+  gra = clampBand(4 + check.score / 2.5);
   if (check.grammar[0]) notes.push(check.grammar[0].vi);
+  const complex = /\b(which|although|because|while|whereas|if|who|that|despite|unless|provided that|even though)\b/gi;
+  const complexCount = t.match(complex)?.length ?? 0;
+  if (complexCount >= 2) gra += 1;
+  else if (complexCount >= 1) gra += 0.5;
+  const tenses = /\b(have been|has been|had been|will be|would be|used to|am going to|is going to|were going to)\b/gi;
+  if (tenses.test(t)) gra += 0.5;
+  const basicError = /\b\w+\s+(?:is|are|was|were)\s+(?:go|went|eat|ate|take|took|write|wrote|read|come|came|give|gave|do|did|make|made)\b/gi;
+  if (basicError.test(t)) {
+    gra -= 1;
+    notes.push("Sai cấu trúc be + V — dùng be + V-ing hoặc chia đúng thì.");
+  }
+  gra = clampBand(gra);
 
-  let pron = 6;
+  let pron = 4;
+  if (VELAR_NG.test(t)) {
+    pron -= 0.5;
+    notes.push("Phụ âm cuối /ŋ/ bị nuốt: singing /ˈsɪŋɪŋ/, not singin.");
+  }
+  if (FINAL_CONS.test(t)) {
+    pron -= 0.5;
+    notes.push("Giữ final consonant rõ: -ed, -s, -t, -k, -d.");
+  }
   for (const x of TRAPS) {
     if (x.re.test(t)) {
       pron -= 0.5;
       notes.push(x.tip);
     }
   }
-  if (/\b(go|eat|live|want)\s+(to|in|at)\b/i.test(t) && /\bam go\b/i.test(t)) {
-    pron -= 0.5;
+  if (PHONETIC_TRAP.test(t)) {
+    pron += 0.5;
+    notes.push("Chú ý phát âm từ bẫy: though /ðəʊ/, through /θruː/, schedule /ˈʃedjuːl/, receipt /rɪˈsiːt/.");
   }
   const finals = (t.match(/\b\w+[tksd]\b/gi) ?? []).length;
   if (words > 30 && finals < 4) {
     pron -= 0.5;
     notes.push("Kéo phụ âm cuối: want, liked, bags — giám khảo mất điểm Pron vì nuốt.");
   }
+  const vietnameseMonotone = /^[a-z\s]+$/i.test(t) && (t.match(/[.!?]/g) ?? []).length < words / 25;
+  if (vietnameseMonotone && words > 10) {
+    pron -= 0.5;
+    notes.push("Thêm ngữ điệu — lên xuống ở chủ ngữ / trạng ngữ, xuống cuối câu.");
+  }
   pron = clampBand(pron);
 
   const band = clampBand((fc + lr + gra + pron) / 4);
-  if (!notes.length) notes.push("Máy nghe bằng nhận dạng giọng. Accent không trừ nếu giám khảo hiểu. Thầy chấm Pron mới chắc.");
-  return { fc, lr, gra, pron, band, notes: notes.slice(0, 6), heard: t };
+  if (!notes.length) notes.push("Máy chỉ ước. Để chính xác cần thầy nghe stress, linking, phonemes.");
+  return { fc, lr, gra, pron, band, notes: notes.slice(0, 8), words, seconds: secs, heard: t };
 }
 
 export function listenOnce(): Promise<string> {

@@ -4,7 +4,7 @@ import Link from "next/link";
 
 const ITEMS = [
   { href: "/words", title: "3500 từ", why: "100 chủ đề, 20 từ một lần" },
-  { href: "/grammar", title: "Ngữ pháp", why: "25 đơn vị · thì đến đảo ngữ" },
+  { href: "/grammar", title: "Ngữ pháp", why: "40+ đơn vị · thì đến câu phức band 8" },
   { href: "/method", title: "Cách làm đề + mẹo", why: "TFNG, Task 1, Pron, đồng hồ" },
   { href: "/tests", title: "Ngân hàng đề", why: "101 chủ đề + mock" },
   { href: "/path", title: "Lộ trình 8.0", why: "84 bài theo tầng" },

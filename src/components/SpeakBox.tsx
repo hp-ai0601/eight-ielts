@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { speak } from "@/lib/speech";
 import { listenOnce, scoreSpeak } from "@/lib/score/speak";
 import { saveSpeakTake } from "@/lib/store";
@@ -20,11 +20,33 @@ export default function SpeakBox({
   const [text, setText] = useState("");
   const [err, setErr] = useState("");
   const [busy, setBusy] = useState(false);
-  const mark = text.trim().length > 8 ? scoreSpeak(text, cue) : null;
+  const [seconds, setSeconds] = useState(0);
+  const startedRef = useRef<number | null>(null);
+  const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
+
+  useEffect(() => {
+    if (busy && startedRef.current === null) {
+      startedRef.current = Date.now();
+      timerRef.current = setInterval(() => {
+        setSeconds(Math.floor((Date.now() - (startedRef.current ?? Date.now())) / 1000));
+      }, 500);
+    }
+    if (!busy && timerRef.current) {
+      clearInterval(timerRef.current);
+      timerRef.current = null;
+    }
+    return () => {
+      if (timerRef.current) clearInterval(timerRef.current);
+    };
+  }, [busy]);
+
+  const mark = text.trim().length > 8 ? scoreSpeak(text, cue, seconds || undefined) : null;
 
   async function hear() {
     setErr("");
     setBusy(true);
+    startedRef.current = null;
+    setSeconds(0);
     try {
       const t = await listenOnce();
       setText(t);
@@ -63,6 +85,9 @@ export default function SpeakBox({
       <p className="mt-6 text-sm text-mute">
         Chrome/Safari. Máy bắt transcript rồi ước FC / LR / GRA / Pron. Thầy Hiệp chấm 4 ô mới tính.
       </p>
+      {busy && seconds > 0 && (
+        <p className="mt-2 text-sm font-medium text-lime">{seconds}s</p>
+      )}
       <textarea className="field mt-3 min-h-36" value={text} onChange={(e) => setText(e.target.value)} placeholder="I usually…" />
       {err && <p className="mt-2 text-sm text-bad">{err}</p>}
       <Recorder />

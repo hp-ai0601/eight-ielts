@@ -1,15 +1,17 @@
 import { ANTONYMS, CLASS_WORDS } from "./content";
 
 export type SpellHit = { from: string; to: string };
-export type GrammarHit = { vi: string };
-export type LetterMark = { ch: string; ok: boolean };
-export type Check = {
+export type GrammarNote = { vi: string; en?: string; from?: string; to?: string };
+export type GrammarHit = GrammarNote;
+export type CheckResult = {
   score: number;
   spelling: SpellHit[];
-  grammar: GrammarHit[];
+  grammar: GrammarNote[];
   rewrite: string;
   clean: boolean;
 };
+export type Check = CheckResult;
+export type LetterMark = { ch: string; ok: boolean };
 
 const COMMON = `
 a an the i me my you your he she it we they them him her his their our
@@ -30,6 +32,9 @@ until within along across behind inside outside around
 box lunch cucumber phone window seat jacket rain library homework
 because while still also very really then their there
 khoa minh linh han
+adult adults people person family father mother brother sister child children
+friend boyfriend girlfriend time work job happy sad love important
+example think agree disagree conclusion balance spend give gave
 `.trim().split(/\s+/);
 
 const TYPO: Record<string, string> = {
@@ -67,6 +72,18 @@ const TYPO: Record<string, string> = {
   finaly: "finally",
   truely: "truly",
   occured: "occurred",
+  bussiness: "business",
+  enviroment: "environment",
+  goverment: "government",
+  successfull: "successful",
+  beautifull: "beautiful",
+  recomend: "recommend",
+  accomodation: "accommodation",
+  seperated: "separated",
+  occation: "occasion",
+  pronounciation: "pronunciation",
+  opertunity: "opportunity",
+  comming: "coming",
 };
 
 const BAD_V3: Record<string, string> = {
@@ -113,9 +130,7 @@ const BAD_PAST: Record<string, string> = {
 
 const NAMES = new Set(["khoa", "minh", "linh", "han", "zang", "hiep"]);
 
-const CONTRAST = new Set(
-  ANTONYMS.flatMap((p) => [p.a.toLowerCase(), p.b.toLowerCase()]),
-);
+const CONTRAST = new Set(ANTONYMS.flatMap((p) => [p.a.toLowerCase(), p.b.toLowerCase()]));
 
 function dict() {
   const d = new Set(COMMON);
@@ -204,9 +219,112 @@ function spelling(text: string, extra: string[]): SpellHit[] {
   return hits;
 }
 
-function tenseHits(text: string, expect?: string): GrammarHit[] {
+const badPatterns: { pattern: RegExp; vi: string; en?: string }[] = [
+  { pattern: /\bi\s+(?:am\s+)?(?:is|are)\s/i, vi: "S + am/is/are: I + am." },
+  { pattern: /\bhe\s+(?:am|are)\s/i, vi: "S + am/is/are: He/She/It + is." },
+  { pattern: /\bthey\s+(?:is|was)\s/i, vi: "S + am/is/are: They + are/were." },
+  { pattern: /\bwe\s+was\b/i, vi: "We + were." },
+  { pattern: /\b(she|he|it|the dog|my friend)\s+don't\b/i, vi: "He/She/It + doesn't." },
+  { pattern: /\b(i|you|we|they)\s+doesn't\b/i, vi: "I/you/we/they + don't." },
+  { pattern: /\bdidn't\s+\w+ed\b/i, vi: "Didn't + V nguyên." },
+  { pattern: /\bhas\s+\w+ed\s+\w/i, vi: "Has/Have + P2 dùng cho hiện tại hoàn thành, kiểm tra chủ ngữ số ít." },
+  { pattern: /\bthere\s+is\s+(?:many|some|a lot of|lots of|several|these|those)/i, vi: "There are + danh từ số nhiều." },
+  { pattern: /\bthere\s+are\s+a\s+\w/i, vi: "There is a/an + danh từ số ít." },
+  { pattern: /\bthe\s+people\s+is\b/i, vi: "People luôn là số nhiều → people are." },
+  { pattern: /\b(everyone|someone|anyone|nobody|each|every)\s+\w+\s+are\b/i, vi: "Bất định đại từ số ít → is." },
+  { pattern: /\ba\s+(?:lot|many|few|several|some)\s+of\s+\w+s\s+is\b/i, vi: "A lot of + plural noun → are." },
+  { pattern: /\b\w+\s+(?:is|are|was|were)\s+(?:go|went|eat|ate|take|took|write|wrote|read|come|came|give|gave|do|did|make|made)\b/i, vi: "Be + V nguyên/V2 sai. Dùng be + V-ing hoặc chia thì đúng." },
+  { pattern: /\b(want|need|would like|hope|decide|plan|try|learn|forget|remember|start|stop)\s+\w+(?:ed|ing)\b/i, vi: "Sau want/need/would like... dùng to V." },
+  { pattern: /\b(enjoy|finish|avoid|consider|suggest|practice|mind|keep|imagine|miss|postpone|delay|quit|resist|admit|deny|recall|regret|recommend|risk|spend|waste)\s+to\s+\w+\b/i, vi: "Sau enjoy/finish/avoid/practice + V-ing." },
+  { pattern: /\bused\s+to\s+\w+ing\b/i, vi: "Used to + V nguyên (quá khứ) hay be used to + V-ing." },
+  { pattern: /\bbe\s+used\s+to\s+\w+\b(?!ing)/i, vi: "Be used to + V-ing (quen với việc gì)." },
+  { pattern: /\bwant\s+that\s+\w+\s+\w+\b/i, vi: "Want + O + to V, không dùng want that." },
+  { pattern: /\bsuggest\s+(?:me|him|her|us|them)\s+to\b/i, vi: "Suggest + V-ing / suggest that + S + (should) V." },
+  { pattern: /\bmake\s+(?:me|him|her|us|them)\s+to\s+\w+\b/i, vi: "Make + O + V nguyên (không to)." },
+  { pattern: /\blet\s+(?:me|him|her|us|them)\s+to\s+\w+\b/i, vi: "Let + O + V nguyên." },
+  { pattern: /\bhave\s+(?:me|him|her|us|them)\s+\w+ing\b/i, vi: "Have + O + V nguyên (nhờ ai làm gì)." },
+  { pattern: /\b(tell|ask|advise|encourage|warn|remind|persuade|force|allow|permit|order|invite|teach)\s+\w+\s+\w+\b(?!\s+to)/i, vi: "Tell/ask/advise + O + to V." },
+  { pattern: /\bif\s+i\s+(?:am|are|is|was|were)\s+\w+\b.*?\b\w+\s+(?:will|would|can|could)\b/i, vi: "If + present simple, S + will (loại 1)." },
+  { pattern: /\bif\s+i\s+(?:would|could|can)\s+\w+\b.*?\b\w+\s+\w+\s+\w+\b/i, vi: "If loại 2: If + past simple, would + V." },
+  { pattern: /\bif\s+i\s+(?:have|has)\s+\w+ed\b/i, vi: "If loại 3: If + had + P2, would have + P2." },
+  { pattern: /\bwish\s+i\s+(?:am|are|is|was|were)\s+\w+ing\b/i, vi: "Wish hiện tại: I wish + S + past simple." },
+  { pattern: /\bwish\s+i\s+(?:would|will)\s+\w+\b/i, vi: "Wish tương lai: I wish + S + would/could + V." },
+  { pattern: /\bprefer\s+\w+\s+(?:than|to)\s+\w+ing\b/i, vi: "Prefer + V-ing to + V-ing." },
+  { pattern: /\bwould\s+rather\s+(?:me|him|her|us|them)\s+\w+\b/i, vi: "Would rather + S + past simple." },
+  { pattern: /\bit's\s+\w+\s+for\s+(?:me|him|her|us|them)\s+\w+(?!ing)\b/i, vi: "It's + adj + for + O + to V." },
+  { pattern: /\bit's\s+\w+\s+of\s+(?:me|him|her|us|them)\s+\w+ing\b/i, vi: "It's + adj + of + O + to V." },
+  { pattern: /\btoo\s+\w+\s+(?:for)\s+\w+\s+\w+\b/i, vi: "Too + adj + (for O) + to V." },
+  { pattern: /\benough\s+\w+\s+(?:to)\b/i, vi: "Adj/adv + enough + to V." },
+  { pattern: /\bso\s+\w+\s+that\s+\w+\s+(?:can|could|will|would)\b/i, vi: "So + adj/adv + that + S + modal — đúng. Kiểm tra enough...to." },
+  { pattern: /\bsuch\s+a?\s+\w+\s+that\s/i, vi: "Such + (a/an) + adj + noun + that." },
+  { pattern: /\balthough\s+.+?\s+but\s/i, vi: "Although và but không dùng chung trong một câu." },
+  { pattern: /\bbecause\s+.+?\s+so\s/i, vi: "Because và so không dùng chung trong một câu." },
+  { pattern: /\bdespite\s+of\b/i, vi: "Despite + N/V-ing, không có of. In spite of mới có of." },
+  { pattern: /\bin\s+spite\b(?!\s+of)/i, vi: "In spite of + N/V-ing." },
+  { pattern: /\bbecause\s+of\s+\w+ing\b/i, vi: "Because of + V-ing đúng; because + S + V." },
+  { pattern: /\bdue\s+to\s+\w+\s+is\b/i, vi: "Due to + N/V-ing, không phải mệnh đề." },
+  { pattern: /\bthanks\s+to\s+\w+\s+\w+ed\b/i, vi: "Thanks to + N/V-ing." },
+  { pattern: /\bwhere\s+.+?\s+at\b/i, vi: "Where = at which — không thêm at." },
+  { pattern: /\bwhen\s+.+?\s+on\b/i, vi: "When = on which — không thêm giới từ thừa." },
+  { pattern: /\bthe\s+reason\s+is\s+because\b/i, vi: "The reason is that..., không dùng because." },
+  { pattern: /\bthe\s+way\s+how\b/i, vi: "The way (that/in which), không dùng how." },
+  { pattern: /\bwhat\s+is\s+it\s+(?:called|like)\b/i, vi: "Nếu hỏi ý kiến: What is it like?", en: "Use 'What is it like?' for description." },
+  { pattern: /\bhave\s+been\s+\w+ing\s+for\b/i, vi: "Hiện tại hoàn thành tiếp diễn: have been + V-ing." },
+  { pattern: /\bhad\s+been\s+\w+ing\s+when\b/i, vi: "Quá khứ hoàn thành tiếp diễn: had been + V-ing." },
+  { pattern: /\bwill\s+have\s+been\s+\w+ing\b/i, vi: "Tương lai hoàn thành tiếp diễn: will have been + V-ing." },
+  { pattern: /\bin\s+(?:monday|tuesday|wednesday|thursday|friday|saturday|sunday)\b/i, vi: "On + thứ trong tuần." },
+  { pattern: /\bon\s+(?:january|february|march|april|may|june|july|august|september|october|november|december)\b/i, vi: "In + tháng." },
+  { pattern: /\b(last|next|every|this)\s+(?:year|month|week|monday)\s+(?:at|on|in)\b/i, vi: "Last/next/this/every + thời gian — không dùng giới từ." },
+  { pattern: /\ba\s+(?:apple|orange|umbrella|hour|honest|honour)\b/i, vi: "An + nguyên âm âm thanh /æ/.../əʊ/." },
+  { pattern: /\ban\s+(?:university|uniform|union|unique|european|one|useful)\b/i, vi: "A + phụ âm âm thanh /j/ hoặc /w/." },
+  { pattern: /\bmore\s+(?:better|worse|faster|bigger|easier|happier|more)\b/i, vi: "Comparative đã có -er — không thêm more." },
+  { pattern: /\bmost\s+(?:best|worst|fastest|biggest|easiest|happiest|most)\b/i, vi: "Superlative đã có -est — không thêm most." },
+  { pattern: /\bmuch\s+(?:cars|books|friends|students)\b/i, vi: "Much + danh từ không đếm được." },
+  { pattern: /\bmany\s+(?:water|money|time|information|advice|furniture|equipment|knowledge)\b/i, vi: "Many + danh từ đếm được số nhiều." },
+  { pattern: /\ba\s+(?:furniture|information|advice|equipment|knowledge|weather|news|bread|luggage|baggage)\b/i, vi: "Danh từ không đếm được — không dùng a/an." },
+  { pattern: /\bfewer\s+(?:water|money|time|information)\b/i, vi: "Fewer + danh từ đếm được; less + không đếm được." },
+  { pattern: /\bless\s+(?:students|books|friends|cars)\b/i, vi: "Less + không đếm được; fewer + đếm được." },
+  { pattern: /\binterested\s+in\s+\w+ing\b/i, vi: "Interested in + V-ing đúng." },
+  { pattern: /\bbored\s+of\b/i, vi: "Bored with (hoặc bored by)." },
+  { pattern: /\bgood\s+in\b/i, vi: "Good at + V-ing." },
+  { pattern: /\bmarried\s+with\b/i, vi: "Married to somebody." },
+  { pattern: /\bdepending\s+of\b/i, vi: "Depending on." },
+  { pattern: /\blisten\s+music\b/i, vi: "Listen to music." },
+  { pattern: /\blook\s+the\s+picture\b/i, vi: "Look at the picture." },
+  { pattern: /\bwait\s+\w+\s+at\b/i, vi: "Wait for somebody." },
+  { pattern: /\bsearch\s+\w+\s+in\s+internet\b/i, vi: "Search for something on the Internet." },
+  { pattern: /\btake\s+care\s+\w+\b(?!\s+of)/i, vi: "Take care of." },
+  { pattern: /\bapply\s+\w+\s+a\s+job\b/i, vi: "Apply for a job." },
+  { pattern: /\bspend\s+\w+\s+(?:to|for)\s+\w+ing\b/i, vi: "Spend time/money + V-ing." },
+  { pattern: /\bwaste\s+\w+\s+(?:to|for)\s+\w+ing\b/i, vi: "Waste time/money + V-ing." },
+  { pattern: /\bhave\s+difficulty\s+\w+(?!ing)\b/i, vi: "Have difficulty + V-ing." },
+  { pattern: /\bhave\s+trouble\s+\w+(?!ing)\b/i, vi: "Have trouble + V-ing." },
+  { pattern: /\bhave\s+a\s+hard\s+time\s+\w+(?!ing)\b/i, vi: "Have a hard time + V-ing." },
+  { pattern: /\blook\s+forward\s+\w+(?!to)/i, vi: "Look forward to + V-ing/N." },
+  { pattern: /\bget\s+used\s+to\s+\w+(?!ing)\b/i, vi: "Get used to + V-ing." },
+  { pattern: /\bobject\s+to\s+\w+(?!ing)\b/i, vi: "Object to + V-ing." },
+  { pattern: /\bwould\s+you\s+mind\s+\w+(?!ing)\b/i, vi: "Would you mind + V-ing." },
+  { pattern: /\bcan't\s+help\s+\w+(?!ing)\b/i, vi: "Can't help + V-ing." },
+  { pattern: /\bsomething\s+to\s+\w+ing\b/i, vi: "Something to V — động từ nguyên thể sau to." },
+  { pattern: /\bthe\s+first\s+\w+\s+to\s+\w+ing\b/i, vi: "The first/last/best + N + to V." },
+  { pattern: /\b(he|she|it|father|mother|brother|sister|my\s+father|my\s+mother)\s+(go|work|give|take|eat|drink|sleep|read|write|walk|talk|live|study|play|want|like|need|know|think)\s/i, vi: "Hiện tại: he/she/it + động từ thêm -s (he works / she gives)." },
+  { pattern: /\b(family|team|company|group|government|committee|audience)\s+(give|give|work|want|need|have|has)\b(?!\s+(?:members?|people|players|staff))/i, vi: "Danh từ tập hợp (family, team, government) thường là số ít → family gives / The team works." },
+  { pattern: /\bhe\s+will\s+(?:happy|sad|angry|tired|busy|ready|late|early|popular|famous|rich|poor|good|bad|difficult|easy)\b/i, vi: "Will + be + tính từ: he will be happy, không he will happy." },
+  { pattern: /\bshe\s+will\s+(?:happy|sad|angry|tired|busy|ready|late|early|popular|famous|rich|poor|good|bad|difficult|easy)\b/i, vi: "Will + be + tính từ: she will be happy." },
+  { pattern: /\b(he|she|it|I|we|they|my\s+father|my\s+mother)\s+not\s+(?:happy|sad|angry|tired|busy|ready|late|early|popular|famous|rich|poor|good|bad|difficult|easy)\b/i, vi: "Thiếu động từ to be: he is not happy / I am not tired." },
+  { pattern: /\bif\s+he\s+spend\b/i, vi: "If + hiện tại: if he spends (he → -s)." },
+  { pattern: /\bif\s+she\s+spend\b/i, vi: "If + hiện tại: if she spends." },
+  { pattern: /\bif\s+it\s+spend\b/i, vi: "If + hiện tại: if it spends." },
+  { pattern: /\bif\s+i\s+spend\b/i, vi: "If + hiện tại: if I spend." },
+  { pattern: /\bthey\s+was\b/i, vi: "They + were." },
+  { pattern: /\bhe\s+don't\b/i, vi: "He + doesn't." },
+  { pattern: /\bshe\s+don't\b/i, vi: "She + doesn't." },
+  { pattern: /\bit\s+don't\b/i, vi: "It + doesn't." },
+];
+
+function tenseHits(text: string, expect?: string): GrammarNote[] {
   const t = text.trim();
-  const g: GrammarHit[] = [];
+  const g: GrammarNote[] = [];
   const low = t.toLowerCase();
 
   if (/\b(he|she|it)\s+(are|have|go|do|want|like|eat|sit|stand|write|read|walk|talk|wait)\b/i.test(t)) {
@@ -263,9 +381,9 @@ function tenseHits(text: string, expect?: string): GrammarHit[] {
   return g;
 }
 
-function grammar(text: string, expectTense?: string): GrammarHit[] {
+function punctuationAndBasic(text: string): GrammarNote[] {
   const t = text.trim();
-  const g: GrammarHit[] = [];
+  const g: GrammarNote[] = [];
   if (!t) return g;
   if (t[0] !== t[0].toUpperCase()) g.push({ vi: "Chữ cái đầu câu viết hoa." });
   if (!/[.!?]$/.test(t)) g.push({ vi: "Thêm dấu chấm (.) cuối câu." });
@@ -279,15 +397,36 @@ function grammar(text: string, expectTense?: string): GrammarHit[] {
   if (/\bI\s+(messy|tidy|quiet|loud|shy|tired|hungry|sleepy|bored)\b/i.test(t)) {
     g.push({ vi: "Thiếu động từ to be: I am messy, không viết I messy." });
   }
-  if (/\ba\s+\w+\s+person,\s+.+?\bis\s+(messy|tidy|quiet|loud|shy|kind|thin|chubby|tall|short)\b/i.test(t)) {
-    g.push({ vi: "Song song: a messy person … a tidy person. Hoặc cả hai chỉ tính từ: I am messy, but he is tidy." });
-  }
+  return g;
+}
+
+function grammar(text: string, extra: string[] = [], expectTense?: string): GrammarNote[] {
+  const t = text.trim();
+  const g: GrammarNote[] = [];
+  if (!t) return g;
+
+  g.push(...punctuationAndBasic(t));
   g.push(...tenseHits(t, expectTense));
+
+  for (const { pattern, vi, en } of badPatterns) {
+    if (pattern.test(t) && !g.some((x) => x.vi === vi)) {
+      g.push({ vi, en });
+    }
+  }
+
+  // required word check
+  for (const rw of extra) {
+    const re = new RegExp(`\\b${rw.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}\\b`, "i");
+    if (!re.test(t)) {
+      g.push({ vi: `Chưa dùng từ yêu cầu: “${rw}”.` });
+    }
+  }
+
   const seen = new Set<string>();
   return g.filter((x) => (seen.has(x.vi) ? false : (seen.add(x.vi), true)));
 }
 
-function rewrite(text: string, spellingHits: SpellHit[], grammarHits: GrammarHit[]): string {
+function rewrite(text: string, spellingHits: SpellHit[], grammarHits: GrammarNote[]): string {
   let out = text.trim();
   for (const s of spellingHits) {
     if (s.to.startsWith("(")) continue;
@@ -323,22 +462,19 @@ function rewrite(text: string, spellingHits: SpellHit[], grammarHits: GrammarHit
   }
   out = out.replace(/\s+/g, " ");
   if (!/[.!?]$/.test(out)) out += ".";
-  if (grammarHits.some((x) => x.vi.startsWith("Song song"))) {
-    out = out.replace(/\bis\s+(messy|tidy|quiet|loud|shy|kind|thin|chubby|tall|short)\b/i, "is a $1 person");
-  }
   return out;
 }
 
 export function checkText(text: string, extra: string[] = [], expectTense?: string): Check {
   const spellingHits = spelling(text, extra).filter((x) => x.from.toLowerCase() !== x.to.toLowerCase());
-  const grammarHits = grammar(text, expectTense);
+  const grammarHits = grammar(text, extra, expectTense);
   const clean = spellingHits.length === 0 && grammarHits.length === 0;
   let score = 10;
   score -= spellingHits.length;
-  score -= grammarHits.length;
+  score -= grammarHits.length * 0.7;
   score = Math.max(0, Math.min(10, score));
   return {
-    score,
+    score: Math.round(score * 10) / 10,
     spelling: spellingHits,
     grammar: grammarHits,
     rewrite: rewrite(text, spellingHits, grammarHits),

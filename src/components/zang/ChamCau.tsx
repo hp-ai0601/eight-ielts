@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { checkText, type Check } from "@/lib/zang/check";
+import { scoreSentence } from "@/lib/score/write";
 
 function RedWords({ text, check }: { text: string; check: Check }) {
   const bad = new Set(check.spelling.map((x) => x.from.toLowerCase()));
@@ -36,11 +37,16 @@ export default function ChamCau({
   const [fix, setFix] = useState(text);
   const live = checkText(fix, extra, tense);
   const good = live.clean;
+  const target = extra[0] ?? "";
+  const sentenceMark = scoreSentence(fix, target, tense);
 
   return (
     <div className="panel mt-5 p-4">
       <p className="text-xs uppercase tracking-wider text-lime">Chấm cho Zang</p>
-      <p className={`mt-2 font-serif text-4xl ${good ? "text-lime" : "text-bad"}`}>{live.score}/10</p>
+      <div className="mt-2 flex items-baseline gap-3">
+        <p className={`font-serif text-4xl ${good ? "text-lime" : "text-bad"}`}>{live.score}/10</p>
+        <p className="text-sm text-mute">≈ IELTS {sentenceMark.band} · {sentenceMark.notes[0]}</p>
+      </div>
       <div className="mt-4">
         <p className="text-xs text-mute">Câu em viết</p>
         <RedWords text={fix} check={live} />
