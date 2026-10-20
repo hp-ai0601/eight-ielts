@@ -25,18 +25,18 @@ export default function WordPic({
   className?: string;
 }) {
   const [src, setSrc] = useState<string | null>(null);
-  const emoji = picEmoji(word, pos);
+  const emoji = picEmoji(word, pos, vi);
 
   useEffect(() => {
     let on = true;
     setSrc(null);
-    void resolvePic(word, vi).then((url) => {
+    void resolvePic(word, vi, pos).then((url) => {
       if (on && url) setSrc(url);
     });
     return () => {
       on = false;
     };
-  }, [word, vi]);
+  }, [word, vi, pos]);
 
   return (
     <div className={`relative overflow-hidden rounded-xl bg-line/40 ${BOX[size]} ${className}`}>

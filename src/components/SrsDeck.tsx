@@ -57,7 +57,7 @@ export default function SrsDeck({
       <p className="text-xs text-mute">
         Thẻ {i + 1}/{queue.length}
       </p>
-      <WordPic word={card.front} size="md" className="mt-6" />
+      <WordPic word={card.front} vi={card.back} size="md" className="mt-6" />
       <p className="mt-4 font-serif text-4xl">{card.front}</p>
       <button className="mt-3 text-sm text-lime" onClick={() => speak(card.front)}>
         Nghe
