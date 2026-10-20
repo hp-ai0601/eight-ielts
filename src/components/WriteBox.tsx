@@ -1,16 +1,9 @@
 "use client";
 
 import { useState } from "react";
-
-interface Score {
-  band: number;
-  fc: number;
-  lr: number;
-  gra: number;
-  extra: number;
-  notes: string[];
-  rewrite?: string;
-}
+import { scoreWriting } from "@/lib/score/write";
+import { savePaper } from "@/lib/store";
+import { useEight } from "@/lib/useEight";
 
 export default function WriteBox({
   prompt,
@@ -24,25 +17,16 @@ export default function WriteBox({
   minutes?: number;
   onScored?: (band: number) => void;
 }) {
+  const { s, commit } = useEight();
   const [text, setText] = useState("");
-  const [score, setScore] = useState<Score | null>(null);
-  const [busy, setBusy] = useState(false);
+  const kind = min >= 220 ? "t2" : "t1";
   const words = text.trim() ? text.trim().split(/\s+/).length : 0;
+  const mark = text.trim().length > 40 ? scoreWriting(text, min, kind) : null;
 
-  async function send() {
-    setBusy(true);
-    try {
-      const res = await fetch("/api/tutor", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ action: "write", prompt, min, text }),
-      });
-      const data = await res.json();
-      setScore(data.score);
-      if (data.score?.band) onScored?.(data.score.band);
-    } finally {
-      setBusy(false);
-    }
+  function send() {
+    if (!mark) return;
+    if (s) commit(savePaper(s, { kind, prompt, text, auto: mark }));
+    onScored?.(mark.band);
   }
 
   return (
@@ -50,29 +34,28 @@ export default function WriteBox({
       <p className="font-serif text-lg leading-relaxed">{prompt}</p>
       {data && <p className="mt-3 rounded-xl bg-bg p-3 font-serif text-sm text-mute">{data}</p>}
       <p className="mt-4 text-sm text-mute">
-        {words} / {min} từ · giờ ở thanh Dừng phía dưới
+        {words} / {min} từ · máy ước 4 tiêu chí, thầy Hiệp chấm mới ra band luyện
       </p>
       <textarea
         className="field mt-3 min-h-56 font-serif"
         value={text}
         onChange={(e) => setText(e.target.value)}
-        placeholder="The chart illustrates…"
+        placeholder={kind === "t1" ? "The chart illustrates…" : "This essay argues that…"}
       />
-      <button className="btn-lime mt-4" disabled={busy || words < 40} onClick={send}>
-        {busy ? "Đang chấm…" : "Chấm writing"}
+      <button className="btn-lime mt-4" disabled={words < 40} onClick={send}>
+        Nộp cho thầy
       </button>
-      {score && (
+      {mark && (
         <div className="mt-6 border-t border-line pt-5">
-          <p className="font-serif text-3xl">{score.band}</p>
+          <p className="font-serif text-3xl">{mark.band}</p>
           <p className="mt-1 text-xs text-mute">
-            TA/TR {score.fc} · CC {score.extra} · LR {score.lr} · GRA {score.gra}
+            {kind === "t1" ? "TA" : "TR"} {mark.ta} · CC {mark.cc} · LR {mark.lr} · GRA {mark.gra} · máy ước
           </p>
           <ul className="mt-4 space-y-2 text-sm">
-            {score.notes.map((n) => (
+            {mark.notes.map((n) => (
               <li key={n}>— {n}</li>
             ))}
           </ul>
-          {score.rewrite && <p className="mt-4 font-serif text-sm text-mute">{score.rewrite}</p>}
         </div>
       )}
     </div>

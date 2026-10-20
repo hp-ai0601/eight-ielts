@@ -2,16 +2,10 @@
 
 import { useState } from "react";
 import { speak } from "@/lib/speech";
-
-interface Score {
-  band: number;
-  fc: number;
-  lr: number;
-  gra: number;
-  extra: number;
-  notes: string[];
-  rewrite?: string;
-}
+import { listenOnce, scoreSpeak } from "@/lib/score/speak";
+import { saveSpeakTake } from "@/lib/store";
+import { useEight } from "@/lib/useEight";
+import Recorder from "@/components/zang/Recorder";
 
 export default function SpeakBox({
   cue,
@@ -22,25 +16,29 @@ export default function SpeakBox({
   bullets?: string[];
   onScored?: (band: number) => void;
 }) {
+  const { s, commit } = useEight();
   const [text, setText] = useState("");
-  const [score, setScore] = useState<Score | null>(null);
+  const [err, setErr] = useState("");
   const [busy, setBusy] = useState(false);
+  const mark = text.trim().length > 8 ? scoreSpeak(text, cue) : null;
 
-  async function send() {
-    if (!text.trim()) return;
+  async function hear() {
+    setErr("");
     setBusy(true);
     try {
-      const res = await fetch("/api/tutor", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ action: "speak", prompt: cue, text }),
-      });
-      const data = await res.json();
-      setScore(data.score);
-      if (data.score?.band) onScored?.(data.score.band);
+      const t = await listenOnce();
+      setText(t);
+    } catch (e) {
+      setErr(e instanceof Error ? e.message : "Không nghe được.");
     } finally {
       setBusy(false);
     }
+  }
+
+  function send() {
+    if (!mark) return;
+    if (s) commit(saveSpeakTake(s, { cue, text, auto: mark }));
+    onScored?.(mark.band);
   }
 
   return (
@@ -54,30 +52,34 @@ export default function SpeakBox({
           ))}
         </ul>
       )}
-      <div className="mt-4 flex gap-2">
+      <div className="mt-4 flex flex-wrap gap-2">
         <button className="btn-ghost" onClick={() => speak(cue)}>
           Nghe câu hỏi
         </button>
+        <button className="btn-lime" disabled={busy} onClick={hear}>
+          {busy ? "Đang nghe…" : "Nói — máy bắt giọng"}
+        </button>
       </div>
       <p className="mt-6 text-sm text-mute">
-        1 phút chuẩn bị, Part 2 khoảng 2 phút nói — Dừng / Tiếp ở thanh dưới. Nói thành tiếng, rồi gõ lại. Chấm Fluency, Lexical, Grammar, Pron.
+        Chrome/Safari. Máy bắt transcript rồi ước FC / LR / GRA / Pron. Thầy Hiệp chấm 4 ô mới tính.
       </p>
       <textarea className="field mt-3 min-h-36" value={text} onChange={(e) => setText(e.target.value)} placeholder="I usually…" />
-      <button className="btn-lime mt-4" disabled={busy || !text.trim()} onClick={send}>
-        {busy ? "Đang chấm…" : "Chấm speaking"}
+      {err && <p className="mt-2 text-sm text-bad">{err}</p>}
+      <Recorder />
+      <button className="btn-lime mt-4" disabled={!text.trim()} onClick={send}>
+        Nộp cho thầy
       </button>
-      {score && (
+      {mark && (
         <div className="mt-6 border-t border-line pt-5">
-          <p className="font-serif text-3xl">{score.band}</p>
+          <p className="font-serif text-3xl">{mark.band}</p>
           <p className="mt-1 text-xs text-mute">
-            FC {score.fc} · LR {score.lr} · GRA {score.gra} · Pron {score.extra}
+            FC {mark.fc} · LR {mark.lr} · GRA {mark.gra} · Pron {mark.pron} · máy ước
           </p>
           <ul className="mt-4 space-y-2 text-sm">
-            {score.notes.map((n) => (
+            {mark.notes.map((n) => (
               <li key={n}>— {n}</li>
             ))}
           </ul>
-          {score.rewrite && <p className="mt-4 font-serif text-sm text-mute">{score.rewrite}</p>}
         </div>
       )}
     </div>

@@ -186,25 +186,35 @@ export function picEmoji(word: string, pos?: string) {
   return EMOJI[word.toLowerCase()] ?? (pos ? POS_EMOJI[pos] : "🖼️") ?? "🖼️";
 }
 
-type CommonsPage = { imageinfo?: { thumburl?: string }[] };
+type CommonsPage = { title?: string; imageinfo?: { thumburl?: string }[] };
+
+const SKIP = /ship|boat|vessel|flag|coat of arms|logo|map of|svg|icon|diagram|chart/i;
 
 export async function resolvePic(word: string, vi?: string): Promise<string | null> {
-  const key = `eight.pic.${word.toLowerCase()}`;
+  const w = word.toLowerCase();
+  if (EMOJI[w]) return null;
+  const key = `eight.pic.v3.${w}`;
   try {
     const hit = sessionStorage.getItem(key);
+    if (hit === "none") return null;
     if (hit) return hit;
   } catch {
     /* ignore */
   }
-  const q = SEARCH[word.toLowerCase()] ?? `${word} ${vi ?? ""}`.trim();
-  const api = `https://commons.wikimedia.org/w/api.php?action=query&generator=search&gsrsearch=${encodeURIComponent(`${q} filetype:bitmap`)}&gsrnamespace=6&gsrlimit=1&prop=imageinfo&iiprop=url&iiurlwidth=480&format=json&origin=*`;
+  const q = SEARCH[w] ?? `"${word}" ${vi ?? ""} photograph`;
+  const api = `https://commons.wikimedia.org/w/api.php?action=query&generator=search&gsrsearch=${encodeURIComponent(`${q} -ship -boat -flag -logo filetype:bitmap`)}&gsrnamespace=6&gsrlimit=8&prop=imageinfo&iiprop=url&iiurlwidth=480&format=json&origin=*`;
   try {
     const d = (await fetch(api).then((r) => r.json())) as { query?: { pages?: Record<string, CommonsPage> } };
     const pages = Object.values(d.query?.pages ?? {});
-    const url = pages[0]?.imageinfo?.[0]?.thumburl;
-    if (!url) return null;
+    const hit = pages.find((p) => {
+      const title = (p.title ?? "").replace(/^File:/i, "");
+      if (SKIP.test(title)) return false;
+      const stem = w.split(/\s+/)[0];
+      return stem.length >= 4 && title.toLowerCase().includes(stem);
+    });
+    const url = (hit ?? pages.find((p) => !SKIP.test(p.title ?? "")))?.imageinfo?.[0]?.thumburl ?? null;
     try {
-      sessionStorage.setItem(key, url);
+      sessionStorage.setItem(key, url ?? "none");
     } catch {
       /* ignore */
     }

@@ -1,9 +1,10 @@
-import type { State, ZangDraft, ZangSentence } from "./store";
+import type { Paper, SpeakTake, State, ZangDraft, ZangSentence } from "./store";
+import { livePush } from "./live";
 
 export const INBOX_KEY = "eight.inbox.zang";
 
 export interface Report {
-  v: 1;
+  v: 2;
   at: number;
   day: string;
   streak: number;
@@ -14,18 +15,21 @@ export interface Report {
   spells: { target: string; wrote: string; ok: boolean }[];
   mimics: { text: string }[];
   diaries: { day: string; text: string }[];
+  papers: Paper[];
+  speaks: SpeakTake[];
+  tests: { testId: string; ok: number; total: number; at: number }[];
 }
 
 export function makeReport(s: State): Report {
   const day = s.profile.day;
   return {
-    v: 1,
+    v: 2,
     at: Date.now(),
     day,
     streak: s.profile.streak.count,
     minutes: s.profile.minutesToday,
     steps: s.zang.steps[day] ?? [],
-    sentences: s.zang.sentences.slice(0, 24).map(({ word, mode, text, score, rewrite, spelling, grammar }) => ({
+    sentences: s.zang.sentences.slice(0, 16).map(({ word, mode, text, score, rewrite, spelling, grammar }) => ({
       word,
       mode,
       text,
@@ -34,10 +38,13 @@ export function makeReport(s: State): Report {
       spelling,
       grammar,
     })),
-    drafts: (s.zang.drafts ?? []).slice(0, 24),
-    spells: (s.zang.spells ?? []).slice(0, 24).map(({ target, wrote, ok }) => ({ target, wrote, ok })),
-    mimics: s.zang.mimics.slice(0, 12).map(({ text }) => ({ text })),
-    diaries: s.zang.diaries.slice(0, 10).map(({ day: d, text }) => ({ day: d, text })),
+    drafts: (s.zang.drafts ?? []).slice(0, 12),
+    spells: (s.zang.spells ?? []).slice(0, 16).map(({ target, wrote, ok }) => ({ target, wrote, ok })),
+    mimics: s.zang.mimics.slice(0, 8).map(({ text }) => ({ text })),
+    diaries: s.zang.diaries.slice(0, 6).map(({ day: d, text }) => ({ day: d, text })),
+    papers: (s.zang.papers ?? []).slice(0, 8),
+    speaks: (s.zang.speaks ?? []).slice(0, 8),
+    tests: s.attempts.slice(0, 8).map(({ testId, ok, total, at }) => ({ testId, ok, total, at })),
   };
 }
 
@@ -53,9 +60,9 @@ export function unpack(code: string): Report | null {
   try {
     const pad = code.length % 4 === 0 ? "" : "=".repeat(4 - (code.length % 4));
     const json = decodeURIComponent(escape(atob(code.replace(/-/g, "+").replace(/_/g, "/") + pad)));
-    const r = JSON.parse(json) as Report;
-    if (r?.v !== 1) return null;
-    return r;
+    const r = JSON.parse(json) as Omit<Report, "v"> & { v: number };
+    if (r?.v !== 1 && r?.v !== 2) return null;
+    return { ...r, papers: r.papers ?? [], speaks: r.speaks ?? [], tests: r.tests ?? [], v: 2 };
   } catch {
     return null;
   }
@@ -66,12 +73,21 @@ export function writeInbox(s: State) {
   localStorage.setItem(INBOX_KEY, JSON.stringify(makeReport(s)));
 }
 
+export async function pushLive(s: State) {
+  try {
+    await livePush(makeReport(s));
+  } catch {
+    /* GH Pages: MQTT public broker */
+  }
+}
+
 export function readInbox(): Report | null {
   if (typeof window === "undefined") return null;
   try {
     const raw = localStorage.getItem(INBOX_KEY);
     if (!raw) return null;
-    return JSON.parse(raw) as Report;
+    const r = JSON.parse(raw) as Report;
+    return { ...r, papers: r.papers ?? [], speaks: r.speaks ?? [], tests: r.tests ?? [], v: 2 };
   } catch {
     return null;
   }

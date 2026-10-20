@@ -3,7 +3,8 @@
 import { useMemo, useState } from "react";
 import { CLASS_WORDS, DIARY_PROMPTS, STORIES, dayNum, pickMany } from "@/lib/zang/content";
 import { CLASS_SAMPLES } from "@/lib/zang/samples";
-import { bumpZangLot, saveZangDiary, saveZangDraft, zangLot, type State } from "@/lib/store";
+import { bumpZangLot, savePaper, saveZangDiary, saveZangDraft, zangLot, type State } from "@/lib/store";
+import { scoreWriting } from "@/lib/score/write";
 import { checkText, type Check } from "@/lib/zang/check";
 import ChamCau from "./ChamCau";
 import ExampleLine from "@/components/ExampleLine";
@@ -50,8 +51,16 @@ export default function NhatKy({ s, onDone }: { s: State; onDone: (next: State) 
   }
 
   function cat(cleanText: string) {
-    onDone(saveZangDiary(s, cleanText));
-    setOk("Đã cất nhật ký.");
+    const auto = scoreWriting(cleanText, 40, "diary");
+    onDone(
+      savePaper(saveZangDiary(s, cleanText), {
+        kind: "diary",
+        prompt: prompt?.title ?? "Nhật ký",
+        text: cleanText,
+        auto,
+      }),
+    );
+    setOk("Đã cất nhật ký. Thầy thấy trên live.");
     setMark(null);
   }
 

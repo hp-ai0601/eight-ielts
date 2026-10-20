@@ -103,6 +103,23 @@ export interface ZangDiary {
   text: string;
 }
 
+export interface Paper {
+  at: number;
+  kind: "t1" | "t2" | "diary";
+  prompt: string;
+  text: string;
+  auto: { ta: number; cc: number; lr: number; gra: number; band: number; notes: string[] };
+  teacher?: { ta: number; cc: number; lr: number; gra: number; band: number; note: string; at: number };
+}
+
+export interface SpeakTake {
+  at: number;
+  cue: string;
+  text: string;
+  auto: { fc: number; lr: number; gra: number; pron: number; band: number; notes: string[] };
+  teacher?: { fc: number; lr: number; gra: number; pron: number; band: number; note: string; at: number };
+}
+
 export interface ZangState {
   sentences: ZangSentence[];
   mimics: ZangMimic[];
@@ -112,6 +129,8 @@ export interface ZangState {
   spells: ZangSpell[];
   drafts: ZangDraft[];
   lots: Record<string, number>;
+  papers: Paper[];
+  speaks: SpeakTake[];
 }
 
 export interface State {
@@ -125,7 +144,7 @@ export interface State {
 }
 
 function emptyZang(): ZangState {
-  return { sentences: [], mimics: [], listenDone: [], diaries: [], steps: {}, spells: [], drafts: [], lots: {} };
+  return { sentences: [], mimics: [], listenDone: [], diaries: [], steps: {}, spells: [], drafts: [], lots: {}, papers: [], speaks: [] };
 }
 
 function today() {
@@ -167,6 +186,8 @@ function migrate(s: State): State {
       spells: s.zang?.spells ?? [],
       drafts: s.zang?.drafts ?? [],
       lots: s.zang?.lots ?? {},
+      papers: s.zang?.papers ?? [],
+      speaks: s.zang?.speaks ?? [],
     },
     profile: {
       ...s.profile,
@@ -210,10 +231,16 @@ export function load(): State {
   }
 }
 
+let liveTimer: ReturnType<typeof setTimeout> | undefined;
+
 export function save(s: State) {
   localStorage.setItem(KEY(), JSON.stringify(s));
   if (sessionId() === "zang") {
     void import("./report").then((m) => m.writeInbox(s)).catch(() => undefined);
+    if (liveTimer) clearTimeout(liveTimer);
+    liveTimer = setTimeout(() => {
+      void import("./report").then((m) => m.pushLive(s)).catch(() => undefined);
+    }, 800);
   }
   window.dispatchEvent(new Event("eight"));
   void fetch("/api/progress", {
@@ -440,6 +467,42 @@ export function saveZangDiary(s: State, text: string): State {
   const day = today();
   const diaries = [{ at: Date.now(), day, text }, ...s.zang.diaries.filter((x) => x.day !== day)].slice(0, 120);
   return markZangStep({ ...s, zang: { ...s.zang, diaries } }, 4);
+}
+
+export function savePaper(s: State, row: Omit<Paper, "at">): State {
+  return { ...s, zang: { ...s.zang, papers: [{ ...row, at: Date.now() }, ...s.zang.papers].slice(0, 40) } };
+}
+
+export function saveSpeakTake(s: State, row: Omit<SpeakTake, "at">): State {
+  return { ...s, zang: { ...s.zang, speaks: [{ ...row, at: Date.now() }, ...s.zang.speaks].slice(0, 40) } };
+}
+
+export function applyTeacherGrade(s: State, g: { kind: string; paperAt?: number; speakAt?: number; ta?: number; cc?: number; lr?: number; gra?: number; fc?: number; pron?: number; band: number; note: string; at: number }): State {
+  if (g.kind === "write" && g.paperAt) {
+    return {
+      ...s,
+      zang: {
+        ...s.zang,
+        papers: s.zang.papers.map((p) =>
+          p.at === g.paperAt ? { ...p, teacher: { ta: g.ta ?? p.auto.ta, cc: g.cc ?? p.auto.cc, lr: g.lr ?? p.auto.lr, gra: g.gra ?? p.auto.gra, band: g.band, note: g.note, at: g.at } } : p,
+        ),
+      },
+      profile: { ...s.profile, bands: { ...s.profile.bands, w: g.band } },
+    };
+  }
+  if (g.kind === "speak" && g.speakAt) {
+    return {
+      ...s,
+      zang: {
+        ...s.zang,
+        speaks: s.zang.speaks.map((p) =>
+          p.at === g.speakAt ? { ...p, teacher: { fc: g.fc ?? p.auto.fc, lr: g.lr ?? p.auto.lr, gra: g.gra ?? p.auto.gra, pron: g.pron ?? p.auto.pron, band: g.band, note: g.note, at: g.at } } : p,
+        ),
+      },
+      profile: { ...s.profile, bands: { ...s.profile.bands, s: g.band } },
+    };
+  }
+  return s;
 }
 
 export function zangToday(s: State) {

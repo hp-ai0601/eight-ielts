@@ -1,4 +1,5 @@
 import { gap, mcq, tf, type Question } from "@/lib/content/types";
+import { GRAMMAR_MORE } from "./grammarMore";
 
 export interface GrammarUnit {
   id: string;
@@ -10,7 +11,7 @@ export interface GrammarUnit {
   questions: Question[];
 }
 
-export const GRAMMAR: GrammarUnit[] = [
+const CORE: GrammarUnit[] = [
   {
     id: "tenses",
     title: "Thì: chọn thì theo mốc, không theo ‘cảm’",
@@ -170,3 +171,5 @@ export const GRAMMAR: GrammarUnit[] = [
     ],
   },
 ];
+
+export const GRAMMAR: GrammarUnit[] = [...CORE, ...GRAMMAR_MORE];
