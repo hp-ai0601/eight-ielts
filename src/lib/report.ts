@@ -1,5 +1,5 @@
-import type { Paper, SpeakTake, State, ZangDraft, ZangSentence } from "./store";
-import { livePush } from "./live";
+import { dbPut } from "./db";
+import type { Bands, Paper, SpeakTake, State, ZangDraft, ZangSentence } from "./store";
 
 export const INBOX_KEY = "eight.inbox.zang";
 
@@ -10,6 +10,9 @@ export interface Report {
   streak: number;
   minutes: number;
   steps: number[];
+  stage?: string;
+  bands?: Bands;
+  completed?: number;
   sentences: Pick<ZangSentence, "word" | "mode" | "text" | "score" | "rewrite" | "spelling" | "grammar">[];
   drafts: ZangDraft[];
   spells: { target: string; wrote: string; ok: boolean }[];
@@ -29,6 +32,9 @@ export function makeReport(s: State): Report {
     streak: s.profile.streak.count,
     minutes: s.profile.minutesToday,
     steps: s.zang.steps[day] ?? [],
+    stage: s.profile.stageId,
+    bands: s.profile.bands,
+    completed: s.profile.completed.length,
     sentences: s.zang.sentences.slice(0, 16).map(({ word, mode, text, score, rewrite, spelling, grammar }) => ({
       word,
       mode,
@@ -75,9 +81,9 @@ export function writeInbox(s: State) {
 
 export async function pushLive(s: State) {
   try {
-    await livePush(makeReport(s));
+    await dbPut("zang", makeReport(s));
   } catch {
-    /* GH Pages: MQTT public broker */
+    /* kho chung offline */
   }
 }
 

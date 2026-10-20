@@ -12,12 +12,15 @@ function fromLocal(): Report | null {
   const inbox = readInbox();
   return inbox ?? (z
     ? {
-        v: 2,
+        v: 2 as const,
         at: Date.now(),
         day: z.profile.day,
         streak: z.profile.streak.count,
         minutes: z.profile.minutesToday,
         steps: z.zang.steps[z.profile.day] ?? [],
+        stage: z.profile.stageId,
+        bands: z.profile.bands,
+        completed: z.profile.completed.length,
         sentences: z.zang.sentences.slice(0, 16),
         drafts: z.zang.drafts ?? [],
         spells: (z.zang.spells ?? []).slice(0, 16),
@@ -42,7 +45,6 @@ function Band({ label, value, onChange }: { label: string; value: number; onChan
 export default function TeacherPage() {
   const { s, ready } = useEight();
   const [report, setReport] = useState<Report | null>(null);
-  const [live, setLive] = useState(false);
   const [pane, setPane] = useState<"live" | "write" | "speak" | "key">("live");
   const [paste, setPaste] = useState("");
   const [hint, setHint] = useState("");
@@ -58,7 +60,6 @@ export default function TeacherPage() {
     setReport(fromLocal());
     return onLive((r) => {
       setReport(r);
-      setLive(true);
     });
   }, []);
 
@@ -75,7 +76,7 @@ export default function TeacherPage() {
   return (
     <Studio
       title="Zang Bếu"
-      kicker={live ? "live" : "chưa có tín hiệu"}
+      kicker={report ? "kho chung" : "chưa có dữ liệu"}
       rail={
         <>
           <RailPick on={pane === "live"} onClick={() => setPane("live")}>
@@ -101,9 +102,9 @@ export default function TeacherPage() {
           {pane === "live" && (
             <>
               <p className="text-sm text-mute">
-                Zang học máy khác thì bài hiện ở đây sau vài giây. Không cần copy mã, trừ khi mạng chặn MQTT.
+                Kho chung: Zang học máy nào thì thầy mở máy khác vẫn thấy tiến trình, kể cả khi Zang đã tắt máy.
               </p>
-              <textarea className="field mt-4 min-h-20" value={paste} onChange={(e) => setPaste(e.target.value)} placeholder="Dán mã cũ nếu live chết…" />
+              <textarea className="field mt-4 min-h-20" value={paste} onChange={(e) => setPaste(e.target.value)} placeholder="Dán mã dự phòng nếu kho chung lỗi…" />
               <button
                 type="button"
                 className="btn-ghost mt-2"
@@ -126,9 +127,14 @@ export default function TeacherPage() {
                     {report.day} · {report.steps.length}/4 bước · {report.minutes}′ · streak {report.streak}
                   </p>
                   <p>
+                    Giai đoạn {report.stage ?? "—"} · xong {report.completed ?? 0} bài · L {report.bands?.l ?? "—"} · R{" "}
+                    {report.bands?.r ?? "—"} · W {report.bands?.w ?? "—"} · S {report.bands?.s ?? "—"}
+                  </p>
+                  <p>
                     Câu sạch {report.sentences.length} · nhật ký {report.diaries.length} · writing {report.papers.length} ·
                     nói {report.speaks.length}
                   </p>
+                  <p className="text-xs text-mute">Cập nhật {new Date(report.at).toLocaleString("vi-VN")}</p>
                 </div>
               )}
               {report?.diaries[0] && (

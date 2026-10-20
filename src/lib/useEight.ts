@@ -7,7 +7,9 @@ export function useEight() {
   const [s, setS] = useState<State | null>(null);
 
   useEffect(() => {
-    setS(load());
+    const cur = load();
+    setS(cur);
+    if (sessionId() === "zang") save(cur);
     const on = () => setS(load());
     window.addEventListener("eight", on);
     window.addEventListener("storage", on);

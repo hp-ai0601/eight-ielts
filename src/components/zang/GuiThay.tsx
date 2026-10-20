@@ -25,7 +25,7 @@ export default function GuiThay({ s }: { s: State }) {
     <div className="panel mt-10 p-4">
       <p className="text-xs uppercase tracking-wider text-lime">Thầy Hiệp</p>
       <p className="mt-2 text-sm text-mute">
-        Máy Zang gửi live. Thầy mở mục Zang trên máy khác là thấy bài, chấm writing/speaking 4 ô. Không cần ngồi cùng máy.
+        Tiến trình ghi vào kho chung. Thầy mở máy khác vẫn thấy Zang học tới đâu, không cần Zang đang online.
       </p>
       <p className="mt-3 text-sm">
         Hôm nay {r.steps.length}/4 bước · {r.sentences.length} câu · {r.papers.length} bài viết · streak {r.streak}
@@ -36,7 +36,7 @@ export default function GuiThay({ s }: { s: State }) {
         </p>
       )}
       <button type="button" className="btn-ghost mt-4" onClick={copy}>
-        Copy mã dự phòng
+        Copy mã dự phòng (nếu mạng chết)
       </button>
       {copied && <p className="mt-2 text-sm text-lime">{copied}</p>}
     </div>

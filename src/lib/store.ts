@@ -240,7 +240,7 @@ export function save(s: State) {
     if (liveTimer) clearTimeout(liveTimer);
     liveTimer = setTimeout(() => {
       void import("./report").then((m) => m.pushLive(s)).catch(() => undefined);
-    }, 800);
+    }, 2500);
   }
   window.dispatchEvent(new Event("eight"));
   void fetch("/api/progress", {
