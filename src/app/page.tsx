@@ -7,10 +7,10 @@ import { zangToday } from "@/lib/store";
 import GuiThay from "@/components/zang/GuiThay";
 
 const STEPS = [
-  { n: 1, href: "/tu", title: "Từ → câu", why: "Mỗi đợt 8 từ lớp + 3 cặp trái nghĩa. Nhét vào câu." },
-  { n: 2, href: "/cum", title: "Cụm truyện", why: "Mỗi đợt một kịch bản 6 cảnh. Tách thì + cấu trúc, viết thêm câu cùng khuôn." },
-  { n: 3, href: "/hai", title: "Hài & nhạc", why: "Mỗi đợt một tập hài 4 mẩu hoặc tập nhạc 4 bài. Nghĩa trước, nghe, đoán, ghi âm." },
-  { n: 4, href: "/nhat-ky", title: "Nhật ký", why: "Mỗi đợt 4 gợi ý + 4 từ + 4 thì. Viết journal, không phải luận." },
+  { n: 1, href: "/tu", title: "Từ", why: "8 từ → câu" },
+  { n: 2, href: "/cum", title: "Cụm", why: "6 cảnh kịch bản" },
+  { n: 3, href: "/hai", title: "Hài", why: "4 mẩu nghe" },
+  { n: 4, href: "/nhat-ky", title: "Nhật ký", why: "Viết vài câu" },
 ];
 
 export default function Today() {
@@ -22,37 +22,35 @@ export default function Today() {
   const next = STEPS.find((x) => !done.has(x.n)) ?? STEPS[0];
 
   return (
-    <div className="mx-auto max-w-xl px-5 py-10 lg:px-10">
-      <p className="text-sm text-lime">Cách Zang</p>
-      <h1 className="mt-2 font-serif text-4xl leading-tight">Bốn bước. Rồi ngủ.</h1>
-      <p className="mt-3 text-mute">
-        Không nhảy đề IELTS. Hôm nay {count}/4 bước · streak {s.profile.streak.count} ngày.
-      </p>
-      <Link href={next.href} className="btn-lime mt-8 inline-flex">
-        {count === 4 ? "Xem lại nhật ký" : `Tiếp: ${next.title}`}
+    <div className="mx-auto flex w-full max-w-3xl flex-1 flex-col px-5 py-8 lg:px-10 lg:py-12">
+      <p className="text-sm text-lime">Hôm nay · {count}/4 · streak {s.profile.streak.count}</p>
+      <h1 className="mt-2 font-serif text-4xl leading-none lg:text-5xl">Bốn bước. Rồi ngủ.</h1>
+      <Link href={next.href} className="btn-lime mt-6 inline-flex w-fit">
+        {count === 4 ? "Xem nhật ký" : `Tiếp · ${next.title}`}
       </Link>
-      <ol className="mt-10 space-y-3">
+      <ol className="mt-10 grid gap-3 sm:grid-cols-2">
         {STEPS.map((x) => {
           const on = done.has(x.n);
           return (
             <li key={x.n}>
-              <Link href={x.href} className="panel block p-4 hover:border-lime">
-                <p className="text-xs text-lime">
-                  {x.n} {on ? "xong" : ""}
-                </p>
-                <p className={`mt-1 text-lg ${on ? "text-mute line-through" : "font-medium"}`}>{x.title}</p>
-                <p className="mt-1 text-sm text-mute">{x.why}</p>
+              <Link
+                href={x.href}
+                className={`panel block p-5 transition hover:border-lime ${on ? "opacity-60" : ""}`}
+              >
+                <p className="text-xs text-lime">{on ? "xong" : `bước ${x.n}`}</p>
+                <p className="mt-2 font-serif text-3xl leading-none">{x.title}</p>
+                <p className="mt-2 text-sm text-mute">{x.why}</p>
               </Link>
             </li>
           );
         })}
       </ol>
-      <p className="mt-8 text-sm text-mute">
-        Đề thi, 3500 từ, lộ trình 8.0 để ở{" "}
+      <p className="mt-auto pt-10 text-sm text-mute">
+        Đề IELTS để ở{" "}
         <Link className="text-lime" href="/kho">
           Kho
-        </Link>{" "}
-        — khi em muốn, không phải hôm nay.
+        </Link>
+        .
       </p>
       {s.profile.userId === "zang" && <GuiThay s={s} />}
     </div>

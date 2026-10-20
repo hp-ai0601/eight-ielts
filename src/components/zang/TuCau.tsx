@@ -5,13 +5,14 @@ import { ANTONYMS, CLASS_FRAMES, CLASS_WORDS, dayNum, pick, pickMany } from "@/l
 import { ANTONYM_EXTRA, CLASS_SAMPLES, FRAME_VI } from "@/lib/zang/samples";
 import { speak } from "@/lib/speech";
 import { bumpZangLot, saveZangDraft, saveZangSentence, saveZangSpell, zangLot, type State } from "@/lib/store";
-import { POS_VI, posHint, type Pos } from "@/lib/pos";
+import { POS_VI, posHint } from "@/lib/pos";
 import { checkText, type Check } from "@/lib/zang/check";
 import ChamCau from "./ChamCau";
 import ChinhTa from "./ChinhTa";
 import WordPic from "@/components/WordPic";
 import ExampleLine from "@/components/ExampleLine";
 import Hear from "@/components/Hear";
+import Studio, { Pills, RailPick } from "@/components/Studio";
 
 const PER_LOT = 8;
 
@@ -22,6 +23,7 @@ export default function TuCau({ s, onDone }: { s: State; onDone: (next: State) =
   const pairs = useMemo(() => pickMany(ANTONYMS, n + lot * 13, 3), [n, lot]);
   const frame = pick(CLASS_FRAMES, n + lot);
   const [mode, setMode] = useState<"class" | "antonym">("class");
+  const [pane, setPane] = useState("xem");
   const [wi, setWi] = useState(0);
   const [pi, setPi] = useState(0);
   const [text, setText] = useState("");
@@ -32,21 +34,12 @@ export default function TuCau({ s, onDone }: { s: State; onDone: (next: State) =
   const word = words[wi] ?? words[0];
   const pair = pairs[pi] ?? pairs[0];
   const extra = mode === "class" ? (word ? [word.word] : []) : pair ? [pair.a, pair.b] : [];
+  const ex = word ? CLASS_SAMPLES[word.word] : undefined;
+  const pairEx = pair ? ANTONYM_EXTRA[pair.sample] : undefined;
 
-  function pickWord(i: number) {
-    setWi(i);
+  function resetMark() {
     setOk("");
     setMark(null);
-    const w = words[i];
-    if (w) speak(w.word);
-  }
-
-  function pickPair(i: number) {
-    setPi(i);
-    setOk("");
-    setMark(null);
-    const p = pairs[i];
-    if (p) speak(`${p.a}. ${p.b}`);
   }
 
   function cham() {
@@ -89,16 +82,16 @@ export default function TuCau({ s, onDone }: { s: State; onDone: (next: State) =
         grammar: [],
       }),
     );
-    setOk("Đã cất. Bấm từ khác, viết câu nữa.");
+    setOk("Đã cất.");
     setMark(null);
     setText("");
   }
 
-  const writeBox = (
+  const write = (
     <>
       <textarea
-        className={`field mt-4 min-h-24 ${mark && !mark.clean ? "border-bad" : ""}`}
-        placeholder="Câu của em, tiếng Anh — nhét từ đang chọn vào câu."
+        className={`field min-h-32 ${mark && !mark.clean ? "border-bad" : ""}`}
+        placeholder="Câu tiếng Anh — nhét từ đang chọn."
         value={text}
         onChange={(e) => {
           setText(e.target.value);
@@ -106,7 +99,7 @@ export default function TuCau({ s, onDone }: { s: State; onDone: (next: State) =
         }}
       />
       <button className="btn-lime mt-3" onClick={cham}>
-        Chấm thì + ngữ pháp
+        Chấm
       </button>
       {ok && <p className={`mt-3 text-sm ${mark && !mark.clean ? "text-bad" : "text-lime"}`}>{ok}</p>}
       {mark && <ChamCau check={mark} text={text} extra={extra} onClean={cat} />}
@@ -114,193 +107,206 @@ export default function TuCau({ s, onDone }: { s: State; onDone: (next: State) =
   );
 
   return (
-    <div>
-      <div className="flex flex-wrap gap-2">
-        <button
-          className={mode === "class" ? "btn-lime" : "btn-ghost"}
-          onClick={() => {
-            setMode("class");
-            setOk("");
-            setMark(null);
+    <Studio
+      step={1}
+      title="Từ → câu"
+      kicker={`đợt ${lot + 1} · ${mode === "class" ? "8 từ" : "3 cặp"}`}
+      swap={mode === "class" ? "Đổi 8 từ" : "Đổi 3 cặp"}
+      onSwap={() => {
+        onDone(bumpZangLot(s));
+        setWi(0);
+        setPi(0);
+        setSpelled({});
+        resetMark();
+      }}
+      next={{ href: "/cum", label: "Cụm" }}
+      tabs={
+        <Pills
+          value={mode}
+          onChange={(id) => {
+            setMode(id as "class" | "antonym");
+            setPane("xem");
+            resetMark();
           }}
-        >
-          Từ → câu lớp
-        </button>
-        <button
-          className={mode === "antonym" ? "btn-lime" : "btn-ghost"}
-          onClick={() => {
-            setMode("antonym");
-            setOk("");
-            setMark(null);
-          }}
-        >
-          Trái nghĩa → câu đối lập
-        </button>
-      </div>
-
-      {mode === "class" && word && (
-        <div className="mt-5">
-          <div className="flex flex-wrap items-center justify-between gap-2">
-            <p className="text-sm text-mute">
-              8 từ · <span className="text-lime">đợt {lot + 1} hôm nay</span>
-            </p>
-            <button
-              type="button"
-              className="btn-ghost text-xs"
-              onClick={() => {
-                onDone(bumpZangLot(s));
-                setWi(0);
-                setSpelled({});
-                setMark(null);
-              }}
-            >
-              Đổi 8 từ khác
-            </button>
-          </div>
-          <div className="mt-3 grid gap-2 sm:grid-cols-2">
-            {words.map((w, i) => {
-              const on = i === wi;
-              const ex = CLASS_SAMPLES[w.word];
-              return (
-                <div
-                  key={w.word}
-                  className={`rounded-2xl border p-3 ${on ? "border-lime bg-lime/10 sm:col-span-2" : "border-line"}`}
-                >
-                  <div className="flex items-start gap-3">
-                    <button type="button" className="min-w-0 flex-1 text-left" onClick={() => pickWord(i)}>
-                      <div className="flex gap-3">
-                        <WordPic word={w.word} vi={w.vi} pos={w.pos} size="thumb" />
-                        <div className="min-w-0">
-                          <p className="font-serif text-xl leading-tight">{w.word}</p>
-                          <p className="mt-0.5 text-sm text-mute">{w.ipa}</p>
-                          <p className="mt-0.5 text-sm">
-                            <span className="text-lime">{POS_VI[w.pos]}</span> · {w.vi}
-                            {spelled[w.word] ? <span className="ml-2 text-xs text-lime">chính tả ok</span> : null}
-                          </p>
-                        </div>
+          items={[
+            { id: "class", label: "Từ lớp" },
+            { id: "antonym", label: "Trái nghĩa" },
+          ]}
+        />
+      }
+      rail={
+        mode === "class"
+          ? words.map((w, i) => (
+              <RailPick
+                key={w.word}
+                on={i === wi}
+                done={!!spelled[w.word]}
+                onClick={() => {
+                  setWi(i);
+                  setPane("xem");
+                  resetMark();
+                  speak(w.word);
+                }}
+              >
+                <p className="font-serif text-lg leading-tight">{w.word}</p>
+                <p className="mt-0.5 truncate text-xs text-mute">
+                  {w.vi} · {POS_VI[w.pos]}
+                </p>
+              </RailPick>
+            ))
+          : pairs.map((p, i) => (
+              <RailPick
+                key={`${p.a}-${p.b}`}
+                on={i === pi}
+                onClick={() => {
+                  setPi(i);
+                  setPane("xem");
+                  resetMark();
+                  speak(`${p.a}. ${p.b}`);
+                }}
+              >
+                <p className="font-serif text-lg leading-tight">
+                  {p.a} <span className="text-mute">↔</span> {p.b}
+                </p>
+                <p className="mt-0.5 truncate text-xs text-mute">
+                  {p.aVi} / {p.bVi}
+                </p>
+              </RailPick>
+            ))
+      }
+      stage={
+        mode === "class" && word ? (
+          <div className="mx-auto max-w-lg">
+            <div className="flex items-start gap-4">
+              <WordPic word={word.word} vi={word.vi} pos={word.pos} size="sm" className="!h-24 !w-24 shrink-0" />
+              <div className="min-w-0 flex-1">
+                <div className="flex items-start justify-between gap-2">
+                  <p className="font-serif text-4xl leading-none">{word.word}</p>
+                  <Hear text={word.word} />
+                </div>
+                <p className="mt-2 text-mute">{word.ipa}</p>
+                <p className="mt-1 text-sm">
+                  <span className="text-lime">{POS_VI[word.pos]}</span> · {word.vi}
+                </p>
+              </div>
+            </div>
+            <div className="mt-5">
+              <Pills
+                value={pane}
+                onChange={setPane}
+                items={[
+                  { id: "xem", label: "Xem" },
+                  { id: "go", label: "Gõ" },
+                  { id: "viet", label: "Viết" },
+                ]}
+              />
+            </div>
+            <div className="mt-5">
+              {pane === "xem" && (
+                <div>
+                  <p className="text-sm text-mute">{posHint(word.pos)}</p>
+                  <p className="mt-2 text-sm">
+                    {FRAME_VI[frame] ?? frame}
+                  </p>
+                  {ex && (
+                    <div className="mt-4">
+                      <div className="flex items-center justify-between">
+                        <p className="text-xs uppercase tracking-wider text-lime">Câu mẫu</p>
+                        <Hear text={ex.en} rate={0.88} />
                       </div>
-                    </button>
-                    <Hear text={w.word} />
-                  </div>
-                  {on && (
-                    <div className="mt-4 border-t border-line pt-4">
-                      <p className="text-xs text-mute">{posHint(w.pos)}</p>
-                      <p className="mt-2 text-sm text-mute">
-                        Khung: <span className="text-text">{frame}</span>
-                      </p>
-                      <p className="mt-1 text-sm">{FRAME_VI[frame] ?? ""}</p>
-                      {ex && (
-                        <div className="mt-3">
-                          <div className="flex items-center justify-between gap-2">
-                            <p className="text-xs uppercase tracking-wider text-lime">Câu ví dụ</p>
-                            <Hear text={ex.en} rate={0.88} label="Nghe câu" />
-                          </div>
-                          <ExampleLine en={ex.en} vi={ex.vi} grammar={ex.g} />
-                        </div>
-                      )}
-                      <ChinhTa
-                        key={`${lot}-${w.word}`}
-                        target={w.word}
-                        ipa={w.ipa}
-                        onResult={(okSpell, wrote) => {
-                          if (okSpell) setSpelled((x) => ({ ...x, [w.word]: true }));
-                          onDone(saveZangSpell(s, { target: w.word, wrote, ok: okSpell }));
-                        }}
-                      />
-                      {writeBox}
+                      <ExampleLine en={ex.en} vi={ex.vi} grammar={ex.g} />
                     </div>
                   )}
-                </div>
-              );
-            })}
-          </div>
-        </div>
-      )}
-
-      {mode === "antonym" && pair && (
-        <div className="mt-5">
-          <p className="text-sm text-mute">
-            3 cặp · <span className="text-lime">đợt {lot + 1} hôm nay</span>
-          </p>
-          <div className="mt-3 grid gap-2">
-            {pairs.map((p, i) => {
-              const on = i === pi;
-              const extraSample = ANTONYM_EXTRA[p.sample];
-              return (
-                <div key={`${p.a}-${p.b}`} className={`rounded-2xl border p-3 ${on ? "border-lime bg-lime/10" : "border-line"}`}>
-                  <button type="button" className="w-full text-left" onClick={() => pickPair(i)}>
-                    <div className="grid grid-cols-2 gap-3">
-                      <Half word={p.a} ipa={p.aIpa} vi={p.aVi} pos={p.pos} />
-                      <Half word={p.b} ipa={p.bIpa} vi={p.bVi} pos={p.pos} />
-                    </div>
+                  <button className="btn-lime mt-6" onClick={() => setPane("go")}>
+                    Gõ chính tả →
                   </button>
-                  <div className="mt-3 flex flex-wrap gap-2">
-                    <Hear text={p.a} label={p.a} />
-                    <Hear text={p.b} label={p.b} />
-                    <Hear text={p.sample} rate={0.88} label="Câu mẫu" />
-                  </div>
-                  {on && (
-                    <div className="mt-4 border-t border-line pt-4">
-                      <p className="text-sm">Gợi ý Zang: {p.hint}</p>
-                      <ExampleLine en={p.sample} vi={extraSample?.vi} grammar={extraSample?.g} />
-                      <ChinhTa
-                        key={`${lot}-${p.a}`}
-                        target={p.a}
-                        ipa={p.aIpa}
-                        onResult={(okSpell, wrote) => {
-                          if (okSpell) setSpelled((x) => ({ ...x, [p.a]: true }));
-                          onDone(saveZangSpell(s, { target: p.a, wrote, ok: okSpell }));
-                        }}
-                      />
-                      <ChinhTa
-                        key={`${lot}-${p.b}`}
-                        target={p.b}
-                        ipa={p.bIpa}
-                        onResult={(okSpell, wrote) => {
-                          if (okSpell) setSpelled((x) => ({ ...x, [p.b]: true }));
-                          onDone(saveZangSpell(s, { target: p.b, wrote, ok: okSpell }));
-                        }}
-                      />
-                      {writeBox}
-                    </div>
-                  )}
                 </div>
-              );
-            })}
+              )}
+              {pane === "go" && (
+                <div>
+                  <ChinhTa
+                    key={`${lot}-${word.word}`}
+                    target={word.word}
+                    ipa={word.ipa}
+                    onResult={(okSpell, wrote) => {
+                      if (okSpell) setSpelled((x) => ({ ...x, [word.word]: true }));
+                      onDone(saveZangSpell(s, { target: word.word, wrote, ok: okSpell }));
+                    }}
+                  />
+                  <button className="btn-lime mt-5" onClick={() => setPane("viet")}>
+                    Viết câu →
+                  </button>
+                </div>
+              )}
+              {pane === "viet" && write}
+            </div>
           </div>
-        </div>
-      )}
-
-      {(s.zang.spells ?? []).filter((x) => !x.ok).length > 0 && (
-        <div className="mt-8">
-          <p className="text-xs uppercase tracking-wider text-lime">Sổ chính tả (từ sai)</p>
-          <ul className="mt-2 space-y-1 text-sm">
-            {(s.zang.spells ?? [])
-              .filter((x) => !x.ok)
-              .slice(0, 12)
-              .map((x) => (
-                <li key={x.at}>
-                  <span className="text-bad line-through">{x.wrote}</span>
-                  {" → "}
-                  <span className="text-lime">{x.target}</span>
-                </li>
-              ))}
-          </ul>
-        </div>
-      )}
-    </div>
-  );
-}
-
-function Half({ word, ipa, vi, pos }: { word: string; ipa: string; vi: string; pos: Pos }) {
-  return (
-    <div>
-      <WordPic word={word} vi={vi} pos={pos} size="thumb" />
-      <p className="mt-2 font-serif text-xl leading-tight">{word}</p>
-      <p className="mt-1 text-sm text-mute">{ipa}</p>
-      <p className="mt-1 text-sm">
-        <span className="text-lime">{POS_VI[pos]}</span> · {vi}
-      </p>
-    </div>
+        ) : pair ? (
+          <div className="mx-auto max-w-lg">
+            <div className="flex flex-wrap items-start justify-between gap-2">
+              <p className="font-serif text-3xl leading-tight">
+                {pair.a} <span className="text-mute">↔</span> {pair.b}
+              </p>
+              <div className="flex gap-2">
+                <Hear text={pair.a} label={pair.a} />
+                <Hear text={pair.b} label={pair.b} />
+              </div>
+            </div>
+            <p className="mt-2 text-sm text-mute">{pair.hint}</p>
+            <div className="mt-5">
+              <Pills
+                value={pane}
+                onChange={setPane}
+                items={[
+                  { id: "xem", label: "Xem" },
+                  { id: "go", label: "Gõ" },
+                  { id: "viet", label: "Viết" },
+                ]}
+              />
+            </div>
+            <div className="mt-5">
+              {pane === "xem" && (
+                <div>
+                  <div className="flex items-center justify-between">
+                    <p className="text-xs uppercase tracking-wider text-lime">Câu mẫu</p>
+                    <Hear text={pair.sample} rate={0.88} />
+                  </div>
+                  <ExampleLine en={pair.sample} vi={pairEx?.vi} grammar={pairEx?.g} />
+                  <button className="btn-lime mt-6" onClick={() => setPane("go")}>
+                    Gõ chính tả →
+                  </button>
+                </div>
+              )}
+              {pane === "go" && (
+                <div className="space-y-6">
+                  <ChinhTa
+                    key={`${lot}-${pair.a}`}
+                    target={pair.a}
+                    ipa={pair.aIpa}
+                    onResult={(okSpell, wrote) => {
+                      if (okSpell) setSpelled((x) => ({ ...x, [pair.a]: true }));
+                      onDone(saveZangSpell(s, { target: pair.a, wrote, ok: okSpell }));
+                    }}
+                  />
+                  <ChinhTa
+                    key={`${lot}-${pair.b}`}
+                    target={pair.b}
+                    ipa={pair.bIpa}
+                    onResult={(okSpell, wrote) => {
+                      if (okSpell) setSpelled((x) => ({ ...x, [pair.b]: true }));
+                      onDone(saveZangSpell(s, { target: pair.b, wrote, ok: okSpell }));
+                    }}
+                  />
+                  <button className="btn-lime" onClick={() => setPane("viet")}>
+                    Viết câu →
+                  </button>
+                </div>
+              )}
+              {pane === "viet" && write}
+            </div>
+          </div>
+        ) : null
+      }
+    />
   );
 }

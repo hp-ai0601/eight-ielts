@@ -56,14 +56,13 @@ export default function ChinhTa({
   }
 
   return (
-    <div className="panel mt-5 p-4">
-      <p className="text-xs uppercase tracking-wider text-lime">Chính tả</p>
-      <p className="mt-2 text-sm text-mute">Nghe, gõ. Chữ sai đỏ. Đúng hết mới thôi — không bỏ qua.</p>
-      <div className="mt-3 flex flex-wrap gap-2">
-        <button type="button" className="btn-ghost" onClick={() => speak(target, 0.85)}>
-          Nghe từ
+    <div>
+      <div className="flex flex-wrap items-center gap-2">
+        <p className="text-xs uppercase tracking-wider text-lime">Chính tả</p>
+        <button type="button" className="btn-ghost text-xs" onClick={() => speak(target, 0.85)}>
+          Nghe
         </button>
-        <button type="button" className="btn-ghost" onClick={() => speak(target, 0.65)}>
+        <button type="button" className="btn-ghost text-xs" onClick={() => speak(target, 0.65)}>
           Chậm
         </button>
       </div>

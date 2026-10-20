@@ -4,11 +4,11 @@ import { useMemo, useState } from "react";
 import { HAI_SETS, NHAC_SETS, dayNum, pickSet, tracksOf } from "@/lib/zang/content";
 import { bumpZangLot, saveZangListen, zangLot, type State } from "@/lib/store";
 import Recorder from "./Recorder";
-import PlayBar from "@/components/PlayBar";
 import Hear from "@/components/Hear";
 import ExampleLine from "@/components/ExampleLine";
+import Studio, { Pills, RailPick } from "@/components/Studio";
 
-const STEPS = ["Nghĩa trước", "Nghe không chữ", "Đoán", "Ghép lại", "Phát âm + ghi âm"] as const;
+const STEPS = ["Nghĩa", "Nghe", "Đoán", "Ghép", "Ghi âm"] as const;
 
 export default function HaiNhac({ s, onDone }: { s: State; onDone: (next: State) => void }) {
   const n = dayNum();
@@ -30,142 +30,117 @@ export default function HaiNhac({ s, onDone }: { s: State; onDone: (next: State)
     setGuess("");
   }
 
-  function switchKind(next: "hai" | "nhac") {
-    setKind(next);
-    pickTrack(0);
-  }
-
   if (!track) return null;
 
   return (
-    <div className="pb-28">
-      <div className="flex flex-wrap gap-2">
-        <button className={kind === "hai" ? "btn-lime" : "btn-ghost"} onClick={() => switchKind("hai")}>
-          Tập hài
-        </button>
-        <button className={kind === "nhac" ? "btn-lime" : "btn-ghost"} onClick={() => switchKind("nhac")}>
-          Tập nhạc
-        </button>
-      </div>
-
-      <div className="mt-5 flex flex-wrap items-start justify-between gap-2">
-        <div>
-          <p className="text-xs uppercase tracking-wider text-lime">
-            {kind === "hai" ? "Kịch bản hài" : "Kịch bản nhạc"} · đợt {lot + 1} hôm nay · {list.length} mẩu
-          </p>
-          <h2 className="mt-1 font-serif text-2xl">{pack.title}</h2>
-          <p className="mt-1 text-sm text-mute">{pack.blurb}</p>
-        </div>
-        <button
-          type="button"
-          className="btn-ghost text-xs"
-          onClick={() => {
-            onDone(bumpZangLot(s, "hai"));
+    <Studio
+      step={3}
+      title={pack.title}
+      kicker={`đợt ${lot + 1} · ${list.length} mẩu`}
+      swap="Đổi tập"
+      onSwap={() => {
+        onDone(bumpZangLot(s, "hai"));
+        pickTrack(0);
+      }}
+      next={{ href: "/nhat-ky", label: "Nhật ký" }}
+      tabs={
+        <Pills
+          value={kind}
+          onChange={(id) => {
+            setKind(id as "hai" | "nhac");
             pickTrack(0);
           }}
-        >
-          Đổi tập khác
-        </button>
-      </div>
-
-      <div className="mt-4 space-y-2">
-        {list.map((t, idx) => {
-          const on = idx === ti;
-          return (
-            <div key={t.id} className={`rounded-2xl border p-3 ${on ? "border-lime bg-lime/10" : "border-line"}`}>
-              <div className="flex items-start gap-3">
-                <button type="button" className="min-w-0 flex-1 text-left" onClick={() => pickTrack(idx)}>
-                  <p className="text-xs text-lime">
-                    Mẩu {idx + 1}/{list.length}
-                    {done.has(t.id) ? " · đã cất" : ""}
-                  </p>
-                  <p className="mt-1 font-serif text-lg">{t.title}</p>
-                  {!on && <p className="mt-1 line-clamp-2 text-xs text-mute">{t.vi}</p>}
+          items={[
+            { id: "hai", label: "Hài" },
+            { id: "nhac", label: "Nhạc" },
+          ]}
+        />
+      }
+      rail={list.map((t, idx) => (
+        <RailPick key={t.id} on={idx === ti} done={done.has(t.id)} onClick={() => pickTrack(idx)}>
+          <p className="text-[11px] text-lime">Mẩu {idx + 1}</p>
+          <p className="mt-0.5 font-serif text-lg leading-tight">{t.title}</p>
+        </RailPick>
+      ))}
+      stage={
+        <div className="mx-auto max-w-lg">
+          <p className="font-serif text-3xl">{track.title}</p>
+          <div className="mt-4">
+            <Pills
+              value={String(step)}
+              onChange={(id) => setStep(Number(id))}
+              items={STEPS.map((label, idx) => ({ id: String(idx), label }))}
+            />
+          </div>
+          <div className="mt-5">
+            {step === 0 && (
+              <div>
+                <p className="text-sm text-mute">Đọc nghĩa trước. Chưa nghe.</p>
+                <p className="mt-4 leading-8">{track.vi}</p>
+                <button className="btn-lime mt-6" onClick={() => setStep(1)}>
+                  Nghe không chữ →
                 </button>
-                {step >= 1 && on ? <Hear text={t.en} rate={0.86} label="Nghe" /> : null}
               </div>
-
-              {on && (
-                <div className="mt-4 border-t border-line pt-4">
-                  <p className="text-xs uppercase tracking-wider text-lime">
-                    Bước {step + 1}/5 · {STEPS[step]}
-                  </p>
-
-                  {step === 0 && (
-                    <div className="mt-3">
-                      <p className="text-sm text-mute">Xem nghĩa tiếng Việt trước. Chưa nghe.</p>
-                      <p className="mt-3 leading-8">{t.vi}</p>
-                      <button className="btn-lime mt-4" onClick={() => setStep(1)}>
-                        Đã đọc nghĩa → nghe không chữ
-                      </button>
-                    </div>
-                  )}
-
-                  {step === 1 && (
-                    <div className="mt-3">
-                      <p className="text-sm text-mute">Không phụ đề. Bấm Nghe trên thẻ, Dừng ở thanh dưới khi cần.</p>
-                      <button className="btn-lime mt-4" onClick={() => setStep(2)}>
-                        Đoán nghĩa
-                      </button>
-                    </div>
-                  )}
-
-                  {step === 2 && (
-                    <div className="mt-3">
-                      <p className="text-sm text-mute">Gõ những gì em hiểu, tiếng Việt cũng được.</p>
-                      <textarea className="field mt-3 min-h-24" value={guess} onChange={(e) => setGuess(e.target.value)} />
-                      <button className="btn-lime mt-3" disabled={!guess.trim()} onClick={() => setStep(3)}>
-                        Đối chiếu
-                      </button>
-                    </div>
-                  )}
-
-                  {step === 3 && (
-                    <div className="mt-3 space-y-3">
-                      <div className="panel p-4">
-                        <p className="text-xs text-mute">Em đoán</p>
-                        <p className="mt-2">{guess}</p>
-                      </div>
-                      <div className="panel p-4">
-                        <div className="flex items-center justify-between gap-2">
-                          <p className="text-xs text-mute">Nghĩa + tiếng Anh + ngữ pháp</p>
-                          <Hear text={t.en} rate={0.86} label="Nghe lại" />
-                        </div>
-                        <ExampleLine en={t.en} vi={t.vi} grammar={t.grammar} />
-                      </div>
-                      <button className="btn-lime" onClick={() => setStep(4)}>
-                        Nghe lại + ghi âm
-                      </button>
-                    </div>
-                  )}
-
-                  {step === 4 && (
-                    <div className="mt-3">
-                      <p className="text-sm text-mute">Học thuộc rồi ghi âm giọng em.</p>
-                      <div className="mt-2 flex justify-end">
-                        <Hear text={t.en} rate={0.8} label="Nghe chậm" />
-                      </div>
-                      <ExampleLine en={t.en} vi={t.vi} grammar={t.grammar} />
-                      <Recorder />
-                      <button
-                        className="btn-lime mt-4"
-                        onClick={() => {
-                          onDone(saveZangListen(s, t.id));
-                          setStep(0);
-                          setGuess("");
-                        }}
-                      >
-                        Cất mẩu này
-                      </button>
-                    </div>
-                  )}
+            )}
+            {step === 1 && (
+              <div>
+                <p className="text-sm text-mute">Không phụ đề. Nghe, đoán trong đầu.</p>
+                <div className="mt-4">
+                  <Hear text={track.en} rate={0.86} label="Nghe" />
                 </div>
-              )}
-            </div>
-          );
-        })}
-      </div>
-      <PlayBar key={track.id} minutes={8} audio={step >= 1 ? track.en : undefined} rate={step === 4 ? 0.8 : 0.86} />
-    </div>
+                <button className="btn-lime mt-6" onClick={() => setStep(2)}>
+                  Đoán →
+                </button>
+              </div>
+            )}
+            {step === 2 && (
+              <div>
+                <p className="text-sm text-mute">Gõ những gì hiểu — tiếng Việt cũng được.</p>
+                <textarea className="field mt-3 min-h-28" value={guess} onChange={(e) => setGuess(e.target.value)} />
+                <button className="btn-lime mt-3" disabled={!guess.trim()} onClick={() => setStep(3)}>
+                  Đối chiếu →
+                </button>
+              </div>
+            )}
+            {step === 3 && (
+              <div className="space-y-4">
+                <div>
+                  <p className="text-xs text-mute">Em đoán</p>
+                  <p className="mt-1">{guess}</p>
+                </div>
+                <div className="flex items-center justify-between">
+                  <p className="text-xs uppercase tracking-wider text-lime">Nghĩa + ngữ pháp</p>
+                  <Hear text={track.en} rate={0.86} />
+                </div>
+                <ExampleLine en={track.en} vi={track.vi} grammar={track.grammar} />
+                <button className="btn-lime" onClick={() => setStep(4)}>
+                  Ghi âm →
+                </button>
+              </div>
+            )}
+            {step === 4 && (
+              <div>
+                <div className="flex items-center justify-between">
+                  <p className="text-sm text-mute">Thuộc rồi ghi âm.</p>
+                  <Hear text={track.en} rate={0.8} label="Chậm" />
+                </div>
+                <ExampleLine en={track.en} vi={track.vi} grammar={track.grammar} />
+                <Recorder />
+                <button
+                  className="btn-lime mt-4"
+                  onClick={() => {
+                    onDone(saveZangListen(s, track.id));
+                    setStep(0);
+                    setGuess("");
+                  }}
+                >
+                  Cất mẩu này
+                </button>
+              </div>
+            )}
+          </div>
+        </div>
+      }
+    />
   );
 }

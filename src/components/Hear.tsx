@@ -5,7 +5,7 @@ import { speak } from "@/lib/speech";
 export default function Hear({
   text,
   rate = 0.9,
-  label = "Nghe",
+  label,
   className = "",
 }: {
   text: string;
@@ -16,7 +16,9 @@ export default function Hear({
   return (
     <button
       type="button"
-      className={`inline-flex h-9 shrink-0 items-center gap-1.5 rounded-full border border-line px-3 text-xs hover:border-lime ${className}`}
+      className={`inline-flex h-9 shrink-0 items-center justify-center gap-1.5 rounded-full border border-line hover:border-lime ${
+        label ? "px-3 text-xs" : "w-9"
+      } ${className}`}
       aria-label={`Nghe ${text}`}
       onClick={(e) => {
         e.preventDefault();

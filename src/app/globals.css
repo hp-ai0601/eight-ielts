@@ -3,18 +3,18 @@
 @tailwind utilities;
 
 :root {
-  --bg: #0b0c0f;
-  --panel: #12141a;
-  --line: #23262e;
-  --text: #eceae4;
-  --mute: #8b8e98;
+  --bg: #0c0d11;
+  --panel: #15171e;
+  --line: #262a33;
+  --text: #eeeae3;
+  --mute: #8d919c;
   --lime: #d4f562;
   --warn: #f3b264;
   --bad: #ef6b5e;
 }
 
 html, body { background: var(--bg); color: var(--text); }
-body { min-height: 100vh; }
+body { min-height: 100dvh; }
 
 ::selection { background: var(--lime); color: #111; }
 
@@ -42,7 +42,7 @@ body { min-height: 100vh; }
   padding-bottom: env(safe-area-inset-bottom);
 }
 @media (min-width: 1024px) {
-  .playbar { left: 220px; }
+  .playbar { left: 13.5rem; }
 }
 
 @media (prefers-reduced-motion: reduce) {
