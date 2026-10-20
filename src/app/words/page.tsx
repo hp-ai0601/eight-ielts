@@ -74,7 +74,7 @@ export default function WordsPage() {
                 {q ? `«${q}»` : meta?.vi} · {i + 1}/{items.length}
               </p>
               <div className="mt-3 flex items-start gap-4">
-                <WordPic word={word.word} vi={word.vi} pos={word.pos} size="sm" className="!h-24 !w-24 shrink-0" />
+                <WordPic word={word.word} vi={word.vi} pos={word.pos} topic={word.topic} size="sm" className="!h-24 !w-24 shrink-0" />
                 <div className="min-w-0 flex-1">
                   <div className="flex items-start justify-between gap-2">
                     <p className="font-serif text-3xl leading-none">{word.word}</p>

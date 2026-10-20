@@ -46,7 +46,7 @@ export default function LessonView({
           <ul className="mt-6 divide-y divide-line">
             {lesson.vocab.map((v) => (
               <li key={v.id} className="flex items-start justify-between gap-4 py-3">
-                <WordPic word={v.word} vi={v.vi} pos={v.pos} size="thumb" className="shrink-0" />
+                <WordPic word={v.word} vi={v.vi} pos={v.pos} topic={v.topic} size="thumb" className="shrink-0" />
                 <div className="min-w-0 flex-1">
                   <p className="font-medium">
                     {v.word} <span className="font-normal text-mute">{v.ipa}</span>

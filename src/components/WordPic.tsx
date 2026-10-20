@@ -15,17 +15,19 @@ export default function WordPic({
   word,
   vi,
   pos,
+  topic,
   size = "sm",
   className = "",
 }: {
   word: string;
   vi?: string;
   pos?: Pos;
+  topic?: string;
   size?: keyof typeof BOX;
   className?: string;
 }) {
   const [src, setSrc] = useState<string | null>(null);
-  const emoji = picEmoji(word, pos, vi);
+  const emoji = picEmoji(word, pos, vi, topic);
 
   useEffect(() => {
     let on = true;

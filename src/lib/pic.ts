@@ -1,4 +1,6 @@
-/** Ảnh từ vựng: emoji đúng nghĩa ngay; ảnh chỉ hiện khi tên file / Wikipedia khớp từ. */
+/** Ảnh từ vựng: emoji theo từ/chủ đề; ảnh chỉ hiện khi Wikipedia/Commons khớp từ. */
+
+import { LEXICON } from "./lexicon";
 
 const EMOJI: Record<string, string> = {
   quiet: "🤫",
@@ -95,6 +97,13 @@ const EMOJI: Record<string, string> = {
   chore: "🧹",
   nap: "😴",
   snooze: "⏰",
+  complexion: "🧑",
+  stature: "📏",
+  posture: "🧍",
+  gait: "🚶",
+  freckle: "✨",
+  fringe: "💇",
+  ponytail: "💇",
 };
 
 const HINTS: [RegExp, string][] = [
@@ -148,7 +157,112 @@ const HINTS: [RegExp, string][] = [
   [/\b(language|ngôn ngữ|word|từ|grammar|ngữ pháp)\b/, "🔤"],
 ];
 
-const POS_EMOJI: Record<string, string> = { n: "📦", v: "▶️", adj: "🎨", adv: "💫", phr: "💬", conj: "🔗", prep: "📍" };
+const TOPIC_EMOJI: Record<string, string> = {
+  daily: "🗓️",
+  family: "👨‍👩‍👧",
+  appear: "🧑",
+  person: "🙂",
+  feel: "💗",
+  house: "🏠",
+  food: "🍽️",
+  cook: "🍳",
+  shop: "🛒",
+  cloth: "👕",
+  body: "🫀",
+  sport: "⚽",
+  hobby: "🎯",
+  travel: "✈️",
+  weather: "🌦️",
+  time: "⏰",
+  trans: "🚌",
+  phone: "📱",
+  friend: "🫂",
+  school: "🏫",
+  jobday: "💼",
+  money: "💰",
+  fest: "🎉",
+  rural: "🌾",
+  pet: "🐾",
+  routine: "🔁",
+  holiday: "🏖️",
+  citylife: "🏙️",
+  nature: "🌿",
+  desc: "🔎",
+  edu: "🎓",
+  univer: "🎓",
+  work: "💼",
+  career: "📈",
+  business: "🏢",
+  econ: "📊",
+  env: "🌍",
+  climate: "🌡️",
+  energy: "⚡",
+  water: "💧",
+  pollute: "🏭",
+  wild: "🦁",
+  tech: "💻",
+  net: "🌐",
+  media: "📺",
+  ads: "📣",
+  health: "🏥",
+  med: "💊",
+  diet: "🥗",
+  mental: "🧠",
+  city: "🏙️",
+  housing: "🏘️",
+  infra: "🛣️",
+  crime: "🚨",
+  law: "⚖️",
+  gov: "🏛️",
+  global: "🌐",
+  migrant: "🧳",
+  poverty: "🤲",
+  develop: "🏗️",
+  sci: "🔬",
+  research: "🧪",
+  space: "🚀",
+  history: "🏺",
+  culture: "🎭",
+  art: "🎨",
+  music: "🎵",
+  film: "🎬",
+  books: "📚",
+  lang: "🔤",
+  comm: "💬",
+  tourism: "🗺️",
+  farm: "🚜",
+  child: "🧒",
+  parent: "👨‍👩‍👧",
+  aging: "👴",
+  gender: "⚧️",
+  community: "🏘️",
+  volunteer: "🤝",
+  leisure: "🎮",
+  fashion: "👗",
+  arch: "🏛️",
+  consume: "🛍️",
+  trade: "🚢",
+  factory: "🏭",
+  tax: "🧾",
+  rights: "✊",
+  ethics: "🧭",
+  psych: "🧠",
+  happy: "😄",
+  disaster: "🌋",
+  ocean: "🌊",
+  forest: "🌲",
+  innov: "💡",
+  awl: "📘",
+  task1: "📊",
+  task2: "✍️",
+  listenw: "🎧",
+  link: "🔗",
+  hedge: "〰️",
+};
+
+const POS_EMOJI: Record<string, string> = { n: "🔤", v: "▶️", adj: "✨", adv: "💫", phr: "💬", conj: "🔗", prep: "📍" };
+
+const LEX_TOPIC = new Map(LEXICON.map((x) => [x.word.toLowerCase(), x.topic]));
 
 const SKIP_FILE =
   /ship|boat|vessel|flag|coat of arms|logo|map of|svg|icon|diagram|chart|\.tif|scan|page \d|album|film poster|disambiguation|wikidata|screenshot|number plate|passport|stamp|store|iphone|macintosh|keyboard|company|inc\b|band\b|surname/i;
@@ -161,14 +275,16 @@ const SKIP_WIKI = new Set(
 
 const NO_PHOTO_POS = new Set(["conj", "prep", "adv"]);
 
-export function picEmoji(word: string, pos?: string, vi?: string) {
+export function picEmoji(word: string, pos?: string, vi?: string, topic?: string) {
   const w = word.toLowerCase().trim();
   if (EMOJI[w]) return EMOJI[w];
+  const t = topic || LEX_TOPIC.get(w);
+  if (t && TOPIC_EMOJI[t]) return TOPIC_EMOJI[t];
   const blob = `${w} ${vi ?? ""}`.toLowerCase();
   for (const [re, em] of HINTS) {
     if (re.test(blob)) return em;
   }
-  return (pos ? POS_EMOJI[pos] : undefined) ?? "🖼️";
+  return (pos ? POS_EMOJI[pos] : undefined) ?? "🔤";
 }
 
 type CommonsPage = { title?: string; imageinfo?: { thumburl?: string }[] };
