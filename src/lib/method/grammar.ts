@@ -14,6 +14,28 @@ export interface GrammarUnit {
 
 const CORE: GrammarUnit[] = [
   {
+    id: "tense-map",
+    title: "Bản đồ 12 thì — tên Việt + cấu trúc dịch sát",
+    band: "0–7",
+    vnTrap: "Học thuộc tên tiếng Anh mà không biết nó nghĩa là gì → nhìn câu không biết đang ở thì nào.",
+    rule: "12 thì = 3 mốc (quá khứ · hiện tại · tương lai) × 4 khía cạnh (đơn · tiếp diễn · hoàn thành · hoàn thành tiếp diễn). Hiện tại đơn: S + V(s/es) — thói quen, sự thật (I eat rice every day — Tôi ăn cơm mỗi ngày). Hiện tại tiếp diễn: S + am/is/are + V-ing — đang xảy ra (She is reading — Cô ấy đang đọc). Hiện tại hoàn thành: S + have/has + V3 — đã làm, còn liên quan tới giờ (I have finished — Tôi đã làm xong rồi). Quá khứ đơn: S + V2 — xong hẳn trong quá khứ (He went yesterday — Hôm qua cậu ấy đi). Quá khứ tiếp diễn: was/were + V-ing — đang làm thì việc khác chen vào (I was sleeping when she called — Tôi đang ngủ thì cô ấy gọi). Quá khứ hoàn thành: had + V3 — ‘quá khứ của quá khứ’, xảy ra trước một việc khác (The train had left when I arrived — Tàu đã đi trước khi tôi đến). Tương lai đơn: will + V — quyết định tức thời, dự đoán (I will help — Tôi sẽ giúp). Tương lai tiếp diễn: will be + V-ing — việc đang diễn ra ở một mốc tương lai (This time tomorrow I will be flying — Giờ này mai tôi sẽ đang bay). Tương lai hoàn thành: will have + V3 — xong trước một mốc tương lai (By June I will have saved enough — Đến tháng 6 tôi sẽ đã tiết kiệm đủ). Các thì hoàn thành tiếp diễn: have/has been + V-ing (hiện tại, kéo dài đến giờ), had been + V-ing (quá khứ), will have been + V-ing (tương lai) — nhấn mạnh QUÁ TRÌNH kéo dài.",
+    steps: [
+      "Ngoại lệ quan trọng: động từ trạng thái (know, like, want, believe, understand) KHÔNG chia tiếp diễn — I am knowing là sai, phải I know.",
+      "Ngoại lệ: hiện tại đơn còn chỉ lịch trình cố định (The train leaves at 6). Hiện tại tiếp diễn còn chỉ kế hoạch đã sắp (I am meeting Lan tonight).",
+      "Ngoại lệ: quá khứ đơn với used to + V chỉ thói quen cũ đã mất (I used to swim — Ngày xưa tôi hay bơi, giờ thì không).",
+      "Ngoại lệ: will KHÔNG dùng sau if/when loại 1 (If it rains, I will stay — không If it will rain).",
+      "Cách học: mỗi thì viết 1 câu về chính mình, dịch sát từng từ sang Việt rồi đọc to.",
+      "V2/V3 tra ngăn ‘Động từ bất quy tắc’ trong Kho — luyện 10 từ mỗi ngày.",
+    ],
+    questions: [
+      mcq("g-tm1", "«Tôi đang đọc sách» là thì nào?", ["Hiện tại đơn", "Hiện tại tiếp diễn", "Hiện tại hoàn thành", "Quá khứ tiếp diễn"], "Hiện tại tiếp diễn", "Đang xảy ra lúc nói → am/is/are + V-ing."),
+      mcq("g-tm2", "The train ______ at 6 tomorrow. (lịch trình cố định)", ["will leaves", "leaves", "is leave", "leave"], "leaves", "Lịch trình → hiện tại đơn, ngoại lệ của tương lai."),
+      mcq("g-tm3", "When I arrived, the film ______.", ["has started", "had started", "starts", "is starting"], "had started", "Việc xảy ra TRƯỚC một mốc quá khứ → quá khứ hoàn thành."),
+      tf("g-tm4", "I am knowing the answer. là câu đúng.", "False", "know là động từ trạng thái, không chia tiếp diễn: I know."),
+      gap("g-tm5", "By next year, I ______ English for three years. (study — tương lai hoàn thành tiếp diễn)", "will have been studying", "will have been + V-ing: nhấn mạnh quá trình kéo dài đến mốc tương lai."),
+    ],
+  },
+  {
     id: "tenses",
     title: "Thì: chọn thì theo mốc, không theo ‘cảm’",
     band: "0–6 rồi 8",

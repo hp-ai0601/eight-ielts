@@ -1,6 +1,6 @@
 export type Tip = {
   id: string;
-  skill: "l" | "r" | "w" | "s" | "day";
+  skill: "l" | "r" | "w" | "s" | "v" | "day";
   title: string;
   why: string;
   do: string[];
@@ -271,5 +271,30 @@ export const TIPS: Tip[] = [
       "Một từ: book không được books nếu nghe số nhiều.",
     ],
     dont: ["Không sửa giữa dòng khiến khó đọc.", "Không để trống vì sợ sai chính tả."],
+  },
+  {
+    id: "l-song",
+    skill: "l",
+    title: "Học qua bài hát (nhạc Anh)",
+    why: "Giai điệu giúp não nhớ câu dài mà không cần cố gắng — từ vựng đi kèm cảm xúc thì khó quên.",
+    do: [
+      "Chọn ca sĩ phát âm rõ, nhịp vừa: Adele, Ed Sheeran, The Beatles, Westlife, Coldplay.",
+      "Nghe lần 1 không chữ, đoán chủ đề. Lần 2 nhìn lời, gạch 3 từ mới tra ở mục Từ điển.",
+      "Nghe chậm 0.75x, nhảy theo (shadowing) từng câu ngắn.",
+      "Một tuần một bài: ngày 1 nghe, ngày 3 hát theo, ngày 7 viết lại 5 câu nhớ nhất.",
+    ],
+    dont: ["Không học quá một bài một tuần — nhai chưa kỹ.", "Không dịch máy cả bài; tự đoán trước."],
+  },
+  {
+    id: "v-sound-memo",
+    skill: "v",
+    title: "Mẹo nhớ âm điệu (đồng âm)",
+    why: "Não nhớ hình ảnh vui lâu hơn nhớ phiên âm khô. Gắn âm tiếng Anh với câu tiếng Việt nghe gần giống.",
+    do: [
+      "Ví dụ: boxed meal /ˌbɒkst ˈmiːl/ → «bóc mì sữa»: bóc hộp cơm thấy hộp sữa.",
+      "Đọc mẹo xong phải đọc lại IPA chuẩn — mẹo chỉ để nhớ, không phải cách đọc.",
+      "Mở trang Từ điển, tra từ hay quên, tự đặt mẹo riêng cho mình.",
+    ],
+    dont: ["Không đọc mẹo thay cho phát âm thật.", "Không lạm dụng với mọi từ — chỉ từ hay quên."],
   },
 ];

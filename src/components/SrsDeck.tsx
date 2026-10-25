@@ -2,10 +2,11 @@
 
 import { useState } from "react";
 import { speak } from "@/lib/speech";
-import type { Grade } from "@/lib/srs";
+import { fmtInterval, nextInterval, type Grade } from "@/lib/srs";
 import { due, gradeCard, type State } from "@/lib/store";
 import WordPic from "@/components/WordPic";
 import ExampleLine from "@/components/ExampleLine";
+import Hear from "@/components/Hear";
 
 export default function SrsDeck({
   state,
@@ -69,11 +70,20 @@ export default function SrsDeck({
       ) : (
         <>
           <p className="mt-6 text-lg">{card.back}</p>
-          {card.example && <ExampleLine en={card.example} />}
-          <div className="mt-8 grid grid-cols-4 gap-2">
+          {card.example && (
+            <>
+              <ExampleLine en={card.example} />
+              <div className="mt-1">
+                <Hear text={card.example} label="Nghe cả câu" rate={0.88} />
+              </div>
+            </>
+          )}
+          <p className="mt-6 text-[11px] uppercase tracking-wider text-mute">Tự chấm — app sẽ nhắc ôn đúng hẹn</p>
+          <div className="mt-2 grid grid-cols-4 gap-2">
             {(["again", "hard", "good", "easy"] as Grade[]).map((g) => (
-              <button key={g} className="btn-ghost capitalize" onClick={() => mark(g)}>
-                {g === "again" ? "Lại" : g === "hard" ? "Khó" : g === "good" ? "Được" : "Dễ"}
+              <button key={g} className="btn-ghost !py-2" onClick={() => mark(g)}>
+                <span className="block text-sm">{g === "again" ? "Lại" : g === "hard" ? "Khó" : g === "good" ? "Được" : "Dễ"}</span>
+                <span className="block text-[10px] text-mute">{fmtInterval(nextInterval(card, g))}</span>
               </button>
             ))}
           </div>

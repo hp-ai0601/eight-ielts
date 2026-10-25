@@ -6,6 +6,9 @@ import { bumpZangLot, saveZangListen, zangLot, type State } from "@/lib/store";
 import Recorder from "./Recorder";
 import Hear from "@/components/Hear";
 import ExampleLine from "@/components/ExampleLine";
+import StoryVocab from "@/components/StoryVocab";
+import PronCheck from "@/components/PronCheck";
+import { glossInline } from "@/lib/gloss";
 import Studio, { Pills, RailPick } from "@/components/Studio";
 
 const STEPS = ["Nghĩa", "Nghe", "Đoán", "Ghép", "Ghi âm"] as const;
@@ -77,6 +80,9 @@ export default function HaiNhac({ s, onDone }: { s: State; onDone: (next: State)
               <div>
                 <p className="text-sm text-mute">Đọc nghĩa trước. Chưa nghe.</p>
                 <p className="mt-4 leading-8">{track.vi}</p>
+                <div className="mt-4">
+                  <StoryVocab en={track.en} />
+                </div>
                 <button className="btn-lime mt-6" onClick={() => setStep(1)}>
                   Nghe không chữ →
                 </button>
@@ -113,6 +119,11 @@ export default function HaiNhac({ s, onDone }: { s: State; onDone: (next: State)
                   <Hear text={track.en} rate={0.86} />
                 </div>
                 <ExampleLine en={track.en} vi={track.vi} grammar={track.grammar} />
+                <div className="rounded-xl border border-line p-3">
+                  <p className="text-[11px] uppercase tracking-wider text-mute">Đọc kèm dịch trong ngoặc</p>
+                  <p className="mt-1.5 text-sm leading-7">{glossInline(track.en)}</p>
+                </div>
+                <StoryVocab en={track.en} />
                 <button className="btn-lime" onClick={() => setStep(4)}>
                   Ghi âm →
                 </button>
@@ -125,6 +136,9 @@ export default function HaiNhac({ s, onDone }: { s: State; onDone: (next: State)
                   <Hear text={track.en} rate={0.8} label="Chậm" />
                 </div>
                 <ExampleLine en={track.en} vi={track.vi} grammar={track.grammar} />
+                <div className="mt-3">
+                  <PronCheck text={track.en} />
+                </div>
                 <Recorder />
                 <button
                   className="btn-lime mt-4"

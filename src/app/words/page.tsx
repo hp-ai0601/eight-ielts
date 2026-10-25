@@ -6,6 +6,7 @@ import { useEight } from "@/lib/useEight";
 import SrsDeck from "@/components/SrsDeck";
 import { LEX_COUNT, LEX_TOPICS, lexByTopic, lexSearch } from "@/lib/lexicon";
 import { POS_VI } from "@/lib/pos";
+import { mnemonicOf } from "@/lib/mnemonic";
 import WordPic from "@/components/WordPic";
 import ExampleLine from "@/components/ExampleLine";
 import Hear from "@/components/Hear";
@@ -87,6 +88,16 @@ export default function WordsPage() {
                 </div>
               </div>
               <ExampleLine en={word.example} />
+              <div className="mt-1">
+                <Hear text={word.example} label="Nghe cả câu" rate={0.88} />
+              </div>
+              {mnemonicOf(word.word) && (
+                <div className="mt-3 rounded-xl border border-lime/30 bg-lime/5 p-3 text-sm">
+                  <p className="text-lime">Mẹo nhớ âm điệu: «{mnemonicOf(word.word)!.sound}»</p>
+                  <p className="mt-0.5 text-mute">{mnemonicOf(word.word)!.img}</p>
+                  <p className="mt-1 text-[11px] text-mute">Mẹo liên tưởng để nhớ — đọc đúng theo IPA.</p>
+                </div>
+              )}
               <div className="mt-6 flex items-center justify-between gap-3">
                 <button className="btn-ghost" disabled={i <= 0} onClick={() => setWi(i - 1)}>
                   Trước

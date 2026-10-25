@@ -5,6 +5,7 @@ import { usePathname, useRouter } from "next/navigation";
 import { useEffect } from "react";
 import { sessionId, setSession, testProgress, zangToday } from "@/lib/store";
 import { useEight } from "@/lib/useEight";
+import AccentPick from "@/components/AccentPick";
 
 const NAV = [
   { href: "/", label: "Hôm nay" },
@@ -15,7 +16,7 @@ const NAV = [
   { href: "/kho", label: "Kho" },
 ];
 
-const KHO = ["/kho", "/words", "/grammar", "/method", "/tests", "/path", "/homework", "/exam", "/coach", "/lesson", "/listen", "/read", "/write", "/speak"];
+const KHO = ["/kho", "/words", "/grammar", "/method", "/tests", "/path", "/homework", "/exam", "/coach", "/lesson", "/listen", "/read", "/write", "/speak", "/dict", "/irregular", "/idioms"];
 
 function navOn(href: string, path: string) {
   if (href === "/") return path === "/";
@@ -49,6 +50,11 @@ export default function Shell({ children }: { children: React.ReactNode }) {
             Eight<span className="text-lime">.</span>
           </Link>
           <p className="hidden text-xs text-mute lg:mt-1.5 lg:block">Cách Zang</p>
+          {path !== "/login" && (
+            <div className="mt-2 hidden lg:block">
+              <AccentPick compact />
+            </div>
+          )}
           {ready && s?.profile.userName && (
             <p className="hidden lg:mt-3 lg:block">
               <span className="text-sm">{s.profile.userName}</span>

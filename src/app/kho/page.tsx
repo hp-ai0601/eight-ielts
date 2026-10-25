@@ -3,7 +3,10 @@
 import Link from "next/link";
 
 const ITEMS = [
+  { href: "/dict", title: "Từ điển", why: "Tra Anh–Việt · nghe · luyện nói theo mẫu" },
   { href: "/words", title: "3500 từ", why: "100 chủ đề, 20 từ một lần" },
+  { href: "/irregular", title: "Động từ bất quy tắc", why: "200 động từ V1–V2–V3 · nhóm theo quy luật" },
+  { href: "/idioms", title: "Thành ngữ & châm ngôn", why: "Đời sống · tiền bạc · tu tâm · dịch hoa mĩ" },
   { href: "/grammar", title: "Ngữ pháp", why: "40+ đơn vị · thì đến câu phức band 8" },
   { href: "/method", title: "Cách làm đề + mẹo", why: "TFNG, Task 1, Pron, đồng hồ" },
   { href: "/tests", title: "Ngân hàng đề", why: "101 chủ đề + mock" },

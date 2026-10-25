@@ -3,6 +3,35 @@ type SpeakHooks = {
   onEnd?: () => void;
 };
 
+export type Accent = "gb" | "us" | "au";
+export const ACCENTS: { id: Accent; label: string; langs: RegExp }[] = [
+  { id: "gb", label: "Anh–Anh", langs: /en-GB/i },
+  { id: "us", label: "Anh–Mỹ", langs: /en-US/i },
+  { id: "au", label: "Anh–Úc", langs: /en-AU|en-NZ/i },
+];
+
+export function getAccent(): Accent {
+  if (typeof window === "undefined") return "gb";
+  const v = localStorage.getItem("eight.accent");
+  return v === "us" || v === "au" ? v : "gb";
+}
+
+export function setAccent(a: Accent) {
+  if (typeof window === "undefined") return;
+  localStorage.setItem("eight.accent", a);
+  window.dispatchEvent(new Event("eight"));
+}
+
+function pickVoice(accent: Accent): SpeechSynthesisVoice | undefined {
+  if (typeof window === "undefined" || !window.speechSynthesis) return undefined;
+  const voices = window.speechSynthesis.getVoices();
+  const cfg = ACCENTS.find((a) => a.id === accent) ?? ACCENTS[0];
+  const exact = voices.find((v) => cfg.langs.test(v.lang));
+  if (exact) return exact;
+  // fallback: bất kỳ giọng tiếng Anh
+  return voices.find((v) => /^en/i.test(v.lang));
+}
+
 let hooks: SpeakHooks | undefined;
 let startedAt = 0;
 let elapsedMs = 0;
@@ -39,11 +68,17 @@ export function speak(text: string, rate = 0.92, next?: SpeakHooks) {
   elapsedMs = 0;
   startedAt = Date.now();
   const u = new SpeechSynthesisUtterance(text);
-  u.lang = "en-GB";
+  const accent = getAccent();
+  const cfg = ACCENTS.find((a) => a.id === accent) ?? ACCENTS[0];
+  u.lang = accent === "us" ? "en-US" : accent === "au" ? "en-AU" : "en-GB";
   u.rate = rate;
-  const voices = window.speechSynthesis.getVoices();
-  const v = voices.find((x) => /en-GB|en-US|English/i.test(x.lang));
-  if (v) u.voice = v;
+  const v = pickVoice(accent);
+  if (v) {
+    u.voice = v;
+    u.lang = v.lang;
+  } else {
+    void cfg;
+  }
   let wi = 0;
   u.onboundary = (e) => {
     if (e.name === "word" || e.name === "sentence") {
