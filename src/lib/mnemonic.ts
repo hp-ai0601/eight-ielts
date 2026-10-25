@@ -87,6 +87,19 @@ export const MNEMONICS: Record<string, Mnemonic> = {
   because: { sound: "bi cốt", img: "Bởi vì bi cốt gõ cửa — vì." },
 };
 
+/** Mẹo do thầy Hiệp tự tạo, lưu trên máy — được ưu tiên hiển thị trước mẹo có sẵn. */
+function customOf(word: string): Mnemonic | undefined {
+  if (typeof window === "undefined") return undefined;
+  try {
+    const raw = localStorage.getItem("eight.customMnemonics");
+    if (!raw) return undefined;
+    const m = (JSON.parse(raw) as Record<string, Mnemonic>)[word.trim().toLowerCase()];
+    return m && m.sound ? m : undefined;
+  } catch {
+    return undefined;
+  }
+}
+
 export function mnemonicOf(word: string): Mnemonic | undefined {
-  return MNEMONICS[word.trim().toLowerCase()];
+  return customOf(word) ?? MNEMONICS[word.trim().toLowerCase()];
 }

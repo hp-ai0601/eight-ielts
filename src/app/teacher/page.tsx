@@ -6,6 +6,21 @@ import { useEight } from "@/lib/useEight";
 import { liveGrade, onLive } from "@/lib/live";
 import { readInbox, readZangState, unpack, type Report } from "@/lib/report";
 import { clampBand } from "@/lib/ielts";
+import {
+  addAssignment,
+  addStudent,
+  getAssignments,
+  getClassroom,
+  getCustomMnemonics,
+  getQuizResults,
+  readStudentState,
+  removeAssignment,
+  removeStudent,
+  saveCustomMnemonic,
+  weakWords,
+  type Assignment,
+} from "@/lib/classroom";
+import { LEX_TOPICS, lexByTopic } from "@/lib/lexicon";
 
 function fromLocal(): Report | null {
   const z = readZangState();
@@ -42,10 +57,12 @@ function Band({ label, value, onChange }: { label: string; value: number; onChan
   );
 }
 
+type Pane = "live" | "write" | "speak" | "key" | "class" | "assign" | "weak" | "quiz" | "memo";
+
 export default function TeacherPage() {
   const { s, ready } = useEight();
   const [report, setReport] = useState<Report | null>(null);
-  const [pane, setPane] = useState<"live" | "write" | "speak" | "key">("live");
+  const [pane, setPane] = useState<Pane>("live");
   const [paste, setPaste] = useState("");
   const [hint, setHint] = useState("");
   const [ta, setTa] = useState(6);
@@ -55,6 +72,19 @@ export default function TeacherPage() {
   const [fc, setFc] = useState(6);
   const [pron, setPron] = useState(6);
   const [note, setNote] = useState("");
+  // lớp học
+  const [newName, setNewName] = useState("");
+  const [clsTick, setClsTick] = useState(0);
+  // giao bài
+  const [asTitle, setAsTitle] = useState("");
+  const [asTopic, setAsTopic] = useState(LEX_TOPICS[0]?.id ?? "");
+  const [asWords, setAsWords] = useState("");
+  const [asNote, setAsNote] = useState("");
+  const [asFor, setAsFor] = useState("");
+  // mẹo nhớ
+  const [mnWord, setMnWord] = useState("");
+  const [mnSound, setMnSound] = useState("");
+  const [mnImg, setMnImg] = useState("");
 
   useEffect(() => {
     setReport(fromLocal());
@@ -62,6 +92,18 @@ export default function TeacherPage() {
       setReport(r);
     });
   }, []);
+
+  const cls = getClassroom();
+  const assignments = getAssignments();
+  const quizResults = getQuizResults();
+  const customMn = getCustomMnemonics();
+  const bump = () => setClsTick((x) => x + 1);
+  void clsTick;
+
+  const students = [
+    { id: "zang", name: "Zang Bếu" },
+    ...cls.students.map((x) => ({ id: x.id, name: x.name })),
+  ];
 
   if (!ready || !s) return null;
   if (s.profile.userId && s.profile.userId !== "hiep") {
@@ -94,6 +136,26 @@ export default function TeacherPage() {
           <RailPick on={pane === "key"} onClick={() => setPane("key")}>
             <p className="font-serif text-lg leading-tight">L/R đáp án</p>
             <p className="mt-0.5 text-[11px] text-mute">{report?.tests.length ?? 0} đề</p>
+          </RailPick>
+          <RailPick on={pane === "class"} onClick={() => setPane("class")}>
+            <p className="font-serif text-lg leading-tight">Lớp học</p>
+            <p className="mt-0.5 text-[11px] text-mute">{students.length} học trò</p>
+          </RailPick>
+          <RailPick on={pane === "assign"} onClick={() => setPane("assign")}>
+            <p className="font-serif text-lg leading-tight">Giao bài</p>
+            <p className="mt-0.5 text-[11px] text-mute">{assignments.length} bài</p>
+          </RailPick>
+          <RailPick on={pane === "weak"} onClick={() => setPane("weak")}>
+            <p className="font-serif text-lg leading-tight">Từ hay sai</p>
+            <p className="mt-0.5 text-[11px] text-mute">theo từng em</p>
+          </RailPick>
+          <RailPick on={pane === "quiz"} onClick={() => setPane("quiz")}>
+            <p className="font-serif text-lg leading-tight">Kiểm tra nhanh</p>
+            <p className="mt-0.5 text-[11px] text-mute">{quizResults.length} lượt</p>
+          </RailPick>
+          <RailPick on={pane === "memo"} onClick={() => setPane("memo")}>
+            <p className="font-serif text-lg leading-tight">Mẹo nhớ</p>
+            <p className="mt-0.5 text-[11px] text-mute">{Object.keys(customMn).length} mẹo của thầy</p>
           </RailPick>
         </>
       }
@@ -230,6 +292,220 @@ export default function TeacherPage() {
                 ))}
                 {!report?.tests.length && <li className="text-mute">Chưa làm đề nào.</li>}
               </ul>
+            </>
+          )}
+
+          {pane === "class" && (
+            <>
+              <p className="text-sm text-mute">
+                Thêm học trò: app tự cấp mã đăng nhập và PIN 4 số. Các em chọn tên mình ở trang đăng nhập.
+              </p>
+              <div className="mt-4 flex gap-2">
+                <input className="field" placeholder="Tên học trò mới…" value={newName} onChange={(e) => setNewName(e.target.value)} />
+                <button
+                  className="btn-lime shrink-0"
+                  disabled={!newName.trim()}
+                  onClick={() => {
+                    addStudent(newName.trim());
+                    setNewName("");
+                    bump();
+                  }}
+                >
+                  Thêm
+                </button>
+              </div>
+              <div className="mt-5 space-y-2">
+                {students.map((st) => {
+                  const st2 = readStudentState(st.id);
+                  const pin = st.id === "zang" ? "8800" : cls.students.find((x) => x.id === st.id)?.pin;
+                  return (
+                    <div key={st.id} className="panel flex items-center gap-3 px-4 py-3">
+                      <div className="min-w-0 flex-1">
+                        <p className="text-sm font-semibold">{st.name}</p>
+                        <p className="text-xs text-mute">
+                          {pin ? `PIN ${pin} · ` : ""}
+                          {st2
+                            ? `streak ${st2.profile.streak.count} · ${st2.cards.length} thẻ · ${st2.attempts.length} đề · hôm nay ${st2.profile.minutesToday}′`
+                            : "chưa học lần nào trên máy này"}
+                        </p>
+                      </div>
+                      {st.id !== "zang" && (
+                        <button
+                          className="text-xs text-mute hover:text-red-400"
+                          onClick={() => {
+                            removeStudent(st.id);
+                            bump();
+                          }}
+                        >
+                          Xoá
+                        </button>
+                      )}
+                    </div>
+                  );
+                })}
+              </div>
+            </>
+          )}
+
+          {pane === "assign" && (
+            <>
+              <p className="text-sm text-mute">Giao từ vựng theo chủ đề (20 từ đầu) hoặc tự nhập danh sách. Học trò thấy ở trang 3500 từ.</p>
+              <input className="field mt-4" placeholder="Tên bài: Tuần này học chủ đề Thời tiết…" value={asTitle} onChange={(e) => setAsTitle(e.target.value)} />
+              <div className="mt-2 grid grid-cols-2 gap-2">
+                <select className="field" value={asTopic} onChange={(e) => setAsTopic(e.target.value)}>
+                  {LEX_TOPICS.map((t) => (
+                    <option key={t.id} value={t.id}>
+                      {t.vi} ({t.name})
+                    </option>
+                  ))}
+                </select>
+                <select className="field" value={asFor} onChange={(e) => setAsFor(e.target.value)}>
+                  <option value="">Cả lớp</option>
+                  {students.map((x) => (
+                    <option key={x.id} value={x.id}>
+                      Riêng {x.name}
+                    </option>
+                  ))}
+                </select>
+              </div>
+              <input
+                className="field mt-2"
+                placeholder="Hoặc tự nhập từ, cách nhau bởi dấu phẩy: rain, storm, cloud…"
+                value={asWords}
+                onChange={(e) => setAsWords(e.target.value)}
+              />
+              <textarea className="field mt-2 min-h-16" placeholder="Lời dặn của thầy (không bắt buộc)…" value={asNote} onChange={(e) => setAsNote(e.target.value)} />
+              <button
+                className="btn-lime mt-3"
+                disabled={!asTitle.trim()}
+                onClick={() => {
+                  const words = asWords.trim()
+                    ? asWords.split(/[,;\n]+/).map((w) => w.trim()).filter(Boolean)
+                    : lexByTopic(asTopic).slice(0, 20).map((x) => x.word);
+                  addAssignment({
+                    title: asTitle.trim(),
+                    topicId: asWords.trim() ? undefined : asTopic,
+                    words,
+                    note: asNote.trim(),
+                    due: new Date(Date.now() + 7 * 86400000).toISOString().slice(0, 10),
+                    forId: asFor || undefined,
+                  });
+                  setAsTitle("");
+                  setAsWords("");
+                  setAsNote("");
+                  bump();
+                }}
+              >
+                Giao bài
+              </button>
+              <div className="mt-5 space-y-2">
+                {assignments.map((a: Assignment) => (
+                  <div key={a.id} className="panel flex items-center gap-3 px-4 py-3">
+                    <div className="min-w-0 flex-1">
+                      <p className="text-sm font-semibold">{a.title}</p>
+                      <p className="text-xs text-mute">
+                        {a.words.length} từ · hạn {a.due}
+                        {a.forId ? ` · riêng ${students.find((x) => x.id === a.forId)?.name ?? a.forId}` : " · cả lớp"}
+                        {a.note ? ` · “${a.note}”` : ""}
+                      </p>
+                    </div>
+                    <button
+                      className="text-xs text-mute hover:text-red-400"
+                      onClick={() => {
+                        removeAssignment(a.id);
+                        bump();
+                      }}
+                    >
+                      Xoá
+                    </button>
+                  </div>
+                ))}
+                {!assignments.length && <p className="text-sm text-mute">Chưa giao bài nào.</p>}
+              </div>
+            </>
+          )}
+
+          {pane === "weak" && (
+            <>
+              <p className="text-sm text-mute">Từ các em bấm «Lại» nhiều nhất trong thẻ ôn — nên ôn miệng đầu giờ.</p>
+              <div className="mt-4 space-y-4">
+                {students.map((st) => {
+                  const ws = weakWords(st.id);
+                  return (
+                    <div key={st.id} className="panel p-4">
+                      <p className="text-sm font-semibold">{st.name}</p>
+                      {ws.length ? (
+                        <p className="mt-1.5 text-sm leading-7">
+                          {ws.map((w) => (
+                            <span key={w.word} className="mr-2 inline-block">
+                              <span className="text-lime">{w.word}</span>
+                              <span className="text-xs text-mute"> ×{w.lapses}</span>
+                            </span>
+                          ))}
+                        </p>
+                      ) : (
+                        <p className="mt-1 text-xs text-mute">Chưa có dữ liệu thẻ trên máy này.</p>
+                      )}
+                    </div>
+                  );
+                })}
+              </div>
+            </>
+          )}
+
+          {pane === "quiz" && (
+            <>
+              <p className="text-sm text-mute">
+                Kết quả «Kiểm tra nhanh» — học trò làm ở trang 3500 từ, dưới mỗi bài được giao.
+              </p>
+              <div className="mt-4 space-y-2">
+                {quizResults.map((r, i) => (
+                  <div key={i} className="panel flex items-center justify-between px-4 py-3 text-sm">
+                    <p>
+                      <span className="font-semibold">{students.find((x) => x.id === r.studentId)?.name ?? r.studentId}</span>
+                      <span className="text-mute"> · {assignments.find((a) => a.id === r.assignmentId)?.title ?? "bài đã xoá"}</span>
+                    </p>
+                    <p className={r.ok / Math.max(1, r.total) >= 0.8 ? "text-lime" : "text-red-400"}>
+                      {r.ok}/{r.total}
+                    </p>
+                  </div>
+                ))}
+                {!quizResults.length && <p className="text-sm text-mute">Chưa có lượt kiểm tra nào.</p>}
+              </div>
+            </>
+          )}
+
+          {pane === "memo" && (
+            <>
+              <p className="text-sm text-mute">
+                Thầy tự tạo mẹo âm điệu cho từ khó — hiện ngay ở Từ điển, trang 3500 từ và truyện của các em.
+              </p>
+              <input className="field mt-4" placeholder="Từ tiếng Anh: elephant…" value={mnWord} onChange={(e) => setMnWord(e.target.value)} />
+              <input className="field mt-2" placeholder="Âm điệu tiếng Việt: «ê lê phờn»…" value={mnSound} onChange={(e) => setMnSound(e.target.value)} />
+              <input className="field mt-2" placeholder="Hình ảnh liên tưởng: con voi ê a kéo theo cái phờn…" value={mnImg} onChange={(e) => setMnImg(e.target.value)} />
+              <button
+                className="btn-lime mt-3"
+                disabled={!mnWord.trim() || !mnSound.trim()}
+                onClick={() => {
+                  saveCustomMnemonic(mnWord, mnSound, mnImg || "Tự nhớ theo mẹo của thầy.");
+                  setMnWord("");
+                  setMnSound("");
+                  setMnImg("");
+                  bump();
+                }}
+              >
+                Lưu mẹo
+              </button>
+              <div className="mt-5 space-y-2">
+                {Object.entries(customMn).map(([w, m]) => (
+                  <div key={w} className="panel px-4 py-3 text-sm">
+                    <p className="font-semibold text-lime">{w}</p>
+                    <p className="mt-0.5">«{m.sound}»</p>
+                    <p className="text-xs text-mute">{m.img}</p>
+                  </div>
+                ))}
+                {!Object.keys(customMn).length && <p className="text-sm text-mute">Chưa có mẹo nào của thầy.</p>}
+              </div>
             </>
           )}
         </div>

@@ -12,6 +12,7 @@ import WordPic from "@/components/WordPic";
 import ExampleLine from "@/components/ExampleLine";
 import AccentPick from "@/components/AccentPick";
 import PronCheck from "@/components/PronCheck";
+import VocabExamples from "@/components/VocabExamples";
 
 type ApiMeaning = {
   partOfSpeech: string;
@@ -47,6 +48,7 @@ function DictCard({ item, onAdd }: { item: LexItem; onAdd: () => void }) {
           <Hear text={item.example} label="Nghe câu" rate={0.88} />
         </div>
       </div>
+      <VocabExamples word={item.word} fallback={item.example} />
       {mn && (
         <div className="mt-3 rounded-xl border border-lime/30 bg-lime/5 p-3 text-sm">
           <p className="text-lime">Mẹo nhớ âm điệu: «{mn.sound}»</p>
