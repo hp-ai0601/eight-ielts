@@ -19,7 +19,7 @@ const serif = IBM_Plex_Serif({
 
 export const metadata: Metadata = {
   title: { default: "Eight — gia sư IELTS 8.0", template: "%s — Eight" },
-  description: "Studio tự học tiếng Anh từ đầu đến IELTS Academic 8.0. Mỗi ngày một phiên: ôn thẻ, bài học, nói hoặc viết.",
+  description: "App tự học tiếng Anh từ con số không đến IELTS Academic 8.0. Mỗi ngày một buổi học: ôn thẻ, làm bài, luyện nói hoặc viết.",
 };
 
 export const viewport: Viewport = { width: "device-width", initialScale: 1, themeColor: "#0B0C0F" };

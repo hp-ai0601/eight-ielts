@@ -15,13 +15,13 @@ export default function HomeworkPage() {
 
   return (
     <Studio
-      title="BTVN"
-      kicker={`${open.length} đang mở`}
+      title="Bài tập về nhà"
+      kicker={`${open.length} bài chưa làm`}
       next={{ href: "/kho", label: "Kho" }}
       rail={
         <>
           <RailPick on={tab === "open"} onClick={() => setTab("open")}>
-            <p className="font-serif text-lg leading-tight">Đang mở</p>
+            <p className="font-serif text-lg leading-tight">Chưa làm</p>
             <p className="mt-0.5 text-xs text-mute">{open.length} bài</p>
           </RailPick>
           <RailPick on={tab === "done"} onClick={() => setTab("done")}>
@@ -35,11 +35,11 @@ export default function HomeworkPage() {
           {list.map((h) => (
             <Link key={h.id} href={`/tests/${h.testId}`} className="block rounded-xl px-4 py-3 ring-1 ring-line hover:ring-lime">
               <p className={`font-medium ${tab === "done" ? "text-mute line-through" : ""}`}>{h.title}</p>
-              {tab === "open" && <p className="mt-0.5 text-sm text-mute">Hạn {h.due}</p>}
+              {tab === "open" && <p className="mt-0.5 text-sm text-mute">Hạn nộp {h.due}</p>}
             </Link>
           ))}
           {!list.length && (
-            <p className="text-mute">{tab === "open" ? "Không còn bài mở. Làm thêm ở Ngân hàng đề." : "Chưa nộp bài nào."}</p>
+            <p className="text-mute">{tab === "open" ? "Hết bài rồi — muốn luyện thêm thì qua Ngân hàng đề nhé." : "Chưa nộp bài nào."}</p>
           )}
         </div>
       }

@@ -18,11 +18,11 @@ export default function WritePage() {
 
   return (
     <div className="mx-auto max-w-2xl px-5 py-10 pb-28 lg:px-10">
-      <h1 className="font-serif text-4xl">Viết</h1>
+      <h1 className="font-serif text-4xl">Luyện viết</h1>
       <p className="mt-3 text-mute">
-        {EXAM.writing.minutes} phút. Task 1 ≥ {EXAM.writing.task1} từ (~20′). Task 2 ≥ {EXAM.writing.task2} từ (~40′).{" "}
-        {WRITE.filter((w) => w.task === 1).length} đề biểu đồ · {WRITE.filter((w) => w.task === 2).length} đề luận, đủ dạng
-        agree / discuss / problem / two-part.
+        Tổng {EXAM.writing.minutes} phút: Task 1 viết ít nhất {EXAM.writing.task1} từ (khoảng 20 phút), Task 2 ít nhất{" "}
+        {EXAM.writing.task2} từ (khoảng 40 phút). Có {WRITE.filter((w) => w.task === 1).length} đề biểu đồ và{" "}
+        {WRITE.filter((w) => w.task === 2).length} đề luận, đủ các dạng agree / discuss / problem / two-part.
       </p>
       <div className="mt-4 flex flex-wrap gap-2">
         <button
@@ -44,7 +44,7 @@ export default function WritePage() {
           Task 2
         </button>
         <button className="btn-ghost" onClick={() => setI((n) => n + 1)}>
-          Đề khác
+          Đổi đề khác
         </button>
       </div>
       <p className="mt-3 text-sm text-mute">

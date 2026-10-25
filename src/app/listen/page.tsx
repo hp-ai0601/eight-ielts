@@ -10,10 +10,10 @@ export default function ListenPage() {
   const items = lessonsOfKind("listen");
   return (
     <div className="mx-auto max-w-2xl px-5 py-10 lg:px-10">
-      <h1 className="font-serif text-4xl">Nghe</h1>
+      <h1 className="font-serif text-4xl">Luyện nghe</h1>
       <p className="mt-3 text-mute">
-        Academic Listening: 4 phần, 40 câu, ~30 phút. Bẫy kinh điển là thông tin bị sửa giữa chừng. {items.length} bài
-        trong lộ trình — audio giọng máy, đủ để luyện tai trước khi mua đề Cambridge.
+        Academic Listening gồm 4 phần, 40 câu, khoảng 30 phút. Bẫy hay gặp nhất là thông tin bị người nói sửa lại giữa
+        chừng. Có {items.length} bài trong lộ trình — audio đọc bằng giọng máy, đủ để luyện tai trước khi làm đề Cambridge.
       </p>
       <SkillList items={items} />
     </div>

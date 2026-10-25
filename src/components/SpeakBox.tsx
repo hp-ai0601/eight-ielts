@@ -65,7 +65,7 @@ export default function SpeakBox({
 
   return (
     <div>
-      <p className="text-xs uppercase tracking-wider text-mute">Cue</p>
+      <p className="text-xs uppercase tracking-wider text-mute">Thẻ chủ đề</p>
       <p className="mt-2 font-serif text-xl leading-snug">{cue}</p>
       {bullets && (
         <ul className="mt-3 list-disc space-y-1 pl-5 text-sm text-mute">
@@ -79,11 +79,11 @@ export default function SpeakBox({
           Nghe câu hỏi
         </button>
         <button className="btn-lime" disabled={busy} onClick={hear}>
-          {busy ? "Đang nghe…" : "Nói — máy bắt giọng"}
+          {busy ? "Đang nghe…" : "Bấm rồi nói — máy sẽ ghi lại"}
         </button>
       </div>
       <p className="mt-6 text-sm text-mute">
-        Chrome/Safari. Máy bắt transcript rồi ước FC / LR / GRA / Pron. Thầy Hiệp chấm 4 ô mới tính.
+        Nên dùng Chrome hoặc Safari. Máy sẽ chuyển giọng nói thành chữ rồi chấm thử 4 tiêu chí FC / LR / GRA / Pron — điểm chính thức vẫn do thầy Hiệp chấm.
       </p>
       {busy && seconds > 0 && (
         <p className="mt-2 text-sm font-medium text-lime">{seconds}s</p>
@@ -98,7 +98,7 @@ export default function SpeakBox({
         <div className="mt-6 border-t border-line pt-5">
           <p className="font-serif text-3xl">{mark.band}</p>
           <p className="mt-1 text-xs text-mute">
-            FC {mark.fc} · LR {mark.lr} · GRA {mark.gra} · Pron {mark.pron} · máy ước
+            FC {mark.fc} · LR {mark.lr} · GRA {mark.gra} · Pron {mark.pron} · máy chấm thử
           </p>
           <ul className="mt-4 space-y-2 text-sm">
             {mark.notes.map((n) => (

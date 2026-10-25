@@ -34,7 +34,7 @@ export default function WriteBox({
       <p className="font-serif text-lg leading-relaxed">{prompt}</p>
       {data && <p className="mt-3 rounded-xl bg-bg p-3 font-serif text-sm text-mute">{data}</p>}
       <p className="mt-4 text-sm text-mute">
-        {words} / {min} từ · máy ước 4 tiêu chí, thầy Hiệp chấm mới ra band luyện
+        Đã viết {words} / {min} từ · máy sẽ chấm thử 4 tiêu chí, band chính thức do thầy Hiệp chấm
       </p>
       <textarea
         className="field mt-3 min-h-56 font-serif"
@@ -49,7 +49,7 @@ export default function WriteBox({
         <div className="mt-6 border-t border-line pt-5">
           <p className="font-serif text-3xl">{mark.band}</p>
           <p className="mt-1 text-xs text-mute">
-            {kind === "t1" ? "TA" : "TR"} {mark.ta} · CC {mark.cc} · LR {mark.lr} · GRA {mark.gra} · máy ước
+            {kind === "t1" ? "TA" : "TR"} {mark.ta} · CC {mark.cc} · LR {mark.lr} · GRA {mark.gra} · máy chấm thử
           </p>
           <ul className="mt-4 space-y-2 text-sm">
             {mark.notes.map((n) => (

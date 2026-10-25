@@ -32,7 +32,7 @@ export default function NhatKy({ s, onDone }: { s: State; onDone: (next: State) 
 
   function cham() {
     if (count < 20) {
-      setOk("Viết khoảng 20 từ trở lên.");
+      setOk("Viết dài khoảng 20 từ trở lên nhé.");
       return;
     }
     const c = checkText(text.trim(), extra, beat?.tense);
@@ -47,7 +47,7 @@ export default function NhatKy({ s, onDone }: { s: State; onDone: (next: State) 
         grammar: c.grammar.map((x) => x.vi),
       }),
     );
-    setOk(c.clean ? "Sạch. Bấm Cất câu sạch." : "Chữ đỏ / thì sai — viết lại đến khi hết đỏ.");
+    setOk(c.clean ? "Bài sạch lỗi rồi — bấm «Lưu câu đã đúng» nhé." : "Còn chữ đỏ hoặc sai thì — viết lại đến khi hết đỏ nhé.");
   }
 
   function cat(cleanText: string) {
@@ -60,7 +60,7 @@ export default function NhatKy({ s, onDone }: { s: State; onDone: (next: State) 
         auto,
       }),
     );
-    setOk("Đã cất nhật ký. Thầy thấy trên live.");
+    setOk("Đã lưu nhật ký — thầy sẽ xem được ngay.");
     setMark(null);
   }
 
@@ -68,8 +68,8 @@ export default function NhatKy({ s, onDone }: { s: State; onDone: (next: State) 
     <Studio
       step={4}
       title="Nhật ký"
-      kicker={`đợt ${lot + 1}`}
-      swap="Đổi gợi ý"
+      kicker={`Đợt ${lot + 1}`}
+      swap="Đổi gợi ý khác"
       onSwap={() => {
         onDone(bumpZangLot(s, "nhat"));
         setPi(0);
@@ -87,7 +87,7 @@ export default function NhatKy({ s, onDone }: { s: State; onDone: (next: State) 
       stage={
         <div className="mx-auto max-w-lg">
           {prompt && <p className="text-sm text-mute">{prompt.vi}</p>}
-          <p className="mt-5 text-[11px] uppercase tracking-wider text-lime">Từ — nhớ thì nhét</p>
+          <p className="mt-5 text-[11px] uppercase tracking-wider text-lime">Từ gợi ý — nhớ thì dùng vào bài</p>
           <div className="mt-2 flex flex-wrap gap-1.5">
             {words.map((w, idx) => (
               <button

@@ -34,7 +34,7 @@ export default function IrregularPage() {
       next={{ href: "/kho", label: "Kho" }}
       rail={
         <>
-          <RailPick on={!q} onClick={() => { setQ(""); }}>Tất cả theo nhóm</RailPick>
+          <RailPick on={!q} onClick={() => { setQ(""); }}>Tất cả các nhóm</RailPick>
           {IRR_GROUPS.map((x) => (
             <RailPick
               key={x}
@@ -111,12 +111,12 @@ export default function IrregularPage() {
               ) : (
                 <div className="mt-4">
                   <p className={`text-sm ${quiz.ok ? "text-lime" : "text-red-400"}`}>
-                    {quiz.ok ? "Chuẩn! " : `Chưa đúng. Đáp án: ${quiz.v.v1} – ${quiz.v.v2} – ${quiz.v.v3}. `}
+                    {quiz.ok ? "Chính xác! " : `Chưa đúng. Đáp án là: ${quiz.v.v1} – ${quiz.v.v2} – ${quiz.v.v3}. `}
                   </p>
                   <p className="mt-1 text-xs text-mute">
                     {quiz.ok
-                      ? "Quá khứ nhớ sai dễ làm rớt điểm ngữ pháp — giữ phong độ nhé."
-                      : "Không sao cả — sai bây giờ để thi thật không sai. Đọc to 3 lần: "}
+                      ? "Nhớ chắc các dạng quá khứ là khỏi mất điểm ngữ pháp oan — tiếp tục phát huy nhé."
+                      : "Không sao, sai ở đây còn hơn sai trong phòng thi. Đọc to ba lần nào: "}
                     {!quiz.ok && `${quiz.v.v1} – ${quiz.v.v2} – ${quiz.v.v3}.`}
                   </p>
                   <button className="btn-ghost mt-3" onClick={newQuiz}>
@@ -141,7 +141,7 @@ export default function IrregularPage() {
               </div>
             ))}
           </div>
-          {!list.length && <p className="mt-6 text-sm text-mute">Không thấy động từ nào khớp.</p>}
+          {!list.length && <p className="mt-6 text-sm text-mute">Không tìm thấy động từ nào khớp.</p>}
         </div>
       }
     />

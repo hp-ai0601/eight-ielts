@@ -51,7 +51,7 @@ export default function QuickQuiz({
   if (!qs.length) {
     return (
       <div className="panel p-5">
-        <p className="text-sm text-mute">Chưa tra được nghĩa các từ trong bài giao này.</p>
+        <p className="text-sm text-mute">Chưa tra được nghĩa của các từ trong bài này — em báo thầy kiểm tra lại nhé.</p>
         <button className="btn-ghost mt-3" onClick={onClose}>
           Đóng
         </button>
@@ -66,7 +66,7 @@ export default function QuickQuiz({
           {ok}/{qs.length}
         </p>
         <p className="mt-2 text-sm text-mute">
-          {ok / qs.length >= 0.8 ? "Tốt lắm — báo thầy ngay!" : "Ôn lại rồi kiểm tra lần nữa nhé, sai bây giờ không sao cả."}
+          {ok / qs.length >= 0.8 ? "Giỏi lắm — gửi kết quả cho thầy ngay nhé!" : "Ôn lại rồi làm thêm lần nữa nhé — sai bây giờ không sao đâu."}
         </p>
         <button className="btn-lime mt-4" onClick={() => onDone(ok, qs.length)}>
           Nộp kết quả cho thầy
@@ -78,13 +78,13 @@ export default function QuickQuiz({
   return (
     <div className="panel p-5">
       <p className="text-[11px] uppercase tracking-wider text-mute">
-        Kiểm tra nhanh · câu {i + 1}/{qs.length} · đúng {ok}
+        Kiểm tra nhanh · câu {i + 1}/{qs.length} · đúng {ok} câu
       </p>
       <div className="mt-3 flex items-center gap-3">
         <p className="font-serif text-3xl">{q.word}</p>
         <Hear text={q.word} />
       </div>
-      <p className="mt-1 text-sm text-mute">Chọn nghĩa tiếng Việt đúng:</p>
+      <p className="mt-1 text-sm text-mute">Chọn nghĩa tiếng Việt đúng của từ này:</p>
       <div className="mt-3 grid gap-2">
         {q.options.map((op) => {
           const chosen = q.pick === op;

@@ -48,7 +48,7 @@ export function RailPick({
       }`}
     >
       {children}
-      {done ? <p className="mt-1 text-[11px] text-lime">xong</p> : null}
+      {done ? <p className="mt-1 text-[11px] text-lime">Đã xong</p> : null}
     </button>
   );
 }

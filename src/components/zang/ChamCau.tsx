@@ -53,7 +53,7 @@ export default function ChamCau({
       </div>
       {live.spelling.length > 0 && (
         <div className="mt-4">
-          <p className="text-sm text-bad">Chính tả — chữ đỏ</p>
+          <p className="text-sm text-bad">Lỗi chính tả — các chữ màu đỏ</p>
           <ul className="mt-1 space-y-1 text-sm">
             {live.spelling.map((x) => (
               <li key={x.from}>
@@ -78,17 +78,17 @@ export default function ChamCau({
         </div>
       )}
       {good ? (
-        <p className="mt-3 text-sm text-lime">Sạch chính tả, thì và ngữ pháp.</p>
+        <p className="mt-3 text-sm text-lime">Câu đã sạch lỗi chính tả, thì và ngữ pháp.</p>
       ) : (
         <>
-          <p className="mt-4 text-xs text-mute">Câu sửa — nhìn rồi viết lại cho hết đỏ</p>
+          <p className="mt-4 text-xs text-mute">Câu gợi ý sửa — nhìn rồi viết lại cho hết chữ đỏ</p>
           <p className="mt-1 font-serif text-lg text-lime">{live.rewrite}</p>
           <textarea
             className="field mt-3 min-h-24 border-bad"
             value={fix}
             onChange={(e) => setFix(e.target.value)}
           />
-          <p className="mt-2 text-sm text-bad">Chưa cất. Viết đến khi hết đỏ.</p>
+          <p className="mt-2 text-sm text-bad">Chưa lưu được đâu — viết lại đến khi hết chữ đỏ nhé.</p>
         </>
       )}
       {onClean && (
@@ -98,7 +98,7 @@ export default function ChamCau({
           disabled={!good}
           onClick={() => onClean(fix.trim(), live)}
         >
-          Cất câu sạch
+          Lưu câu đã đúng
         </button>
       )}
     </div>

@@ -23,7 +23,7 @@ export default function PathPage() {
         <RailPick key={x.id} on={x.id === st.id} onClick={() => setId(x.id)}>
           <p className="text-[11px] text-lime">{x.band}</p>
           <p className="mt-0.5 font-serif text-lg leading-tight">{x.title}</p>
-          {s.profile.stageId === x.id ? <p className="mt-0.5 text-[11px] text-mute">đang đây</p> : null}
+          {s.profile.stageId === x.id ? <p className="mt-0.5 text-[11px] text-mute">Bạn đang ở đây</p> : null}
         </RailPick>
       ))}
       stage={

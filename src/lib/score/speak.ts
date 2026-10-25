@@ -21,10 +21,10 @@ const DISCOURSE = /\b(first(ly)?|second(ly)?|finally|moreover|however|on the oth
 const RANGE = /\b(noticeable|considerable|gradually|significantly|convenient|essential|contribute|fascinating|memorable|negotiate|preference|demanding|enthusiastic|influential|spacious|approximately|controversial|sustainable|infrastructure|demographic)\b/gi;
 const COLL = /\b(make a decision|take into account|pay attention|catch up|keep in touch|come up with|look forward to|get on with|run out of|find out|figure out|take up|give up|turn out|put up with|make up for|make sense)\b/gi;
 const TRAPS: { re: RegExp; tip: string }[] = [
-  { re: /\b(tree|tank|tank you)\b/i, tip: "think / thank / three: /θ/ thổi hơi, không /t/." },
-  { re: /\b(dis|dat|de )\b/i, tip: "this / that / the: /ð/, lưỡi chạm răng." },
-  { re: /\b(sip|sheet)\b/i, tip: "ship / sheep, sit / seat — nguyên âm dài." },
-  { re: /\b(liff|lif )\b/i, tip: "live / leave; kéo phụ âm cuối /v/." },
+  { re: /\b(tree|tank|tank you)\b/i, tip: "think / thank / three: âm /θ/ phải thổi hơi qua kẽ răng, không đọc thành /t/." },
+  { re: /\b(dis|dat|de )\b/i, tip: "this / that / the: âm /ð/ — đặt đầu lưỡi chạm răng cửa." },
+  { re: /\b(sip|sheet)\b/i, tip: "Phân biệt ship / sheep, sit / seat — một bên nguyên âm ngắn, một bên dài." },
+  { re: /\b(liff|lif )\b/i, tip: "Phân biệt live / leave — nhớ kéo rõ âm cuối /v/." },
 ];
 const PHONETIC_TRAP = /\b(thought|though|through|throughout|schedule|receipt|island|colonel|sword|cupboard|queue|vehicle|subtle|debt|doubt|psychology|phlegm|knight|recipe|column|autumn|handkerchief)\b/gi;
 const COMMON_TRAP = /\b(bussiness|enviroment|goverment|occur|occured|successfull|beautifull|recomend|accomodation|definately|seperate|occation|pronounciation|opertunity|comming|begining|truely|untill)\b/gi;
@@ -51,20 +51,20 @@ export function scoreSpeak(heard: string, cueOrSeconds?: string | number, second
   else if (words >= 80 && secs && secs <= 120) fc += 1;
   else if (words >= 60) fc += 0.5;
   else if (words === 0) fc = 0;
-  else notes.push("Nói thêm để đạt Part 2 khoảng 90–120 giây.");
+  else notes.push("Nên nói dài hơn nữa — Part 2 cần khoảng 90–120 giây.");
 
   const fillerCount = t.match(FILLER)?.length ?? 0;
   const fillerRatio = words ? fillerCount / words : 0;
   if (fillerRatio < 0.04) fc += 0.5;
-  else notes.push("Giảm filler (um, like, you know) — lấy hơi trước khi trả lời.");
+  else notes.push("Hãy giảm các từ đệm (um, like, you know) — hít một hơi trước khi trả lời.");
   if (fillerRatio > 0.12) {
     fc -= 1;
-    notes.push("Filler quá nhiều. Luyện dùng silence 1 giây thay vì um.");
+    notes.push("Từ đệm đang quá nhiều — tập ngừng lặng 1 giây thay vì nói um.");
   }
 
   const discourse = t.match(DISCOURSE)?.length ?? 0;
   if (discourse >= 2) fc += 0.5;
-  else notes.push("Dùng connector rõ: first, another reason, for example, therefore.");
+  else notes.push("Nên dùng từ nối ý rõ ràng: first, another reason, for example, therefore.");
   fc = clampBand(fc);
 
   let lr = 4;
@@ -76,11 +76,11 @@ export function scoreSpeak(heard: string, cueOrSeconds?: string | number, second
   if ((t.match(COLL)?.length ?? 0) >= 2) lr += 0.5;
   if (cue && overlap(t, cue) > 0.5) {
     lr -= 0.5;
-    notes.push("Đừng đọc lại cue. Paraphrase.");
+    notes.push("Đừng đọc lại y nguyên câu hỏi — hãy diễn đạt lại bằng lời của mình.");
   }
   if (COMMON_TRAP.test(t)) {
     lr -= 0.5;
-    notes.push("Lưu ý spelling-driven pronunciation: environment, government, accommodation, successful.");
+    notes.push("Cẩn thận những từ hay bị đọc theo chữ viết: environment, government, accommodation, successful.");
   }
   lr = clampBand(lr);
 
@@ -97,18 +97,18 @@ export function scoreSpeak(heard: string, cueOrSeconds?: string | number, second
   const basicError = /\b\w+\s+(?:is|are|was|were)\s+(?:go|went|eat|ate|take|took|write|wrote|read|come|came|give|gave|do|did|make|made)\b/gi;
   if (basicError.test(t)) {
     gra -= 1;
-    notes.push("Sai cấu trúc be + V — dùng be + V-ing hoặc chia đúng thì.");
+    notes.push("Lỗi cấu trúc be + động từ — hãy dùng be + V-ing hoặc chia đúng thì.");
   }
   gra = clampBand(gra);
 
   let pron = 4;
   if (VELAR_NG.test(t)) {
     pron -= 0.5;
-    notes.push("Phụ âm cuối /ŋ/ bị nuốt: singing /ˈsɪŋɪŋ/, not singin.");
+    notes.push("Âm cuối /ŋ/ đang bị nuốt: singing đọc là /ˈsɪŋɪŋ/, không phải singin.");
   }
   if (FINAL_CONS.test(t)) {
     pron -= 0.5;
-    notes.push("Giữ final consonant rõ: -ed, -s, -t, -k, -d.");
+    notes.push("Nhớ đọc rõ phụ âm cuối: -ed, -s, -t, -k, -d.");
   }
   for (const x of TRAPS) {
     if (x.re.test(t)) {
@@ -118,22 +118,22 @@ export function scoreSpeak(heard: string, cueOrSeconds?: string | number, second
   }
   if (PHONETIC_TRAP.test(t)) {
     pron += 0.5;
-    notes.push("Chú ý phát âm từ bẫy: though /ðəʊ/, through /θruː/, schedule /ˈʃedjuːl/, receipt /rɪˈsiːt/.");
+    notes.push("Các từ dễ đọc sai: though /ðəʊ/, through /θruː/, schedule /ˈʃedjuːl/, receipt /rɪˈsiːt/.");
   }
   const finals = (t.match(/\b\w+[tksd]\b/gi) ?? []).length;
   if (words > 30 && finals < 4) {
     pron -= 0.5;
-    notes.push("Kéo phụ âm cuối: want, liked, bags — giám khảo mất điểm Pron vì nuốt.");
+    notes.push("Nhớ đọc rõ phụ âm cuối: want, liked, bags — nuốt âm cuối là mất điểm Pronunciation.");
   }
   const vietnameseMonotone = /^[a-z\s]+$/i.test(t) && (t.match(/[.!?]/g) ?? []).length < words / 25;
   if (vietnameseMonotone && words > 10) {
     pron -= 0.5;
-    notes.push("Thêm ngữ điệu — lên xuống ở chủ ngữ / trạng ngữ, xuống cuối câu.");
+    notes.push("Giọng đang hơi đều — hãy nhấn giọng ở chủ ngữ và trạng ngữ, hạ giọng xuống ở cuối câu.");
   }
   pron = clampBand(pron);
 
   const band = clampBand((fc + lr + gra + pron) / 4);
-  if (!notes.length) notes.push("Máy chỉ ước. Để chính xác cần thầy nghe stress, linking, phonemes.");
+  if (!notes.length) notes.push("Máy chỉ chấm thử — muốn chính xác cần thầy nghe trực tiếp trọng âm, nối âm và từng âm tiết.");
   return { fc, lr, gra, pron, band, notes: notes.slice(0, 8), words, seconds: secs, heard: t };
 }
 
@@ -142,7 +142,7 @@ export function listenOnce(): Promise<string> {
     const SR = (window as unknown as { webkitSpeechRecognition?: new () => SpeechRec; SpeechRecognition?: new () => SpeechRec }).webkitSpeechRecognition
       || (window as unknown as { SpeechRecognition?: new () => SpeechRec }).SpeechRecognition;
     if (!SR) {
-      reject(new Error("Trình duyệt không nhận giọng. Gõ lại lời nói, hoặc dùng Chrome."));
+      reject(new Error("Trình duyệt này không nhận giọng nói — em gõ lại lời mình nói, hoặc dùng Chrome nhé."));
       return;
     }
     const rec = new SR();
@@ -150,7 +150,7 @@ export function listenOnce(): Promise<string> {
     rec.interimResults = false;
     rec.maxAlternatives = 1;
     rec.onresult = (e: { results: { 0: { 0: { transcript: string } } } }) => resolve(e.results[0][0].transcript);
-    rec.onerror = () => reject(new Error("Không nghe được. Cho phép micro."));
+    rec.onerror = () => reject(new Error("Máy không nghe được — em kiểm tra lại quyền micro nhé."));
     rec.onend = () => undefined;
     rec.start();
   });

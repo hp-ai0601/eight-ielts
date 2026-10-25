@@ -70,7 +70,7 @@ export default function ChinhTa({
         className={`field mt-3 ${wrote && !okNow ? "border-bad" : okNow ? "border-lime" : ""}`}
         value={wrote}
         onChange={(e) => onType(e.target.value)}
-        placeholder="Gõ những gì em nghe"
+        placeholder="Nghe rồi gõ lại từ em nghe được…"
         autoCapitalize="none"
         autoCorrect="off"
         spellCheck={false}
@@ -95,13 +95,13 @@ export default function ChinhTa({
           Kiểm tra
         </button>
       )}
-      {okNow && (!needCopy || copied) && <p className="mt-3 text-sm text-lime">Đúng. {ipa ?? ""}</p>}
+      {okNow && (!needCopy || copied) && <p className="mt-3 text-sm text-lime">Đúng rồi! {ipa ?? ""}</p>}
       {tries > 0 && !okNow && (
-        <p className="mt-3 text-sm text-bad">Sai. Chữ đỏ — viết lại đến khi xanh. {tries >= 3 ? "Từ hiện 5 giây rồi tắt." : `Lần ${tries}/3.`}</p>
+        <p className="mt-3 text-sm text-bad">Chưa đúng — chữ nào đỏ thì viết lại chữ đó cho xanh. {tries >= 3 ? "Từ sẽ hiện 5 giây rồi tắt." : `Lần ${tries}/3.`}</p>
       )}
       {needCopy && !copied && (
         <div className="mt-3">
-          <p className="text-xs text-mute">Đã hiện từ. Chép đúng 3 lần rồi gõ lại từ trí nhớ.</p>
+          <p className="text-xs text-mute">Từ vừa hiện rồi — em chép lại đúng 3 lần, sau đó gõ lại từ trí nhớ nhé.</p>
           {copies.map((c, i) => (
             <input
               key={i}

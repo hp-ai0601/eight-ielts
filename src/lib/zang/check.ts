@@ -226,17 +226,17 @@ const badPatterns: { pattern: RegExp; vi: string; en?: string }[] = [
   { pattern: /\bwe\s+was\b/i, vi: "We + were." },
   { pattern: /\b(she|he|it|the dog|my friend)\s+don't\b/i, vi: "He/She/It + doesn't." },
   { pattern: /\b(i|you|we|they)\s+doesn't\b/i, vi: "I/you/we/they + don't." },
-  { pattern: /\bdidn't\s+\w+ed\b/i, vi: "Didn't + V nguyên." },
-  { pattern: /\bhas\s+\w+ed\s+\w/i, vi: "Has/Have + P2 dùng cho hiện tại hoàn thành, kiểm tra chủ ngữ số ít." },
+  { pattern: /\bdidn't\s+\w+ed\b/i, vi: "Sau didn't, động từ về nguyên mẫu (didn't go, không didn't went)." },
+  { pattern: /\bhas\s+\w+ed\s+\w/i, vi: "Has + quá khứ phân từ chỉ dùng với chủ ngữ số ít (he/she/it has…)." },
   { pattern: /\bthere\s+is\s+(?:many|some|a lot of|lots of|several|these|those)/i, vi: "There are + danh từ số nhiều." },
   { pattern: /\bthere\s+are\s+a\s+\w/i, vi: "There is a/an + danh từ số ít." },
   { pattern: /\bthe\s+people\s+is\b/i, vi: "People luôn là số nhiều → people are." },
-  { pattern: /\b(everyone|someone|anyone|nobody|each|every)\s+\w+\s+are\b/i, vi: "Bất định đại từ số ít → is." },
+  { pattern: /\b(everyone|someone|anyone|nobody|each|every)\s+\w+\s+are\b/i, vi: "Everyone/someone/anyone… luôn là số ít, đi với is." },
   { pattern: /\ba\s+(?:lot|many|few|several|some)\s+of\s+\w+s\s+is\b/i, vi: "A lot of + plural noun → are." },
   { pattern: /\b\w+\s+(?:is|are|was|were)\s+(?:go|went|eat|ate|take|took|write|wrote|read|come|came|give|gave|do|did|make|made)\b/i, vi: "Be + V nguyên/V2 sai. Dùng be + V-ing hoặc chia thì đúng." },
   { pattern: /\b(want|need|would like|hope|decide|plan|try|learn|forget|remember|start|stop)\s+\w+(?:ed|ing)\b/i, vi: "Sau want/need/would like... dùng to V." },
   { pattern: /\b(enjoy|finish|avoid|consider|suggest|practice|mind|keep|imagine|miss|postpone|delay|quit|resist|admit|deny|recall|regret|recommend|risk|spend|waste)\s+to\s+\w+\b/i, vi: "Sau enjoy/finish/avoid/practice + V-ing." },
-  { pattern: /\bused\s+to\s+\w+ing\b/i, vi: "Used to + V nguyên (quá khứ) hay be used to + V-ing." },
+  { pattern: /\bused\s+to\s+\w+ing\b/i, vi: "Used to + động từ nguyên mẫu (đã từng); còn be used to + V-ing nghĩa là quen với." },
   { pattern: /\bbe\s+used\s+to\s+\w+\b(?!ing)/i, vi: "Be used to + V-ing (quen với việc gì)." },
   { pattern: /\bwant\s+that\s+\w+\s+\w+\b/i, vi: "Want + O + to V, không dùng want that." },
   { pattern: /\bsuggest\s+(?:me|him|her|us|them)\s+to\b/i, vi: "Suggest + V-ing / suggest that + S + (should) V." },
@@ -255,7 +255,7 @@ const badPatterns: { pattern: RegExp; vi: string; en?: string }[] = [
   { pattern: /\bit's\s+\w+\s+of\s+(?:me|him|her|us|them)\s+\w+ing\b/i, vi: "It's + adj + of + O + to V." },
   { pattern: /\btoo\s+\w+\s+(?:for)\s+\w+\s+\w+\b/i, vi: "Too + adj + (for O) + to V." },
   { pattern: /\benough\s+\w+\s+(?:to)\b/i, vi: "Adj/adv + enough + to V." },
-  { pattern: /\bso\s+\w+\s+that\s+\w+\s+(?:can|could|will|would)\b/i, vi: "So + adj/adv + that + S + modal — đúng. Kiểm tra enough...to." },
+  { pattern: /\bso\s+\w+\s+that\s+\w+\s+(?:can|could|will|would)\b/i, vi: "So + adj/adv + that + S + modal — cấu trúc này đúng, nhớ phân biệt với enough...to." },
   { pattern: /\bsuch\s+a?\s+\w+\s+that\s/i, vi: "Such + (a/an) + adj + noun + that." },
   { pattern: /\balthough\s+.+?\s+but\s/i, vi: "Although và but không dùng chung trong một câu." },
   { pattern: /\bbecause\s+.+?\s+so\s/i, vi: "Because và so không dùng chung trong một câu." },
@@ -275,17 +275,17 @@ const badPatterns: { pattern: RegExp; vi: string; en?: string }[] = [
   { pattern: /\bin\s+(?:monday|tuesday|wednesday|thursday|friday|saturday|sunday)\b/i, vi: "On + thứ trong tuần." },
   { pattern: /\bon\s+(?:january|february|march|april|may|june|july|august|september|october|november|december)\b/i, vi: "In + tháng." },
   { pattern: /\b(last|next|every|this)\s+(?:year|month|week|monday)\s+(?:at|on|in)\b/i, vi: "Last/next/this/every + thời gian — không dùng giới từ." },
-  { pattern: /\ba\s+(?:apple|orange|umbrella|hour|honest|honour)\b/i, vi: "An + nguyên âm âm thanh /æ/.../əʊ/." },
-  { pattern: /\ban\s+(?:university|uniform|union|unique|european|one|useful)\b/i, vi: "A + phụ âm âm thanh /j/ hoặc /w/." },
-  { pattern: /\bmore\s+(?:better|worse|faster|bigger|easier|happier|more)\b/i, vi: "Comparative đã có -er — không thêm more." },
-  { pattern: /\bmost\s+(?:best|worst|fastest|biggest|easiest|happiest|most)\b/i, vi: "Superlative đã có -est — không thêm most." },
+  { pattern: /\ba\s+(?:apple|orange|umbrella|hour|honest|honour)\b/i, vi: "Dùng an trước từ bắt đầu bằng âm nguyên âm (an apple, an hour)." },
+  { pattern: /\ban\s+(?:university|uniform|union|unique|european|one|useful)\b/i, vi: "Dùng a trước từ bắt đầu bằng âm /j/ hoặc /w/ (a university, a European)." },
+  { pattern: /\bmore\s+(?:better|worse|faster|bigger|easier|happier|more)\b/i, vi: "Tính từ đã có đuôi -er (better, faster…) thì không thêm more nữa." },
+  { pattern: /\bmost\s+(?:best|worst|fastest|biggest|easiest|happiest|most)\b/i, vi: "Tính từ đã có đuôi -est (best, fastest…) thì không thêm most nữa." },
   { pattern: /\bmuch\s+(?:cars|books|friends|students)\b/i, vi: "Much + danh từ không đếm được." },
   { pattern: /\bmany\s+(?:water|money|time|information|advice|furniture|equipment|knowledge)\b/i, vi: "Many + danh từ đếm được số nhiều." },
   { pattern: /\ba\s+(?:furniture|information|advice|equipment|knowledge|weather|news|bread|luggage|baggage)\b/i, vi: "Danh từ không đếm được — không dùng a/an." },
   { pattern: /\bfewer\s+(?:water|money|time|information)\b/i, vi: "Fewer + danh từ đếm được; less + không đếm được." },
   { pattern: /\bless\s+(?:students|books|friends|cars)\b/i, vi: "Less + không đếm được; fewer + đếm được." },
-  { pattern: /\binterested\s+in\s+\w+ing\b/i, vi: "Interested in + V-ing đúng." },
-  { pattern: /\bbored\s+of\b/i, vi: "Bored with (hoặc bored by)." },
+  { pattern: /\binterested\s+in\s+\w+ing\b/i, vi: "Interested in + V-ing là đúng rồi." },
+  { pattern: /\bbored\s+of\b/i, vi: "Dùng bored with (hoặc bored by), không dùng bored of." },
   { pattern: /\bgood\s+in\b/i, vi: "Good at + V-ing." },
   { pattern: /\bmarried\s+with\b/i, vi: "Married to somebody." },
   { pattern: /\bdepending\s+of\b/i, vi: "Depending on." },
@@ -305,7 +305,7 @@ const badPatterns: { pattern: RegExp; vi: string; en?: string }[] = [
   { pattern: /\bobject\s+to\s+\w+(?!ing)\b/i, vi: "Object to + V-ing." },
   { pattern: /\bwould\s+you\s+mind\s+\w+(?!ing)\b/i, vi: "Would you mind + V-ing." },
   { pattern: /\bcan't\s+help\s+\w+(?!ing)\b/i, vi: "Can't help + V-ing." },
-  { pattern: /\bsomething\s+to\s+\w+ing\b/i, vi: "Something to V — động từ nguyên thể sau to." },
+  { pattern: /\bsomething\s+to\s+\w+ing\b/i, vi: "Something to V — sau to dùng động từ nguyên mẫu." },
   { pattern: /\bthe\s+first\s+\w+\s+to\s+\w+ing\b/i, vi: "The first/last/best + N + to V." },
   { pattern: /\b(he|she|it|my\s+friend|my\s+brother|my\s+sister|my\s+father|my\s+mother|father|mother|brother|sister|friend|teacher|student)\s+(?:(?:often|always|usually|never|sometimes|really|seldom)\s+)?(go|work|give|take|eat|drink|sleep|read|write|walk|talk|live|study|play|want|like|need|know|think|forget|remember|start|begin)\b/i, vi: "Hiện tại: he/she/it + động từ thêm -s (he works / she gives / my friend forgets)." },
   { pattern: /\b(family|team|company|group|government|committee|audience)\s+(?:often\s+|always\s+|usually\s+|never\s+|sometimes\s+)?(give|work|want|need|have|has)\b(?!\s+(?:members?|people|players|staff))/i, vi: "Danh từ tập hợp (family, team, government) thường là số ít → family gives / The team works." },
@@ -328,7 +328,7 @@ function tenseHits(text: string, expect?: string): GrammarNote[] {
   const low = t.toLowerCase();
 
   if (/\b(he|she|it)\s+(are|have|go|do|want|like|eat|sit|stand|write|read|walk|talk|wait)\b/i.test(t)) {
-    g.push({ vi: "Thì hiện tại: he/she/it thêm -s (she likes, he sits). Hoặc Past: she liked / he sat." });
+    g.push({ vi: "Thì hiện tại đơn: he/she/it thêm -s (she likes, he sits). Còn nếu là quá khứ: she liked / he sat." });
   }
   if (/\b(they|we|you)\s+(is|was|has)\b/i.test(t)) g.push({ vi: "They/we/you đi với are/were/have, không is/has." });
   if (/\bI\s+(is|are|has)\b/i.test(t)) g.push({ vi: "I đi với am / was / have." });
@@ -350,7 +350,7 @@ function tenseHits(text: string, expect?: string): GrammarNote[] {
     if (new RegExp(`\\b${bad}\\b`, "i").test(t)) g.push({ vi: `Quá khứ sai: ${bad} → ${good}.` });
   }
   if (/\b(yesterday|last\s+\w+|\d+\s+years?\s+ago|ago)\b/i.test(t) && /\b(have|has)\s+\w+/i.test(t) && !/\bhad\b/i.test(t)) {
-    g.push({ vi: "yesterday / last / ago khóa Past Simple (I went), không Present Perfect (I have gone yesterday)." });
+    g.push({ vi: "Có yesterday / last / ago thì bắt buộc dùng quá khứ đơn (I went), không dùng hiện tại hoàn thành." });
   }
   if (/\b(yesterday|last\s+\w+|ago)\b/i.test(t) && /\b(I|you|we|they)\s+(go|eat|sit|write|read|walk|talk|wait|bring|forget|wear|am|is|are)\b/i.test(t)) {
     g.push({ vi: "Có mốc quá khứ mà đang dùng hiện tại. Đổi: I went / I was, không I go / I am." });

@@ -94,7 +94,7 @@ export default function PlayBar({
               {audioOn ? "Phát lại" : "Phát"}
             </button>
             <button className="btn-ghost" onClick={() => play(true)}>
-              Chậm
+              Phát chậm
             </button>
             <div className="min-w-[120px] flex-1">
               <div className="h-1.5 overflow-hidden rounded-full bg-line">
@@ -107,7 +107,7 @@ export default function PlayBar({
         {hasTimer && (
           <p className={`font-mono text-sm tabular-nums ${left === 0 ? "text-bad" : frozen ? "text-warn" : "text-text"}`}>
             {clock(left)}
-            {frozen ? " · dừng" : ""}
+            {frozen ? " · đang tạm dừng" : ""}
             {left === 0 ? " · hết giờ" : ""}
           </p>
         )}

@@ -8,7 +8,7 @@ export default function BandMeter({ bands }: { bands: Bands }) {
     <div className="panel p-5">
       <p className="text-xs uppercase tracking-wider text-mute">Ước lượng hiện tại</p>
       <p className="mt-2 font-serif text-5xl">{o.toFixed(1)}</p>
-      <p className="mt-1 text-sm text-mute">mục tiêu 8.0 · không phải điểm thi chính thức</p>
+      <p className="mt-1 text-sm text-mute">Mục tiêu 8.0 · đây chỉ là ước lượng, không phải điểm thi chính thức</p>
       <ul className="mt-6 space-y-3">
         {skills.map((k) => (
           <li key={k}>

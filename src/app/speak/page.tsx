@@ -21,10 +21,10 @@ export default function SpeakPage() {
 
   return (
     <div className="mx-auto max-w-2xl px-5 py-10 pb-28 lg:px-10">
-      <h1 className="font-serif text-4xl">Nói</h1>
+      <h1 className="font-serif text-4xl">Luyện nói</h1>
       <p className="mt-3 text-mute">
-        {EXAM.speaking.minutes} phút, 3 phần. {SPEAK.length} cue theo chủ đề IELTS — luyện trong phòng này không cần đợi
-        tới bài trên lộ trình.
+        Thi nói kéo dài {EXAM.speaking.minutes} phút, gồm 3 phần. Ở đây có {SPEAK.length} thẻ chủ đề theo chuẩn IELTS —
+        muốn luyện lúc nào cũng được, không cần theo lộ trình.
       </p>
       <div className="mt-4 flex flex-wrap gap-2">
         {PARTS.map((p, idx) => (
@@ -40,7 +40,7 @@ export default function SpeakPage() {
           </button>
         ))}
         <button className="btn-ghost" onClick={() => setI((n) => n + 1)}>
-          Đề khác
+          Đổi đề khác
         </button>
       </div>
       <p className="mt-3 text-sm text-mute">

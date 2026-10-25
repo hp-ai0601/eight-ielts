@@ -49,7 +49,7 @@ export default function Shell({ children }: { children: React.ReactNode }) {
           <Link href="/" className="text-lg font-semibold tracking-tight">
             Eight<span className="text-lime">.</span>
           </Link>
-          <p className="hidden text-xs text-mute lg:mt-1.5 lg:block">Cách Zang</p>
+          <p className="hidden text-xs text-mute lg:mt-1.5 lg:block">Lớp học của Zang</p>
           {path !== "/login" && (
             <div className="mt-2 hidden lg:block">
               <AccentPick compact />
@@ -60,7 +60,7 @@ export default function Shell({ children }: { children: React.ReactNode }) {
               <span className="text-sm">{s.profile.userName}</span>
               {prog && (
                 <span className="mt-1 block text-xs text-mute">
-                  đề {prog.done}/{prog.total}
+                  Đề đã làm: {prog.done}/{prog.total}
                 </span>
               )}
               <button className="mt-2 text-xs text-mute hover:text-lime" onClick={() => { setSession(null); router.push("/login"); }}>
@@ -89,7 +89,7 @@ export default function Shell({ children }: { children: React.ReactNode }) {
             })}
             {s?.profile.userId === "hiep" && (
               <Link href="/teacher" className="block shrink-0 rounded-full px-3 py-2 text-sm text-mute hover:text-text lg:rounded-xl">
-                Zang
+                Lớp học
               </Link>
             )}
           </nav>

@@ -27,7 +27,7 @@ export default function Recorder() {
       mr.start();
       setOn(true);
     } catch {
-      setErr("Cho phép micro rồi bấm lại. Trên điện thoại dùng Chrome/Safari.");
+      setErr("Em cho phép dùng micro rồi bấm lại nhé. Trên điện thoại nên dùng Chrome hoặc Safari.");
     }
   }
 

@@ -30,7 +30,7 @@ export default function PronCheck({ text, slow = true }: { text: string; slow?: 
 
   return (
     <div className="rounded-xl border border-line p-3">
-      <p className="text-[11px] uppercase tracking-wider text-mute">So sánh với mẫu</p>
+      <p className="text-[11px] uppercase tracking-wider text-mute">Nói theo mẫu</p>
       <div className="mt-2 flex flex-wrap gap-2">
         {slow && (
           <button className="btn-ghost !px-3 !py-1.5 text-xs" onClick={() => speak(text, 0.6)}>
@@ -55,14 +55,14 @@ export default function PronCheck({ text, slow = true }: { text: string; slow?: 
             }
           }}
         >
-          {busy ? "Đang nghe…" : "Em đọc"}
+          {busy ? "Đang nghe…" : "Em đọc thử"}
         </button>
       </div>
       {heard ? (
         <div className="mt-3">
           <p className="text-sm">
             Giống mẫu: <span className={pct >= 80 ? "text-lime" : pct >= 50 ? "text-yellow-400" : "text-red-400"}>{pct}%</span>
-            {pct >= 80 ? " — đọc tốt!" : " — nghe mẫu chậm rồi đọc lại nhé."}
+            {pct >= 80 ? " — đọc tốt lắm!" : " — nghe lại mẫu chậm rồi đọc lại nhé."}
           </p>
           <p className="mt-1.5 text-sm leading-relaxed">
             {results.map((r, i) => (
@@ -71,7 +71,7 @@ export default function PronCheck({ text, slow = true }: { text: string; slow?: 
               </span>
             ))}
           </p>
-          <p className="mt-1 text-xs text-mute">Máy nghe được: “{heard}”. Từ gạch đỏ là từ máy chưa nghe rõ.</p>
+          <p className="mt-1 text-xs text-mute">Máy nghe được là: “{heard}”. Từ gạch chân đỏ là từ máy chưa nghe rõ — em đọc lại từ đó nhé.</p>
         </div>
       ) : busy ? (
         <p className="mt-2 text-xs text-mute">Hãy đọc to và rõ: “{text}”</p>

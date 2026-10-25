@@ -34,8 +34,8 @@ function heuristicWrite(text: string, min: number): Score {
   band = Math.max(4, Math.min(7, band));
   const notes = [
     short ? `Thiếu từ (hiện ${n}, cần ≥ ${min}).` : `Đủ độ dài (${n} từ).`,
-    hasPos ? "Có từ nối lập luận." : "Thiếu từ nối (however / although / whereas).",
-    template ? "Bỏ câu sáo. Band 8 cần thông tin, không khẩu hiệu." : "Tránh sáo — tốt.",
+    hasPos ? "Bài đã có từ nối lập luận." : "Bài còn thiếu từ nối lập luận (however / although / whereas).",
+    template ? "Nên bỏ câu sáo rỗng — band 8 cần thông tin cụ thể, không phải khẩu hiệu." : "Không dùng câu sáo — tốt.",
   ];
   return { band, fc: band, lr: band - 0.5, gra: band, extra: band, notes };
 }
@@ -56,9 +56,9 @@ function heuristicSpeak(text: string): Score {
     gra: band - 0.5,
     extra: band,
     notes: [
-      n < 40 ? "Câu trả lời quá ngắn cho band 8. Kéo thành 4–6 câu." : `Độ dài ổn (${n} từ).`,
-      "Thêm 1 ví dụ cụ thể (năm, chỗ, người).",
-      "Kiểm tra thì quá khứ nếu có mốc thời gian.",
+      n < 40 ? "Câu trả lời còn ngắn so với mức band 8 — kéo dài thành 4–6 câu." : `Độ dài ổn (${n} từ).`,
+      "Thêm một ví dụ cụ thể (năm, địa điểm, con người).",
+      "Kiểm tra lại thì quá khứ nếu bài có mốc thời gian.",
     ],
   };
 }
@@ -109,7 +109,7 @@ Chấm Speaking. extra = Pronunciation (ước lượng từ văn bản). JSON:
       return NextResponse.json({
         provider,
         content:
-          "Mình không chấm suông. Hôm nay làm xong **Hôm nay** rồi mở Words nếu còn thẻ đến hạn. Band 8 đến từ số phút sạch mỗi ngày, không từ mẹo.\n\nNếu đang kẹt thì gửi một câu bạn vừa nói — mình sửa collocation.",
+          "Mình không chấm qua loa đâu. Hôm nay bạn làm xong 4 bước ở **Hôm nay**, rồi mở trang 3500 từ nếu còn thẻ cần ôn. Band 8 đến từ những phút học chất lượng mỗi ngày, không phải từ mẹo vặt.\n\nNếu đang bí thì gửi mình một câu bạn vừa nói — mình sửa cụm từ cho.",
       });
     }
     const content = await callLLM(
@@ -118,6 +118,6 @@ Chấm Speaking. extra = Pronunciation (ước lượng từ văn bản). JSON:
     );
     return NextResponse.json({ provider, content });
   } catch {
-    return NextResponse.json({ error: "Gia sư đang bận. Thử lại." }, { status: 502 });
+    return NextResponse.json({ error: "Gia sư đang bận — bạn thử lại sau ít phút nhé." }, { status: 502 });
   }
 }

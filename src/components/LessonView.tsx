@@ -37,7 +37,7 @@ export default function LessonView({
         <h1 className="mt-2 font-serif text-3xl">{lesson.title}</h1>
         <p className="mt-1 text-sm text-mute">
           {lesson.minutes} phút
-          {lesson.questions ? ` · ${lesson.questions.length} câu hiện hết` : ""}
+          {lesson.questions ? ` · ${lesson.questions.length} câu, cuộn xuống để làm hết` : ""}
         </p>
 
         {lesson.body && <div className="mt-6 whitespace-pre-wrap text-[15.5px] leading-7 text-text/90">{lesson.body}</div>}
@@ -66,7 +66,7 @@ export default function LessonView({
         )}
 
         {lesson.kind === "listen" && lesson.script && (
-          <p className="mt-4 text-sm text-mute">Câu hỏi hiện hết. Phát / Dừng ở thanh dưới.</p>
+          <p className="mt-4 text-sm text-mute">Câu hỏi ở ngay bên dưới — bấm Phát / Dừng ở thanh cuối màn hình để nghe.</p>
         )}
 
         {lesson.passage && <div className="panel mt-6 p-5 font-serif text-[16.5px] leading-8">{lesson.passage}</div>}
@@ -108,13 +108,13 @@ export default function LessonView({
 
         {lesson.kind === "vocab" && !lesson.questions && (
           <button className="btn-lime mt-8" onClick={() => finish()}>
-            Đã học — thêm vào bộ thẻ
+            Đã học xong — thêm vào bộ thẻ ôn
           </button>
         )}
 
         {lesson.kind === "grammar" && !lesson.questions && (
           <button className="btn-lime mt-8" onClick={() => finish()}>
-            Xong bài
+            Hoàn thành bài
           </button>
         )}
       </article>

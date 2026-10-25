@@ -46,12 +46,12 @@ export default function TuCau({ s, onDone }: { s: State; onDone: (next: State) =
     if (!word || !pair) return;
     const t = text.trim();
     if (t.split(/\s+/).length < 5) {
-      setOk("Viết đủ một câu (khoảng 5 từ trở lên).");
+      setOk("Viết đủ một câu đã nhé (khoảng 5 từ trở lên).");
       return;
     }
     const missing = extra.filter((w) => !t.toLowerCase().includes(w.toLowerCase()));
     if (missing.length) {
-      setOk(`Nhét từ vào câu: ${missing.join(" / ")}`);
+      setOk(`Câu phải có từ này nữa: ${missing.join(" / ")}`);
       return;
     }
     const c = checkText(t, extra);
@@ -66,7 +66,7 @@ export default function TuCau({ s, onDone }: { s: State; onDone: (next: State) =
         grammar: c.grammar.map((x) => x.vi),
       }),
     );
-    setOk(c.clean ? "Sạch. Bấm Cất câu sạch." : "Chữ đỏ / thì sai — viết lại đến khi hết đỏ.");
+    setOk(c.clean ? "Câu sạch rồi — bấm «Lưu câu đã đúng» nhé." : "Còn chữ đỏ hoặc sai thì — viết lại đến khi hết đỏ nhé.");
   }
 
   function cat(cleanText: string, c: Check) {
@@ -82,7 +82,7 @@ export default function TuCau({ s, onDone }: { s: State; onDone: (next: State) =
         grammar: [],
       }),
     );
-    setOk("Đã cất.");
+    setOk("Đã lưu câu.");
     setMark(null);
     setText("");
   }
@@ -91,7 +91,7 @@ export default function TuCau({ s, onDone }: { s: State; onDone: (next: State) =
     <>
       <textarea
         className={`field min-h-32 ${mark && !mark.clean ? "border-bad" : ""}`}
-        placeholder="Câu tiếng Anh — nhét từ đang chọn."
+        placeholder="Viết một câu tiếng Anh có dùng từ đang chọn…"
         value={text}
         onChange={(e) => {
           setText(e.target.value);
@@ -110,8 +110,8 @@ export default function TuCau({ s, onDone }: { s: State; onDone: (next: State) =
     <Studio
       step={1}
       title="Từ → câu"
-      kicker={`đợt ${lot + 1} · ${mode === "class" ? "8 từ" : "3 cặp"}`}
-      swap={mode === "class" ? "Đổi 8 từ" : "Đổi 3 cặp"}
+      kicker={`Đợt ${lot + 1} · ${mode === "class" ? "8 từ" : "3 cặp"}`}
+      swap={mode === "class" ? "Đổi 8 từ khác" : "Đổi 3 cặp khác"}
       onSwap={() => {
         onDone(bumpZangLot(s));
         setWi(0);

@@ -39,8 +39,8 @@ export default function HaiNhac({ s, onDone }: { s: State; onDone: (next: State)
     <Studio
       step={3}
       title={pack.title}
-      kicker={`đợt ${lot + 1} · ${list.length} mẩu`}
-      swap="Đổi tập"
+      kicker={`Đợt ${lot + 1} · ${list.length} mẩu`}
+      swap="Đổi tập khác"
       onSwap={() => {
         onDone(bumpZangLot(s, "hai"));
         pickTrack(0);
@@ -78,7 +78,7 @@ export default function HaiNhac({ s, onDone }: { s: State; onDone: (next: State)
           <div className="mt-5">
             {step === 0 && (
               <div>
-                <p className="text-sm text-mute">Đọc nghĩa trước. Chưa nghe.</p>
+                <p className="text-sm text-mute">Bước đầu chỉ đọc nghĩa thôi, chưa nghe vội.</p>
                 <p className="mt-4 leading-8">{track.vi}</p>
                 <div className="mt-4">
                   <StoryVocab en={track.en} />
@@ -90,7 +90,7 @@ export default function HaiNhac({ s, onDone }: { s: State; onDone: (next: State)
             )}
             {step === 1 && (
               <div>
-                <p className="text-sm text-mute">Không phụ đề. Nghe, đoán trong đầu.</p>
+                <p className="text-sm text-mute">Bây giờ nghe không nhìn chữ — cứ đoán trong đầu xem họ nói gì.</p>
                 <div className="mt-4">
                   <Hear text={track.en} rate={0.86} label="Nghe" />
                 </div>
@@ -101,7 +101,7 @@ export default function HaiNhac({ s, onDone }: { s: State; onDone: (next: State)
             )}
             {step === 2 && (
               <div>
-                <p className="text-sm text-mute">Gõ những gì hiểu — tiếng Việt cũng được.</p>
+                <p className="text-sm text-mute">Gõ lại những gì em hiểu — viết tiếng Việt cũng được.</p>
                 <textarea className="field mt-3 min-h-28" value={guess} onChange={(e) => setGuess(e.target.value)} />
                 <button className="btn-lime mt-3" disabled={!guess.trim()} onClick={() => setStep(3)}>
                   Đối chiếu →
@@ -120,7 +120,7 @@ export default function HaiNhac({ s, onDone }: { s: State; onDone: (next: State)
                 </div>
                 <ExampleLine en={track.en} vi={track.vi} grammar={track.grammar} />
                 <div className="rounded-xl border border-line p-3">
-                  <p className="text-[11px] uppercase tracking-wider text-mute">Đọc kèm dịch trong ngoặc</p>
+                  <p className="text-[11px] uppercase tracking-wider text-mute">Đọc lại câu — nghĩa ghi trong ngoặc</p>
                   <p className="mt-1.5 text-sm leading-7">{glossInline(track.en)}</p>
                 </div>
                 <StoryVocab en={track.en} />
@@ -132,7 +132,7 @@ export default function HaiNhac({ s, onDone }: { s: State; onDone: (next: State)
             {step === 4 && (
               <div>
                 <div className="flex items-center justify-between">
-                  <p className="text-sm text-mute">Thuộc rồi ghi âm.</p>
+                  <p className="text-sm text-mute">Đọc cho thuộc rồi ghi âm lại giọng mình.</p>
                   <Hear text={track.en} rate={0.8} label="Chậm" />
                 </div>
                 <ExampleLine en={track.en} vi={track.vi} grammar={track.grammar} />
@@ -148,7 +148,7 @@ export default function HaiNhac({ s, onDone }: { s: State; onDone: (next: State)
                     setGuess("");
                   }}
                 >
-                  Cất mẩu này
+                  Hoàn thành mẩu này
                 </button>
               </div>
             )}

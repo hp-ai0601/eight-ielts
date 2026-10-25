@@ -38,7 +38,7 @@ export default function CumTruyen({ s, onDone }: { s: State; onDone: (next: Stat
     if (!beat) return;
     const t = mimic.trim();
     if (t.split(/\s+/).length < 6) {
-      setOk("Viết một câu tiếng Anh đủ dài, cùng cấu trúc.");
+      setOk("Viết một câu tiếng Anh đủ dài, dùng cùng cấu trúc mẫu nhé.");
       return;
     }
     const c = checkText(t, [], beat.tense);
@@ -53,13 +53,13 @@ export default function CumTruyen({ s, onDone }: { s: State; onDone: (next: Stat
         grammar: c.grammar.map((x) => x.vi),
       }),
     );
-    setOk(c.clean ? "Sạch. Bấm Cất câu sạch." : "Thì / ngữ pháp đỏ — viết lại đến khi hết đỏ.");
+    setOk(c.clean ? "Câu sạch rồi — bấm «Lưu câu đã đúng» nhé." : "Còn lỗi thì hoặc ngữ pháp — viết lại đến khi hết chữ đỏ nhé.");
   }
 
   function cat(cleanText: string, c: Check) {
     if (!beat) return;
     onDone(saveZangMimic(s, beat.id, cleanText));
-    setOk("Đã cất cảnh này.");
+    setOk("Đã lưu câu của cảnh này.");
     setMark(null);
     setMimic("");
     void c;
@@ -71,7 +71,7 @@ export default function CumTruyen({ s, onDone }: { s: State; onDone: (next: Stat
     <Studio
       step={2}
       title={script.title}
-      kicker={`đợt ${lot + 1} · ${beats.length} cảnh`}
+      kicker={`Đợt ${lot + 1} · ${beats.length} cảnh`}
       swap="Đổi kịch bản"
       onSwap={() => {
         onDone(bumpZangLot(s, "cum"));
@@ -140,7 +140,7 @@ export default function CumTruyen({ s, onDone }: { s: State; onDone: (next: Stat
             )}
             {pane === "viet" && (
               <div>
-                <p className="text-sm text-mute">Cùng thì + cấu trúc. Chuyện lớp cũng được.</p>
+                <p className="text-sm text-mute">Viết câu của riêng em, dùng đúng thì và cấu trúc trên — kể chuyện lớp mình cũng được.</p>
                 <textarea
                   className={`field mt-3 min-h-32 ${mark && !mark.clean ? "border-bad" : ""}`}
                   value={mimic}

@@ -34,18 +34,18 @@ export function answersToBand(correct: number, total = 40) {
 
 export const BAND8 = {
   meaning:
-    "Band 8: dùng tiếng Anh thành thạo. Chỉ thỉnh thoảng lệch từ / ngữ pháp không hệ thống. Xử lý lập luận phức tạp tốt.",
+    "Band 8 nghĩa là dùng tiếng Anh thành thạo: chỉ thỉnh thoảng mắc lỗi nhỏ về từ vựng hay ngữ pháp, và xử lý tốt cả những lập luận phức tạp.",
   writing: [
-    "Task: đủ ý, rõ lập trường, ý được mở và chứng minh.",
-    "CC: đọc một mạch, đoạn văn đúng chỗ.",
-    "LR: từ vựng rộng, collocation tự nhiên, paraphrase được.",
-    "GRA: đa số câu không lỗi; câu phức dùng linh hoạt.",
+    "Task: bài có đủ ý, lập trường rõ ràng, ý nào cũng được triển khai và chứng minh.",
+    "CC: bài đọc một mạch trôi chảy, chia đoạn hợp lý.",
+    "LR: vốn từ phong phú, cụm từ ghép tự nhiên, biết diễn đạt lại một ý bằng nhiều cách.",
+    "GRA: phần lớn câu không có lỗi, câu phức dùng linh hoạt.",
   ],
   speaking: [
-    "Fluency: trôi, ngập ngừng chủ yếu vì nghĩ ý chứ không vì tìm từ.",
-    "LR: paraphrased được, dùng được idiomatic item.",
-    "GRA: đa số câu sạch; vài lỗi cơ bản còn sót cũng không sao.",
-    "Pron: nhịp và ngữ điệu giữ được cả câu dài; accent không cản hiểu.",
+    "Fluency: nói trôi chảy — nếu có ngập ngừng thì là do đang nghĩ ý, không phải do tìm từ.",
+    "LR: biết diễn đạt lại khi quên từ, dùng được thành ngữ đúng chỗ.",
+    "GRA: phần lớn câu đúng ngữ pháp; sót vài lỗi nhỏ cũng không ảnh hưởng.",
+    "Pron: giữ được nhịp và ngữ điệu trong cả câu dài; giọng địa phương không gây khó hiểu.",
   ],
 };
 

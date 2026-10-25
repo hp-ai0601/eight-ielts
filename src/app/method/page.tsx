@@ -43,13 +43,13 @@ export default function MethodPage() {
         m ? (
           <div className="mx-auto max-w-lg">
             <p className="text-sm text-mute">{"format" in m ? m.format : m.why}</p>
-            <p className="mt-5 text-xs uppercase tracking-wider text-lime">Làm</p>
+            <p className="mt-5 text-xs uppercase tracking-wider text-lime">Nên làm</p>
             <ul className="mt-2 space-y-2 text-sm">
               {m.do.map((x) => (
                 <li key={x}>{x}</li>
               ))}
             </ul>
-            <p className="mt-5 text-xs uppercase tracking-wider text-bad">Đừng</p>
+            <p className="mt-5 text-xs uppercase tracking-wider text-bad">Đừng làm</p>
             <ul className="mt-2 space-y-2 text-sm text-mute">
               {m.dont.map((x) => (
                 <li key={x}>{x}</li>

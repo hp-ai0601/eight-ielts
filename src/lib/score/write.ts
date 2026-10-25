@@ -32,23 +32,23 @@ export function scoreWriting(text: string, min: number, kind: "t1" | "t2" | "dia
 
   let ta = 4;
   if (words >= min) ta += 1.5;
-  else notes.push(`Thiếu từ: ${words}/${min}. Academic Task ${kind === "t1" ? "1 = 150" : "2 = 250"}.`);
+  else notes.push(`Bài còn thiếu từ: ${words}/${min}. Task ${kind === "t1" ? "1 cần ít nhất 150" : "2 cần ít nhất 250"} từ.`);
 
   if (kind === "t1") {
     if (OVERVIEW.test(t)) ta += 1.5;
-    else notes.push("Task 1 cần overview (overall / nét lớn), không nhồi số ở câu 2.");
+    else notes.push("Task 1 cần một câu overview nêu nét nổi bật nhất — đừng dồn số liệu ngay từ đầu bài.");
     if (!FIRST_PERSON_TASK1.test(t)) ta += 0.5;
     else {
       ta -= 0.5;
-      notes.push("Task 1 không nêu ý kiến cá nhân.");
+      notes.push("Task 1 chỉ tả số liệu, không nêu ý kiến cá nhân (I think…).");
     }
   } else if (kind === "t2") {
     if (POSITION.test(t)) ta += 1;
-    else notes.push("Task 2: nêu lập trường ngay intro — không ‘I will discuss both sides’ rồi biến.");
+    else notes.push("Task 2 nên nêu rõ lập trường ngay trong mở bài — đừng chỉ viết “I will discuss both sides” rồi thôi.");
     if (paras >= 4) ta += 0.5;
     if (EXAMPLE.test(t)) ta += 0.5;
     if (CONCLUSION.test(t)) ta += 0.5;
-    else notes.push("Thiếu kết luận ngắn.");
+    else notes.push("Bài còn thiếu một câu kết luận ngắn ở cuối.");
   } else {
     if (words >= 30) ta += 1;
     if (words >= 60) ta += 1;
@@ -58,17 +58,17 @@ export function scoreWriting(text: string, min: number, kind: "t1" | "t2" | "dia
   let cc = 4;
   const targetParas = kind === "diary" ? 1 : kind === "t1" ? 3 : 4;
   if (paras >= targetParas) cc += 1.5;
-  else notes.push(`Chia đoạn: cần khoảng ${targetParas} đoạn (intro / thân / kết).`);
+  else notes.push(`Nên chia bài thành khoảng ${targetParas} đoạn (mở bài / thân bài / kết luận).`);
   const links = t.match(LINK)?.length ?? 0;
   if (links >= 3) cc += 1;
-  else notes.push("Nối ý: however / whereas / as a result / furthermore — vừa đủ.");
+  else notes.push("Nên dùng thêm từ nối ý như however / whereas / as a result / furthermore — ở mức vừa đủ.");
   if (links > words / 15) {
     cc -= 0.5;
-    notes.push("Từ nối quá dày — CC band 6 hay vỡ chỗ này.");
+    notes.push("Từ nối đang dùng quá dày — bài band 6 rất hay mất điểm CC ở chỗ này.");
   }
   if (kind === "t2" && !EXAMPLE.test(t)) {
     cc -= 0.5;
-    notes.push("Mỗi ý cần ví dụ cụ thể (người, nơi, thời gian, số).");
+    notes.push("Mỗi ý nên có ví dụ cụ thể (người, nơi chốn, thời gian, con số).");
   }
   cc = clampBand(cc);
 
@@ -81,13 +81,13 @@ export function scoreWriting(text: string, min: number, kind: "t1" | "t2" | "dia
   if (HEDGE.test(t) && kind !== "t1") lr += 0.5;
   if (ABSOLUTE.test(t)) {
     lr -= 0.5;
-    notes.push("Bỏ definitely / everyone knows / in today's society / always / never.");
+    notes.push("Nên bỏ những từ nói tuyệt đối kiểu definitely / everyone knows / in today's society / always / never.");
   }
   const academicVerbs = /\b(increase|decrease|rise|fall|decline|fluctuate|remain|constitute|account for|contribute to|lead to|result in|stem from|exacerbate|alleviate|implement|investigate|demonstrate|illustrate|indicate|suggest|argue|claim|acknowledge)\b/gi;
   if ((t.match(academicVerbs)?.length ?? 0) >= 3) lr += 0.5;
   if (check.spelling.length) {
     lr -= Math.min(1.5, check.spelling.length * 0.25);
-    notes.push(`Chính tả: ${check.spelling.slice(0, 4).map((x) => x.from).join(", ")}.`);
+    notes.push(`Lỗi chính tả: ${check.spelling.slice(0, 4).map((x) => x.from).join(", ")}.`);
   }
   lr = clampBand(lr);
 
@@ -98,16 +98,16 @@ export function scoreWriting(text: string, min: number, kind: "t1" | "t2" | "dia
   if (complexCount >= 2 && words > 80) gra += 0.5;
   if (!complex.test(t) && words > 80) {
     gra = clampBand(gra - 0.5);
-    notes.push("Thêm câu phức sạch (although / which / if / while) — GRA 7 cần range.");
+    notes.push("Nên thêm câu phức (although / which / if / while) — muốn GRA 7 trở lên thì câu phải đa dạng hơn.");
   }
   if (/\b(am|is|are|was|were)\s+(go|went|eat|ate|take|took|write|wrote|read|come|came)\b/i.test(t)) {
     gra = clampBand(gra - 0.5);
-    notes.push("be + V nguyên/V2 sai. Dùng be + V-ing hoặc bỏ be rồi chia thì.");
+    notes.push("Lỗi be + động từ nguyên mẫu/quá khứ. Hãy dùng be + V-ing, hoặc bỏ be rồi chia thì cho động từ.");
   }
   gra = clampBand(gra);
 
   const band = clampBand((ta + cc + lr + gra) / 4);
-  if (!notes.length) notes.push("Máy chỉ ước. Thầy Hiệp chấm 4 ô mới ra band luyện.");
+  if (!notes.length) notes.push("Máy chỉ chấm thử — band chính xác vẫn do thầy Hiệp chấm.");
   return { ta, cc, lr, gra, band, notes: notes.slice(0, 8), words };
 }
 
@@ -124,11 +124,11 @@ export function scoreSentence(text: string, targetWord: string, expectTense?: st
   else band = 5;
   if (words < 4) {
     band = Math.min(band, 5);
-    notes.unshift("Câu quá ngắn — viết đủ chủ ngữ + động từ + tân ngữ.");
+    notes.unshift("Câu quá ngắn — hãy viết đủ chủ ngữ, động từ và tân ngữ.");
   }
   if (!new RegExp(`\\b${targetWord.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}\\b`, "i").test(text)) {
     band = Math.min(band, 5);
-    notes.unshift(`Câu chưa dùng từ '${targetWord}'.`);
+    notes.unshift(`Câu chưa dùng từ “${targetWord}”.`);
   }
   return { band: clampBand(band), score: check.score, notes: notes.slice(0, 5), clean: check.clean, rewrite: check.rewrite };
 }

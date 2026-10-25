@@ -34,7 +34,7 @@ export default function WordsPage() {
   return (
     <Studio
       title="3500 từ"
-      kicker={`${LEX_COUNT} từ · ${n} thẻ đến hạn`}
+      kicker={`${LEX_COUNT} từ · ${n} thẻ cần ôn hôm nay`}
       next={{ href: "/kho", label: "Kho" }}
       rail={LEX_TOPICS.map((t) => (
         <RailPick
@@ -57,7 +57,7 @@ export default function WordsPage() {
             <div className="mb-4 space-y-2">
               {assigned.slice(0, 3).map((a) => (
                 <div key={a.id} className="panel border-lime/40 p-4">
-                  <p className="text-[11px] uppercase tracking-wider text-lime">Bài thầy giao · hạn {a.due}</p>
+                  <p className="text-[11px] uppercase tracking-wider text-lime">Bài thầy giao · hạn nộp {a.due}</p>
                   <p className="mt-1 font-semibold">{a.title}</p>
                   {a.note && <p className="mt-0.5 text-sm text-mute">“{a.note}”</p>}
                   <div className="mt-2 flex flex-wrap gap-2">
@@ -108,7 +108,7 @@ export default function WordsPage() {
               Học 20 từ
             </button>
             <button className="btn-ghost" onClick={() => setDeck((x) => !x)}>
-              {deck ? "Thẻ từ" : `Ôn thẻ (${n})`}
+              {deck ? "Quay lại danh sách từ" : `Ôn thẻ (${n} thẻ)`}
             </button>
           </div>
           {deck ? (
@@ -140,9 +140,9 @@ export default function WordsPage() {
               <VocabExamples word={word.word} fallback={word.example} />
               {mnemonicOf(word.word) && (
                 <div className="mt-3 rounded-xl border border-lime/30 bg-lime/5 p-3 text-sm">
-                  <p className="text-lime">Mẹo nhớ âm điệu: «{mnemonicOf(word.word)!.sound}»</p>
+                  <p className="text-lime">Mẹo nhớ: nghe giống «{mnemonicOf(word.word)!.sound}»</p>
                   <p className="mt-0.5 text-mute">{mnemonicOf(word.word)!.img}</p>
-                  <p className="mt-1 text-[11px] text-mute">Mẹo liên tưởng để nhớ — đọc đúng theo IPA.</p>
+                  <p className="mt-1 text-[11px] text-mute">Mẹo này chỉ giúp dễ nhớ thôi — phát âm chuẩn thì theo phiên âm IPA nhé.</p>
                 </div>
               )}
               <div className="mt-6 flex items-center justify-between gap-3">
@@ -155,7 +155,7 @@ export default function WordsPage() {
               </div>
             </>
           ) : (
-            <p className="mt-6 text-mute">Không có từ.</p>
+            <p className="mt-6 text-mute">Không tìm thấy từ nào.</p>
           )}
         </div>
       }

@@ -19,7 +19,7 @@ export default function IdiomsPage() {
   return (
     <Studio
       title="Thành ngữ & châm ngôn"
-      kicker={`${IDIOMS.length} câu · dịch hoa mĩ`}
+      kicker={`${IDIOMS.length} câu · dịch sát nghĩa, kèm ví dụ`}
       next={{ href: "/kho", label: "Kho" }}
       rail={IDIOM_TOPICS.map((t) => (
         <RailPick
@@ -77,7 +77,7 @@ export default function IdiomsPage() {
               </div>
             </div>
           ) : (
-            <p className="mt-6 text-sm text-mute">Không có câu nào khớp.</p>
+            <p className="mt-6 text-sm text-mute">Không tìm thấy câu nào khớp.</p>
           )}
         </div>
       }

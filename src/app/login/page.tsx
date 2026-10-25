@@ -18,7 +18,7 @@ export default function LoginPage() {
   function go() {
     const u = checkPin(id, pin);
     if (!u) {
-      setErr("Sai PIN.");
+      setErr("PIN chưa đúng, bạn thử lại nhé.");
       return;
     }
     setSession(u.id);
@@ -30,8 +30,8 @@ export default function LoginPage() {
   return (
     <div className="mx-auto max-w-md px-6 py-16">
       <p className="text-sm text-lime">Eight</p>
-      <h1 className="mt-3 font-serif text-4xl">Vào studio</h1>
-      <p className="mt-3 text-mute">Account học trò: Zang Bếu. PIN do thầy Hiệp cấp.</p>
+      <h1 className="mt-3 font-serif text-4xl">Đăng nhập</h1>
+      <p className="mt-3 text-mute">Chọn tên của bạn, rồi nhập PIN do thầy Hiệp cấp.</p>
       <div className="mt-8 grid gap-2">
         {[...USERS, ...extra].map((u) => (
           <button

@@ -42,15 +42,15 @@ export default function CoachPage() {
       next={{ href: "/kho", label: "Kho" }}
       stage={
         <div className="mx-auto max-w-lg">
-          <p className="text-sm text-mute">Hỏi một câu đang sai, một đoạn Task 2, một collocation. Đừng hỏi “làm sao 8.0” chung.</p>
+          <p className="text-sm text-mute">Hỏi về một câu cụ thể mình hay sai, một đoạn trong bài Task 2, hay một cụm từ chưa chắc — đừng hỏi chung chung kiểu “làm sao để đạt 8.0”.</p>
           <textarea
             className="field mt-5 min-h-32"
             value={q}
             onChange={(e) => setQ(e.target.value)}
-            placeholder="Câu mình vừa nói: I am live in Hanoi since 3 years…"
+            placeholder="Ví dụ: câu mình vừa nói là “I am live in Hanoi since 3 years” — sai chỗ nào?…"
           />
           <button className="btn-lime mt-3" disabled={busy || !q.trim()} onClick={send}>
-            {busy ? "Đang đọc…" : "Hỏi"}
+            {busy ? "Đang đọc câu hỏi…" : "Hỏi gia sư"}
           </button>
           {a && (
             <div className="prose prose-invert mt-8 max-w-none text-[15.5px] leading-7">

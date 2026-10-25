@@ -51,9 +51,9 @@ function DictCard({ item, onAdd }: { item: LexItem; onAdd: () => void }) {
       <VocabExamples word={item.word} fallback={item.example} />
       {mn && (
         <div className="mt-3 rounded-xl border border-lime/30 bg-lime/5 p-3 text-sm">
-          <p className="text-lime">Mẹo nhớ âm điệu: «{mn.sound}»</p>
+          <p className="text-lime">Mẹo nhớ: nghe giống «{mn.sound}»</p>
           <p className="mt-0.5 text-mute">{mn.img}</p>
-          <p className="mt-1 text-[11px] text-mute">Mẹo liên tưởng để nhớ — không phải cách đọc chuẩn. Đọc đúng theo IPA ở trên.</p>
+          <p className="mt-1 text-[11px] text-mute">Mẹo này chỉ giúp dễ nhớ thôi — phát âm chuẩn thì theo phiên âm IPA ở trên nhé.</p>
         </div>
       )}
       <div className="mt-4">
@@ -109,7 +109,7 @@ export default function DictPage() {
   return (
     <Studio
       title="Từ điển"
-      kicker="Tra Anh–Việt · nghe · luyện nói"
+      kicker="Tra nghĩa Anh–Việt · nghe mẫu · luyện nói theo"
       next={{ href: "/kho", label: "Kho" }}
       stage={
         <div className="mx-auto max-w-lg">
@@ -125,14 +125,14 @@ export default function DictPage() {
           </div>
           {!q.trim() && (
             <p className="mt-6 text-sm text-mute">
-              Tra 3500 từ trong kho (có nghĩa Việt, IPA, ví dụ) và từ điển mở bên ngoài. Gõ tiếng Việt để tìm ngược sang tiếng Anh.
+              Gõ từ tiếng Anh để tra nghĩa Việt, phiên âm và ví dụ — hoặc gõ tiếng Việt để tìm ngược sang tiếng Anh. Tra được cả 3500 từ trong kho lẫn từ điển mở bên ngoài.
             </p>
           )}
           <div className="mt-5 space-y-4">
             {local.map((x) => (
               <DictCard key={x.word} item={x} onAdd={() => commit(addLexItems(s, [x]))} />
             ))}
-            {loading && <p className="text-sm text-mute">Đang tra thêm nguồn ngoài…</p>}
+            {loading && <p className="text-sm text-mute">Đang tra thêm trong từ điển mở…</p>}
             {api?.map((e) => (
               <div key={e.word} className="panel p-5">
                 <div className="flex items-center justify-between">
@@ -157,7 +157,7 @@ export default function DictPage() {
               </div>
             ))}
             {apiErr && !local.length && q.trim() && !loading && (
-              <p className="text-sm text-mute">Không tìm thấy «{q.trim()}». Thử từ gần nghĩa hoặc kiểm tra chính tả.</p>
+              <p className="text-sm text-mute">Không tìm thấy «{q.trim()}». Bạn kiểm tra lại chính tả hoặc thử một từ gần nghĩa nhé.</p>
             )}
           </div>
         </div>

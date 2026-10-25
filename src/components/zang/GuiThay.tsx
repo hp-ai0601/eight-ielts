@@ -16,8 +16,8 @@ export default function GuiThay({ s }: { s: State }) {
 
   function copy() {
     void navigator.clipboard.writeText(code).then(
-      () => setCopied("Đã copy. Chỉ cần khi live chết."),
-      () => setCopied("Copy tay đoạn mã dưới."),
+      () => setCopied("Đã sao chép. Mã này chỉ cần khi kho chung bị lỗi."),
+      () => setCopied("Máy không cho sao chép tự động — em bôi đen đoạn mã rồi copy tay nhé."),
     );
   }
 
@@ -25,10 +25,10 @@ export default function GuiThay({ s }: { s: State }) {
     <div className="panel mt-10 p-4">
       <p className="text-xs uppercase tracking-wider text-lime">Thầy Hiệp</p>
       <p className="mt-2 text-sm text-mute">
-        Tiến trình ghi vào kho chung. Thầy mở máy khác vẫn thấy Zang học tới đâu, không cần Zang đang online.
+        Tiến trình của em được lưu vào kho chung — thầy mở máy khác cũng xem được, không cần em đang mở app.
       </p>
       <p className="mt-3 text-sm">
-        Hôm nay {r.steps.length}/4 bước · {r.sentences.length} câu · {r.papers.length} bài viết · streak {r.streak}
+        Hôm nay xong {r.steps.length}/4 bước · đặt {r.sentences.length} câu · viết {r.papers.length} bài · chuỗi {r.streak} ngày
       </p>
       {(grade || last) && (
         <p className="mt-3 text-sm text-lime">
@@ -36,7 +36,7 @@ export default function GuiThay({ s }: { s: State }) {
         </p>
       )}
       <button type="button" className="btn-ghost mt-4" onClick={copy}>
-        Copy mã dự phòng (nếu mạng chết)
+        Sao chép mã dự phòng (dùng khi mất mạng)
       </button>
       {copied && <p className="mt-2 text-sm text-lime">{copied}</p>}
     </div>

@@ -18,8 +18,8 @@ export default function TestsPage() {
 
   return (
     <Studio
-      title={topic === "mock" ? "Bài thi thật" : meta?.vi ?? "Đề"}
-      kicker={`${prog.done}/${prog.total} đã làm`}
+      title={topic === "mock" ? "Đề thi thử" : meta?.vi ?? "Đề"}
+      kicker={`Đã làm ${prog.done}/${prog.total} đề`}
       next={{ href: "/kho", label: "Kho" }}
       rail={
         <>
@@ -53,12 +53,12 @@ export default function TestsPage() {
             >
               <p className={`font-medium ${s.testsDone.includes(t.id) ? "line-through" : ""}`}>{t.title}</p>
               <p className="mt-0.5 text-sm text-mute">
-                {KIND_LABEL[t.kind]} · {t.minutes}′
+                {KIND_LABEL[t.kind]} · {t.minutes} phút
                 {t.questions ? ` · ${t.questions.length} câu` : ""}
               </p>
             </Link>
           ))}
-          {!items.length && <p className="text-mute">Chưa có đề.</p>}
+          {!items.length && <p className="text-mute">Chưa có đề nào ở mục này.</p>}
         </div>
       }
     />

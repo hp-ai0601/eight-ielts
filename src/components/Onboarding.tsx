@@ -59,9 +59,9 @@ export default function Onboarding({ onDone }: { onDone: (s: State) => void }) {
       {step === 0 && (
         <>
           <p className="text-sm text-lime">Eight</p>
-          <h1 className="mt-3 font-serif text-4xl leading-tight">Học lại từ đầu. Đích là 8.0.</h1>
+          <h1 className="mt-3 font-serif text-4xl leading-tight">Học lại từ đầu, mục tiêu 8.0.</h1>
           <p className="mt-4 text-mute">
-            Bốn bước của Zang mỗi ngày: một từ thành câu, một cụm truyện, một bài hài hoặc nhạc, rồi nhật ký. Đề IELTS để ở Kho.
+            Mỗi ngày Zang làm bốn bước: học từ rồi đặt câu, đọc cụm truyện, nghe một mẩu hài, rồi viết nhật ký. Đề luyện IELTS nằm trong Kho.
           </p>
           <button className="btn-lime mt-8" onClick={() => setStep(1)}>
             Bắt đầu
@@ -72,7 +72,7 @@ export default function Onboarding({ onDone }: { onDone: (s: State) => void }) {
       {step === 1 && (
         <>
           <h1 className="font-serif text-3xl">Bạn dành được bao nhiêu phút mỗi ngày?</h1>
-          <p className="mt-2 text-sm text-mute">Ít mà đều thắng nhiều mà bỏ.</p>
+          <p className="mt-2 text-sm text-mute">Học ít mà đều mỗi ngày còn hơn học nhiều rồi bỏ giữa chừng.</p>
           <div className="mt-6 grid gap-2">
             {([20, 40, 60] as const).map((m) => (
               <button
@@ -81,7 +81,7 @@ export default function Onboarding({ onDone }: { onDone: (s: State) => void }) {
                 onClick={() => setMinutes(m)}
               >
                 {m} phút
-                <span className="ml-2 text-sm text-mute">{m === 20 ? "tối thiểu" : m === 40 ? "khuyến nghị" : "ép band"}</span>
+                <span className="ml-2 text-sm text-mute">{m === 20 ? "mức tối thiểu" : m === 40 ? "nên học" : "muốn lên band nhanh"}</span>
               </button>
             ))}
           </div>
@@ -93,8 +93,8 @@ export default function Onboarding({ onDone }: { onDone: (s: State) => void }) {
 
       {step === 2 && (
         <>
-          <h1 className="font-serif text-3xl">Bốn câu, không phải bài thi.</h1>
-          <p className="mt-2 text-sm text-mute">Để đặt bạn đúng tầng lộ trình.</p>
+          <h1 className="font-serif text-3xl">Bốn câu nhỏ thôi, không phải bài thi đâu.</h1>
+          <p className="mt-2 text-sm text-mute">Làm thử để app xếp bạn vào đúng mức trong lộ trình.</p>
           <ol className="mt-6 space-y-6">
             {Qs.map((q, i) => (
               <li key={q.id}>
@@ -115,7 +115,7 @@ export default function Onboarding({ onDone }: { onDone: (s: State) => void }) {
               </li>
             ))}
           </ol>
-          <p className="mt-8 text-sm text-mute">Bạn tự thấy nói tiếng Anh đang ở mức nào? 1 = mới bắt đầu, 6 = gần band 6.</p>
+          <p className="mt-8 text-sm text-mute">Bạn tự đánh giá khả năng nói tiếng Anh của mình: 1 là mới bắt đầu, 6 là gần band 6.</p>
           <input
             type="range"
             min={1}
@@ -125,7 +125,7 @@ export default function Onboarding({ onDone }: { onDone: (s: State) => void }) {
             className="mt-2 w-full accent-lime"
           />
           <button className="btn-lime mt-8" disabled={Qs.some((q) => !picks[q.id])} onClick={finish}>
-            Vào studio
+            Vào học
           </button>
         </>
       )}

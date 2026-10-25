@@ -9,7 +9,7 @@ export default function VocabExamples({ word, fallback }: { word: string; fallba
   if (!ex) {
     return fallback ? (
       <p className="text-xs text-mute">
-        Một từ này có ví dụ gốc ở trên; tra thêm ví dụ ở mục Từ điển (nguồn mở) hoặc đặt câu với thầy.
+        Từ này đã có ví dụ mẫu ở trên — em có thể tra thêm ví dụ trong Từ điển hoặc nhờ thầy đặt câu cùng.
       </p>
     ) : null;
   }

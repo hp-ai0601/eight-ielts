@@ -12,7 +12,7 @@ export default function OneTest() {
   const { s, commit, ready } = useEight();
   const test = testById(id);
   if (!ready || !s) return null;
-  if (!test) return <p className="p-10">Không có đề này.</p>;
+  if (!test) return <p className="p-10">Không tìm thấy đề này.</p>;
   return (
     <div className="mx-auto max-w-2xl px-5 py-10 pb-28 lg:px-10">
       <TestView

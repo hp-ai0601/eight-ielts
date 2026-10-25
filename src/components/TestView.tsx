@@ -30,7 +30,7 @@ export default function TestView({
         <p className="text-xs uppercase tracking-wider text-lime">{test.topic}</p>
         <h1 className="mt-2 font-serif text-3xl">{test.title}</h1>
         <p className="mt-1 text-sm text-mute">
-          {test.minutes} phút{test.questions ? ` · ${test.questions.length} câu hiện hết` : ""}
+          {test.minutes} phút{test.questions ? ` · ${test.questions.length} câu, cuộn xuống để làm hết` : ""}
           {test.homework ? " · bài tập về nhà" : ""}
         </p>
 
@@ -58,7 +58,7 @@ export default function TestView({
 
         {test.script && (
           <p className="mt-4 text-sm text-mute">
-            Câu hỏi hiện hết bên dưới. Phát audio ở thanh dừng — bấm Dừng khi cần.
+            Câu hỏi ở ngay bên dưới — bấm Phát ở thanh cuối màn hình để nghe, bấm Dừng khi cần nghỉ.
           </p>
         )}
 

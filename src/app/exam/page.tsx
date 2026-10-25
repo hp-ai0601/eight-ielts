@@ -28,7 +28,7 @@ export default function ExamPage() {
             <p className="font-serif text-lg leading-tight">Đổi điểm</p>
           </RailPick>
           <RailPick on={pane === "mock"} onClick={() => setPane("mock")}>
-            <p className="font-serif text-lg leading-tight">Khi nào mock</p>
+            <p className="font-serif text-lg leading-tight">Khi nào thi thử</p>
           </RailPick>
         </>
       }
@@ -38,42 +38,46 @@ export default function ExamPage() {
             <div>
               <BandMeter bands={s.profile.bands} />
               <p className="mt-5 text-sm leading-7 text-mute">
-                Cùng ngày: Listening {EXAM.listening.minutes}′ → Reading {EXAM.reading.minutes}′ → Writing {EXAM.writing.minutes}′.
-                Speaking {EXAM.speaking.minutes}′ có thể khác ngày. Không nghỉ giữa 3 bài viết.
+                Ba bài thi trong cùng một ngày: Listening {EXAM.listening.minutes} phút → Reading {EXAM.reading.minutes}{" "}
+                phút → Writing {EXAM.writing.minutes} phút, không có giờ nghỉ giữa các bài. Speaking {EXAM.speaking.minutes}{" "}
+                phút có thể thi vào ngày khác.
               </p>
             </div>
           )}
           {pane === "doi" && (
             <div>
-              <label className="block text-sm">Listening đúng / 40</label>
+              <label className="block text-sm">Listening đúng bao nhiêu câu / 40</label>
               <input className="field mt-1" type="number" min={0} max={40} value={l} onChange={(e) => setL(Number(e.target.value))} />
-              <p className="mt-2 text-lime">≈ {answersToBand(l)}</p>
-              <label className="mt-4 block text-sm">Reading đúng / 40</label>
+              <p className="mt-2 text-lime">≈ band {answersToBand(l)}</p>
+              <label className="mt-4 block text-sm">Reading đúng bao nhiêu câu / 40</label>
               <input className="field mt-1" type="number" min={0} max={40} value={r} onChange={(e) => setR(Number(e.target.value))} />
-              <p className="mt-2 text-lime">≈ {answersToBand(r)}</p>
-              <p className="mt-4 text-xs text-mute">Band 8 Listening/Reading thường ~35–36/40.</p>
+              <p className="mt-2 text-lime">≈ band {answersToBand(r)}</p>
+              <p className="mt-4 text-xs text-mute">Muốn đạt band 8 ở Listening/Reading thường cần đúng khoảng 35–36/40 câu.</p>
             </div>
           )}
           {pane === "mock" && (
             <div className="text-sm leading-7 text-mute">
-              <p className="text-text">Chỉ khi xong tầng Trôi.</p>
-              <p className="mt-3">Một đề = 2h45 + chấm writing. Review lỗi lâu hơn lúc làm. Đừng nhồi đề khi grammar còn vỡ.</p>
+              <p className="text-text">Chỉ nên thi thử khi đã xong tầng Trôi chảy.</p>
+              <p className="mt-3">
+                Làm một đề mất 2 tiếng 45 phút, cộng thêm thời gian chấm writing. Xem lại lỗi sai phải kỹ hơn cả lúc làm
+                bài. Đừng dồn làm nhiều đề khi ngữ pháp còn yếu.
+              </p>
               <p className="mt-4">
-                Có đồng hồ sẵn:{" "}
+                Các bài có bấm giờ sẵn:{" "}
                 <Link className="text-lime" href="/lesson/x-listen-lecture">
-                  nghe P4
+                  nghe phần 4
                 </Link>
                 ,{" "}
                 <Link className="text-lime" href="/lesson/x-read-long">
-                  đọc
+                  đọc đoạn dài
                 </Link>
                 ,{" "}
                 <Link className="text-lime" href="/lesson/x-speak-timed">
-                  nói 2′
+                  nói 2 phút
                 </Link>
                 ,{" "}
                 <Link className="text-lime" href="/lesson/x-write-timed">
-                  viết 40′
+                  viết 40 phút
                 </Link>
                 .
               </p>

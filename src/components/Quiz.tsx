@@ -46,7 +46,7 @@ export default function Quiz({
       <div className="sticky top-0 z-20 -mx-1 mb-4 border-b border-line bg-bg/95 px-1 py-2 backdrop-blur">
         <div className="flex items-center justify-between gap-3">
           <p className="text-xs text-mute">
-            {questions.length} câu · hiện hết
+            {questions.length} câu · cuộn xuống để làm hết
           </p>
           {!revealed && (
             <button className="btn-lime shrink-0" onClick={submit}>
@@ -120,7 +120,7 @@ export default function Quiz({
               {revealed && (
                 <div className="mt-3">
                   <p className={correct ? "text-lime" : "text-bad"}>
-                    {correct ? "Đúng." : `Sai. Đáp: ${q.answer}`}
+                    {correct ? "Đúng rồi!" : `Chưa đúng. Đáp án là: ${q.answer}`}
                   </p>
                   <p className="mt-1 text-sm text-mute">{q.why}</p>
                 </div>
@@ -132,7 +132,7 @@ export default function Quiz({
 
       {!revealed ? (
         <button className="btn-lime mt-8" onClick={submit}>
-          Nộp bài · đã làm {filled}/{questions.length}
+          Nộp bài · đã làm {filled}/{questions.length} câu
         </button>
       ) : (
         <div className="mt-8">
@@ -140,7 +140,7 @@ export default function Quiz({
             {ok}/{questions.length}
           </p>
           <button className="btn-lime mt-4" onClick={() => onDone(ok ?? 0)}>
-            Xong bài
+            Hoàn thành
           </button>
         </div>
       )}

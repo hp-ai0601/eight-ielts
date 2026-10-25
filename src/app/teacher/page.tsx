@@ -107,7 +107,7 @@ export default function TeacherPage() {
 
   if (!ready || !s) return null;
   if (s.profile.userId && s.profile.userId !== "hiep") {
-    return <p className="p-10 text-mute">Trang này cho thầy Hiệp. Zang vào Hôm nay.</p>;
+    return <p className="p-10 text-mute">Trang này dành cho thầy Hiệp. Học trò vui lòng quay lại trang Hôm nay.</p>;
   }
 
   const paper = report?.papers[0];
@@ -118,7 +118,7 @@ export default function TeacherPage() {
   return (
     <Studio
       title="Zang Bếu"
-      kicker={report ? "kho chung" : "chưa có dữ liệu"}
+      kicker={report ? "Đã kết nối kho chung" : "Chưa có dữ liệu"}
       rail={
         <>
           <RailPick on={pane === "live"} onClick={() => setPane("live")}>
@@ -164,19 +164,19 @@ export default function TeacherPage() {
           {pane === "live" && (
             <>
               <p className="text-sm text-mute">
-                Kho chung: Zang học máy nào thì thầy mở máy khác vẫn thấy tiến trình, kể cả khi Zang đã tắt máy.
+                Nhờ kho chung, Zang học ở máy nào thầy cũng xem được tiến trình — kể cả khi Zang đã tắt máy.
               </p>
-              <textarea className="field mt-4 min-h-20" value={paste} onChange={(e) => setPaste(e.target.value)} placeholder="Dán mã dự phòng nếu kho chung lỗi…" />
+              <textarea className="field mt-4 min-h-20" value={paste} onChange={(e) => setPaste(e.target.value)} placeholder="Nếu kho chung bị lỗi, dán mã dự phòng vào đây…" />
               <button
                 type="button"
                 className="btn-ghost mt-2"
                 disabled={!paste.trim()}
                 onClick={() => {
                   const r = unpack(paste.trim());
-                  if (!r) setHint("Mã không đọc được.");
+                  if (!r) setHint("Mã này không đọc được, thầy kiểm tra lại nhé.");
                   else {
                     setReport(r);
-                    setHint("Đã nhận mã.");
+                    setHint("Đã nhận mã thành công.");
                   }
                 }}
               >
@@ -186,17 +186,17 @@ export default function TeacherPage() {
               {report && (
                 <div className="panel mt-6 space-y-2 p-5 text-sm">
                   <p>
-                    {report.day} · {report.steps.length}/4 bước · {report.minutes}′ · streak {report.streak}
+                    {report.day} · xong {report.steps.length}/4 bước · học {report.minutes} phút · chuỗi {report.streak} ngày
                   </p>
                   <p>
-                    Giai đoạn {report.stage ?? "—"} · xong {report.completed ?? 0} bài · L {report.bands?.l ?? "—"} · R{" "}
+                    Giai đoạn {report.stage ?? "—"} · đã xong {report.completed ?? 0} bài · L {report.bands?.l ?? "—"} · R{" "}
                     {report.bands?.r ?? "—"} · W {report.bands?.w ?? "—"} · S {report.bands?.s ?? "—"}
                   </p>
                   <p>
-                    Câu sạch {report.sentences.length} · nhật ký {report.diaries.length} · writing {report.papers.length} ·
-                    nói {report.speaks.length}
+                    {report.sentences.length} câu đặt đúng · {report.diaries.length} bài nhật ký · {report.papers.length} bài writing ·
+                    {" "}{report.speaks.length} lần nói
                   </p>
-                  <p className="text-xs text-mute">Cập nhật {new Date(report.at).toLocaleString("vi-VN")}</p>
+                  <p className="text-xs text-mute">Cập nhật lúc {new Date(report.at).toLocaleString("vi-VN")}</p>
                 </div>
               )}
               {report?.diaries[0] && (
@@ -215,14 +215,14 @@ export default function TeacherPage() {
 
           {pane === "write" && (
             <>
-              {!paper && <p className="text-mute">Chưa có bài writing. Zang nộp ở đề viết hoặc nhật ký.</p>}
+              {!paper && <p className="text-mute">Chưa có bài writing nào. Zang nộp bài ở phần luyện viết hoặc nhật ký thì sẽ hiện ở đây.</p>}
               {paper && (
                 <>
                   <p className="text-xs text-mute">{paper.kind === "t1" ? "Task 1" : paper.kind === "t2" ? "Task 2" : "Nhật ký"}</p>
                   <p className="mt-2 font-serif text-lg">{paper.prompt}</p>
                   <p className="mt-4 whitespace-pre-wrap text-sm leading-7">{paper.text}</p>
                   <p className="mt-4 text-xs text-mute">
-                    Máy ước TR/TA {paper.auto.ta} · CC {paper.auto.cc} · LR {paper.auto.lr} · GRA {paper.auto.gra} → {paper.auto.band}
+                    Máy chấm thử: TR/TA {paper.auto.ta} · CC {paper.auto.cc} · LR {paper.auto.lr} · GRA {paper.auto.gra} → band {paper.auto.band}
                   </p>
                   <div className="mt-6 space-y-3">
                     <Band label={paper.kind === "t1" ? "Task Achievement" : "Task Response"} value={ta} onChange={setTa} />
@@ -231,7 +231,7 @@ export default function TeacherPage() {
                     <Band label="Grammar" value={gra} onChange={setGra} />
                   </div>
                   <p className="mt-3 font-serif text-2xl">{wBand}</p>
-                  <textarea className="field mt-3 min-h-24" value={note} onChange={(e) => setNote(e.target.value)} placeholder="Một lỗi GRA, một việc làm lại…" />
+                  <textarea className="field mt-3 min-h-24" value={note} onChange={(e) => setNote(e.target.value)} placeholder="Nhận xét cho trò: một lỗi ngữ pháp, một việc cần làm lại…" />
                   <button
                     className="btn-lime mt-3"
                     onClick={() => {
@@ -239,9 +239,9 @@ export default function TeacherPage() {
                       setHint("Đã gửi điểm cho Zang.");
                     }}
                   >
-                    Gửi điểm Zang
+                    Gửi điểm cho Zang
                   </button>
-                  {paper.teacher && <p className="mt-2 text-sm text-lime">Đã chấm {paper.teacher.band}: {paper.teacher.note}</p>}
+                  {paper.teacher && <p className="mt-2 text-sm text-lime">Thầy đã chấm {paper.teacher.band}: {paper.teacher.note}</p>}
                 </>
               )}
             </>
@@ -249,13 +249,13 @@ export default function TeacherPage() {
 
           {pane === "speak" && (
             <>
-              {!speak && <p className="text-mute">Chưa có lần nói. Zang bấm Nói rồi Nộp cho thầy.</p>}
+              {!speak && <p className="text-mute">Chưa có bài nói nào. Zang bấm Nói rồi chọn Nộp cho thầy thì sẽ hiện ở đây.</p>}
               {speak && (
                 <>
                   <p className="font-serif text-lg">{speak.cue}</p>
                   <p className="mt-4 whitespace-pre-wrap text-sm leading-7">{speak.text}</p>
                   <p className="mt-4 text-xs text-mute">
-                    Máy ước FC {speak.auto.fc} · LR {speak.auto.lr} · GRA {speak.auto.gra} · Pron {speak.auto.pron} → {speak.auto.band}
+                    Máy chấm thử: FC {speak.auto.fc} · LR {speak.auto.lr} · GRA {speak.auto.gra} · Pron {speak.auto.pron} → band {speak.auto.band}
                   </p>
                   <div className="mt-6 space-y-3">
                     <Band label="Fluency & Coherence" value={fc} onChange={setFc} />
@@ -264,7 +264,7 @@ export default function TeacherPage() {
                     <Band label="Pronunciation" value={pron} onChange={setPron} />
                   </div>
                   <p className="mt-3 font-serif text-2xl">{sBand}</p>
-                  <textarea className="field mt-3 min-h-24" value={note} onChange={(e) => setNote(e.target.value)} placeholder="Phụ âm cuối, thì, một câu mẫu…" />
+                  <textarea className="field mt-3 min-h-24" value={note} onChange={(e) => setNote(e.target.value)} placeholder="Nhận xét cho trò: phụ âm cuối, thì động từ, một câu mẫu…" />
                   <button
                     className="btn-lime mt-3"
                     onClick={() => {
@@ -272,7 +272,7 @@ export default function TeacherPage() {
                       setHint("Đã gửi điểm cho Zang.");
                     }}
                   >
-                    Gửi điểm Zang
+                    Gửi điểm cho Zang
                   </button>
                 </>
               )}
@@ -282,12 +282,12 @@ export default function TeacherPage() {
           {pane === "key" && (
             <>
               <p className="text-sm text-mute">
-                Listening và Reading máy chấm đúng/sai theo đáp án. ~30/40 ≈ 7, ~35–36/40 ≈ 8 Academic.
+                Listening và Reading máy tự chấm theo đáp án. Tham khảo: khoảng 30/40 là band 7, khoảng 35–36/40 là band 8 Academic.
               </p>
               <ul className="mt-4 space-y-2 text-sm">
                 {(report?.tests ?? []).map((t) => (
                   <li key={`${t.testId}-${t.at}`}>
-                    {t.testId} · {t.ok}/{t.total}
+                    {t.testId} · đúng {t.ok}/{t.total}
                   </li>
                 ))}
                 {!report?.tests.length && <li className="text-mute">Chưa làm đề nào.</li>}
@@ -298,7 +298,7 @@ export default function TeacherPage() {
           {pane === "class" && (
             <>
               <p className="text-sm text-mute">
-                Thêm học trò: app tự cấp mã đăng nhập và PIN 4 số. Các em chọn tên mình ở trang đăng nhập.
+                Thêm học trò vào lớp — app sẽ tự cấp tên đăng nhập và PIN 4 số. Các em chỉ cần chọn tên mình ở trang đăng nhập rồi nhập PIN.
               </p>
               <div className="mt-4 flex gap-2">
                 <input className="field" placeholder="Tên học trò mới…" value={newName} onChange={(e) => setNewName(e.target.value)} />
@@ -325,7 +325,7 @@ export default function TeacherPage() {
                         <p className="text-xs text-mute">
                           {pin ? `PIN ${pin} · ` : ""}
                           {st2
-                            ? `streak ${st2.profile.streak.count} · ${st2.cards.length} thẻ · ${st2.attempts.length} đề · hôm nay ${st2.profile.minutesToday}′`
+                            ? `chuỗi ${st2.profile.streak.count} ngày · ${st2.cards.length} thẻ · ${st2.attempts.length} đề · hôm nay học ${st2.profile.minutesToday} phút`
                             : "chưa học lần nào trên máy này"}
                         </p>
                       </div>
@@ -349,7 +349,7 @@ export default function TeacherPage() {
 
           {pane === "assign" && (
             <>
-              <p className="text-sm text-mute">Giao từ vựng theo chủ đề (20 từ đầu) hoặc tự nhập danh sách. Học trò thấy ở trang 3500 từ.</p>
+              <p className="text-sm text-mute">Giao từ vựng theo chủ đề (mặc định 20 từ đầu) hoặc thầy tự nhập danh sách. Học trò sẽ thấy bài ở trang 3500 từ.</p>
               <input className="field mt-4" placeholder="Tên bài: Tuần này học chủ đề Thời tiết…" value={asTitle} onChange={(e) => setAsTitle(e.target.value)} />
               <div className="mt-2 grid grid-cols-2 gap-2">
                 <select className="field" value={asTopic} onChange={(e) => setAsTopic(e.target.value)}>
@@ -370,7 +370,7 @@ export default function TeacherPage() {
               </div>
               <input
                 className="field mt-2"
-                placeholder="Hoặc tự nhập từ, cách nhau bởi dấu phẩy: rain, storm, cloud…"
+                placeholder="Hoặc tự nhập các từ, cách nhau bằng dấu phẩy: rain, storm, cloud…"
                 value={asWords}
                 onChange={(e) => setAsWords(e.target.value)}
               />
@@ -404,7 +404,7 @@ export default function TeacherPage() {
                     <div className="min-w-0 flex-1">
                       <p className="text-sm font-semibold">{a.title}</p>
                       <p className="text-xs text-mute">
-                        {a.words.length} từ · hạn {a.due}
+                        {a.words.length} từ · hạn nộp {a.due}
                         {a.forId ? ` · riêng ${students.find((x) => x.id === a.forId)?.name ?? a.forId}` : " · cả lớp"}
                         {a.note ? ` · “${a.note}”` : ""}
                       </p>
@@ -427,7 +427,7 @@ export default function TeacherPage() {
 
           {pane === "weak" && (
             <>
-              <p className="text-sm text-mute">Từ các em bấm «Lại» nhiều nhất trong thẻ ôn — nên ôn miệng đầu giờ.</p>
+              <p className="text-sm text-mute">Những từ các em bấm «Học lại» nhiều nhất trong thẻ ôn — thầy có thể cho ôn miệng đầu giờ.</p>
               <div className="mt-4 space-y-4">
                 {students.map((st) => {
                   const ws = weakWords(st.id);
@@ -444,7 +444,7 @@ export default function TeacherPage() {
                           ))}
                         </p>
                       ) : (
-                        <p className="mt-1 text-xs text-mute">Chưa có dữ liệu thẻ trên máy này.</p>
+                        <p className="mt-1 text-xs text-mute">Chưa có dữ liệu thẻ ôn trên máy này.</p>
                       )}
                     </div>
                   );
@@ -456,7 +456,7 @@ export default function TeacherPage() {
           {pane === "quiz" && (
             <>
               <p className="text-sm text-mute">
-                Kết quả «Kiểm tra nhanh» — học trò làm ở trang 3500 từ, dưới mỗi bài được giao.
+                Kết quả «Kiểm tra nhanh» — học trò làm ngay dưới mỗi bài được giao ở trang 3500 từ.
               </p>
               <div className="mt-4 space-y-2">
                 {quizResults.map((r, i) => (
@@ -478,11 +478,11 @@ export default function TeacherPage() {
           {pane === "memo" && (
             <>
               <p className="text-sm text-mute">
-                Thầy tự tạo mẹo âm điệu cho từ khó — hiện ngay ở Từ điển, trang 3500 từ và truyện của các em.
+                Thầy tự tạo mẹo đọc âm gần giống cho từ khó — mẹo sẽ hiện ngay ở Từ điển, trang 3500 từ và truyện của các em.
               </p>
               <input className="field mt-4" placeholder="Từ tiếng Anh: elephant…" value={mnWord} onChange={(e) => setMnWord(e.target.value)} />
-              <input className="field mt-2" placeholder="Âm điệu tiếng Việt: «ê lê phờn»…" value={mnSound} onChange={(e) => setMnSound(e.target.value)} />
-              <input className="field mt-2" placeholder="Hình ảnh liên tưởng: con voi ê a kéo theo cái phờn…" value={mnImg} onChange={(e) => setMnImg(e.target.value)} />
+              <input className="field mt-2" placeholder="Đọc gần giống tiếng Việt: «ê lê phờn»…" value={mnSound} onChange={(e) => setMnSound(e.target.value)} />
+              <input className="field mt-2" placeholder="Hình ảnh gợi nhớ: con voi ê a kéo theo cái phờn…" value={mnImg} onChange={(e) => setMnImg(e.target.value)} />
               <button
                 className="btn-lime mt-3"
                 disabled={!mnWord.trim() || !mnSound.trim()}
@@ -504,7 +504,7 @@ export default function TeacherPage() {
                     <p className="text-xs text-mute">{m.img}</p>
                   </div>
                 ))}
-                {!Object.keys(customMn).length && <p className="text-sm text-mute">Chưa có mẹo nào của thầy.</p>}
+                {!Object.keys(customMn).length && <p className="text-sm text-mute">Thầy chưa tạo mẹo nào.</p>}
               </div>
             </>
           )}

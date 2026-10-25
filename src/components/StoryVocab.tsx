@@ -9,7 +9,7 @@ export default function StoryVocab({ en }: { en: string }) {
   if (!gs.length) return null;
   return (
     <div className="rounded-xl border border-line p-3">
-      <p className="text-[11px] uppercase tracking-wider text-mute">Từ trong mẩu — dịch trong ngoặc</p>
+      <p className="text-[11px] uppercase tracking-wider text-mute">Từ vựng trong mẩu truyện — kèm nghĩa trong ngoặc</p>
       <div className="mt-2 space-y-2">
         {gs.map((g) => (
           <div key={g.word} className="flex items-start justify-between gap-3 text-sm">
