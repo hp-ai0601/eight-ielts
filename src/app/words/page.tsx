@@ -7,9 +7,9 @@ import SrsDeck from "@/components/SrsDeck";
 import { LEX_COUNT, LEX_TOPICS, lexByTopic, lexSearch } from "@/lib/lexicon";
 import { assignmentsFor, saveQuizResult, type Assignment } from "@/lib/classroom";
 import QuickQuiz from "@/components/QuickQuiz";
+import FillBlank from "@/components/FillBlank";
 import { POS_VI } from "@/lib/pos";
 import { mnemonicOf } from "@/lib/mnemonic";
-import { glossInline } from "@/lib/gloss";
 import WordPic from "@/components/WordPic";
 import ExampleLine from "@/components/ExampleLine";
 import VocabExamples from "@/components/VocabExamples";
@@ -22,6 +22,7 @@ export default function WordsPage() {
   const [topic, setTopic] = useState(LEX_TOPICS[0].id);
   const [q, setQ] = useState("");
   const [deck, setDeck] = useState(false);
+  const [fill, setFill] = useState(false);
   const [wi, setWi] = useState(0);
   const [quizFor, setQuizFor] = useState<Assignment | null>(null);
   const items = useMemo(() => (q.trim() ? lexSearch(q) : lexByTopic(topic)), [q, topic]);
@@ -108,14 +109,31 @@ export default function WordsPage() {
             <button className="btn-lime" onClick={() => commit(addLexItems(s, items.slice(0, 20)))}>
               Học 20 từ
             </button>
-            <button className="btn-ghost" onClick={() => setDeck((x) => !x)}>
+            <button
+              className="btn-ghost"
+              onClick={() => {
+                setDeck((x) => !x);
+                setFill(false);
+              }}
+            >
               {deck ? "Quay lại danh sách từ" : `Ôn thẻ (${n} thẻ)`}
+            </button>
+            <button
+              className="btn-ghost"
+              onClick={() => {
+                setFill((x) => !x);
+                setDeck(false);
+              }}
+            >
+              {fill ? "Quay lại danh sách từ" : "Bài tập điền từ"}
             </button>
           </div>
           {deck ? (
             <div className="mt-6">
               <SrsDeck state={s} onDone={commit} />
             </div>
+          ) : fill ? (
+            <FillBlank seedWords={items.slice(0, 60).map((x) => x.word)} />
           ) : word ? (
             <>
               <p className="mt-6 text-[11px] uppercase tracking-wider text-lime">
@@ -137,10 +155,6 @@ export default function WordsPage() {
               <ExampleLine en={word.example} />
               <div className="mt-1">
                 <Hear text={word.example} label="Nghe cả câu" rate={0.88} />
-              </div>
-              <div className="mt-2 rounded-xl border border-line p-3">
-                <p className="text-[11px] uppercase tracking-wider text-mute">Đọc lại câu — nghĩa ghi trong ngoặc</p>
-                <p className="mt-1.5 text-sm leading-7">{glossInline(word.example)}</p>
               </div>
               <VocabExamples word={word.word} fallback={word.example} />
               {mnemonicOf(word.word) && (

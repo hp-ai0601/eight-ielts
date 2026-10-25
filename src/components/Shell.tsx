@@ -16,7 +16,7 @@ const NAV = [
   { href: "/kho", label: "Kho" },
 ];
 
-const KHO = ["/kho", "/words", "/grammar", "/method", "/tests", "/path", "/homework", "/exam", "/coach", "/lesson", "/listen", "/read", "/write", "/speak", "/dict", "/irregular", "/idioms"];
+const KHO = ["/kho", "/words", "/grammar", "/method", "/tests", "/path", "/homework", "/exam", "/coach", "/lesson", "/listen", "/read", "/write", "/speak", "/dict", "/irregular", "/idioms", "/songs"];
 
 function navOn(href: string, path: string) {
   if (href === "/") return path === "/";

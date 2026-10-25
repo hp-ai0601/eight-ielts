@@ -7,9 +7,7 @@ import { speak } from "@/lib/speech";
 import { bumpZangLot, saveZangDraft, saveZangSentence, saveZangSpell, zangLot, type State } from "@/lib/store";
 import { POS_VI, posHint } from "@/lib/pos";
 import { checkText, type Check } from "@/lib/zang/check";
-import { mnemonicOf } from "@/lib/mnemonic";
 import ChamCau from "./ChamCau";
-import VocabExamples from "@/components/VocabExamples";
 import ChinhTa from "./ChinhTa";
 import WordPic from "@/components/WordPic";
 import ExampleLine from "@/components/ExampleLine";
@@ -210,13 +208,6 @@ export default function TuCau({ s, onDone }: { s: State; onDone: (next: State) =
                   <p className="mt-2 text-sm">
                     {FRAME_VI[frame] ?? frame}
                   </p>
-                  {mnemonicOf(word.word) && (
-                    <div className="mt-4 rounded-xl border border-lime/30 bg-lime/5 p-3 text-sm">
-                      <p className="text-lime">Mẹo nhớ: nghe giống «{mnemonicOf(word.word)!.sound}»</p>
-                      <p className="mt-0.5 text-mute">{mnemonicOf(word.word)!.img}</p>
-                      <p className="mt-1 text-[11px] text-mute">Mẹo này chỉ giúp dễ nhớ thôi — phát âm chuẩn thì theo phiên âm IPA ở trên nhé.</p>
-                    </div>
-                  )}
                   {ex && (
                     <div className="mt-4">
                       <div className="flex items-center justify-between">
@@ -226,7 +217,6 @@ export default function TuCau({ s, onDone }: { s: State; onDone: (next: State) =
                       <ExampleLine en={ex.en} vi={ex.vi} grammar={ex.g} />
                     </div>
                   )}
-                  <VocabExamples word={word.word} />
                   <button className="btn-lime mt-6" onClick={() => setPane("go")}>
                     Gõ chính tả →
                   </button>

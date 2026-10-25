@@ -2,7 +2,6 @@
 
 import { useState } from "react";
 import { speak } from "@/lib/speech";
-import { glossInline } from "@/lib/gloss";
 import { fmtInterval, nextInterval, type Grade } from "@/lib/srs";
 import { due, gradeCard, type State } from "@/lib/store";
 import WordPic from "@/components/WordPic";
@@ -77,7 +76,6 @@ export default function SrsDeck({
               <div className="mt-1">
                 <Hear text={card.example} label="Nghe cả câu" rate={0.88} />
               </div>
-              <p className="mt-1.5 text-sm leading-7 text-mute">{glossInline(card.example)}</p>
             </>
           )}
           <p className="mt-6 text-[11px] uppercase tracking-wider text-mute">Tự chấm mức nhớ — app sẽ nhắc ôn lại đúng lúc</p>

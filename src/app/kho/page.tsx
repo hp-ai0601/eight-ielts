@@ -7,6 +7,7 @@ const ITEMS = [
   { href: "/words", title: "3500 từ", why: "100 chủ đề, mỗi lần học 20 từ" },
   { href: "/irregular", title: "Động từ bất quy tắc", why: "Hơn 200 động từ V1–V2–V3, chia nhóm dễ nhớ" },
   { href: "/idioms", title: "Thành ngữ & châm ngôn", why: "Đời thường, tiền bạc, tu dưỡng — dịch sát nghĩa" },
+  { href: "/songs", title: "Học qua nhạc Anh", why: "24 bài kinh điển kèm mẹo luyện nghe từng bài" },
   { href: "/grammar", title: "Ngữ pháp", why: "Hơn 40 bài, từ các thì đến câu phức band 8" },
   { href: "/method", title: "Cách làm đề + mẹo", why: "Cách làm TFNG, Task 1, phát âm, quản lý thời gian" },
   { href: "/tests", title: "Ngân hàng đề", why: "101 chủ đề và đề thi thử" },
