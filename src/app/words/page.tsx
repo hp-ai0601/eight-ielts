@@ -9,6 +9,7 @@ import { assignmentsFor, saveQuizResult, type Assignment } from "@/lib/classroom
 import QuickQuiz from "@/components/QuickQuiz";
 import { POS_VI } from "@/lib/pos";
 import { mnemonicOf } from "@/lib/mnemonic";
+import { glossInline } from "@/lib/gloss";
 import WordPic from "@/components/WordPic";
 import ExampleLine from "@/components/ExampleLine";
 import VocabExamples from "@/components/VocabExamples";
@@ -136,6 +137,10 @@ export default function WordsPage() {
               <ExampleLine en={word.example} />
               <div className="mt-1">
                 <Hear text={word.example} label="Nghe cả câu" rate={0.88} />
+              </div>
+              <div className="mt-2 rounded-xl border border-line p-3">
+                <p className="text-[11px] uppercase tracking-wider text-mute">Đọc lại câu — nghĩa ghi trong ngoặc</p>
+                <p className="mt-1.5 text-sm leading-7">{glossInline(word.example)}</p>
               </div>
               <VocabExamples word={word.word} fallback={word.example} />
               {mnemonicOf(word.word) && (
