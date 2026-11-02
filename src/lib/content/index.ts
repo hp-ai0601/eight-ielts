@@ -106,6 +106,24 @@ export function allLessonIds() {
   return STAGES.flatMap((s) => s.units.flatMap((u) => u.lessons));
 }
 
+export function lessonUnlocked(id: string, completed: string[]) {
+  const ids = allLessonIds();
+  const i = ids.indexOf(ALIAS[id] ?? id);
+  if (i < 0) return false;
+  if (i === 0) return true;
+  return completed.includes(ids[i - 1]);
+}
+
+export function prevLessonId(id: string) {
+  const ids = allLessonIds();
+  const i = ids.indexOf(ALIAS[id] ?? id);
+  return i > 0 ? ids[i - 1] : null;
+}
+
+export function nextTodoLessonId(completed: string[]) {
+  return allLessonIds().find((id) => !completed.includes(id)) ?? null;
+}
+
 export function locate(lessonId: string) {
   const id = ALIAS[lessonId] ?? lessonId;
   for (const [si, s] of STAGES.entries()) {

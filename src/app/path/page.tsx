@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { STAGES, allLessonIds, lessonById } from "@/lib/content";
+import { STAGES, allLessonIds, lessonById, lessonUnlocked, nextTodoLessonId } from "@/lib/content";
 import { useEight } from "@/lib/useEight";
 import Studio, { RailPick } from "@/components/Studio";
 
@@ -13,6 +13,7 @@ export default function PathPage() {
   const total = allLessonIds().length;
   const done = s.profile.completed.filter((x) => allLessonIds().includes(x)).length;
   const st = STAGES.find((x) => x.id === (id ?? s.profile.stageId)) ?? STAGES[0];
+  const nextTodo = nextTodoLessonId(s.profile.completed);
 
   return (
     <Studio
@@ -29,6 +30,7 @@ export default function PathPage() {
       stage={
         <div className="mx-auto max-w-lg">
           <p className="text-sm text-mute">{st.promise}</p>
+          <p className="mt-2 text-xs text-mute">Học theo thứ tự — xong một bài mới mở bài tiếp theo.</p>
           <div className="mt-6 space-y-5">
             {st.units.map((u) => (
               <div key={u.id}>
@@ -38,11 +40,21 @@ export default function PathPage() {
                   {u.lessons.map((lid) => {
                     const l = lessonById(lid);
                     const ok = s.profile.completed.includes(lid);
+                    const open = ok || lessonUnlocked(lid, s.profile.completed);
+                    const isNext = lid === nextTodo;
+                    if (!open) {
+                      return (
+                        <li key={lid}>
+                          <span className="text-sm text-mute/50">🔒 {l?.title}</span>
+                        </li>
+                      );
+                    }
                     return (
                       <li key={lid}>
                         <Link href={`/lesson/${lid}`} className={`text-sm ${ok ? "text-mute line-through" : "hover:text-lime"}`}>
                           {ok ? "✓ " : ""}
                           {l?.title}
+                          {isNext ? <span className="ml-1.5 text-[11px] text-lime">← bài tiếp theo</span> : null}
                         </Link>
                       </li>
                     );
