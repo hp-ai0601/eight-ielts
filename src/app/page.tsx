@@ -6,7 +6,8 @@ import Onboarding from "@/components/Onboarding";
 import { zangToday } from "@/lib/store";
 import GuiThay from "@/components/zang/GuiThay";
 import DailyChallenge from "@/components/DailyChallenge";
-import { levelOf, starCount } from "@/lib/stars";
+import GrowTree from "@/components/GrowTree";
+import { levelOf, starCount, weekActivity } from "@/lib/stars";
 
 const STEPS = [
   { n: 1, href: "/tu", title: "Từ vựng", why: "Học 8 từ rồi đặt câu" },
@@ -24,6 +25,7 @@ export default function Today() {
   const next = STEPS.find((x) => !done.has(x.n)) ?? STEPS[0];
   const stars = starCount(s);
   const lv = levelOf(stars);
+  const week = weekActivity(s);
 
   return (
     <div className="mx-auto flex w-full max-w-3xl flex-1 flex-col px-5 py-8 lg:px-10 lg:py-12">
@@ -66,6 +68,24 @@ export default function Today() {
             ? `Còn ${lv.next.need - stars} sao nữa lên cấp ${lv.index + 2} (${lv.next.name}) — cứ học mỗi ngày là sao tự tăng.`
             : "Cấp cao nhất rồi — giữ phong độ nhé, chiến binh 8.0!"}
         </p>
+        <div className="mt-4 border-t border-line pt-4">
+          <GrowTree stars={stars} />
+        </div>
+        <div className="mt-4 flex gap-1.5">
+          {week.map((d) => (
+            <div
+              key={d.day}
+              className={`flex-1 rounded-lg border py-2 text-center text-[11px] ${
+                d.active ? "border-lime bg-lime/10 text-lime" : "border-line text-mute"
+              } ${d.isToday ? "ring-1 ring-lime" : ""}`}
+              title={d.day}
+            >
+              <p className="font-semibold">{d.label}</p>
+              <p className="mt-0.5">{d.active ? "✓" : "·"}</p>
+            </div>
+          ))}
+        </div>
+        <p className="mt-2 text-[11px] text-mute">Ngày có dấu ✓ là ngày đã học — ô khoanh tròn là hôm nay.</p>
       </div>
 
       <DailyChallenge s={s} />

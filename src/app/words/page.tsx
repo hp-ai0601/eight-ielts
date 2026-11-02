@@ -8,6 +8,7 @@ import { LEX_COUNT, LEX_TOPICS, lexByTopic, lexSearch } from "@/lib/lexicon";
 import { assignmentsFor, saveQuizResult, type Assignment } from "@/lib/classroom";
 import QuickQuiz from "@/components/QuickQuiz";
 import FillBlank from "@/components/FillBlank";
+import Dictation from "@/components/Dictation";
 import { POS_VI } from "@/lib/pos";
 import { mnemonicOf } from "@/lib/mnemonic";
 import WordPic from "@/components/WordPic";
@@ -23,6 +24,8 @@ export default function WordsPage() {
   const [q, setQ] = useState("");
   const [deck, setDeck] = useState(false);
   const [fill, setFill] = useState(false);
+  const [dict, setDict] = useState(false);
+  const [justAdded, setJustAdded] = useState("");
   const [wi, setWi] = useState(0);
   const [quizFor, setQuizFor] = useState<Assignment | null>(null);
   const items = useMemo(() => (q.trim() ? lexSearch(q) : lexByTopic(topic)), [q, topic]);
@@ -114,6 +117,7 @@ export default function WordsPage() {
               onClick={() => {
                 setDeck((x) => !x);
                 setFill(false);
+                setDict(false);
               }}
             >
               {deck ? "Quay lại danh sách từ" : `Ôn thẻ (${n} thẻ)`}
@@ -123,9 +127,20 @@ export default function WordsPage() {
               onClick={() => {
                 setFill((x) => !x);
                 setDeck(false);
+                setDict(false);
               }}
             >
               {fill ? "Quay lại danh sách từ" : "Bài tập điền từ"}
+            </button>
+            <button
+              className="btn-ghost"
+              onClick={() => {
+                setDict((x) => !x);
+                setDeck(false);
+                setFill(false);
+              }}
+            >
+              {dict ? "Quay lại danh sách từ" : "Nghe viết"}
             </button>
           </div>
           {deck ? (
@@ -134,6 +149,8 @@ export default function WordsPage() {
             </div>
           ) : fill ? (
             <FillBlank seedWords={items.slice(0, 60).map((x) => x.word)} />
+          ) : dict ? (
+            <Dictation seedWords={items.slice(0, 60).map((x) => x.word)} />
           ) : word ? (
             <>
               <p className="mt-6 text-[11px] uppercase tracking-wider text-lime">
@@ -168,6 +185,22 @@ export default function WordsPage() {
                 <button className="btn-ghost" disabled={i <= 0} onClick={() => setWi(i - 1)}>
                   Trước
                 </button>
+                {(() => {
+                  const inDeck = s.cards.some((c) => c.front.toLowerCase() === word.word.toLowerCase());
+                  return (
+                    <button
+                      className={inDeck ? "btn-ghost !px-3 !py-1.5 text-xs text-lime" : "btn-ghost !px-3 !py-1.5 text-xs"}
+                      disabled={inDeck}
+                      onClick={() => {
+                        commit(addLexItems(s, [word]));
+                        setJustAdded(word.word);
+                        setTimeout(() => setJustAdded(""), 2000);
+                      }}
+                    >
+                      {justAdded === word.word ? "Đã thêm ✓" : inDeck ? "Đã có trong bộ ôn" : "+ Ôn tập từ này"}
+                    </button>
+                  );
+                })()}
                 <button className="btn-ghost" disabled={i >= items.length - 1} onClick={() => setWi(i + 1)}>
                   Sau
                 </button>

@@ -89,3 +89,36 @@ export function levelOf(stars: number): { level: Level; index: number; next: Lev
   const progress = next ? Math.min(1, (stars - level.need) / (next.need - level.need)) : 1;
   return { level, index, next, progress };
 }
+
+const DAY_VI = ["CN", "T2", "T3", "T4", "T5", "T6", "T7"];
+
+function hasChallengeOn(id: string, day: string): boolean {
+  if (typeof window === "undefined") return false;
+  return localStorage.getItem(`eight.chlog.${id}.${day}`) != null;
+}
+
+/** Lịch 7 ngày gần nhất: ngày nào đã học (làm bước trong ngày, làm thử thách, hoặc nằm trong chuỗi). */
+export function weekActivity(s: State): { day: string; label: string; active: boolean; isToday: boolean }[] {
+  const id = sessionId() ?? "guest";
+  const out: { day: string; label: string; active: boolean; isToday: boolean }[] = [];
+  const now = new Date();
+  const todayStr = now.toISOString().slice(0, 10);
+  // cửa sổ chuỗi: streak.last lùi lại streak.count - 1 ngày
+  const streakDays = new Set<string>();
+  if (s.profile.streak.last) {
+    const d = new Date(`${s.profile.streak.last}T00:00:00`);
+    for (let i = 0; i < s.profile.streak.count; i++) {
+      streakDays.add(d.toISOString().slice(0, 10));
+      d.setDate(d.getDate() - 1);
+    }
+  }
+  for (let back = 6; back >= 0; back--) {
+    const d = new Date(now);
+    d.setDate(now.getDate() - back);
+    const key = d.toISOString().slice(0, 10);
+    const active =
+      (s.zang.steps[key]?.length ?? 0) > 0 || hasChallengeOn(id, key) || streakDays.has(key);
+    out.push({ day: key, label: DAY_VI[d.getDay()], active, isToday: key === todayStr });
+  }
+  return out;
+}

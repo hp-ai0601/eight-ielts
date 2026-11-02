@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { sessionId, setSession, testProgress, zangToday } from "@/lib/store";
 import { useEight } from "@/lib/useEight";
 import AccentPick from "@/components/AccentPick";
@@ -29,10 +29,25 @@ function norm(p: string) {
   return p.length > 1 ? p.replace(/\/$/, "") : p;
 }
 
+type FontSize = "s" | "m" | "l";
+const FONT_PX: Record<FontSize, string> = { s: "14px", m: "16px", l: "18px" };
+
+function applyFont(f: FontSize) {
+  if (typeof document === "undefined") return;
+  document.documentElement.style.fontSize = FONT_PX[f];
+}
+
 export default function Shell({ children }: { children: React.ReactNode }) {
   const path = norm(usePathname() || "/");
   const router = useRouter();
   const { s, ready } = useEight();
+  const [font, setFont] = useState<FontSize>("m");
+
+  useEffect(() => {
+    const f = (localStorage.getItem("eight.fontsize") as FontSize) || "m";
+    setFont(f);
+    applyFont(f);
+  }, []);
 
   useEffect(() => {
     if (path === "/login") return;
@@ -53,6 +68,24 @@ export default function Shell({ children }: { children: React.ReactNode }) {
           {path !== "/login" && (
             <div className="mt-2 hidden lg:block">
               <AccentPick compact />
+              <div className="mt-2 flex items-center gap-1" title="Cỡ chữ">
+                {(["s", "m", "l"] as FontSize[]).map((f, idx) => (
+                  <button
+                    key={f}
+                    onClick={() => {
+                      setFont(f);
+                      applyFont(f);
+                      localStorage.setItem("eight.fontsize", f);
+                    }}
+                    className={`rounded-md border px-2 py-0.5 ${font === f ? "border-lime text-lime" : "border-line text-mute hover:text-text"}`}
+                    style={{ fontSize: [11, 13, 15][idx] }}
+                    aria-label={["Cỡ chữ nhỏ", "Cỡ chữ vừa", "Cỡ chữ lớn"][idx]}
+                  >
+                    A
+                  </button>
+                ))}
+                <span className="ml-1 text-[10px] text-mute">cỡ chữ</span>
+              </div>
             </div>
           )}
           {ready && s?.profile.userName && (
