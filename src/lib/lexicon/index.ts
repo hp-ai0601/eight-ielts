@@ -12,6 +12,11 @@ import pack5g from "./pack5g.json";
 import pack5h from "./pack5h.json";
 import pack5i from "./pack5i.json";
 import pack5j from "./pack5j.json";
+import pack5k from "./pack5k.json";
+import pack5l from "./pack5l.json";
+import pack5m from "./pack5m.json";
+import pack5n from "./pack5n.json";
+import pack5o from "./pack5o.json";
 import { LEX_TOPICS } from "./catalog";
 import type { VocabItem } from "@/lib/content/types";
 import { guessPos, POS_VI, type Pos } from "@/lib/pos";
@@ -27,7 +32,7 @@ export type LexItem = {
 
 type RawLex = Omit<LexItem, "pos"> & { pos?: Pos };
 
-const RAW_SRC = [...pack5a, ...pack5b, ...pack5c, ...pack5d, ...pack5e, ...pack5f, ...pack5g, ...pack5h, ...pack5i, ...pack5j, ...pack1, ...pack2, ...pack3, ...pack4] as RawLex[];
+const RAW_SRC = [...pack5a, ...pack5b, ...pack5c, ...pack5d, ...pack5e, ...pack5f, ...pack5g, ...pack5h, ...pack5i, ...pack5j, ...pack5k, ...pack5l, ...pack5m, ...pack5n, ...pack5o, ...pack1, ...pack2, ...pack3, ...pack4] as RawLex[];
 
 function withPos(x: RawLex): LexItem {
   return { ...x, pos: x.pos ?? guessPos(x.word, x.vi, x.example) };
