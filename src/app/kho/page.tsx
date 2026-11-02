@@ -8,7 +8,7 @@ const GROUPS: { name: string; hint: string; items: { href: string; title: string
     hint: "Đi theo lộ trình là đủ — mấy mục dưới để luyện thêm",
     items: [
       { href: "/path", title: "Lộ trình 8.0", why: "84 bài học, mở khóa tuần tự — bắt đầu từ đây" },
-      { href: "/gquiz", title: "Quiz ngữ pháp 3 mức", why: "12 chủ đề, mỗi chủ đề Dễ – Vừa – Khó" },
+      { href: "/gquiz", title: "Quiz ngữ pháp 3 mức", why: "16 chủ đề, mỗi chủ đề Dễ – Vừa – Khó" },
       { href: "/grammar", title: "Ngữ pháp", why: "Hơn 40 bài giải quy tắc, từ các thì đến câu phức" },
       { href: "/homework", title: "Bài tập về nhà", why: "Bài thầy đang giao" },
     ],
