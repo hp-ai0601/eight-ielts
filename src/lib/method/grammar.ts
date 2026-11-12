@@ -40,7 +40,7 @@ const CORE: GrammarUnit[] = [
     title: "Thì: chọn thì theo mốc, không theo ‘cảm’",
     band: "0–6 rồi 8",
     vnTrap: "Tiếng Việt không chia thì. Part 1 chết vì I am go / I have went / last year I have studied.",
-    rule: "Nhìn mốc thời gian trước, rồi chia. yesterday / last year / in 2019 → Past Simple. since / recently / for two years (còn liên quan) → Present Perfect. thói quen → Present Simple. đang xảy ra lúc nói → Present Continuous. Tương lai có kế hoạch cố định (vé, lịch) → Present Continuous hoặc going to, không nhét will bừa.",
+    rule: "Nhìn mốc thời gian trong câu trước, rồi mới chia thì. Có yesterday, last year, in 2019 → dùng quá khứ đơn. Có since, recently, for two years (việc vẫn còn liên quan đến bây giờ) → dùng hiện tại hoàn thành. Thói quen hằng ngày → hiện tại đơn. Việc đang xảy ra lúc nói → hiện tại tiếp diễn. Tương lai đã có kế hoạch cụ thể (đã mua vé, đã hẹn giờ) → hiện tại tiếp diễn hoặc going to — đừng câu nào cũng nhét will.",
     steps: [
       "Gạch mốc thời gian trong câu hỏi giám khảo.",
       "Past Simple nếu hành động đã khép (I started in 2022).",
@@ -48,7 +48,7 @@ const CORE: GrammarUnit[] = [
       "Không trộn have + V2 sai (have went). have + past participle.",
     ],
     questions: [
-      gap("g-t1", "Last year I ______ the test for the first time. (take)", "took", "Last year khóa Past Simple."),
+      gap("g-t1", "Last year I ______ the test for the first time. (take)", "took", "Có last year là mốc quá khứ đã kết thúc nên dùng quá khứ đơn; take có dạng bất quy tắc là took."),
       mcq("g-t2", "I ______ in Da Nang since 2019.", ["lived", "have lived", "am living", "had live"], "have lived", "since + điểm trong quá khứ, còn ở đây → Present Perfect."),
       mcq("g-t3", "Câu nào sai?", ["I went yesterday.", "I have went yesterday.", "I have already eaten.", "I eat rice every day."], "I have went yesterday.", "went không phải past participle; yesterday không đi với Present Perfect."),
       tf("g-t4", "I am go to school every day. là câu đúng.", "False", "Thói quen: I go. Be không ghép go."),

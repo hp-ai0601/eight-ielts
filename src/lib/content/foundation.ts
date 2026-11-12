@@ -76,7 +76,7 @@ Trong từ: PHOto, deCIDE, inforMAtion — nhấn sai làm từ khó nhận.`,
 
 Mốc quá khứ (yesterday, last year, in 2020) → Past Simple.`,
     questions: [
-      gap("q1", "Last year I ______ IELTS for the first time. (take)", "took", "Last year khóa quá khứ. take → took."),
+      gap("q1", "Last year I ______ IELTS for the first time. (take)", "took", "Có last year là mốc quá khứ đã kết thúc nên dùng quá khứ đơn; take chia bất quy tắc thành took."),
       mcq("q2", "Câu nào đúng?", ["I am live in Hanoi", "I live in Hanoi", "I living in Hanoi", "I lives in Hanoi"], "I live in Hanoi", "live là động từ thường."),
       mcq("q3", "She ______ coffee every morning.", ["drink", "drinks", "is drink", "drinking"], "drinks", "Ngôi 3 số ít, thói quen → drinks."),
     ],
