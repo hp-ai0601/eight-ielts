@@ -84,6 +84,16 @@ const TYPO: Record<string, string> = {
   pronounciation: "pronunciation",
   opertunity: "opportunity",
   comming: "coming",
+  cheape: "cheap",
+  clothings: "clothes",
+  furnitures: "furniture",
+  informations: "information",
+  advices: "advice",
+  homeworks: "homework",
+  traffics: "traffic",
+  researches: "research",
+  equipments: "equipment",
+  luggages: "luggage",
 };
 
 const BAD_V3: Record<string, string> = {
@@ -320,6 +330,7 @@ const badPatterns: { pattern: RegExp; vi: string; en?: string }[] = [
   { pattern: /\bhe\s+don't\b/i, vi: "He + doesn't." },
   { pattern: /\bshe\s+don't\b/i, vi: "She + doesn't." },
   { pattern: /\bit\s+don't\b/i, vi: "It + doesn't." },
+  { pattern: /\bother nothing\b/i, vi: "other nothing không phải tiếng Anh. Muốn nói những thứ khác thì rẻ: while other things are cheap / while others are cheap." },
 ];
 
 function tenseHits(text: string, expect?: string): GrammarNote[] {
@@ -360,8 +371,8 @@ function tenseHits(text: string, expect?: string): GrammarNote[] {
   if (/\bmore\s+(cheaper|taller|bigger|smaller|shorter|faster|slower|easier|harder)\b/i.test(t)) {
     g.push({ vi: "Tính từ ngắn: cheaper / taller, không more cheaper." });
   }
-  if (/\b(informations|homeworks|advices|furnitures|traffics|researches)\b/i.test(t)) {
-    g.push({ vi: "Không đếm: information / homework / advice / furniture / traffic / research — không thêm -s." });
+  if (/\b(informations|homeworks|advices|furnitures|traffics|researches|clothings|equipments|luggages)\b/i.test(t)) {
+    g.push({ vi: "Danh từ không đếm được thì không thêm -s: clothing / clothes, information, homework, advice, furniture." });
   }
   if (/\bpeople\s+is\b/i.test(t)) g.push({ vi: "people số nhiều: people are." });
 
@@ -454,6 +465,7 @@ function rewrite(text: string, spellingHits: SpellHit[], grammarHits: GrammarNot
     });
   }
   out = out.replace(/\b(didn't|did not)\s+(went|ate|was|were|had|did|wrote|took|saw|came)\b/gi, "didn't go");
+  out = out.replace(/\bother nothing\b/gi, "other things");
   if (out && out[0] === out[0].toLowerCase()) out = out[0].toUpperCase() + out.slice(1);
   const contrast = [...CONTRAST].some((w) => out.toLowerCase().includes(w));
   if (/,\s+(I|I'm|he|she|we|they|my|you|one)\b/i.test(out) && !/\b(and|but|so|or|because|while|whereas|yet)\b/i.test(out)) {

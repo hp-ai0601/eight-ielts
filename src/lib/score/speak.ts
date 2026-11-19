@@ -1,5 +1,6 @@
 import { checkText } from "@/lib/zang/check";
 import { clampBand } from "@/lib/ielts";
+import { getAccent } from "@/lib/speech";
 
 /** Đánh giá nhanh speaking transcript dựa trên 4 tiêu chí IELTS: FC, LR, GRA, Pron.
  *  Không thay thế giám khảo người. */
@@ -142,16 +143,25 @@ export function listenOnce(): Promise<string> {
     const SR = (window as unknown as { webkitSpeechRecognition?: new () => SpeechRec; SpeechRecognition?: new () => SpeechRec }).webkitSpeechRecognition
       || (window as unknown as { SpeechRecognition?: new () => SpeechRec }).SpeechRecognition;
     if (!SR) {
-      reject(new Error("Trình duyệt này không nhận giọng nói — em gõ lại lời mình nói, hoặc dùng Chrome nhé."));
+      reject(new Error("Trình duyệt này không nhận giọng nói — em dùng Chrome hoặc Safari nhé."));
       return;
     }
     const rec = new SR();
-    rec.lang = "en-GB";
+    const accent = getAccent();
+    rec.lang = accent === "us" ? "en-US" : accent === "au" ? "en-AU" : "en-GB";
     rec.interimResults = false;
     rec.maxAlternatives = 1;
-    rec.onresult = (e: { results: { 0: { 0: { transcript: string } } } }) => resolve(e.results[0][0].transcript);
-    rec.onerror = () => reject(new Error("Máy không nghe được — em kiểm tra lại quyền micro nhé."));
-    rec.onend = () => undefined;
+    let done = false;
+    rec.onresult = (e: { results: { 0: { 0: { transcript: string } } } }) => {
+      done = true;
+      resolve(e.results[0][0].transcript);
+    };
+    rec.onerror = () => {
+      if (!done) reject(new Error("Máy không nghe được — em kiểm tra lại quyền micro nhé."));
+    };
+    rec.onend = () => {
+      if (!done) reject(new Error("Máy chưa kịp nghe — em đọc to hơn một chút rồi bấm lại nhé."));
+    };
     rec.start();
   });
 }

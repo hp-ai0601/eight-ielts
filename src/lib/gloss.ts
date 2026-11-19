@@ -1,6 +1,7 @@
 import { CLASS_WORDS } from "@/lib/zang/content";
 import { LEXICON } from "@/lib/lexicon";
 import { MNEMONICS, mnemonicOf, type Mnemonic } from "@/lib/mnemonic";
+import { viOf } from "@/lib/example";
 
 export type Gloss = { word: string; vi: string; ipa?: string; mn?: Mnemonic };
 
@@ -42,12 +43,24 @@ const EXTRA_VI: Record<string, string> = {
   weather: "thời tiết",
   together: "cùng nhau",
   because: "bởi vì",
+  clothing: "quần áo",
+  clothes: "quần áo",
+  mom: "mẹ",
+  nothing: "không gì",
+  cheap: "rẻ",
+  expensive: "đắt tiền",
 };
+
+const SKIP_GLOSS = new Set(
+  "a an the is are am was were be to of in on at and or but so i you he she it we they my your me him her his their our this that these those".split(
+    " ",
+  ),
+);
 
 const esc = (s: string) => s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
 
-/** Tìm các từ/cụm đáng dịch trong câu truyện: cụm có mẹo → từ lớp → từ kho (dài > 4). */
-export function glossIn(en: string, max = 8): Gloss[] {
+/** Tìm các từ/cụm đáng dịch trong câu: cụm có mẹo → từ lớp → từ kho → từ còn lại. */
+export function glossIn(en: string, max = 14): Gloss[] {
   const words = en
     .replace(/[“”«»"'’‘?!.,;:()]/g, " ")
     .split(/\s+/)
@@ -92,6 +105,16 @@ export function glossIn(en: string, max = 8): Gloss[] {
     if (hit) {
       seen.add(w);
       out.push({ word: hit.word, vi: hit.vi, ipa: hit.ipa, mn: mnemonicOf(hit.word) });
+      if (out.length >= max) return out;
+    }
+  }
+  // 5) từ còn lại trong câu tự viết (bỏ từ chức năng)
+  for (const w of words) {
+    if (seen.has(w) || SKIP_GLOSS.has(w) || w.length < 3) continue;
+    const vi = EXTRA_VI[w] || viOf(w);
+    if (vi && vi.toLowerCase() !== w) {
+      seen.add(w);
+      out.push({ word: w, vi });
       if (out.length >= max) return out;
     }
   }

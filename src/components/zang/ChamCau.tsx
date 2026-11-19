@@ -3,6 +3,11 @@
 import { useState } from "react";
 import { checkText, type Check } from "@/lib/zang/check";
 import { scoreSentence } from "@/lib/score/write";
+import { glossVi, grammarOf } from "@/lib/example";
+import { glossInline } from "@/lib/gloss";
+import Hear from "@/components/Hear";
+import PronCheck from "@/components/PronCheck";
+import Recorder from "./Recorder";
 
 function RedWords({ text, check }: { text: string; check: Check }) {
   const bad = new Set(check.spelling.map((x) => x.from.toLowerCase()));
@@ -39,18 +44,41 @@ export default function ChamCau({
   const good = live.clean;
   const target = extra[0] ?? "";
   const sentenceMark = scoreSentence(fix, target, tense);
+  const model = good ? fix.trim() : live.rewrite;
+  const viMine = glossVi(fix);
+  const viModel = glossVi(model);
+  void check; // lần chấm đầu — khung luôn chấm lại theo câu em đang sửa
 
   return (
     <div className="panel mt-5 p-4">
       <p className="text-xs uppercase tracking-wider text-lime">Chấm cho Zang</p>
       <div className="mt-2 flex items-baseline gap-3">
         <p className={`font-serif text-4xl ${good ? "text-lime" : "text-bad"}`}>{live.score}/10</p>
-        <p className="text-sm text-mute">≈ IELTS {sentenceMark.band} · {sentenceMark.notes[0]}</p>
+        <p className="text-sm text-mute">
+          ≈ IELTS {sentenceMark.band} · {sentenceMark.notes[0]}
+        </p>
       </div>
       <div className="mt-4">
-        <p className="text-xs text-mute">Câu em viết</p>
+        <div className="flex items-center justify-between gap-2">
+          <p className="text-xs text-mute">Câu em viết</p>
+          <Hear text={fix} rate={0.88} label="Nghe" />
+        </div>
         <RedWords text={fix} check={live} />
       </div>
+
+      {viMine && (
+        <div className="mt-4">
+          <p className="text-xs text-mute">Nghĩa câu em viết</p>
+          <p className="mt-1 text-sm leading-relaxed">{viMine}</p>
+          {grammarOf(fix) && <p className="mt-1 text-xs text-lime">{grammarOf(fix)}</p>}
+        </div>
+      )}
+
+      <div className="mt-4 rounded-xl border border-line p-3">
+        <p className="text-[11px] uppercase tracking-wider text-mute">Đọc lại câu — nghĩa ghi trong ngoặc</p>
+        <p className="mt-1.5 text-sm leading-7">{glossInline(fix)}</p>
+      </div>
+
       {live.spelling.length > 0 && (
         <div className="mt-4">
           <p className="text-sm text-bad">Lỗi chính tả — các chữ màu đỏ</p>
@@ -82,7 +110,11 @@ export default function ChamCau({
       ) : (
         <>
           <p className="mt-4 text-xs text-mute">Câu gợi ý sửa — nhìn rồi viết lại cho hết chữ đỏ</p>
-          <p className="mt-1 font-serif text-lg text-lime">{live.rewrite}</p>
+          <div className="mt-1 flex items-start justify-between gap-2">
+            <p className="font-serif text-lg text-lime">{live.rewrite}</p>
+            <Hear text={live.rewrite} rate={0.8} label="Nghe" />
+          </div>
+          {viModel && <p className="mt-1 text-sm text-mute">Nghĩa câu sửa: {viModel}</p>}
           <textarea
             className="field mt-3 min-h-24 border-bad"
             value={fix}
@@ -91,13 +123,20 @@ export default function ChamCau({
           <p className="mt-2 text-sm text-bad">Chưa lưu được đâu — viết lại đến khi hết chữ đỏ nhé.</p>
         </>
       )}
+
+      <div className="mt-5 border-t border-line pt-4">
+        <p className="text-xs uppercase tracking-wider text-lime">Đọc câu đã sửa cho máy nghe</p>
+        <p className="mt-1 text-xs text-mute">
+          Đọc câu chữ xanh. Máy bắt từng từ, gạch đỏ từ chưa rõ, rồi chỉ cách đặt miệng.
+        </p>
+        <div className="mt-3">
+          <PronCheck key={model} text={model} />
+        </div>
+        <Recorder />
+      </div>
+
       {onClean && (
-        <button
-          type="button"
-          className="btn-lime mt-4"
-          disabled={!good}
-          onClick={() => onClean(fix.trim(), live)}
-        >
+        <button type="button" className="btn-lime mt-4" disabled={!good} onClick={() => onClean(fix.trim(), live)}>
           Lưu câu đã đúng
         </button>
       )}

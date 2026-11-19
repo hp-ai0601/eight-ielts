@@ -38,13 +38,14 @@ export default function Recorder() {
 
   return (
     <div className="mt-4">
-      <div className="flex flex-wrap gap-2">
+      <p className="text-xs text-mute">Muốn nghe lại giọng mình thì ghi âm ở đây.</p>
+      <div className="mt-2 flex flex-wrap gap-2">
         {!on ? (
-          <button className="btn-lime" onClick={start}>
-            Ghi âm lại
+          <button type="button" className="btn-ghost" onClick={start}>
+            Ghi âm lại giọng mình
           </button>
         ) : (
-          <button className="btn-ghost" onClick={stop}>
+          <button type="button" className="btn-lime" onClick={stop}>
             Dừng
           </button>
         )}

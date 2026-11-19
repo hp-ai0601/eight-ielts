@@ -2,8 +2,8 @@ import { LEXICON } from "@/lib/lexicon";
 import { ANTONYMS, CLASS_WORDS } from "@/lib/zang/content";
 
 const FUNC: Record<string, string> = {
-  a: "một",
-  an: "một",
+  a: "",
+  an: "",
   the: "",
   i: "tôi",
   "i'm": "tôi",
@@ -29,9 +29,9 @@ const FUNC: Record<string, string> = {
   those: "những cái kia",
   there: "có / ở đó",
   here: "ở đây",
-  is: "thì / là",
-  am: "thì / là",
-  are: "thì / là",
+  is: "",
+  am: "",
+  are: "",
   was: "đã",
   were: "đã",
   be: "là",
@@ -145,6 +145,24 @@ const FUNC: Record<string, string> = {
   minh: "Minh",
   linh: "Linh",
   han: "Hân",
+  buy: "mua",
+  buys: "mua",
+  bought: "đã mua",
+  mom: "mẹ",
+  mum: "mẹ",
+  mother: "mẹ",
+  dad: "bố",
+  father: "bố",
+  clothing: "quần áo",
+  clothes: "quần áo",
+  nothing: "không gì",
+  something: "một cái gì đó",
+  everything: "mọi thứ",
+  others: "những người/thứ khác",
+  things: "những thứ",
+  thing: "thứ",
+  street: "đường",
+  classroom: "phòng học",
 };
 
 let DICT: Map<string, string> | null = null;
@@ -201,7 +219,32 @@ const PHRASE: [string, string][] = [
   ["by car", "bằng xe"],
   ["every day", "mỗi ngày"],
   ["after school", "sau tan học"],
+  ["for her mom", "cho mẹ cô ấy"],
+  ["for his mom", "cho mẹ cậu ấy"],
+  ["for her mother", "cho mẹ cô ấy"],
+  ["for his father", "cho bố cậu ấy"],
+  ["expensive clothing", "quần áo đắt"],
+  ["expensive clothes", "quần áo đắt"],
+  ["expensive clothings", "quần áo đắt"],
+  ["other things", "những thứ khác"],
+  ["other people", "những người khác"],
+  ["other nothing", "những thứ khác thì không"],
+  ["a lot of", "rất nhiều"],
+  ["lots of", "rất nhiều"],
 ];
+
+export function viOf(raw: string): string | undefined {
+  const d = dict();
+  const low = raw.toLowerCase().replace(/'s$/, "");
+  if (!low) return undefined;
+  if (d.has(low)) return d.get(low);
+  if (low.endsWith("ies") && d.has(`${low.slice(0, -3)}y`)) return d.get(`${low.slice(0, -3)}y`);
+  if (low.endsWith("es") && d.has(low.slice(0, -2))) return d.get(low.slice(0, -2));
+  if (low.endsWith("s") && d.has(low.slice(0, -1))) return d.get(low.slice(0, -1));
+  if (low.endsWith("ed") && d.has(low.slice(0, -2))) return d.get(low.slice(0, -2));
+  if (low.endsWith("ing") && d.has(low.slice(0, -3))) return d.get(low.slice(0, -3));
+  return undefined;
+}
 
 export function glossVi(text: string): string {
   const d = dict();
@@ -221,12 +264,14 @@ export function glossVi(text: string): string {
     if (!raw) return tok;
     const low = raw.toLowerCase();
     const hit = d.get(low);
-    if (hit) return tok.replace(raw, hit);
+    if (hit !== undefined) return hit ? tok.replace(raw, hit) : "";
     if (low.endsWith("ies") && d.get(`${low.slice(0, -3)}y`)) return tok.replace(raw, d.get(`${low.slice(0, -3)}y`) ?? raw);
     if (low.endsWith("s") && d.get(low.slice(0, -1))) return tok.replace(raw, d.get(low.slice(0, -1)) ?? raw);
     if (low.endsWith("ed") && d.get(low.slice(0, -2))) return tok.replace(raw, `đã ${d.get(low.slice(0, -2))}`);
     if (low.endsWith("ing") && d.get(low.slice(0, -3))) return tok.replace(raw, `đang ${d.get(low.slice(0, -3))}`);
     return tok;
   });
-  return out.join("").replace(/\s{2,}/g, " ").replace(/\s+([,.;:!?])/g, "$1").trim();
+  const joined = out.join("").replace(/\s{2,}/g, " ").replace(/\s+([,.;:!?])/g, "$1").trim();
+  if (!joined) return "";
+  return joined[0].toUpperCase() + joined.slice(1);
 }

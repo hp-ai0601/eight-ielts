@@ -3,79 +3,91 @@
 import { useState } from "react";
 import { speak } from "@/lib/speech";
 import { listenOnce } from "@/lib/score/speak";
+import { coachPron, type PronCoach } from "@/lib/pron";
 
-const norm = (w: string) => w.toLowerCase().replace(/[^a-z']/g, "");
-function lev(a: string, b: string): number {
-  if (a === b) return 0;
-  const m = a.length, n = b.length;
-  if (!m) return n;
-  if (!n) return m;
-  const dp = Array.from({ length: m + 1 }, (_, i) => [i, ...Array<number>(n).fill(0)]);
-  for (let j = 1; j <= n; j++) dp[0][j] = j;
-  for (let i = 1; i <= m; i++)
-    for (let j = 1; j <= n; j++)
-      dp[i][j] = Math.min(dp[i - 1][j] + 1, dp[i][j - 1] + 1, dp[i - 1][j - 1] + (a[i - 1] === b[j - 1] ? 0 : 1));
-  return dp[m][n];
-}
-const match = (a: string, b: string) => a === b || lev(a, b) <= (a.length > 5 ? 2 : 1);
-
-/** Nói theo mẫu rồi so khớp từng từ — cho biết từ nào đọc chưa rõ. */
+/** Nói theo mẫu rồi so khớp từng từ — chỉ từ nào đọc chưa rõ, kèm mẹo phát âm. */
 export default function PronCheck({ text, slow = true }: { text: string; slow?: boolean }) {
-  const [heard, setHeard] = useState("");
+  const [coach, setCoach] = useState<PronCoach | null>(null);
   const [busy, setBusy] = useState(false);
-  const target = text.split(/\s+/).map(norm).filter(Boolean);
-  const said = heard.split(/\s+/).map(norm).filter(Boolean);
-  const results = target.map((w) => ({ w, ok: said.some((x) => match(x, w)) }));
-  const pct = heard ? Math.round((results.filter((r) => r.ok).length / Math.max(1, target.length)) * 100) : 0;
+  const [err, setErr] = useState("");
+  const missed = coach?.hits.filter((h) => !h.ok && h.tip) ?? [];
+
+  async function listen() {
+    setErr("");
+    setBusy(true);
+    setCoach(null);
+    try {
+      const h = await listenOnce();
+      setCoach(coachPron(text, h));
+    } catch (e) {
+      setErr(e instanceof Error ? e.message : "Máy không nghe được — em cho phép micro rồi bấm lại nhé.");
+    } finally {
+      setBusy(false);
+    }
+  }
+
+  const pct = coach?.pct ?? 0;
 
   return (
     <div className="rounded-xl border border-line p-3">
-      <p className="text-[11px] uppercase tracking-wider text-mute">Nói theo mẫu</p>
+      <p className="text-[11px] uppercase tracking-wider text-mute">Ghi âm và chỉnh phát âm</p>
+      <p className="mt-1 text-xs text-mute">Đọc to câu mẫu. Máy nghe rồi chỉ những từ chưa rõ, kèm cách đặt miệng.</p>
       <div className="mt-2 flex flex-wrap gap-2">
         {slow && (
-          <button className="btn-ghost !px-3 !py-1.5 text-xs" onClick={() => speak(text, 0.6)}>
+          <button type="button" className="btn-ghost !px-3 !py-1.5 text-xs" onClick={() => speak(text, 0.6)}>
             Nghe chậm
           </button>
         )}
-        <button className="btn-ghost !px-3 !py-1.5 text-xs" onClick={() => speak(text, 1)}>
+        <button type="button" className="btn-ghost !px-3 !py-1.5 text-xs" onClick={() => speak(text, 1)}>
           Nghe mẫu
         </button>
-        <button
-          className="btn-lime !px-3 !py-1.5 text-xs"
-          disabled={busy}
-          onClick={async () => {
-            setBusy(true);
-            try {
-              const h = await listenOnce();
-              setHeard(h);
-            } catch {
-              setHeard("");
-            } finally {
-              setBusy(false);
-            }
-          }}
-        >
+        <button type="button" className="btn-lime !px-3 !py-1.5 text-xs" disabled={busy} onClick={listen}>
           {busy ? "Đang nghe…" : "Em đọc thử"}
         </button>
       </div>
-      {heard ? (
+      {err && <p className="mt-2 text-sm text-bad">{err}</p>}
+      {busy && <p className="mt-2 text-xs text-mute">Hãy đọc to và rõ: “{text}”</p>}
+      {coach && (
         <div className="mt-3">
           <p className="text-sm">
-            Giống mẫu: <span className={pct >= 80 ? "text-lime" : pct >= 50 ? "text-yellow-400" : "text-red-400"}>{pct}%</span>
-            {pct >= 80 ? " — đọc tốt lắm!" : " — nghe lại mẫu chậm rồi đọc lại nhé."}
+            Giống mẫu:{" "}
+            <span className={pct >= 80 ? "text-lime" : pct >= 50 ? "text-yellow-400" : "text-bad"}>{pct}%</span>
+            {pct >= 80 ? " — đọc tốt lắm!" : " — nghe lại mẫu chậm, rồi đọc lại những từ màu đỏ."}
           </p>
           <p className="mt-1.5 text-sm leading-relaxed">
-            {results.map((r, i) => (
-              <span key={i} className={`mr-1.5 ${r.ok ? "text-text" : "text-red-400 underline decoration-wavy"}`}>
-                {text.split(/\s+/)[i]}
+            {coach.hits.map((r, i) => (
+              <span key={`${r.word}-${i}`} className={`mr-1.5 ${r.ok ? "text-text" : "text-bad underline decoration-wavy"}`}>
+                {r.word}
               </span>
             ))}
           </p>
-          <p className="mt-1 text-xs text-mute">Máy nghe được là: “{heard}”. Từ gạch chân đỏ là từ máy chưa nghe rõ — em đọc lại từ đó nhé.</p>
+          <p className="mt-1 text-xs text-mute">Máy nghe được là: “{coach.heard}”.</p>
+          {coach.notes[0] && <p className="mt-2 text-sm">{coach.notes[0]}</p>}
+          {missed.length > 0 && (
+            <ul className="mt-3 space-y-2">
+              {missed.slice(0, 4).map((r, i) => (
+                <li key={`${r.word}-tip-${i}`} className="rounded-lg border border-line p-2.5">
+                  <div className="flex items-start justify-between gap-2">
+                    <p className="text-sm">
+                      <span className="text-bad">{r.word}</span>
+                      {r.ipa ? <span className="ml-1.5 text-mute">{r.ipa}</span> : null}
+                      {r.heard ? <span className="ml-1.5 text-xs text-mute">máy nghe thành “{r.heard}”</span> : null}
+                    </p>
+                    <button
+                      type="button"
+                      className="btn-ghost !px-2 !py-1 text-[11px]"
+                      onClick={() => speak(r.word, 0.55)}
+                    >
+                      Nghe từ này
+                    </button>
+                  </div>
+                  {r.tip && <p className="mt-1 text-xs leading-relaxed text-mute">{r.tip}</p>}
+                </li>
+              ))}
+            </ul>
+          )}
         </div>
-      ) : busy ? (
-        <p className="mt-2 text-xs text-mute">Hãy đọc to và rõ: “{text}”</p>
-      ) : null}
+      )}
     </div>
   );
 }
