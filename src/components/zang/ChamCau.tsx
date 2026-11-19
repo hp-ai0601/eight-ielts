@@ -127,7 +127,7 @@ export default function ChamCau({
       <div className="mt-5 border-t border-line pt-4">
         <p className="text-xs uppercase tracking-wider text-lime">Đọc câu đã sửa cho máy nghe</p>
         <p className="mt-1 text-xs text-mute">
-          Đọc câu chữ xanh. Máy bắt từng từ, gạch đỏ từ chưa rõ, rồi chỉ cách đặt miệng.
+          Đọc câu chữ xanh. Máy chấm từng âm (chính xác, trôi chảy, ngữ điệu), bấm từ đỏ để xem phoneme nào sai.
         </p>
         <div className="mt-3">
           <PronCheck key={model} text={model} />

@@ -32,6 +32,8 @@ jobs:
       - run: npm run build
         env:
           GITHUB_PAGES: "1"
+          NEXT_PUBLIC_AZURE_SPEECH_KEY: ${{ secrets.AZURE_SPEECH_KEY }}
+          NEXT_PUBLIC_AZURE_SPEECH_REGION: ${{ secrets.AZURE_SPEECH_REGION }}
       - run: touch out/.nojekyll
       - uses: actions/upload-pages-artifact@v3
         with:

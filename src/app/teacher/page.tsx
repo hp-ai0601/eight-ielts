@@ -21,6 +21,7 @@ import {
   type Assignment,
 } from "@/lib/classroom";
 import { LEX_TOPICS, lexByTopic } from "@/lib/lexicon";
+import { getSpeechCreds, maskKey, setSpeechCreds } from "@/lib/azureSpeech";
 
 function fromLocal(): Report | null {
   const z = readZangState();
@@ -57,7 +58,7 @@ function Band({ label, value, onChange }: { label: string; value: number; onChan
   );
 }
 
-type Pane = "live" | "write" | "speak" | "key" | "class" | "assign" | "weak" | "quiz" | "memo";
+type Pane = "live" | "write" | "speak" | "pron" | "key" | "class" | "assign" | "weak" | "quiz" | "memo";
 
 export default function TeacherPage() {
   const { s, ready } = useEight();
@@ -85,9 +86,19 @@ export default function TeacherPage() {
   const [mnWord, setMnWord] = useState("");
   const [mnSound, setMnSound] = useState("");
   const [mnImg, setMnImg] = useState("");
+  const [azKey, setAzKey] = useState("");
+  const [azRegion, setAzRegion] = useState("eastasia");
+  const [azHint, setAzHint] = useState("");
+  const [azOn, setAzOn] = useState(false);
 
   useEffect(() => {
     setReport(fromLocal());
+    const c = getSpeechCreds();
+    if (c) {
+      setAzKey(c.key);
+      setAzRegion(c.region);
+      setAzOn(true);
+    }
     return onLive((r) => {
       setReport(r);
     });
@@ -132,6 +143,10 @@ export default function TeacherPage() {
           <RailPick on={pane === "speak"} onClick={() => setPane("speak")}>
             <p className="font-serif text-lg leading-tight">Chấm speaking</p>
             <p className="mt-0.5 text-[11px] text-mute">{report?.speaks.length ?? 0} lần</p>
+          </RailPick>
+          <RailPick on={pane === "pron"} onClick={() => setPane("pron")}>
+            <p className="font-serif text-lg leading-tight">Chấm phát âm</p>
+            <p className="mt-0.5 text-[11px] text-mute">{azOn ? "Azure đã gắn" : "Chưa gắn khóa"}</p>
           </RailPick>
           <RailPick on={pane === "key"} onClick={() => setPane("key")}>
             <p className="font-serif text-lg leading-tight">L/R đáp án</p>
@@ -472,6 +487,64 @@ export default function TeacherPage() {
                 ))}
                 {!quizResults.length && <p className="text-sm text-mute">Chưa có lượt kiểm tra nào.</p>}
               </div>
+            </>
+          )}
+
+          {pane === "pron" && (
+            <>
+              <p className="text-sm text-mute">
+                Chấm phát âm từng phoneme như ELSA — dùng Azure Pronunciation Assessment (chuẩn Mỹ, IPA + ngữ điệu). Tài khoản
+                miễn phí được 5 giờ ghi âm/tháng.
+              </p>
+              <ol className="mt-4 list-decimal space-y-1.5 pl-5 text-sm">
+                <li>
+                  Mở{" "}
+                  <a className="text-lime underline" href="https://portal.azure.com/#create/Microsoft.CognitiveServicesSpeechServices" target="_blank" rel="noreferrer">
+                    tạo Speech trên Azure
+                  </a>
+                  , chọn gói F0 (free).
+                </li>
+                <li>Vào resource → Keys and Endpoint, copy Key 1 và Region (nên dùng eastasia).</li>
+                <li>Dán vào ô dưới. Khóa lưu trên máy này — Zang dùng cùng máy thì khỏi dán lại.</li>
+              </ol>
+              <p className="mt-3 text-xs text-mute">
+                Muốn Zang dùng trên điện thoại, thầy thêm secret GitHub <code>AZURE_SPEECH_KEY</code> và{" "}
+                <code>AZURE_SPEECH_REGION</code> rồi deploy lại, hoặc dán khóa một lần trên máy của em.
+              </p>
+              {azOn && (
+                <p className="mt-4 text-sm text-lime">
+                  Đang dùng khóa {maskKey(azKey)} · {azRegion || "eastasia"}
+                </p>
+              )}
+              <input className="field mt-4" placeholder="Key" value={azKey} onChange={(e) => setAzKey(e.target.value)} autoComplete="off" />
+              <input className="field mt-2" placeholder="Region (eastasia)" value={azRegion} onChange={(e) => setAzRegion(e.target.value)} />
+              <div className="mt-3 flex flex-wrap gap-2">
+                <button
+                  type="button"
+                  className="btn-lime"
+                  disabled={!azKey.trim()}
+                  onClick={() => {
+                    setSpeechCreds({ key: azKey, region: azRegion.trim() || "eastasia" });
+                    setAzOn(true);
+                    setAzHint("Đã lưu khóa trên máy này.");
+                  }}
+                >
+                  Lưu khóa
+                </button>
+                <button
+                  type="button"
+                  className="btn-ghost"
+                  onClick={() => {
+                    setSpeechCreds(null);
+                    setAzKey("");
+                    setAzOn(false);
+                    setAzHint("Đã gỡ khóa.");
+                  }}
+                >
+                  Gỡ khóa
+                </button>
+              </div>
+              {azHint && <p className="mt-2 text-sm text-lime">{azHint}</p>}
             </>
           )}
 
